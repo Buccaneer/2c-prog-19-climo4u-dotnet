@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
+  <Class Name="Klimatogrammen.Leerling">
+    <Position X="3.5" Y="3.25" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Leerling.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Graad" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Klimatogrammen.Continent">
+    <Position X="2" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAABABAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Continent.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Landen" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Klimatogrammen.Land">
+    <Position X="4.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAEAAABAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Land.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Klimatogrammen" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Klimatogrammen.Klimatogram">
+    <Position X="7.5" Y="5" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAgABAAAACAAAAAAgAAAAAAAAAABAAAABAAAAAAEAAA=</HashCode>
+      <FileName>Klimatogram.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="Klimatogrammen.Graad">
+    <Position X="8.5" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAgAAAQAAAAQAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Graad.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
