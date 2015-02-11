@@ -31,7 +31,7 @@
     </ShowAsCollectionAssociation>
   </Class>
   <Class Name="Klimatogrammen.Klimatogram">
-    <Position X="7.5" Y="5" Width="3" />
+    <Position X="7.75" Y="5" Width="3" />
     <TypeIdentifier>
       <HashCode>AAgABAAAACAAAAAAgAAAAAAAAAABAAAABAAAAAAEAAA=</HashCode>
       <FileName>Klimatogram.cs</FileName>
