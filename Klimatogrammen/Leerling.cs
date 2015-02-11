@@ -5,6 +5,7 @@ using System.Web.Services.Protocols;
 using System.ComponentModel;
 
 namespace Klimatogrammen {
+    //eerste commit van Annemie
     public class Leerling {
         public Graad Graad {
             get {
