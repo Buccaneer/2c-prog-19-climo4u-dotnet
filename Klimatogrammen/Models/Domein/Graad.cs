@@ -1,13 +1,7 @@
-﻿using System;
-using System.Web;
-using System.Web.Services;
-using System.Web.Services.Protocols;
-using System.ComponentModel;
-
-namespace Klimatogrammen {
+﻿namespace Klimatogrammen.Models.Domein {
     public enum Graad {
-        Een,
-        Twee,
-        Drie,
+        Een = 0,
+        Twee = 1,
+        Drie = 2,
     }
 }

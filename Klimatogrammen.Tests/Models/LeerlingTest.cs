@@ -1,4 +1,5 @@
 ﻿using System;
+using Klimatogrammen.Models.Domein;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Klimatogrammen.Tests.Models {
