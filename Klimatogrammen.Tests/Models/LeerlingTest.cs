@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.ObjectModel;
+using Klimatogrammen.Models.Domein;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Klimatogrammen.Tests.Models
