@@ -82,7 +82,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\LandTest.cs" />
     <Compile Include="Models\LeerlingTest.cs" />
+    <Compile Include="Models\ContintentTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controllers\HomeControllerTest.cs" />
   </ItemGroup>
