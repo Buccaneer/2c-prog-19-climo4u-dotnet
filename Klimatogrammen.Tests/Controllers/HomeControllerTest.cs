@@ -4,6 +4,7 @@ using System;
 using System.Collections;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Web;
 using System.Web.Mvc;
 using Klimatogrammen.Controllers;
 using Klimatogrammen.Models.Domein;
@@ -52,14 +53,39 @@ namespace Klimatogrammen.Tests.Controllers
         }
 
         [TestMethod]
-        public void IndexHttpPostRedirectNaarVolgendeView()
+        public void IndexHttpPostRedirectNaarAndereView()
         {
             Leerling leerling = new Leerling{ Graad = Graad.Twee, Jaar = 1 };
             LeerlingIndexViewModel leerlingIVM = new LeerlingIndexViewModel(leerling);
             RedirectToRouteResult result = homeController.Index(leerlingIVM) as RedirectToRouteResult;
-            Assert.AreEqual("VolgendeView", result.RouteValues["Action"]);
+            Assert.AreEqual("Index", result.RouteValues["RedirectToAction"]);
         }
 
+        [TestMethod]
+        public void LeerlingZitInSessieNaCorrectePost()
+        {
+            Leerling leerling = new Leerling { Graad = Graad.Twee, Jaar = 1 };
+            LeerlingIndexViewModel leerlingIVM = new LeerlingIndexViewModel(leerling);
+            homeController.Index(leerlingIVM);
+            Assert.IsNotNull(homeController.HttpContext.Session["leerling"]);
+        }
 
+        [TestMethod]
+        [ExpectedException(typeof (ArgumentException))]
+        public void IndexGeeftViewTerugBijGraadTweeJaarNul()
+        {
+            Leerling leerling = new Leerling { Graad = Graad.Twee, Jaar = 0 };
+            LeerlingIndexViewModel leerlingIVM = new LeerlingIndexViewModel(leerling);
+            homeController.Index(leerlingIVM);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof (ArgumentException))]
+        public void IndexGeeftViewTerugBijGraadEenMetJaarEen()
+        {
+            Leerling leerling = new Leerling { Graad = Graad.Een, Jaar = 1 };
+            LeerlingIndexViewModel leerlingIVM = new LeerlingIndexViewModel(leerling);
+            homeController.Index(leerlingIVM);
+        }
     }
 }
