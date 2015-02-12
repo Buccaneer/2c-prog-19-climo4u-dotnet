@@ -7,6 +7,7 @@ using System.Linq;
 using System.Web.Mvc;
 using Klimatogrammen.Controllers;
 using Klimatogrammen.Models.Domein;
+using Klimatogrammen.ViewModels;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Klimatogrammen.Tests.Controllers
