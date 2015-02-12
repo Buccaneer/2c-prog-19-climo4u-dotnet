@@ -1,54 +1,52 @@
-﻿using System;
-using System.Collections.Generic;
+﻿
+
+using System;
+using System.Collections;
+using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
 using System.Web.Mvc;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Klimatogrammen;
 using Klimatogrammen.Controllers;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Klimatogrammen.Tests.Controllers
 {
     [TestClass]
     public class HomeControllerTest
     {
+        private HomeController homeController;
+
+        [TestInitialize]
+        public void Init()
+        {
+            homeController = new HomeController(new Leerling());
+        }
+
         [TestMethod]
-        public void Index()
+        public void IndexIsNietNull()
         {
             // Arrange
-            HomeController controller = new HomeController();
 
             // Act
-            ViewResult result = controller.Index() as ViewResult;
+            ViewResult result = homeController.Index() as ViewResult;
 
             // Assert
             Assert.IsNotNull(result);
         }
 
         [TestMethod]
-        public void About()
+        public void IndexGeeftLeerlingIndexViewModelDoorAanView()
         {
-            // Arrange
-            HomeController controller = new HomeController();
+            ViewResult result = homeController.Index() as ViewResult;
+            LeerlingIndexViewModel leerlingIVM = result.Model as LeerlingIndexViewModel;
+            SelectListItem[] list = (leerlingIVM.Graden as SelectList).ToArray();
 
-            // Act
-            ViewResult result = controller.About() as ViewResult;
-
-            // Assert
-            Assert.AreEqual("Your application description page.", result.ViewBag.Message);
-        }
-
-        [TestMethod]
-        public void Contact()
-        {
-            // Arrange
-            HomeController controller = new HomeController();
-
-            // Act
-            ViewResult result = controller.Contact() as ViewResult;
-
-            // Assert
-            Assert.IsNotNull(result);
+            Assert.AreEqual(3, list.Length);
+            Assert.AreEqual("0", list[0].Value);
+            Assert.AreEqual("Eerste", list[0].Text);
+            Assert.AreEqual("1", list[1].Value);
+            Assert.AreEqual("Tweede", list[1].Text);
+            Assert.AreEqual("2", list[2].Value);
+            Assert.AreEqual("Derde", list[2].Text);
         }
     }
 }
