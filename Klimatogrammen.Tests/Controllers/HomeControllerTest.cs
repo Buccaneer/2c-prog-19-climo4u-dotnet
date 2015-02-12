@@ -20,7 +20,7 @@ namespace Klimatogrammen.Tests.Controllers
         [TestInitialize]
         public void Init()
         {
-            homeController = new HomeController(new Leerling());
+            homeController = new HomeController();
         }
 
         [TestMethod]
@@ -40,7 +40,7 @@ namespace Klimatogrammen.Tests.Controllers
         {
             ViewResult result = homeController.Index() as ViewResult;
             LeerlingIndexViewModel leerlingIVM = result.Model as LeerlingIndexViewModel;
-            SelectListItem[] list = (leerlingIVM.Graden as SelectList).ToArray();
+            SelectListItem[] list = (leerlingIVM.Graden).ToArray();
 
             Assert.AreEqual(3, list.Length);
             Assert.AreEqual("0", list[0].Value);
@@ -56,7 +56,7 @@ namespace Klimatogrammen.Tests.Controllers
         {
             Leerling leerling = new Leerling{ Graad = Graad.Twee, Jaar = 1 };
             LeerlingIndexViewModel leerlingIVM = new LeerlingIndexViewModel(leerling);
-            RedirectToRouteResult result = homeController.Index(leerling) as RedirectToRouteResult;
+            RedirectToRouteResult result = homeController.Index(leerlingIVM) as RedirectToRouteResult;
             Assert.AreEqual("VolgendeView", result.RouteValues["Action"]);
         }
 
