@@ -1,19 +1,23 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Klimatogrammen.Tests.Models {
+namespace Klimatogrammen.Tests.Models
+{
     [TestClass]
-    public class LeerlingTest {
+    public class LeerlingTest
+    {
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
-        public void IndienLeerlingTweedeGraadMagJaarNietNullZijn() {
+        public void IndienLeerlingTweedeGraadMagJaarNietNullZijn()
+        {
             Leerling l = new Leerling();
             l.Graad = Graad.Twee;
             l.Jaar = null;
         }
 
         [TestMethod]
-        public void LeerlingTweedeGraadIsCorrect() {
+        public void LeerlingTweedeGraadIsCorrect()
+        {
             Leerling l = new Leerling() { Graad = Graad.Twee, Jaar = 1 };
 
             Assert.AreEqual(l.Graad, Graad.Twee);
@@ -22,25 +26,29 @@ namespace Klimatogrammen.Tests.Models {
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
-        public void LeerlingMetVerplichtJaarOnderDeGrensWaarde() {
+        public void LeerlingMetVerplichtJaarOnderDeGrensWaarde()
+        {
             Leerling l = new Leerling() { Graad = Graad.Twee, Jaar = 0 };
         }
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
-        public void LeerlingMetVerplichtJaarBovenDeGrensWaarde() {
+        public void LeerlingMetVerplichtJaarBovenDeGrensWaarde()
+        {
             Leerling l = new Leerling() { Graad = Graad.Twee, Jaar = 3 };
         }
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
-        public void LeerlingEersteGraadMagGeenJaarMeeKrijgen() {
+        public void LeerlingEersteGraadMagGeenJaarMeeKrijgen()
+        {
             Leerling l = new Leerling() { Graad = Graad.Een, Jaar = 1 };
         }
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
-        public void LeerlingDerdeGraadMagGeenJaarMeeKrijgen() {
+        public void LeerlingDerdeGraadMagGeenJaarMeeKrijgen()
+        {
             Leerling l = new Leerling() { Graad = Graad.Drie, Jaar = 1 };
         }
 
