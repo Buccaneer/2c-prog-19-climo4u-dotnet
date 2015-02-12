@@ -6,6 +6,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Web.Mvc;
 using Klimatogrammen.Controllers;
+using Klimatogrammen.Models.Domein;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Klimatogrammen.Tests.Controllers
@@ -48,5 +49,16 @@ namespace Klimatogrammen.Tests.Controllers
             Assert.AreEqual("2", list[2].Value);
             Assert.AreEqual("Derde", list[2].Text);
         }
+
+        [TestMethod]
+        public void IndexHttpPostRedirectNaarVolgendeView()
+        {
+            Leerling leerling = new Leerling{ Graad = Graad.Twee, Jaar = 1 };
+            LeerlingIndexViewModel leerlingIVM = new LeerlingIndexViewModel(leerling);
+            RedirectToRouteResult result = homeController.Index(leerling) as RedirectToRouteResult;
+            Assert.AreEqual("VolgendeView", result.RouteValues["Action"]);
+        }
+
+
     }
 }
