@@ -26,14 +26,15 @@ namespace Klimatogrammen.Models.Domein
             get { return jaar; }
             set
             {
-                if (Graad.Equals(Graad.Een) || Graad.Equals(Graad.Drie))
-                {
-                    throw new ArgumentException("Het jaar kan enkel gekozen worden bij graad twee");
-                }
-                else
-                {
-                    jaar = value;
-                }
+                if (Graad == Graad.Een || Graad == Graad.Drie)
+                    throw new ArgumentException("Het jaar kan enkel gekozen worden bij graad twee.");
+
+                if (value == null)
+                    throw new ArgumentException("Het jaar kan niet null zijn.");
+                if (value < 1 || value > 2)
+                    throw new ArgumentException("Het jaar moet tussen 1 en 2 liggen.");
+
+                jaar = value;
             }
 
         }

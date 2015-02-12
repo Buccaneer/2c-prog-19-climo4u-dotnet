@@ -3,17 +3,17 @@
   <Comment CommentText="We krijgen de gemiddelden, en de totalen niet uit bulk data berekenen&#xD;&#xA;&#xD;&#xA;">
     <Position X="10.594" Y="3.234" Height="0.75" Width="1.7" />
   </Comment>
-  <Class Name="Klimatogrammen.Leerling">
+  <Class Name="Klimatogrammen.Models.Domein.Leerling">
     <Position X="3.5" Y="3.25" Width="3.25" />
     <TypeIdentifier>
-      <HashCode>AAACAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAACAAAAAgAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Models\Domein\Leerling.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
       <Property Name="Graad" />
     </ShowAsAssociation>
   </Class>
-  <Class Name="Klimatogrammen.Continent">
+  <Class Name="Klimatogrammen.Models.Domein.Continent">
     <Position X="2" Y="5.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAABABAAAAAAAAAAAAAAAAAAAA=</HashCode>
@@ -23,7 +23,7 @@
       <Property Name="Landen" />
     </ShowAsCollectionAssociation>
   </Class>
-  <Class Name="Klimatogrammen.Land">
+  <Class Name="Klimatogrammen.Models.Domein.Land">
     <Position X="4.5" Y="5.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAEAAABAAAAAAAAAAAAAAAAAAAAAA=</HashCode>

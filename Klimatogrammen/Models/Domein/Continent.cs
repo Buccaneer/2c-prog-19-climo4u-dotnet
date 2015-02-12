@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Web;
-using System.Web.Services;
-using System.Web.Services.Protocols;
-using System.ComponentModel;
+﻿using System.Collections.Generic;
 
-namespace Klimatogrammen {
+namespace Klimatogrammen.Models.Domein {
     public class Continent {
         public ICollection<Land> Landen {
             get {
