@@ -9,7 +9,7 @@ namespace Klimatogrammen.Models.Domein
         /// <summary>
         /// Dit is een field om het jaar bij te houden
         /// </summary>
-        private int jaar;
+        private int? jaar;
         #endregion
         #region Properties
         /// <summary>
@@ -32,7 +32,7 @@ namespace Klimatogrammen.Models.Domein
                 }
                 else
                 {
-                    Jaar = jaar;
+                    jaar = value;
                 }
             }
 
