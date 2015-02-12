@@ -8,6 +8,11 @@ namespace Klimatogrammen.Controllers
 {
     public class HomeController : Controller
     {
+        public HomeController(Leerling leerling)
+        {
+            
+        }
+
         public ActionResult Index()
         {
             return View();
