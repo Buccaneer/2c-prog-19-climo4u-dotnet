@@ -17,9 +17,8 @@ namespace Klimatogrammen.Controllers
         }
 
         [HttpPost]
-        public ActionResult Index(LeerlingIndexViewModel leerlingIVM)
-        {
-            
+        public ActionResult Index(LeerlingIndexViewModel leerlingIVM) {
+            return View();
         }
     }
 }
