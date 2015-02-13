@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Web;
-using System.Web.Services;
-using System.Web.Services.Protocols;
-using System.ComponentModel;
 
-namespace Klimatogrammen
+namespace Klimatogrammen.Models.Domein
 {
 
     public class Leerling
@@ -13,7 +9,7 @@ namespace Klimatogrammen
         /// <summary>
         /// Dit is een field om het jaar bij te houden
         /// </summary>
-        private int jaar;
+        private int? jaar;
         #endregion
         #region Properties
         /// <summary>
@@ -30,14 +26,15 @@ namespace Klimatogrammen
             get { return jaar; }
             set
             {
-                if (Graad.Equals(Graad.Een) || Graad.Equals(Graad.Drie))
-                {
-                    throw new ArgumentException("Het jaar kan enkel gekozen worden bij graad twee");
-                }
-                else
-                {
-                    Jaar = jaar;
-                }
+                if (Graad == Graad.Een || Graad == Graad.Drie)
+                    throw new ArgumentException("Het jaar kan enkel gekozen worden bij graad twee.");
+
+                if (value == null)
+                    throw new ArgumentException("Het jaar kan niet null zijn.");
+                if (value < 1 || value > 2)
+                    throw new ArgumentException("Het jaar moet tussen 1 en 2 liggen.");
+
+                jaar = value;
             }
 
         }
