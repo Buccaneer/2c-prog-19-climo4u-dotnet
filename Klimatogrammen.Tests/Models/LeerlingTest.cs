@@ -6,6 +6,16 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Klimatogrammen.Tests.Models
 {
+    /// <summary>
+    /// Deze testklasse bevat testen voor de klasse Leerling
+    /// Volgende zaken worden getest:
+    ///         * Tweede graad -> jaar niet null
+    ///         * Tweede graad met correct jaar
+    ///         * Tweede graad met jaar onder de grenswaarde
+    ///         * Tweede graad met jaar boven de grenswaarde
+    ///         * Eerste graad met jaar
+    ///         * Derde graad met jaar
+    /// </summary>
     [TestClass]
     public class LeerlingTest
     {
@@ -29,14 +39,14 @@ namespace Klimatogrammen.Tests.Models
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
-        public void LeerlingMetVerplichtJaarOnderDeGrensWaarde()
+        public void LeerlingTweedeGraadMetJaarOnderDeGrensWaarde()
         {
             Leerling l = new Leerling() { Graad = Graad.Twee, Jaar = 0 };
         }
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
-        public void LeerlingMetVerplichtJaarBovenDeGrensWaarde()
+        public void LeerlingTweedeGraadMetJaarBovenDeGrensWaarde()
         {
             Leerling l = new Leerling() { Graad = Graad.Twee, Jaar = 3 };
         }
