@@ -4,20 +4,62 @@ using System.Collections.Generic;
 namespace Klimatogrammen.Models.Domein {
     public class Land {
 
+        private string _naam;
+        private ICollection<Klimatogram> _klimatogrammen;
+
+        public Land(string naam)
+        {
+            Naam = naam;
+            Klimatogrammen = new List<Klimatogram>();
+        }
+
         public String Naam {
-            get {
-                throw new System.NotImplementedException();
+            get
+            {
+                return _naam;
             }
-            set {
+            set
+            {
+                if (value == null)
+                {
+                    throw new ArgumentNullException("De naam van een land mag niet null zijn.");
+                }
+                if (value.Equals(""))
+                {
+                    throw new ArgumentException("De naam van een land mag niet leeg zijn.");
+                }
+                _naam = value;
             }
         }
 
         public ICollection<Klimatogram> Klimatogrammen {
-            get {
-                throw new System.NotImplementedException();
+            get
+            {
+                return _klimatogrammen;
             }
-            set {
+            set
+            {
+                if (value == null)
+                {
+                    throw new ArgumentNullException("De collectie met klimatogrammen mag niet null zijn.");
+                }
+                _klimatogrammen = value;
             }
         }
+
+        public void voegKlimatogramToe(Klimatogram klimatogram)
+        {
+            if (klimatogram == null)
+            {
+                throw new ArgumentException("Een klimatogram mag niet null zijn.");
+            }
+            Klimatogrammen.Add(klimatogram);
+        }
+
+        public void verwijderKlimatogram(Klimatogram klimatogram)
+        {
+            Klimatogrammen.Remove(klimatogram);
+        }
+
     }
 }
