@@ -21,8 +21,8 @@ namespace Klimatogrammen.Infrastructure {
             _httpContext.Session.Remove(sleutel);
         }
 
-        public SessionRepository(HttpContextBase sessie) {
-            _httpContext = sessie;
+        public SessionRepository() {
+            _httpContext = new HttpContextWrapper(HttpContext.Current);
         }
     }
 }

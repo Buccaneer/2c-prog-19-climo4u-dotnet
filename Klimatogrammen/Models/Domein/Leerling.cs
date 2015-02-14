@@ -26,8 +26,11 @@ namespace Klimatogrammen.Models.Domein
             get { return jaar; }
             set
             {
-                if (Graad == Graad.Een || Graad == Graad.Drie)
+                if (Graad == Graad.Een || Graad == Graad.Drie) {
+                    if (value == null)
+                        return;
                     throw new ArgumentException("Het jaar kan enkel gekozen worden bij graad twee.");
+                }
 
                 if (value == null)
                     throw new ArgumentException("Het jaar kan niet null zijn.");

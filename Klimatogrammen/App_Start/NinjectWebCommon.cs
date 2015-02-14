@@ -67,8 +67,9 @@ namespace Klimatogrammen.App_Start
             kernel
                 .Bind<ISessionRepository>()
                 .To<SessionRepository>()
-                .InRequestScope()
-                .WithConstructorArgument("sessie", new HttpContextWrapper(HttpContext.Current));
+                .InRequestScope();
+            //  .WithConstructorArgument(typeof(HttpContextBase), new HttpContextWrapper(HttpContext.Current));
+
         }        
     }
 }

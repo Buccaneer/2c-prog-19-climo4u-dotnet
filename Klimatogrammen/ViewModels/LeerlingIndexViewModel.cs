@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -9,22 +10,19 @@ namespace Klimatogrammen.ViewModels
 {
     public class LeerlingIndexViewModel
     {
-        public SelectList Graden { get; set; }
-        public Graad Graad { get { return (Graad)Graden.SelectedValue; } }
+        [Required(ErrorMessage = "Graad moet worden meegegeven.")]
+        public Graad Graad { get; set; }
+
+        [Range(1,2, ErrorMessage = "Graad moet tussen 1 en 2 liggen.")]
         public int? Jaar { get; set; }
 
-        public LeerlingIndexViewModel()
-        {
-            Graden = new SelectList(new object[] {
-                new {Key=0, Tekst="Eerste graad"}, new {Key=1, Tekst="Tweede graad"}, new {Key=2, Tekst="Derde graad"}
-            }, "Key", "Tekst", 0);
-        }
 
-        public LeerlingIndexViewModel(Leerling l)
-        {
-            Graden = new SelectList(new object[] {
-                new {Key=0, Tekst="Eerste graad"}, new {Key=1, Tekst="Tweede graad"}, new {Key=2, Tekst="Derde graad"}
-            }, "Key", "Tekst",(int)l.Graad);
+        public LeerlingIndexViewModel() {
+            
+        }
+        
+        public LeerlingIndexViewModel(Leerling l) {
+            Graad = l.Graad;
             Jaar = l.Jaar;
           
         }

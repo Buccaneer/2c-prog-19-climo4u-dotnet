@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -28,7 +29,6 @@ namespace Klimatogrammen.Controllers
                 if (ModelState.IsValid) {
                     Leerling l = new Leerling();
                     l.Graad = leerlingIVM.Graad;
-                    if (l.Graad == Graad.Twee)
                         l.Jaar = leerlingIVM.Jaar;
                     _sessionRepository["leerling"] = l;
                     return RedirectToAction("Index", "Klimatogram");
