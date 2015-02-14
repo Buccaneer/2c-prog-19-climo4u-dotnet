@@ -6,10 +6,13 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.SessionState;
 using Klimatogrammen.Controllers;
+using Klimatogrammen.Infrastructure;
 using Klimatogrammen.Models.Domein;
 using Klimatogrammen.ViewModels;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Moq;
 
 namespace Klimatogrammen.Tests.Controllers
 {
@@ -17,11 +20,13 @@ namespace Klimatogrammen.Tests.Controllers
     public class HomeControllerTest
     {
         private HomeController homeController;
+        private ISessionRepository _sessionRepository;
 
         [TestInitialize]
         public void Init()
         {
-            homeController = new HomeController();
+           _sessionRepository= new SessionRepositoryMock();
+            homeController = new HomeController(_sessionRepository);
         }
 
         [TestMethod]
@@ -45,11 +50,11 @@ namespace Klimatogrammen.Tests.Controllers
 
             Assert.AreEqual(3, list.Length);
             Assert.AreEqual("0", list[0].Value);
-            Assert.AreEqual("Eerste", list[0].Text);
+            Assert.AreEqual("Eerste graad", list[0].Text);
             Assert.AreEqual("1", list[1].Value);
-            Assert.AreEqual("Tweede", list[1].Text);
+            Assert.AreEqual("Tweede graad", list[1].Text);
             Assert.AreEqual("2", list[2].Value);
-            Assert.AreEqual("Derde", list[2].Text);
+            Assert.AreEqual("Derde graad", list[2].Text);
         }
 
         [TestMethod]
@@ -58,16 +63,20 @@ namespace Klimatogrammen.Tests.Controllers
             Leerling leerling = new Leerling{ Graad = Graad.Twee, Jaar = 1 };
             LeerlingIndexViewModel leerlingIVM = new LeerlingIndexViewModel(leerling);
             RedirectToRouteResult result = homeController.Index(leerlingIVM) as RedirectToRouteResult;
-            Assert.AreEqual("Index", result.RouteValues["RedirectToAction"]);
+            Assert.AreEqual("Index", result.RouteValues["action"]);
+            Assert.AreEqual("Klimatogram", result.RouteValues["controller"]);
         }
 
         [TestMethod]
         public void LeerlingZitInSessieNaCorrectePost()
         {
             Leerling leerling = new Leerling { Graad = Graad.Twee, Jaar = 1 };
+
+      
+
             LeerlingIndexViewModel leerlingIVM = new LeerlingIndexViewModel(leerling);
             homeController.Index(leerlingIVM);
-            Assert.IsNotNull(homeController.HttpContext.Session["leerling"]);
+            Assert.IsNotNull(_sessionRepository["leerling"]);
         }
 
         [TestMethod]

@@ -17,15 +17,16 @@ namespace Klimatogrammen.ViewModels
         {
             Graden = new SelectList(new object[] {
                 new {Key=0, Tekst="Eerste graad"}, new {Key=1, Tekst="Tweede graad"}, new {Key=2, Tekst="Derde graad"}
-            }, "Key", "Tekst");
+            }, "Key", "Tekst", 0);
         }
 
         public LeerlingIndexViewModel(Leerling l)
         {
             Graden = new SelectList(new object[] {
                 new {Key=0, Tekst="Eerste graad"}, new {Key=1, Tekst="Tweede graad"}, new {Key=2, Tekst="Derde graad"}
-            }, "Key", "Tekst");
+            }, "Key", "Tekst",(int)l.Graad);
             Jaar = l.Jaar;
+          
         }
     }
 }
