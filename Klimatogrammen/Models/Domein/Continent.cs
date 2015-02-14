@@ -1,21 +1,65 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Klimatogrammen.Models.Domein {
     public class Continent {
-        public ICollection<Land> Landen {
-            get {
-                throw new System.NotImplementedException();
+
+        private ICollection<Land> _landen;
+        private String _naam;
+
+        public Continent(String naam)
+        {
+            Naam = naam;
+            Landen = new List<Land>();
+        }
+
+        public string Naam
+        {
+            get
+            {
+                return _naam;
             }
-            set {
+            set
+            {
+                if (value == null)
+                {
+                    throw new ArgumentNullException("De naam van een continent mag niet null zijn.");
+                }
+                if (value.Equals(""))
+                {
+                    throw new ArgumentException("De naam van een continent mag niet leeg zijn.");
+                }
+                _naam = value;
             }
         }
 
-        public string Naam {
-            get {
-                throw new System.NotImplementedException();
+        public ICollection<Land> Landen {
+            get
+            {
+                return _landen;
             }
-            set {
+            set
+            {
+                if (value == null)
+                {
+                    throw new ArgumentNullException("De collectie met landen mag niet null zijn.");
+                }
+                _landen = value;
             }
+        }
+
+        public void voegLandToe(Land land)
+        {
+            if (land == null)
+            {
+                throw new ArgumentException("Een land mag niet null zijn.");
+            }
+            Landen.Add(land);
+        }
+
+        public void verwijderLand(Land land)
+        {
+            Landen.Remove(land);
         }
     }
 }

@@ -135,7 +135,6 @@
     <Compile Include="Models\Domein\Klimatogram.cs" />
     <Compile Include="Models\Domein\Land.cs" />
     <Compile Include="Models\Domein\Leerling.cs" />
-    <Compile Include="Models\Domein\Locatie.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\LeerlingIndexViewModel.cs" />
   </ItemGroup>
