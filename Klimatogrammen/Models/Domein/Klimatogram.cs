@@ -6,22 +6,8 @@ using System.Web.Services.Protocols;
 using System.ComponentModel;
 
 namespace Klimatogrammen {
-    public class Klimatogram {
-        public IDictionary<int, double[]> Temperaturen {
-            get {
-                throw new System.NotImplementedException();
-            }
-            set {
-            }
-        }
-
-        public IDictionary<int, int[]> Neerslagen {
-            get {
-                throw new System.NotImplementedException();
-            }
-            set {
-            }
-        }
+    public class Klimatogram
+    {
 
         public double[] GemiddeldeTemperatuur {
             get {
@@ -47,7 +33,7 @@ namespace Klimatogrammen {
             }
         }
 
-        public int TotaleNeerslag {
+        public int TotaalNeerslag {
             get {
                 throw new System.NotImplementedException();
             }
@@ -61,10 +47,6 @@ namespace Klimatogrammen {
             }
             set {
             }
-        }
-
-        private T[] BerekenGemiddelde<T>(IDictionary<int, T[]> gegevens) {
-            throw new System.NotImplementedException();
         }
     }
 }
