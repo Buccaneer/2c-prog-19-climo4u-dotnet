@@ -4,6 +4,7 @@ using System.Web;
 using System.Web.Services;
 using System.Web.Services.Protocols;
 using System.ComponentModel;
+using System.Linq;
 
 namespace Klimatogrammen {
     public class Klimatogram
@@ -30,9 +31,9 @@ namespace Klimatogrammen {
                 }
                 for (int i = 0; i < value.Length; i++)
                 {
-                    if (value[i] < 0)
+                    if (value[i] < -273.15 || value[i] > 500)
                     {
-                        throw new ArgumentOutOfRangeException("De waarde van een gemiddelde temperatuur mag niet negatief zijn.");
+                        throw new ArgumentOutOfRangeException("De waarde van een gemiddelde temperatuur moet tussen -273.15 en 500 liggen.");
                     }
                 }
                 _gemiddeldeTemperatuur = value;
@@ -66,24 +67,14 @@ namespace Klimatogrammen {
         public int TotaalNeerslag {
             get
             {
-                int _totaalNeerslag = 0;
-                for (int i = 0; i < _gemiddeldeNeerslag.Length; i++)
-                {
-                    _totaalNeerslag += _gemiddeldeNeerslag[i];
-                }
-                    return _totaalNeerslag;
+                return _gemiddeldeNeerslag.Sum();
             }
         }
 
         public double TotaalGemiddeldeTemperatuur {
             get
             {
-                double _totaalGemiddeldeTemperatuur = 0;
-                for (int i = 0; i < _gemiddeldeTemperatuur.Length; i++)
-                {
-                    _totaalGemiddeldeTemperatuur += _gemiddeldeTemperatuur[i];
-                }
-                return _totaalGemiddeldeTemperatuur / ((double) _gemiddeldeTemperatuur.Length);
+                return _gemiddeldeTemperatuur.Average();
             }
         }
 
