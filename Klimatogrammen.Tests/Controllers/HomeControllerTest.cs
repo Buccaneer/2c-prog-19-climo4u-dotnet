@@ -42,22 +42,6 @@ namespace Klimatogrammen.Tests.Controllers
         }
 
         [TestMethod]
-        public void IndexGeeftLeerlingIndexViewModelDoorAanView()
-        {
-            ViewResult result = homeController.Index() as ViewResult;
-            LeerlingIndexViewModel leerlingIVM = result.Model as LeerlingIndexViewModel;
-            SelectListItem[] list = (leerlingIVM.Graden).ToArray();
-
-            Assert.AreEqual(3, list.Length);
-            Assert.AreEqual("0", list[0].Value);
-            Assert.AreEqual("Eerste graad", list[0].Text);
-            Assert.AreEqual("1", list[1].Value);
-            Assert.AreEqual("Tweede graad", list[1].Text);
-            Assert.AreEqual("2", list[2].Value);
-            Assert.AreEqual("Derde graad", list[2].Text);
-        }
-
-        [TestMethod]
         public void IndexHttpPostRedirectNaarAndereView()
         {
             Leerling leerling = new Leerling{ Graad = Graad.Twee, Jaar = 1 };
