@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 
 namespace Klimatogrammen.Models.Domein {
     public class Continent {
@@ -28,6 +29,10 @@ namespace Klimatogrammen.Models.Domein {
                 if (value.Equals(""))
                 {
                     throw new ArgumentException("De naam van een continent mag niet leeg zijn.");
+                }
+                if (Regex.IsMatch(value, "[^a-zA-Z ]"))
+                {
+                    throw new ArgumentException("De naam van een continent mag enkel letters en spaties bevatten.");
                 }
                 _naam = value;
             }

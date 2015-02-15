@@ -27,7 +27,7 @@ namespace Klimatogrammen.Tests.Models
         }
 
         [TestMethod]
-        [ExpectedException(typeof(ArgumentException))]
+        [ExpectedException(typeof(ArgumentNullException))]
         public void NaamContinentAlsNullGeeftFoutmelding()
         {
             Continent c = new Continent(null);

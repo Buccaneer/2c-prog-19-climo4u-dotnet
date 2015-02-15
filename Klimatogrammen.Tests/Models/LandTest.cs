@@ -27,7 +27,7 @@ namespace Klimatogrammen.Tests.Models
         }
 
         [TestMethod]
-        [ExpectedException(typeof(ArgumentException))]
+        [ExpectedException(typeof(ArgumentNullException))]
         public void NaamLandAlsNullGeeftFoutmelding()
         {
             Land l = new Land(null);
@@ -54,11 +54,11 @@ namespace Klimatogrammen.Tests.Models
         }
 
         [TestMethod]
-        [ExpectedException(typeof(ArgumentException))]
+        [ExpectedException(typeof(ArgumentNullException))]
          public void NullAlsKlimatogrammenGeeftFoutmelding()
         {
             Land l = new Land("Congo");
-            ICollection<Klimatogram> k = null;
+            l.Klimatogrammen = null;
         }
 
     }
