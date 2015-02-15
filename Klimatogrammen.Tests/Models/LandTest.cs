@@ -21,8 +21,8 @@ namespace Klimatogrammen.Tests.Models
     {
  [TestMethod]
         public void LandHeeftEenNaam()
-        {
-            Land l = new Land() {Naam = "Congo"};
+ {
+     Land l = new Land("Congo");
             Assert.AreEqual(l.Naam, "Congo");
         }
 
@@ -30,21 +30,21 @@ namespace Klimatogrammen.Tests.Models
         [ExpectedException(typeof(ArgumentException))]
         public void NaamLandAlsNullGeeftFoutmelding()
         {
-            Land l = new Land() {Naam = null};
+            Land l = new Land(null);
         }
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
         public void NaamLandKanGeenSpecialeTekensBevatten()
         {
-             Land l = new Land() { Naam = "€;%µ£$@#<>+*" };
+            Land l = new Land("€;%µ£$@#<>+*");
         }
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
         public void NaamLandKanNietNietsBevatten()
         {
-             Land l = new Land() {Naam = ""};
+             Land l = new Land("");
         }
 
         [TestMethod]
@@ -57,7 +57,7 @@ namespace Klimatogrammen.Tests.Models
         [ExpectedException(typeof(ArgumentException))]
          public void NullAlsKlimatogrammenGeeftFoutmelding()
         {
-             Land l = new Land() {Naam = "Congo"};
+            Land l = new Land("Congo");
             ICollection<Klimatogram> k = null;
         }
 

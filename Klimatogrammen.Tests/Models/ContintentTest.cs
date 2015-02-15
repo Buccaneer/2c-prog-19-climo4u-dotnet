@@ -22,7 +22,7 @@ namespace Klimatogrammen.Tests.Models
         [TestMethod]
         public void ContinentHeeftEenNaam()
         {
-            Continent c = new Continent() {Naam = "Afrika"};
+            Continent c = new Continent("Afrika");
             Assert.AreEqual(c.Naam, "Afrika");
         }
 
@@ -30,21 +30,21 @@ namespace Klimatogrammen.Tests.Models
         [ExpectedException(typeof(ArgumentException))]
         public void NaamContinentAlsNullGeeftFoutmelding()
         {
-            Continent c = new Continent() { Naam = null };
+            Continent c = new Continent(null);
         }
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
         public void NaamContinentKanGeenSpecialeTekensBevatten()
         {
-            Continent c = new Continent() { Naam = "€;%µ£$@#<>+*" };
+            Continent c = new Continent("€;%µ£$@#<>+*");
         }
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
         public void NaamContinentKanNietNietsBevatten()
         {
-            Continent c = new Continent() { Naam = "" };
+            Continent c = new Continent("");
         }
 
         [TestMethod]
@@ -57,7 +57,7 @@ namespace Klimatogrammen.Tests.Models
         [ExpectedException(typeof(ArgumentException))]
          public void NullAlsLandenGeeftFoutmelding()
         {
-            Continent c = new Continent() { Naam = "Afrika" };
+            Continent c = new Continent("Afrika");
             ICollection<Land> landen = null;
         }
 
