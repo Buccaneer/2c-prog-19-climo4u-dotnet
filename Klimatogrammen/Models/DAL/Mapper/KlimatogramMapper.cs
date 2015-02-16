@@ -9,7 +9,6 @@ namespace Klimatogrammen.Models.DAL.Mapper {
         public KlimatogramMapper() {
             HasKey(k => k.Locatie);
 
-            Property(k => k.GemiddeldeNeerslag).
         }
     }
 }

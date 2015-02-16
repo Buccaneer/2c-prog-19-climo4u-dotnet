@@ -18,7 +18,7 @@
       </MemberNameLabel>
     </AssociationLine>
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAABABAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAABABAgAAgAAAAAAAAAAABAAI=</HashCode>
       <FileName>Models\Domein\Continent.cs</FileName>
     </TypeIdentifier>
     <ShowAsCollectionAssociation>
@@ -33,7 +33,7 @@
       </MemberNameLabel>
     </AssociationLine>
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAEAAABAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAEgAABAAAAAAAAAAAAQAAAAAAAQI=</HashCode>
       <FileName>Models\Domein\Land.cs</FileName>
     </TypeIdentifier>
     <ShowAsCollectionAssociation>
@@ -43,8 +43,26 @@
   <Class Name="Klimatogrammen.Klimatogram">
     <Position X="8.25" Y="5.5" Width="5" />
     <TypeIdentifier>
-      <HashCode>AAgAAAAAACAAAAAAgAAAAAAAAgAAAAAABAAAAAAAAAA=</HashCode>
+      <HashCode>AAgAAAAAACAAAAAAgAQAAAAAAgAAAAAABAABAAAAAAA=</HashCode>
       <FileName>Models\Domein\Klimatogram.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Field Name="_gemiddeldeNeerslag" />
+      <Field Name="_gemiddeldeTemperatuur" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Klimatogrammen.Temperatuur">
+    <Position X="14" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>Models\Domein\Temperatuur.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Klimatogrammen.Neerslag">
+    <Position X="14.25" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>Models\Domein\Neerslag.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Enum Name="Klimatogrammen.Models.Domein.Graad">

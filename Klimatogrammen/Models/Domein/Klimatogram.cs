@@ -5,14 +5,15 @@ using System.Web.Services;
 using System.Web.Services.Protocols;
 using System.ComponentModel;
 using System.Linq;
+using Klimatogrammen.Models.Domein;
 
 namespace Klimatogrammen {
     public class Klimatogram
     {
-        private ICollection<double> _gemiddeldeTemperatuur = new List<double>();
-        private ICollection<int> _gemiddeldeNeerslag = new List<int>();
+        private System.Collections.Generic.ICollection<Temperatuur> _gemiddeldeTemperatuur = new List<Temperatuur>();
+        private System.Collections.Generic.ICollection<Neerslag> _gemiddeldeNeerslag = new List<Neerslag>();
 
-        public Klimatogram(ICollection<double> gemiddeldeTemperatuur, ICollection<int> gemiddeldeNeerslag)
+        public Klimatogram(ICollection<Temperatuur> gemiddeldeTemperatuur, ICollection<Neerslag> gemiddeldeNeerslag)
         {
             GemiddeldeTemperatuur = gemiddeldeTemperatuur;
             GemiddeldeNeerslag = gemiddeldeNeerslag;
@@ -23,7 +24,7 @@ namespace Klimatogrammen {
 
         }
 
-        public ICollection<double> GemiddeldeTemperatuur {
+        public System.Collections.Generic.ICollection<Temperatuur> GemiddeldeTemperatuur {
             get
             {
                 return _gemiddeldeTemperatuur;
@@ -34,16 +35,12 @@ namespace Klimatogrammen {
                 {
                     throw new ArgumentException("Er moeten exact 12 waarden doorgegeven worden.");
                 }
-                if (value.Any(i => i < -273.15 || i > 500))
-                    {
-                        throw new ArgumentOutOfRangeException("De waarde van een gemiddelde temperatuur moet tussen -273.15 en 500 liggen.");
-                    }
                 
                 _gemiddeldeTemperatuur = value;
             }
         }
 
-        public ICollection<int> GemiddeldeNeerslag { 
+        public System.Collections.Generic.ICollection<Neerslag> GemiddeldeNeerslag { 
             get
             {
                 return _gemiddeldeNeerslag;
@@ -54,11 +51,7 @@ namespace Klimatogrammen {
                 {
                     throw new ArgumentException("Er moeten exact 12 waarden doorgegeven worden.");
                 }
-            if (value.Any(i => i < 0))
-                    {
-                        throw new ArgumentOutOfRangeException("De waarde van de neerslag per maand mag niet negatief zijn.");
-                    }
-                
+   
                 _gemiddeldeNeerslag = value;
             }
         }
@@ -68,14 +61,14 @@ namespace Klimatogrammen {
         public int TotaalNeerslag {
             get
             {
-                return _gemiddeldeNeerslag.Sum();
+                return _gemiddeldeNeerslag.Sum(n => n.Waarde);
             }
         }
 
         public double TotaalGemiddeldeTemperatuur {
             get
             {
-                return _gemiddeldeTemperatuur.Average();
+                return _gemiddeldeTemperatuur.Average(t => t.Waarde);
             }
         }
 

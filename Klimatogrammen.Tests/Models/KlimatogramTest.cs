@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Text;
 using System.Collections.Generic;
+using System.Web.Razor.Generator;
+using Klimatogrammen.Models.Domein;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Klimatogrammen.Tests.Models
@@ -26,8 +28,8 @@ namespace Klimatogrammen.Tests.Models
        [TestMethod]
         public void KlimatogramHeeftGemiddeldeTempEnGemiddeldeNeerslag()
         {
-           int[] gemiddeldeNeer = { 12, 12, 13, 13, 14, 14, 15, 15, 16, 16, 17, 17 };
-           double[] gemiddeldeTemp = { 5.1, 2.2, 10.5, 12.7, 18, 20.4, 21.2, 25.2, 30.1, 19, 10, 2.2 };
+           Neerslag[] gemiddeldeNeer = { 12, 12, 13, 13, 14, 14, 15, 15, 16, 16, 17, 17 };
+           Temperatuur[] gemiddeldeTemp = { 5.1, 2.2, 10.5, 12.7, 18, 20.4, 21.2, 25.2, 30.1, 19, 10, 2.2 };
            Klimatogram k = new Klimatogram(gemiddeldeTemp, gemiddeldeNeer);
            Assert.AreEqual(k.GemiddeldeNeerslag, gemiddeldeNeer);
            Assert.AreEqual(k.GemiddeldeTemperatuur, gemiddeldeTemp);
@@ -37,8 +39,8 @@ namespace Klimatogrammen.Tests.Models
         [ExpectedException(typeof(ArgumentException))]
         public void GemiddeldeTempMetMinderDanTwaalfCijfersGooitExceptie()
         {
-            int[] gemiddeldeNeer = { 12, 12, 13, 13, 14, 14, 15, 15, 16, 16, 17, 17 };
-            double[] gemiddeldeTemp = { 5.1, 2.2, 10.5, 12.7, 18, 20.4, 21.2, 25.2, 30.1, 19, 10 }; //11 waarden
+            Neerslag[] gemiddeldeNeer = { 12, 12, 13, 13, 14, 14, 15, 15, 16, 16, 17, 17 };
+            Temperatuur[] gemiddeldeTemp = { 5.1, 2.2, 10.5, 12.7, 18, 20.4, 21.2, 25.2, 30.1, 19, 10 }; //11 waarden
             Klimatogram k = new Klimatogram(gemiddeldeTemp, gemiddeldeNeer);
         }
 
@@ -46,8 +48,8 @@ namespace Klimatogrammen.Tests.Models
         [ExpectedException(typeof(ArgumentException))]
         public void GemiddeldeTempMetMeerDanTwaalfCijfersGooitExceptie()
         {
-            int[] gemiddeldeNeer = { 12, 12, 13, 13, 14, 14, 15, 15, 16, 16, 17, 17 };
-            double[] gemiddeldeTemp = { 5.1, 2.2, 10.5, 12.7, 18, 20.4, 21.2, 25.2, 30.1, 19, 10, 2.2, 5.5 }; //13 waarden
+            Neerslag[] gemiddeldeNeer = { 12, 12, 13, 13, 14, 14, 15, 15, 16, 16, 17, 17 };
+            Temperatuur[] gemiddeldeTemp = { 5.1, 2.2, 10.5, 12.7, 18, 20.4, 21.2, 25.2, 30.1, 19, 10, 2.2, 5.5 }; //13 waarden
             Klimatogram k = new Klimatogram(gemiddeldeTemp, gemiddeldeNeer);
         }
 
@@ -55,8 +57,8 @@ namespace Klimatogrammen.Tests.Models
         [ExpectedException(typeof(ArgumentOutOfRangeException))]
         public void GemiddeldeTempMoetGroterZijnDanMin273Punt15OfGooitExceptie()
         {
-            int[] gemiddeldeNeer = { 12, 12, 13, 13, 14, 14, 15, 15, 16, 16, 17, 17 };
-            double[] gemiddeldeTemp = { 5.1, -274, 10.5, 12.7, 18, 20.4, 21.2, 25.2, 30.1, 19, 10, 2.2 };
+            Neerslag[] gemiddeldeNeer = { 12, 12, 13, 13, 14, 14, 15, 15, 16, 16, 17, 17 };
+            Temperatuur[] gemiddeldeTemp = { 5.1, -274, 10.5, 12.7, 18, 20.4, 21.2, 25.2, 30.1, 19, 10, 2.2 };
             Klimatogram k = new Klimatogram(gemiddeldeTemp, gemiddeldeNeer);
         }
 
@@ -64,8 +66,8 @@ namespace Klimatogrammen.Tests.Models
         [ExpectedException(typeof(ArgumentOutOfRangeException))]
         public void GemiddeldeTempMoetKleinerZijnDan500OfGooitExceptie()
         {
-            int[] gemiddeldeNeer = { 12, 12, 13, 13, 14, 14, 15, 15, 16, 16, 17, 17 };
-            double[] gemiddeldeTemp = { 5.1, 501, 10.5, 12.7, 18, 20.4, 21.2, 25.2, 30.1, 19, 10, 2.2 };
+            Neerslag[] gemiddeldeNeer = { 12, 12, 13, 13, 14, 14, 15, 15, 16, 16, 17, 17 };
+            Temperatuur[] gemiddeldeTemp = { 5.1, 501, 10.5, 12.7, 18, 20.4, 21.2, 25.2, 30.1, 19, 10, 2.2 };
             Klimatogram k = new Klimatogram(gemiddeldeTemp, gemiddeldeNeer);
         }
 
@@ -73,8 +75,8 @@ namespace Klimatogrammen.Tests.Models
         [ExpectedException(typeof(ArgumentException))]
         public void GemiddeldeNeerslagMetMinderDanTwaalfCijfersGooitExceptie()
         {
-            int[] gemiddeldeNeer = { 12, 12, 13, 13, 14, 14, 15, 15, 16, 16, 17 }; //11 waarden
-            double[] gemiddeldeTemp = { 5.1, 2.2, 10.5, 12.7, 18, 20.4, 21.2, 25.2, 30.1, 19, 10, 2.2 };
+            Neerslag[] gemiddeldeNeer = { 12, 12, 13, 13, 14, 14, 15, 15, 16, 16, 17 }; //11 waarden
+            Temperatuur[] gemiddeldeTemp = { 5.1, 2.2, 10.5, 12.7, 18, 20.4, 21.2, 25.2, 30.1, 19, 10, 2.2 };
             Klimatogram k = new Klimatogram(gemiddeldeTemp, gemiddeldeNeer);
         }
 
@@ -82,8 +84,8 @@ namespace Klimatogrammen.Tests.Models
         [ExpectedException(typeof(ArgumentException))]
         public void GemiddeldeNeerslagMetMeerDanTwaalfCijfersGooitExceptie()
         {
-            int[] gemiddeldeNeer = { 12, 12, 13, 13, 14, 14, 15, 15, 16, 16, 17, 17, 18 }; //13 waarden
-            double[] gemiddeldeTemp = { 5.1, 2.2, 10.5, 12.7, 18, 20.4, 21.2, 25.2, 30.1, 19, 10, 2.2 };
+            Neerslag[] gemiddeldeNeer = { 12, 12, 13, 13, 14, 14, 15, 15, 16, 16, 17, 17, 18 }; //13 waarden
+            Temperatuur[] gemiddeldeTemp = { 5.1, 2.2, 10.5, 12.7, 18, 20.4, 21.2, 25.2, 30.1, 19, 10, 2.2 };
             Klimatogram k = new Klimatogram(gemiddeldeTemp, gemiddeldeNeer);
         }
 
@@ -91,16 +93,16 @@ namespace Klimatogrammen.Tests.Models
         [ExpectedException(typeof(ArgumentOutOfRangeException))]
         public void GemiddeldeNeerslagMoetGroterZijnDanNulOfGooitExceptie()
         {
-            int[] gemiddeldeNeer = { 12, 12, 13, 13, 14, 14, -15, 15, 16, 16, 17, 17 };
-            double[] gemiddeldeTemp = { 5.1, 2.2, 10.5, 12.7, 18, 20.4, 21.2, 25.2, 30.1, 19, 10, 2.2 };
+            Neerslag[] gemiddeldeNeer = { 12, 12, 13, 13, 14, 14, -15, 15, 16, 16, 17, 17 };
+            Temperatuur[] gemiddeldeTemp = { 5.1, 2.2, 10.5, 12.7, 18, 20.4, 21.2, 25.2, 30.1, 19, 10, 2.2 };
             Klimatogram k = new Klimatogram(gemiddeldeTemp, gemiddeldeNeer);
         }
 
         [TestMethod]
         public void TotaleNeerslagWordtBerekendMetSum()
         {
-            int[] gemiddeldeNeer = { 12, 12, 13, 13, 14, 14, 15, 15, 16, 16, 17, 17 };
-            double[] gemiddeldeTemp = { 5.1, 2.2, 10.5, 12.7, 18, 20.4, 21.2, 25.2, 30.1, 19, 10, 2.2 };
+            Neerslag[] gemiddeldeNeer = { 12, 12, 13, 13, 14, 14, 15, 15, 16, 16, 17, 17 };
+            Temperatuur[] gemiddeldeTemp = { 5.1, 2.2, 10.5, 12.7, 18, 20.4, 21.2, 25.2, 30.1, 19, 10, 2.2 };
             Klimatogram k = new Klimatogram(gemiddeldeTemp, gemiddeldeNeer);
             Assert.AreEqual(174, k.TotaalNeerslag);
         }
@@ -108,8 +110,8 @@ namespace Klimatogrammen.Tests.Models
         [TestMethod]
         public void TotaalGemiddeldeTemperatuurWordtBerekendMetAverage()
         {
-            int[] gemiddeldeNeer = { 12, 12, 13, 13, 14, 14, 15, 15, 16, 16, 17, 17 };
-            double[] gemiddeldeTemp = { 5.1, 2.2, 10.5, 12.7, 18, 20.4, 21.2, 25.2, 30.1, 19, 10, 2.2 };
+            Neerslag[] gemiddeldeNeer = { 12, 12, 13, 13, 14, 14, 15, 15, 16, 16, 17, 17 };
+            Temperatuur[] gemiddeldeTemp = { 5.1, 2.2, 10.5, 12.7, 18, 20.4, 21.2, 25.2, 30.1, 19, 10, 2.2 };
             Klimatogram k = new Klimatogram(gemiddeldeTemp, gemiddeldeNeer);
             Assert.AreEqual((5.1 + 2.2 + 10.5 + 12.7 + 18 + 20.4 + 21.2 + 25.2 + 30.1 + 19 + 10 + 2.2)/12 , k.TotaalGemiddeldeTemperatuur);
         }
