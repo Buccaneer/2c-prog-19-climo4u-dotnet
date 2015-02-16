@@ -39,6 +39,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.2\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.2\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Ninject">
       <HintPath>..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
@@ -126,6 +132,11 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Infrastructure\ISessionRepository.cs" />
     <Compile Include="Infrastructure\SessionRepository.cs" />
+    <Compile Include="Models\DAL\KlimatogrammenContext.cs" />
+    <Compile Include="Models\DAL\KlimatogrammenInitializer.cs" />
+    <Compile Include="Models\DAL\Mapper\ContinentMapper.cs" />
+    <Compile Include="Models\DAL\Mapper\KlimatogramMapper.cs" />
+    <Compile Include="Models\DAL\Mapper\LandMapper.cs" />
     <Compile Include="Models\Domein\Continent.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">

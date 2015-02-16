@@ -9,55 +9,56 @@ using System.Linq;
 namespace Klimatogrammen {
     public class Klimatogram
     {
-        private double[] _gemiddeldeTemperatuur;
-        private int[] _gemiddeldeNeerslag;
+        private ICollection<double> _gemiddeldeTemperatuur = new List<double>();
+        private ICollection<int> _gemiddeldeNeerslag = new List<int>();
 
-        public Klimatogram(double[] gemiddeldeTemperatuur, int[] gemiddeldeNeerslag)
+        public Klimatogram(ICollection<double> gemiddeldeTemperatuur, ICollection<int> gemiddeldeNeerslag)
         {
             GemiddeldeTemperatuur = gemiddeldeTemperatuur;
             GemiddeldeNeerslag = gemiddeldeNeerslag;
         }
 
-        public double[] GemiddeldeTemperatuur {
+
+        public Klimatogram() {
+
+        }
+
+        public ICollection<double> GemiddeldeTemperatuur {
             get
             {
                 return _gemiddeldeTemperatuur;
             }
             set
             {
-                if (value.Length != 12)
+                if (value.Count != 12)
                 {
                     throw new ArgumentException("Er moeten exact 12 waarden doorgegeven worden.");
                 }
-                for (int i = 0; i < value.Length; i++)
-                {
-                    if (value[i] < -273.15 || value[i] > 500)
+                if (value.Any(i => i < -273.15 || i > 500))
                     {
                         throw new ArgumentOutOfRangeException("De waarde van een gemiddelde temperatuur moet tussen -273.15 en 500 liggen.");
                     }
-                }
+                
                 _gemiddeldeTemperatuur = value;
             }
         }
 
-        public int[] GemiddeldeNeerslag { 
+        public ICollection<int> GemiddeldeNeerslag { 
             get
             {
                 return _gemiddeldeNeerslag;
             }
             set
             {
-                if (value.Length != 12)
+                if (value.Count != 12)
                 {
                     throw new ArgumentException("Er moeten exact 12 waarden doorgegeven worden.");
                 }
-                for (int i = 0; i < value.Length; i++)
-                {
-                    if(value[i] < 0)
+            if (value.Any(i => i < 0))
                     {
                         throw new ArgumentOutOfRangeException("De waarde van de neerslag per maand mag niet negatief zijn.");
                     }
-                }
+                
                 _gemiddeldeNeerslag = value;
             }
         }

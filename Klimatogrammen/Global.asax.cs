@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using Klimatogrammen.Models.DAL;
 
 namespace Klimatogrammen
 {
@@ -16,6 +17,10 @@ namespace Klimatogrammen
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+          //  KlimatogrammenContext db = new KlimatogrammenContext();
+           // db.Database.Initialize(true); 
+            // Wegens fouten in domein.
         }
     }
 }
