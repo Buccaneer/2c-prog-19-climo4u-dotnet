@@ -11,12 +11,12 @@ namespace Klimatogrammen.ViewModels
     public class ContinentIndexViewModel
     {
         [Required(ErrorMessage = "Continent moet gekozen worden")]
-        public SelectList Continent { get; set; }
+        public SelectList Continenten { get; set; }
 
         public ContinentIndexViewModel(IEnumerable<Continent> continenten)
         {
             {
-                Continent = new SelectList(continenten, "Naam");
+                Continenten = new SelectList(continenten, "Naam");
             }
 
         }
@@ -25,15 +25,15 @@ namespace Klimatogrammen.ViewModels
     public class LandIndexViewModel
     {
         [Required(ErrorMessage = "Land moet gekozen worden")]
-        public SelectList Land { get; set; }
+        public SelectList Landen { get; set; }
         [Required(ErrorMessage = "Continent moet gekozen worden")]
-        public ContinentIndexViewModel ContinentVm { get; set; }
+        public ContinentIndexViewModel ContinentIVM { get; set; }
 
         public LandIndexViewModel(IEnumerable<Land> landen, ContinentIndexViewModel c)
         {
             {
-                ContinentVm = c;
-                Land = new SelectList(landen, "Naam");
+                ContinentIVM = c;
+                Landen = new SelectList(landen, "Naam");
             }
 
         }
@@ -42,15 +42,15 @@ namespace Klimatogrammen.ViewModels
     public class LocatieIndexViewModel
     {
         [Required(ErrorMessage = "Locatie moet gekozen worden")]
-        public SelectList Locatie { get; set; }
+        public SelectList Locaties { get; set; }
         [Required(ErrorMessage = "Land moet gekozen worden")]
-        public LandIndexViewModel LandVm { get; set; }
+        public LandIndexViewModel LandIVM { get; set; }
 
         public LocatieIndexViewModel(IEnumerable<Klimatogram> locaties, LandIndexViewModel l)
         {
             {
-                LandVm = l;
-                Locatie = new SelectList(locaties, "Locatie");
+                LandIVM = l;
+                Locaties = new SelectList(locaties, "Locatie");
             }
 
         }

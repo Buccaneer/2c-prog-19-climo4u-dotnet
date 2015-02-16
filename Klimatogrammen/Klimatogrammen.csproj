@@ -130,6 +130,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\KlimatogramController.cs" />
     <Compile Include="Infrastructure\ISessionRepository.cs" />
     <Compile Include="Infrastructure\SessionRepository.cs" />
     <Compile Include="Models\DAL\KlimatogrammenContext.cs" />
@@ -190,6 +191,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Klimatogram\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
