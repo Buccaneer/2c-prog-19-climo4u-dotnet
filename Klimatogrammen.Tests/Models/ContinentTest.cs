@@ -17,7 +17,7 @@ namespace Klimatogrammen.Tests.Models
     ///         * Lijst van landen is null
     /// </summary>
     [TestClass]
-    public class ContintentTest
+    public class ContinentTest
     {
         [TestMethod]
         public void ContinentHeeftEenNaam()
@@ -50,15 +50,19 @@ namespace Klimatogrammen.Tests.Models
         [TestMethod]
         public void LandenZijnInDeCollectionAanwezig()
         {
-           Assert.Inconclusive();
+            Continent c = new Continent("Afrika");
+            List<Land> landen = new List<Land>();
+            landen.Add(new Land("Zimbabwe"));
+            c.Landen = landen;
+            Assert.AreEqual(landen, c.Landen);
         }
 
         [TestMethod]
-        [ExpectedException(typeof(ArgumentException))]
+        [ExpectedException(typeof(ArgumentNullException))]
          public void NullAlsLandenGeeftFoutmelding()
         {
             Continent c = new Continent("Afrika");
-            ICollection<Land> landen = null;
+            c.Landen = null;
         }
 
     }

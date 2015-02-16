@@ -8,6 +8,11 @@ namespace Klimatogrammen.Models.Domein {
         private string _naam;
         private ICollection<Klimatogram> _klimatogrammen;
 
+        public Land()
+        {
+            Klimatogrammen = new List<Klimatogram>();
+        }
+
         public Land(string naam)
         {
             Naam = naam;
@@ -29,9 +34,9 @@ namespace Klimatogrammen.Models.Domein {
                 {
                     throw new ArgumentException("De naam van een land mag niet leeg zijn.");
                 }
-                if (Regex.IsMatch(value, "[^a-zA-Z ]"))
+                if (Regex.IsMatch(value, "[^a-zA-Z -]"))
                 {
-                    throw new ArgumentException("De naam van een land mag enkel letters en spaties bevatten.");
+                    throw new ArgumentException("De naam van een land mag enkel letters, spaties en koppeltekens bevatten.");
                 }
                 _naam = value;
             }

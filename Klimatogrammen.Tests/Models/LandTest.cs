@@ -19,10 +19,10 @@ namespace Klimatogrammen.Tests.Models
     [TestClass]
     public class LandTest
     {
- [TestMethod]
+        [TestMethod]
         public void LandHeeftEenNaam()
- {
-     Land l = new Land("Congo");
+        {
+            Land l = new Land("Congo");
             Assert.AreEqual(l.Naam, "Congo");
         }
 
@@ -44,23 +44,27 @@ namespace Klimatogrammen.Tests.Models
         [ExpectedException(typeof(ArgumentException))]
         public void NaamLandKanNietNietsBevatten()
         {
-             Land l = new Land("");
+            Land l = new Land("");
         }
 
         [TestMethod]
         public void KlimatogrammenZijnInDeCollectionAanwezig()
         {
-           Assert.Inconclusive();
+            Land l = new Land("Zimbabwe");
+            List<Klimatogram> klimatogrammen = new List<Klimatogram>();
+            klimatogrammen.Add(new Klimatogram());
+            l.Klimatogrammen = klimatogrammen;
+            Assert.AreEqual(klimatogrammen, l.Klimatogrammen);
         }
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
-         public void NullAlsKlimatogrammenGeeftFoutmelding()
+        public void NullAlsKlimatogrammenGeeftFoutmelding()
         {
             Land l = new Land("Congo");
             l.Klimatogrammen = null;
         }
 
     }
-    }
+}
 
