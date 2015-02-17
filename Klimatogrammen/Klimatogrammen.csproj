@@ -133,11 +133,15 @@
     <Compile Include="Controllers\KlimatogramController.cs" />
     <Compile Include="Infrastructure\ISessionRepository.cs" />
     <Compile Include="Infrastructure\SessionRepository.cs" />
+    <Compile Include="Models\DAL\IKlimatogrammenRepository.cs" />
     <Compile Include="Models\DAL\KlimatogrammenContext.cs" />
     <Compile Include="Models\DAL\KlimatogrammenInitializer.cs" />
+    <Compile Include="Models\DAL\KlimatogrammenRepository.cs" />
     <Compile Include="Models\DAL\Mapper\ContinentMapper.cs" />
     <Compile Include="Models\DAL\Mapper\KlimatogramMapper.cs" />
     <Compile Include="Models\DAL\Mapper\LandMapper.cs" />
+    <Compile Include="Models\DAL\Mapper\NeerslagMapper.cs" />
+    <Compile Include="Models\DAL\Mapper\TemperatuurMapper.cs" />
     <Compile Include="Models\Domein\Continent.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">

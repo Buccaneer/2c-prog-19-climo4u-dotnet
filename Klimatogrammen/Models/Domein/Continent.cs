@@ -34,7 +34,7 @@ namespace Klimatogrammen.Models.Domein {
                 {
                     throw new ArgumentException("De naam van een continent mag niet leeg zijn.");
                 }
-                if (Regex.IsMatch(value, "[^a-zA-Z -]"))
+                if (Regex.IsMatch(value, "[^ëa-zA-Z -]"))
                 {
                     throw new ArgumentException("De naam van een continent mag enkel letters, spaties en koppeltekens bevatten.");
                 }
@@ -42,7 +42,7 @@ namespace Klimatogrammen.Models.Domein {
             }
         }
 
-        public ICollection<Land> Landen {
+        public virtual ICollection<Land> Landen {
             get
             {
                 return _landen;

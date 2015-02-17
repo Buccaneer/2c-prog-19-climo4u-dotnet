@@ -18,6 +18,8 @@ namespace Klimatogrammen.Models.Domein {
             Waarde = waarde;
         }
 
+        public int NeerslagId { get; set; }
+
         public bool Equals(Neerslag other) {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;

@@ -24,7 +24,7 @@ namespace Klimatogrammen {
 
         }
 
-        public System.Collections.Generic.ICollection<Temperatuur> GemiddeldeTemperatuur {
+        public virtual System.Collections.Generic.ICollection<Temperatuur> GemiddeldeTemperatuur {
             get
             {
                 return _gemiddeldeTemperatuur;
@@ -40,7 +40,7 @@ namespace Klimatogrammen {
             }
         }
 
-        public System.Collections.Generic.ICollection<Neerslag> GemiddeldeNeerslag { 
+        public virtual System.Collections.Generic.ICollection<Neerslag> GemiddeldeNeerslag { 
             get
             {
                 return _gemiddeldeNeerslag;

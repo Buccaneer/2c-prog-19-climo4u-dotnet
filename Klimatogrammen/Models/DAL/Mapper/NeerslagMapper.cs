@@ -6,11 +6,9 @@ using System.Web;
 using Klimatogrammen.Models.Domein;
 
 namespace Klimatogrammen.Models.DAL.Mapper {
-    public class LandMapper : EntityTypeConfiguration<Land> {
-        public LandMapper() {
-            ToTable("landen");
-            HasKey(l => l.Naam);
-            Property(l => l.Naam).HasMaxLength(40);
+    public class NeerslagMapper : EntityTypeConfiguration<Neerslag> {
+        public NeerslagMapper() {
+            ToTable("neerslagen");
         }
     }
 }

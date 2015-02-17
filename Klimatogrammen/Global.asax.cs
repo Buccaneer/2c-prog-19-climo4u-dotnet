@@ -18,8 +18,8 @@ namespace Klimatogrammen
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
-          //  KlimatogrammenContext db = new KlimatogrammenContext();
-           // db.Database.Initialize(true); 
+            KlimatogrammenContext db = new KlimatogrammenContext();
+            db.Database.Initialize(true); 
             // Wegens fouten in domein.
         }
     }

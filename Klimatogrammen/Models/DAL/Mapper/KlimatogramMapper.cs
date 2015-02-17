@@ -7,7 +7,9 @@ using System.Web;
 namespace Klimatogrammen.Models.DAL.Mapper {
     public class KlimatogramMapper : EntityTypeConfiguration<Klimatogram> {
         public KlimatogramMapper() {
+            ToTable("klimatogrammen");
             HasKey(k => k.Locatie);
+            Property(k => k.Locatie).IsRequired().HasMaxLength(40);
 
         }
     }

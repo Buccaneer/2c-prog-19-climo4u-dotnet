@@ -36,6 +36,7 @@ namespace Klimatogrammen.Models.Domein {
             }
         }
 
+        public int TemperatuurId { get; set; }
 
         public bool Equals(Temperatuur other) {
             if (ReferenceEquals(null, other)) return false;
