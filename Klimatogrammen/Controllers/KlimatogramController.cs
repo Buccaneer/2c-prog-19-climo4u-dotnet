@@ -1,4 +1,7 @@
-﻿using Klimatogrammen.Infrastructure;
+﻿using System.Collections;
+using System.Data.Entity;
+using Klimatogrammen.Infrastructure;
+using Klimatogrammen.Models.DAL;
 using Klimatogrammen.Models.Domein;
 using Klimatogrammen.ViewModels;
 using System;
@@ -12,23 +15,43 @@ namespace Klimatogrammen.Controllers
     public class KlimatogramController : Controller
     {
         private ISessionRepository _sessionRepository;
+        private IKlimatogrammenRepository _klimatogrammenRepository;
 
-        public KlimatogramController(ISessionRepository sessieRepository)
+        public KlimatogramController(ISessionRepository sessieRepository, IKlimatogrammenRepository klimatogrammenRepository)
         {
             _sessionRepository = sessieRepository;
+            _klimatogrammenRepository = klimatogrammenRepository;
         }
 
         public ActionResult Index()
         {
-            return View();
+            KlimatogramKiezenIndexViewModel kIVM = new KlimatogramKiezenIndexViewModel(_klimatogrammenRepository.GeefContinenten());
+            return View(kIVM);
         }
 
         [HttpPost]
-        public ActionResult Index(ContinentIndexViewModel continentIVM)
+        public ActionResult Index([Bind(Prefix = "Klimatogram")] KlimatogramViewModel k)
         {
-            // TODO : IMPLEMENT
-            return View(continentIVM);
+            IEnumerable<Continent> continenten = _klimatogrammenRepository.GeefContinenten();
+            IEnumerable<Land> landen = null;
+            if (k.Continent != null)
+            {
+                landen = _klimatogrammenRepository.GeefContinent(k.Continent).Landen;
+            }
+            IEnumerable<Klimatogram> locatie = null;
+            if (k.Land != null)
+                locatie = landen.SelectMany(l => l.Klimatogrammen);
+            KlimatogramKiezenIndexViewModel kIVM = new KlimatogramKiezenIndexViewModel(continenten, landen, locatie);
+            if (k.Continent != null && k.Land != null && k.Locatie != null)
+            {
+                Klimatogram klimatogram = _klimatogrammenRepository.GeefContinent(k.Continent).Landen.SelectMany(l => l.Klimatogrammen).FirstOrDefault(kl => kl.Locatie.Equals(k.Locatie));
+                object klim = new { klimatogram.GemiddeldeTemperatuur, klimatogram.GemiddeldeNeerslag, klimatogram.BeginJaar, klimatogram.EindJaar, Land = klimatogram.Land.Naam, klimatogram.Locatie, klimatogram.TotaalGemiddeldeTemperatuur, klimatogram.TotaalNeerslag };
+                kIVM.KlimatogramObject = klim;
+            }
+
+            return View(kIVM);
         }
+
 
     }
 }

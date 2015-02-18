@@ -8,50 +8,56 @@ using Klimatogrammen.Models.Domein;
 
 namespace Klimatogrammen.ViewModels
 {
-    public class ContinentIndexViewModel
+    public class KlimatogramKiezenIndexViewModel
     {
-        [Required(ErrorMessage = "Continent moet gekozen worden")]
+        public KlimatogramViewModel Klimatogram { get; set; }
         public SelectList Continenten { get; set; }
-
-        public ContinentIndexViewModel(IEnumerable<Continent> continenten)
-        {
-            {
-                Continenten = new SelectList(continenten, "Naam");
-            }
-
-        }
-    }
-
-    public class LandIndexViewModel
-    {
-        [Required(ErrorMessage = "Land moet gekozen worden")]
         public SelectList Landen { get; set; }
-        [Required(ErrorMessage = "Continent moet gekozen worden")]
-        public ContinentIndexViewModel ContinentIVM { get; set; }
+        public SelectList Locaties { get; set; }
 
-        public LandIndexViewModel(IEnumerable<Land> landen, ContinentIndexViewModel c)
+        public object KlimatogramObject { get; set; }
+
+        public KlimatogramKiezenIndexViewModel(IEnumerable<Continent> continenten, IEnumerable<Land> landen, IEnumerable<Klimatogram> locaties)
         {
+            Continenten = new SelectList(continenten, "Naam", "Naam");
+            if (landen == null)
+                Landen = null;
+            else
             {
-                ContinentIVM = c;
-                Landen = new SelectList(landen, "Naam");
+                Landen = new SelectList(landen, "Naam", "Naam");
             }
+            if (locaties == null)
+                Locaties = null;
+            else
+                Locaties = new SelectList(locaties, "Locatie", "Locatie");
+        }
+
+        public KlimatogramKiezenIndexViewModel(IEnumerable<Continent> continenten, IEnumerable<Land> landen)
+        {
+            Continenten = new SelectList(continenten, "Naam", "Naam");
+            Landen = new SelectList(landen, "Naam", "Naam");
+            Locaties = null;
+        }
+
+        public KlimatogramKiezenIndexViewModel(IEnumerable<Continent> continenten)
+        {
+            Continenten = new SelectList(continenten, "Naam", "Naam");
+        }
+
+        public KlimatogramKiezenIndexViewModel()
+        {
 
         }
     }
 
-    public class LocatieIndexViewModel
+    public class KlimatogramViewModel
     {
-        [Required(ErrorMessage = "Locatie moet gekozen worden")]
-        public SelectList Locaties { get; set; }
-        [Required(ErrorMessage = "Land moet gekozen worden")]
-        public LandIndexViewModel LandIVM { get; set; }
+        public String Continent { get; set; }
+        public String Land { get; set; }
+        public String Locatie { get; set; }
 
-        public LocatieIndexViewModel(IEnumerable<Klimatogram> locaties, LandIndexViewModel l)
+        public KlimatogramViewModel()
         {
-            {
-                LandIVM = l;
-                Locaties = new SelectList(locaties, "Locatie");
-            }
 
         }
     }
