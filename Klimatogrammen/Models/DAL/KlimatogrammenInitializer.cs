@@ -16,12 +16,16 @@ namespace Klimatogrammen.Models.DAL {
                 Continent azie = new Continent("Azië");
                 Continent afrika = new Continent("Afrika");
                 Continent oceanie = new Continent("Oceanië");
+#region "data"
+                
                 Land belgie = new Land("België");
           
                 Neerslag[] gemiddeldeNeerUkkel = { 12, 12, 13, 13, 14, 14, 15, 15, 16, 16, 17, 17 };
                 Temperatuur[] gemiddeldeTempUkkel = { 5.1, 2.2, 10.5, 12.7, 18, 20.4, 21.2, 25.2, 30.1, 19, 10, 2.2 };
                 belgie.VoegKlimatogramToe(new Klimatogram(gemiddeldeTempUkkel,gemiddeldeNeerUkkel) {Locatie="Ukkel", BeginJaar = 1961, EindJaar = 2009});
                 europa.VoegLandToe(belgie);
+
+
 
                 Land griekenland = new Land("Griekenland");
                 griekenland.VoegKlimatogramToe(new Klimatogram(
@@ -97,8 +101,9 @@ namespace Klimatogrammen.Models.DAL {
                 afrika.VoegLandToe(kameroen);
                 zuidAmerika.VoegLandToe(brazillie);
                 oceanie.VoegLandToe(australie);
-                context.Continenten.AddRange(new []
-                {noordAmerika, zuidAmerika, antartica, europa, azie, afrika, oceanie});
+               
+#endregion
+                context.Continenten.AddRange(new[] { noordAmerika, zuidAmerika, antartica, europa, azie, afrika, oceanie });
                 context.SaveChanges();
 
 
