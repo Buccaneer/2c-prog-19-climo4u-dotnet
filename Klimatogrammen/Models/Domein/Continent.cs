@@ -57,7 +57,7 @@ namespace Klimatogrammen.Models.Domein {
             }
         }
 
-        public void voegLandToe(Land land)
+        public void VoegLandToe(Land land)
         {
             if (land == null)
             {
@@ -66,7 +66,7 @@ namespace Klimatogrammen.Models.Domein {
             Landen.Add(land);
         }
 
-        public void verwijderLand(Land land)
+        public void VerwijderLand(Land land)
         {
             Landen.Remove(land);
         }

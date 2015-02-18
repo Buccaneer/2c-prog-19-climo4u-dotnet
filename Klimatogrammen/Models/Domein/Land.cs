@@ -57,18 +57,20 @@ namespace Klimatogrammen.Models.Domein {
             }
         }
 
-        public void voegKlimatogramToe(Klimatogram klimatogram)
+        public void VoegKlimatogramToe(Klimatogram klimatogram)
         {
             if (klimatogram == null)
             {
                 throw new ArgumentException("Een klimatogram mag niet null zijn.");
             }
             Klimatogrammen.Add(klimatogram);
+            klimatogram.Land = this;
         }
 
-        public void verwijderKlimatogram(Klimatogram klimatogram)
+        public void VerwijderKlimatogram(Klimatogram klimatogram)
         {
             Klimatogrammen.Remove(klimatogram);
+            klimatogram.Land = null;
         }
 
     }

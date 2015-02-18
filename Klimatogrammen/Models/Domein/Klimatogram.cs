@@ -24,6 +24,10 @@ namespace Klimatogrammen {
 
         }
 
+        public int BeginJaar { get; set; }
+        public int EindJaar { get; set; }
+        public Land Land { get; internal set; }
+
         public virtual System.Collections.Generic.ICollection<Temperatuur> GemiddeldeTemperatuur {
             get
             {
