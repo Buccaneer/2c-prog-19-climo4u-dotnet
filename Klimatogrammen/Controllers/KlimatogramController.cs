@@ -33,15 +33,13 @@ namespace Klimatogrammen.Controllers
         public ActionResult Index([Bind(Prefix = "Klimatogram")] KlimatogramViewModel k)
         {
             IEnumerable<Continent> continenten = _klimatogrammenRepository.GeefContinenten();
-            IEnumerable<Land> landen = null;
-            if (k.Continent != null)
-            {
-                landen = _klimatogrammenRepository.GeefContinent(k.Continent).Landen;
-            }
-            IEnumerable<Klimatogram> locatie = null;
-            if (k.Land != null)
-                locatie = landen.SelectMany(l => l.Klimatogrammen);
+            IEnumerable<Land> landen =
+                continenten.Where(cont => cont.Naam.Equals(k.Continent)).SelectMany(cont => cont.Landen);
+            IEnumerable<Klimatogram> locatie =
+                landen.Where(land => land.Naam.Equals(k.Land)).SelectMany(land => land.Klimatogrammen);
+
             KlimatogramKiezenIndexViewModel kIVM = new KlimatogramKiezenIndexViewModel(continenten, landen, locatie);
+            
             if (k.Continent != null && k.Land != null && k.Locatie != null)
             {
                 Klimatogram klimatogram = _klimatogrammenRepository.GeefContinent(k.Continent).Landen.SelectMany(l => l.Klimatogrammen).FirstOrDefault(kl => kl.Locatie.Equals(k.Locatie));

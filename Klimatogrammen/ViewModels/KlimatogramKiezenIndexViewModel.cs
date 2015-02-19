@@ -20,13 +20,14 @@ namespace Klimatogrammen.ViewModels
         public KlimatogramKiezenIndexViewModel(IEnumerable<Continent> continenten, IEnumerable<Land> landen, IEnumerable<Klimatogram> locaties)
         {
             Continenten = new SelectList(continenten, "Naam", "Naam");
-            if (landen == null)
+            if (!landen.Any())
                 Landen = null;
             else
             {
                 Landen = new SelectList(landen, "Naam", "Naam");
             }
-            if (locaties == null)
+
+            if (!locaties.Any())
                 Locaties = null;
             else
                 Locaties = new SelectList(locaties, "Locatie", "Locatie");
@@ -52,13 +53,13 @@ namespace Klimatogrammen.ViewModels
 
     public class KlimatogramViewModel
     {
+        [Required(ErrorMessage = "U moet een continent selecteren")]
         public String Continent { get; set; }
+        [Required(ErrorMessage = "U moet een land selecteren")]
         public String Land { get; set; }
+        [Required(ErrorMessage = "U moet een locatie selecteren")]
         public String Locatie { get; set; }
 
-        public KlimatogramViewModel()
-        {
 
-        }
     }
 }

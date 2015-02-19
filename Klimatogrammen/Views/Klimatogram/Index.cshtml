@@ -19,7 +19,7 @@
         @Html.LabelFor(model => model.Continenten, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             @Html.DropDownListFor(model => model.Klimatogram.Continent, Model.Continenten, "-- Selecteer --", htmlAttributes: new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.Continenten, "", new { @class = "text-danger" })
+            @Html.ValidationMessageFor(model => model.Klimatogram.Continent, "", new { @class = "text-danger" })
         </div>
     </div>
 
@@ -28,7 +28,7 @@
         @Html.LabelFor(model => model.Landen, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             @Html.DropDownListFor(model => model.Klimatogram.Land, Model.Landen, "-- Selecteer --", htmlAttributes: new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.Landen, "", new { @class = "text-danger" })
+            @Html.ValidationMessageFor(model => model.Klimatogram.Land, "", new { @class = "text-danger" })
         </div>
     </div>
     }
@@ -39,7 +39,7 @@
         @Html.LabelFor(model => model.Locaties, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             @Html.DropDownListFor(model => model.Klimatogram.Locatie, Model.Locaties, "-- Selecteer --", htmlAttributes: new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.Locaties, "", new { @class = "text-danger" })
+            @Html.ValidationMessageFor(model => model.Klimatogram.Locatie, "", new { @class = "text-danger" })
         </div>
     </div>
     }
