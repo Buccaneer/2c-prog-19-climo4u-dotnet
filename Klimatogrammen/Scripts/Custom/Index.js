@@ -10,6 +10,7 @@ function behandelElement(waarde, $elem) {
         $($elem).fadeIn(1500);
         
     } else {
+        $("#jaar input").val(null);
         $($elem).hide();
     }
 }

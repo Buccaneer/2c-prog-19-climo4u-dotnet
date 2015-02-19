@@ -19,7 +19,7 @@ namespace Klimatogrammen.Tests.Controllers
         public void Init()
         {
             _sessionRepository = new SessionRepositoryMock();
-            klimatogramController = new KlimatogramController(_sessionRepository);
+            //klimatogramController = new KlimatogramController(_sessionRepository);
         }
 
         [TestMethod]
