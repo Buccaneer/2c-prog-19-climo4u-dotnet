@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
@@ -18,6 +20,12 @@ namespace Klimatogrammen.ViewModels
         public KlimatogramKiezenIndexViewModel(IEnumerable<Continent> continenten)
         {
             Continenten = new SelectList(continenten, "Naam", "Naam");
+        }
+
+        public KlimatogramKiezenIndexViewModel(Continent continent)
+        {
+            IEnumerable<Continent> c = new Collection<Continent> {continent};
+            Continenten = new SelectList(c, "Naam","Naam");
         }
 
         public KlimatogramKiezenIndexViewModel()

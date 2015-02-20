@@ -93,4 +93,15 @@ function makeGraph(klimatogram) {
             }
         ]
     });
+
+    var html = '<table class=legende><tr><td>N in mm</td>';
+    var neerslag = "";
+     $.map(neerslagen, function(data) {
+         neerslag += '<td>' + data + '</td>';
+     });
+    html += neerslag;
+    html += '</tr>';
+    html += '</table>';
+    $("#legend").html(html);
+    console.log(neerslag);
 }

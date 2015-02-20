@@ -27,30 +27,23 @@ namespace Klimatogrammen.Controllers
             {
                 return RedirectToAction("Index", "Home");
             }
-            KlimatogramKiezenIndexViewModel kIVM = new KlimatogramKiezenIndexViewModel(_klimatogrammenRepository.GeefContinenten());
+            KlimatogramKiezenIndexViewModel kIVM = null;
+                switch (leerling.Graad)
+                {
+                    case Graad.Een:
+                    {
+                        kIVM = new KlimatogramKiezenIndexViewModel(_klimatogrammenRepository.GeefContinent("Europa"));
+                        break;
+                    }
+                    case Graad.Twee:
+                    kIVM = new KlimatogramKiezenIndexViewModel(_klimatogrammenRepository.GeefContinenten());
+                        break;
+                    case Graad.Drie:
+                        return RedirectToAction("Index","Home");
+                }
+            
             return View(kIVM);
         }
-
-        //[HttpPost]
-        //public ActionResult Index([Bind(Prefix = "Klimatogram")] KlimatogramViewModel k)
-        //{
-        //    IEnumerable<Continent> continenten = _klimatogrammenRepository.GeefContinenten();
-        //    IEnumerable<Land> landen =
-        //        continenten.Where(cont => cont.Naam.Equals(k.Continent)).SelectMany(cont => cont.Landen);
-        //    IEnumerable<Klimatogram> locatie =
-        //        landen.Where(land => land.Naam.Equals(k.Land)).SelectMany(land => land.Klimatogrammen);
-
-        //    KlimatogramKiezenIndexViewModel kIVM = new KlimatogramKiezenIndexViewModel(continenten, landen, locatie);
-            
-        //    if (k.Continent != null && k.Land != null && k.Locatie != null)
-        //    {
-        //        Klimatogram klimatogram = _klimatogrammenRepository.GeefContinent(k.Continent).Landen.SelectMany(l => l.Klimatogrammen).FirstOrDefault(kl => kl.Locatie.Equals(k.Locatie));
-        //        object klim = new { klimatogram.GemiddeldeTemperatuur, klimatogram.GemiddeldeNeerslag, klimatogram.BeginJaar, klimatogram.EindJaar, Land = klimatogram.Land.Naam, klimatogram.Locatie, klimatogram.TotaalGemiddeldeTemperatuur, klimatogram.TotaalNeerslag };
-        //        kIVM.KlimatogramObject = klim;
-        //    }
-
-        //    return View(kIVM);
-        //}
 
         [HttpPost]
         public ActionResult Index(Leerling leerling, KlimatogramKiezenIndexViewModel kVM)
