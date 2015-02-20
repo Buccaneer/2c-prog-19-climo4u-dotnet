@@ -69,7 +69,7 @@ namespace Klimatogrammen.App_Start
                 .Bind<ISessionRepository>()
                 .To<SessionRepository>()
                 .InRequestScope();
-            kernel.Bind<IKlimatogrammenRepository>().To<KlimatogrammenRepository>().InRequestScope();
+            kernel.Bind<IContinentRepository>().To<ContinentRepository>().InRequestScope();
             kernel.Bind<KlimatogrammenContext>().ToSelf().InSingletonScope();
 
         }        
