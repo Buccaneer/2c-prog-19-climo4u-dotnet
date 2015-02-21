@@ -10,39 +10,33 @@ using Klimatogrammen.Models.DAL;
 using Moq;
 using System.Linq;
 
-namespace Klimatogrammen.Tests.Controllers
-{
+namespace Klimatogrammen.Tests.Controllers {
     [TestClass]
-    public class KlimatogramControllerTest
-    {
+    public class KlimatogramControllerTest {
         private KlimatogramController _klimatogramController;
-        private ISessionRepository _sessionRepository;
-        private Mock<IKlimatogrammenRepository> _mockKlimatogrammenRepository;
+        private Mock<IContinentRepository> _mockContinentenRepository;
 
         [TestInitialize]
-        public void Init()
-        {
+        public void Init() {
             _sessionRepository = new SessionRepositoryMock();
-            _mockKlimatogrammenRepository = new Mock<IKlimatogrammenRepository>();
+            _mockContinentenRepository = new Mock<IContinentRepository>();
             TrainMock();
-            _klimatogramController = new KlimatogramController(_sessionRepository, _mockKlimatogrammenRepository.Object);
+            _klimatogramController = new KlimatogramController(_mockContinentenRepository.Object);
         }
 
-        private void TrainMock()
-        {
+        private void TrainMock() {
             IQueryable<Continent> continenten = InitData().AsQueryable();
-            _mockKlimatogrammenRepository.Setup(k => k.GeefContinenten()).Returns(continenten);
-            _mockKlimatogrammenRepository.Setup(k => k.GeefContinent("Europa")).Returns(continenten.FirstOrDefault(c => c.Naam.Equals("Europa")));
-            _mockKlimatogrammenRepository.Setup(k => k.GeefContinent("Noord-Amerika")).Returns(continenten.FirstOrDefault(c => c.Naam.Equals("Noord-Amerika")));
-            _mockKlimatogrammenRepository.Setup(k => k.GeefContinent("Antarctica")).Returns(continenten.FirstOrDefault(c => c.Naam.Equals("Antarctica")));
-            _mockKlimatogrammenRepository.Setup(k => k.GeefContinent("Zuid-Amerika")).Returns(continenten.FirstOrDefault(c => c.Naam.Equals("Zuid-Amerika")));
-            _mockKlimatogrammenRepository.Setup(k => k.GeefContinent("Azië")).Returns(continenten.FirstOrDefault(c => c.Naam.Equals("Azië")));
-            _mockKlimatogrammenRepository.Setup(k => k.GeefContinent("Oceanië")).Returns(continenten.FirstOrDefault(c => c.Naam.Equals("Oceanië")));
-            _mockKlimatogrammenRepository.Setup(k => k.GeefContinent("Afrika")).Returns(continenten.FirstOrDefault(c => c.Naam.Equals("Afrika")));
+            _mockContinentenRepository.Setup(k => k.GeefContinenten()).Returns(continenten);
+            _mockContinentenRepository.Setup(k => k.GeefContinent("Europa")).Returns(continenten.FirstOrDefault(c => c.Naam.Equals("Europa")));
+            _mockContinentenRepository.Setup(k => k.GeefContinent("Noord-Amerika")).Returns(continenten.FirstOrDefault(c => c.Naam.Equals("Noord-Amerika")));
+            _mockContinentenRepository.Setup(k => k.GeefContinent("Antarctica")).Returns(continenten.FirstOrDefault(c => c.Naam.Equals("Antarctica")));
+            _mockContinentenRepository.Setup(k => k.GeefContinent("Zuid-Amerika")).Returns(continenten.FirstOrDefault(c => c.Naam.Equals("Zuid-Amerika")));
+            _mockContinentenRepository.Setup(k => k.GeefContinent("Azië")).Returns(continenten.FirstOrDefault(c => c.Naam.Equals("Azië")));
+            _mockContinentenRepository.Setup(k => k.GeefContinent("Oceanië")).Returns(continenten.FirstOrDefault(c => c.Naam.Equals("Oceanië")));
+            _mockContinentenRepository.Setup(k => k.GeefContinent("Afrika")).Returns(continenten.FirstOrDefault(c => c.Naam.Equals("Afrika")));
         }
 
-        private IEnumerable<Continent> InitData()
-        {
+        private IEnumerable<Continent> InitData() {
             Continent noordAmerika = new Continent("Noord-Amerika");
             Continent zuidAmerika = new Continent("Zuid-Amerika");
             Continent antartica = new Continent("Antartica");
@@ -141,89 +135,105 @@ namespace Klimatogrammen.Tests.Controllers
             yield return antartica;
         }
 
-        //- controleer indien leerling niet in sessie dat redirect naar jaar/graad
+        /// <summary>
+        ///  controleer indien leerling niet in sessie dat redirect naar jaar/graad
+        /// </summary>
+
         [TestMethod]
-        public void IndienGeenLeerlingInSessieRedirectNaarGraad()
-        {
-            RedirectToRouteResult result = _klimatogramController.Index() as RedirectToRouteResult;
+        public void IndienGeenLeerlingInSessieRedirectNaarGraad() {
+            RedirectToRouteResult result = _klimatogramController.Index(null) as RedirectToRouteResult;
             Assert.AreEqual("Index", result.RouteValues["action"]);
             Assert.AreEqual("Home", result.RouteValues["controller"]);
         }
 
-        //- controleer geeft lijst continenten weer
+
+
+        /// <summary>
+        /// controleer geeft lijst continenten weer
+        /// </summary>
         [TestMethod]
-        public void GeeftLijstContinentenWeer()
-        {
+        public void GeeftLijstContinentenWeer() {
             Leerling leerling = new Leerling { Graad = Graad.Twee, Jaar = 1 };
-            _sessionRepository["leerling"] = leerling;
-            ViewResult result = _klimatogramController.Index() as ViewResult;
+            ViewResult result = _klimatogramController.Index(leerling) as ViewResult;
             KlimatogramKiezenIndexViewModel kkIVM = result.Model as KlimatogramKiezenIndexViewModel;
             Assert.AreEqual(7, kkIVM.Continenten.Count());
         }
 
-        //- controleer geeft correcte lijst met landen voor geselecteerd continent
+        /// <summary>
+        /// controleer geeft correcte lijst met landen voor geselecteerd continent
+        /// </summary>
+ 
         [TestMethod]
-        public void GeeftLandenVoorGeselecteerdContinentWeer()
-        {
+        public void GeeftLandenVoorGeselecteerdContinentWeer() {
             Leerling leerling = new Leerling { Graad = Graad.Twee, Jaar = 1 };
-            _sessionRepository["leerling"] = leerling;
-            KlimatogramViewModel kVM = new KlimatogramViewModel();
-            kVM.Continent = "Europa";
-            ViewResult result = _klimatogramController.Index(kVM) as ViewResult;
-            KlimatogramKiezenIndexViewModel kkIVM = result.Model as KlimatogramKiezenIndexViewModel;
-            Assert.AreEqual(_mockKlimatogrammenRepository.Object.GeefContinent("Europa").Landen.Count, kkIVM.Landen.Count());
+          
+            var vmContinent = new KlimatogramKiezenIndexViewModel();
+            vmContinent.Continent = "Europa";
+            var result = _klimatogramController.Index(leerling,vmContinent) as PartialViewResult;
+            var vmLand = result.Model as KlimatogramKiezenLandViewModel;
+            Assert.AreEqual(_mockContinentenRepository.Object.GeefContinent("Europa").Landen.Count, vmLand.Landen.Count());
         }
 
-        //- controleer geeft correcte lijst met locaties (klimatogrammen) voor geselecteerd land
+
+        /// <summary>
+        /// controleer geeft correcte lijst met locaties (klimatogrammen) voor geselecteerd land
+        ///  </summary>
         [TestMethod]
-        public void GeeftLocatiesVoorGeselecteerdLandWeer()
-        {
+        public void GeeftLocatiesVoorGeselecteerdLandWeer() {
             Leerling leerling = new Leerling { Graad = Graad.Twee, Jaar = 1 };
             _sessionRepository["leerling"] = leerling;
-            KlimatogramViewModel kVM = new KlimatogramViewModel();
-            kVM.Continent = "Europa";
-            kVM.Land = "België";
-            ViewResult result = _klimatogramController.Index(kVM) as ViewResult;
-            KlimatogramKiezenIndexViewModel kkIVM = result.Model as KlimatogramKiezenIndexViewModel;
-            var count = _mockKlimatogrammenRepository.Object.GeefContinent("Europa").Landen
+            var vmLand = new KlimatogramKiezenLandViewModel();
+           
+            vmLand.Land = "België";
+
+            Continent c = _mockContinentenRepository.Object.GeefContinent("Europa");
+            var result = _klimatogramController.KiesLand(leerling,c,vmLand) as PartialViewResult;
+            var vmLocatie = result.Model as KlimatogramKiezenLocatieViewModel;
+            var count = c.Landen
                 .FirstOrDefault(l => l.Naam.Equals("België")).Klimatogrammen.Count;
-            Assert.AreEqual(count, kkIVM.Locaties.Count());
+            Assert.AreEqual(count, vmLocatie.Locaties.Count());
         }
 
-        //- controleer geeft juiste klimatogram
-        [TestMethod]
-        public void GeeftJuisteKlimatogramWeer()
-        {
+        /// <summary>
+        ///  controleer leerling eerste graad krijgt enkel europa als continent
+        /// </summary>
 
-        }
-
-        //- controleer leerling eerste graad krijgt enkel europa als continent
         [TestMethod]
-        public void LeerlingEersteGraadKanEnkelEuropaAlsContinentKiezen()
-        {
+        public void LeerlingEersteGraadKanEnkelEuropaAlsContinentKiezen() {
             Leerling leerling = new Leerling { Graad = Graad.Een };
-            _sessionRepository["leerling"] = leerling;
-            ViewResult result = _klimatogramController.Index() as ViewResult;
-            KlimatogramKiezenIndexViewModel kkIVM = result.Model as KlimatogramKiezenIndexViewModel;
+           
+            var result = _klimatogramController.Index(leerling) as ViewResult;
+            var kkIVM = result.Model as KlimatogramKiezenIndexViewModel;
             Assert.AreEqual(1, kkIVM.Continenten.Count());
             Assert.AreEqual("Europa", kkIVM.Continenten.First().Text);
         }
 
-        //- controleer leerling in session is uitgebreid met klimatogram
+        /// <summary>
+        ///  controleer leerling in session is uitgebreid met klimatogram, 
+        /// Selecteren van een klimatogram werkt.
+        /// </summary>
+
         [TestMethod]
-        public void LeerlingInSessionWerdUitgebreidMetKlimatogram()
-        {
+        public void LeerlingInSessionWerdUitgebreidMetKlimatogram() {
             Leerling leerling = new Leerling { Graad = Graad.Twee, Jaar = 1 };
             _sessionRepository["leerling"] = leerling;
-            KlimatogramViewModel kVM = new KlimatogramViewModel();
-            kVM.Continent = "Europa";
-            kVM.Land = "België";
-            kVM.Locatie = "Ukkel";
-            _klimatogramController.Index(kVM);
-            Assert.IsNotNull(leerling.Klimatogram);
+            var vmLocatie = new KlimatogramKiezenLocatieViewModel();
+            Land land = _mockContinentenRepository.Object.GeefContinent("Europa").Landen
+                .FirstOrDefault(l => l.Naam.Equals("België"));
+
+            vmLocatie.Locatie = "Ukkel";
+            _klimatogramController.KiesLocatie(leerling,land,vmLocatie);
+            Assert.AreEqual(land.Klimatogrammen.First(), leerling.Klimatogram);
         }
 
-        //- 
+        /// <summary>
+        /// Een leerling van de derde graad mag geen klimatogram kunnen kiezen.
+        /// </summary>
+        [TestMethod]
+        public void LeerlingVanDerdeGraadMagGeenKlimatogramKunnenKiezen() {
+            RedirectToRouteResult result = _klimatogramController.Index(new Leerling() {Graad=Graad.Drie}) as RedirectToRouteResult;
+            Assert.IsNotNull(result);
+        }
 
     }
 }

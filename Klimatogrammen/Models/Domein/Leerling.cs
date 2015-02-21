@@ -46,16 +46,7 @@ namespace Klimatogrammen.Models.Domein
         /// <summary>
         /// Dit is een property die het gekozen klimatogram van de leerling bijhoudt
         /// </summary>
-        public Klimatogram Klimatogram
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
-        }
+        public Klimatogram Klimatogram { get; set; }
 
 
 
