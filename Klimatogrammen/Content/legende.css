@@ -1,9 +1,8 @@
 ﻿.legende {
-    border: 1px solid black;
     margin-left: -40px;
 }
 
 .data {
-    border: 1px solid black;
     padding: 5px 30px 5px 30px;
+    margin: 5px 30px;
 }

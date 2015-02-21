@@ -97,7 +97,7 @@ function makeGraph(klimatogram) {
 
     });
 
-    var tabel = '<table class=legende><tr><td class=data>N in mm</td>';
+    var tabel = '<table class="legende table-bordered"><tr><td class=data>N in mm</td>';
     var neerslag = "";
     $.map(neerslagen, function (data) {
         neerslag += '<td class = data>' + data + '</td>';
@@ -113,13 +113,11 @@ function makeGraph(klimatogram) {
 
     tabel += temperatuur;
     tabel += '</tr>';
-    //tabel += '<tr><td class=data>Totale Neerslag</td>';
-    //tabel += '<td class=data>' + maxNeerslag + '</td><td class = data>' + ;
-    //tabel += '</tr>';
+
     tabel += '</table>';
 
     tabel += '<br/><p><b> Totale neerslag: </b>' + klimatogram.TotaalNeerslag + '</p>';
-    tabel += '<br/><p><b> Gemiddelde temperatuur: </b>' + klimatogram.TotaalGemiddeldeTemperatuur + '</p>';
+    tabel += '<p><b> Gemiddelde temperatuur: </b>' + klimatogram.TotaalGemiddeldeTemperatuur + '</p>';
     $("#legend").html(tabel);
 
     
