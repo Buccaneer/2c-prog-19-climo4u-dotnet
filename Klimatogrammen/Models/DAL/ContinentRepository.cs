@@ -6,12 +6,12 @@ using System.Web;
 using Klimatogrammen.Models.Domein;
 
 namespace Klimatogrammen.Models.DAL {
-    public class KlimatogrammenRepository : IKlimatogrammenRepository {
+    public class ContinentRepository : IContinentRepository {
         private KlimatogrammenContext _context;
         private DbSet<Continent> _continenten;
 
   
-        public KlimatogrammenRepository(KlimatogrammenContext context) {
+        public ContinentRepository(KlimatogrammenContext context) {
             _context = context;
             _continenten = context.Continenten;
         }

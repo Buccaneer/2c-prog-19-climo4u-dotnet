@@ -6,155 +6,23 @@
 }
 
 <h2>Klimatogram kiezen</h2>
-
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-
-<div class="form-horizontal">
-    <h4>Kies een klimatogram</h4>
-    <hr />
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    <div class="form-group">
-        @Html.LabelFor(model => model.Continenten, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.DropDownListFor(model => model.Klimatogram.Continent, Model.Continenten, "-- Selecteer --", htmlAttributes: new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.Continenten, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    @if(Model.Landen != null){
-    <div class="form-group">
-        @Html.LabelFor(model => model.Landen, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.DropDownListFor(model => model.Klimatogram.Land, Model.Landen, "-- Selecteer --", htmlAttributes: new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.Landen, "", new { @class = "text-danger" })
-        </div>
-    </div>
-    }
-
-    @if (Model.Locaties != null)
-    {
-    <div class="form-group">
-        @Html.LabelFor(model => model.Locaties, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.DropDownListFor(model => model.Klimatogram.Locatie, Model.Locaties, "-- Selecteer --", htmlAttributes: new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.Locaties, "", new { @class = "text-danger" })
-        </div>
-    </div>
-    }
-
-
-
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Doorgaan" class="btn btn-default" />
-        </div>
-    </div>
+<h4>Kies een klimatogram</h4>
+<hr />
+<div id="continent">
+    @Html.Partial("_Continent", Model)
 </div>
+
+<div id="land"></div>
+
+<div id="locatie"></div>
+
 <div id="container"></div>
-}
 
-
+<div id="legend"></div>
 
 @section scripts {
     @Scripts.Render("~/bundles/jqueryval")
-
+    @Scripts.Render("~/bundles/unobtrusive")
 <script src="~/Scripts/highcharts.js"></script>
 <script src="~/Scripts/Custom/klimatogramIndex.js"></script>
-<script>
-    var klimatogram = @Html.Raw(Json.Encode(Model.KlimatogramObject));
-    if (klimatogram != null) {
-        $("#container").css({ "width": "100%", "height": "400px" });
-        makeChart(klimatogram);
-    function makeChart(klimatogram) {
-        var temperaturen = $.map(klimatogram.GemiddeldeTemperatuur, function(data) {
-            return data.Waarde;
-        });
-        var neerslagen = $.map(klimatogram.GemiddeldeNeerslag, function(data) {
-            return data.Waarde;
-        });
-
-        var max;
-        var maxNeerslag = Math.max.apply(Math, neerslagen);
-        var maxTemperatuur = Math.max.apply(Math, temperaturen);
-        if (maxTemperatuur > maxNeerslag) {
-            max = maxTemperatuur * 2;
-        } else {
-            max = maxNeerslag;
-        }
-
-        var min = (Math.min.apply(Math, temperaturen)*2);
-        if (min > 0)
-            min = 0;
-
-        max += 10;
-        var chart = new Highcharts.Chart({
-            legend: {
-                enabled: false
-    },
-            chart: {
-                renderTo: 'container'
-            },
-            title: {
-                text: klimatogram.Locatie + " - " + klimatogram.Land
-            },
-            subtitle: {
-                text: 'Klimatologische gemiddelden ' + klimatogram.BeginJaar + " - " + klimatogram.EindJaar
-            },
-            xAxis: {
-                categories: ['Jan', 'Feb', 'Maa', 'Apr', 'Mei', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dec']
-            },
-            yAxis: [
-                {
-                    labels: {
-                        format: '{value}'
-                    },
-                    title: {
-                        text: 'Neerslag in mm'
-                    },
-                    max: max,
-                    min: min,
-                    endOnTick: false,
-                    minPadding: 0,
-                    maxPadding: 0,
-                    tickInterval: 10
-                }, {
-                    labels: {
-                        format: '{value}'
-                    },
-                    title: {
-                        text: 'Temperatuur in °C'
-                    },
-                    opposite: true,
-                    max: max / 2,
-                    min: min / 2,
-                    endOnTick: false,
-                    minPadding: 0,
-                    maxPadding: 0,
-                    tickInterval: 5
-                }
-            ],
-            tooltip: {
-                shared: true
-            },
-            series: [
-                {
-                    yAxis: 0,
-                    name: 'Neerslag',
-                    data: neerslagen,
-                    type: 'column'
-                }, {
-                    color: 'red',
-                    yAxis: 1,
-                    name: 'Temperatuur',
-                    data: temperaturen,
-                    type: 'spline'
-                }
-            ]
-        });
-    }
-    }
-</script>
-
 }

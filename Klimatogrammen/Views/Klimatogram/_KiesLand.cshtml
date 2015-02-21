@@ -1,0 +1,34 @@
+﻿@model Klimatogrammen.ViewModels.KlimatogramKiezenLandViewModel
+
+@using (Ajax.BeginForm("KiesLand", "Klimatogram", new AjaxOptions
+{
+    Url = Url.Action("KiesLand"),
+    HttpMethod = "POST",
+    InsertionMode = InsertionMode.Replace,
+    UpdateTargetId = "locatie",
+    OnBegin = "clearAlert", 
+    OnSuccess = "clearAlert"
+}, htmlAttributes: new { @id = "landForm" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Land, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.Land, Model.Landen, "-- Selecteer --", htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Land, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+}
+
+<script>
+    $('#Land').change(function () {
+        $("#landForm").submit();
+        $("#locatie").html("");
+        $("#container").html("");
+        $("#container").removeAttr('style');
+    });
+</script>

@@ -132,11 +132,14 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\KlimatogramController.cs" />
     <Compile Include="Infrastructure\ISessionRepository.cs" />
+    <Compile Include="Infrastructure\ContinentModelBinder.cs" />
+    <Compile Include="Infrastructure\LandModelBinder.cs" />
+    <Compile Include="Infrastructure\LeerlingModelBinder.cs" />
     <Compile Include="Infrastructure\SessionRepository.cs" />
-    <Compile Include="Models\DAL\IKlimatogrammenRepository.cs" />
+    <Compile Include="Models\DAL\IContinentRepository.cs" />
     <Compile Include="Models\DAL\KlimatogrammenContext.cs" />
     <Compile Include="Models\DAL\KlimatogrammenInitializer.cs" />
-    <Compile Include="Models\DAL\KlimatogrammenRepository.cs" />
+    <Compile Include="Models\DAL\ContinentRepository.cs" />
     <Compile Include="Models\DAL\Mapper\ContinentMapper.cs" />
     <Compile Include="Models\DAL\Mapper\KlimatogramMapper.cs" />
     <Compile Include="Models\DAL\Mapper\LandMapper.cs" />
@@ -161,6 +164,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\cerulean.css" />
+    <Content Include="Content\legende.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -181,6 +185,8 @@
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -203,6 +209,9 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Klimatogram\Index.cshtml" />
+    <Content Include="Views\Klimatogram\_Continent.cshtml" />
+    <Content Include="Views\Klimatogram\_KiesLand.cshtml" />
+    <Content Include="Views\Klimatogram\_KiesLocatie.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
