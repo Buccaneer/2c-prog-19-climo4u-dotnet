@@ -2,6 +2,7 @@
     $(".alert-warning").hide();
     $("#container").html("");
     $("#container").removeAttr('style');
+    $("#legend").html("");
 }
 
 function makeGraph(klimatogram) {
@@ -92,16 +93,34 @@ function makeGraph(klimatogram) {
                 type: 'spline'
             }
         ]
+
+
     });
 
-    var html = '<table class=legende><tr><td>N in mm</td>';
+    var tabel = '<table class=legende><tr><td class=data>N in mm</td>';
     var neerslag = "";
-     $.map(neerslagen, function(data) {
-         neerslag += '<td>' + data + '</td>';
-     });
-    html += neerslag;
-    html += '</tr>';
-    html += '</table>';
-    $("#legend").html(html);
-    console.log(neerslag);
+    $.map(neerslagen, function (data) {
+        neerslag += '<td class = data>' + data + '</td>';
+    });
+    tabel += neerslag;
+    tabel += '</tr>';
+    tabel += '<tr><td class=data>T in °C</td>';
+
+    var temperatuur = "";
+    $.map(temperaturen, function (data) {
+        temperatuur += '<td class = data>' + data + '</td>';
+    });
+
+    tabel += temperatuur;
+    tabel += '</tr>';
+    //tabel += '<tr><td class=data>Totale Neerslag</td>';
+    //tabel += '<td class=data>' + maxNeerslag + '</td><td class = data>' + ;
+    //tabel += '</tr>';
+    tabel += '</table>';
+
+    tabel += '<br/><p><b> Totale neerslag: </b>' + klimatogram.TotaalNeerslag + '</p>';
+    tabel += '<br/><p><b> Gemiddelde temperatuur: </b>' + klimatogram.TotaalGemiddeldeTemperatuur + '</p>';
+    $("#legend").html(tabel);
+
+    
 }

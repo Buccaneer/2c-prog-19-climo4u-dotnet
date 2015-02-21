@@ -72,7 +72,7 @@ namespace Klimatogrammen {
         public double TotaalGemiddeldeTemperatuur {
             get
             {
-                return _gemiddeldeTemperatuur.Average(t => t.Waarde);
+                return Math.Round(_gemiddeldeTemperatuur.Average(t => t.Waarde),1);
             }
         }
 
