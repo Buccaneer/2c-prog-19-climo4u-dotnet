@@ -20,7 +20,7 @@ namespace Klimatogrammen.Tests.Controllers {
                     _data.Add(sleutel,value);
                     return;
                 }
-                _data["sleutel"] = value;
+                _data[sleutel] = value;
             }
         }
 

@@ -43,6 +43,21 @@ namespace Klimatogrammen.Models.Domein
         }
         #endregion
 
+        /// <summary>
+        /// Dit is een property die het gekozen klimatogram van de leerling bijhoudt
+        /// </summary>
+        public Klimatogram Klimatogram
+        {
+            get
+            {
+                throw new System.NotImplementedException();
+            }
+            set
+            {
+            }
+        }
+
+
 
 
 

@@ -34,7 +34,7 @@ namespace Klimatogrammen.Models.Domein {
                 {
                     throw new ArgumentException("De naam van een land mag niet leeg zijn.");
                 }
-                if (Regex.IsMatch(value, "[^ëa-zA-Z -]"))
+                if (Regex.IsMatch(value, "[^çéèëa-zA-Z -]"))
                 {
                     throw new ArgumentException("De naam van een land mag enkel letters, spaties en koppeltekens bevatten.");
                 }
