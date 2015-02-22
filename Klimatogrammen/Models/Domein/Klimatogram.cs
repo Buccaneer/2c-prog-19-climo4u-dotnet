@@ -72,16 +72,7 @@ namespace Klimatogrammen.Models.Domein {
             }
         }
 
-        public DbGeography Coordinaten
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
-        }
+        public DbGeography Coordinaten { get; set; }
 
     }
 }
