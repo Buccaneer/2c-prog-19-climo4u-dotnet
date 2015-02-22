@@ -1,17 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Web;
-using System.Web.Services;
-using System.Web.Services.Protocols;
-using System.ComponentModel;
+using System.Data.Entity.Spatial;
 using System.Linq;
-using Klimatogrammen.Models.Domein;
 
-namespace Klimatogrammen {
+namespace Klimatogrammen.Models.Domein {
     public class Klimatogram
     {
-        private System.Collections.Generic.ICollection<Temperatuur> _gemiddeldeTemperatuur = new List<Temperatuur>();
-        private System.Collections.Generic.ICollection<Neerslag> _gemiddeldeNeerslag = new List<Neerslag>();
+        private ICollection<Temperatuur> _gemiddeldeTemperatuur = new List<Temperatuur>();
+        private ICollection<Neerslag> _gemiddeldeNeerslag = new List<Neerslag>(); 
 
         public Klimatogram(ICollection<Temperatuur> gemiddeldeTemperatuur, ICollection<Neerslag> gemiddeldeNeerslag)
         {
@@ -73,6 +69,17 @@ namespace Klimatogrammen {
             get
             {
                 return Math.Round(_gemiddeldeTemperatuur.Average(t => t.Waarde),1);
+            }
+        }
+
+        public DbGeography Coordinaten
+        {
+            get
+            {
+                throw new System.NotImplementedException();
+            }
+            set
+            {
             }
         }
 

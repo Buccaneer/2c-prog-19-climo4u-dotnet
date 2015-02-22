@@ -27,7 +27,7 @@
   </Class>
   <Class Name="Klimatogrammen.Models.Domein.Land">
     <Position X="4.75" Y="5.75" Width="1.5" />
-    <AssociationLine Name="Klimatogrammen" Type="Klimatogrammen.Klimatogram">
+    <AssociationLine Name="Klimatogrammen" Type="Klimatogrammen.Models.Domein.Klimatogram">
       <MemberNameLabel ManuallyPlaced="true" ManuallySized="true">
         <Position X="0.235" Y="0.07" Height="0.182" Width="1.662" />
       </MemberNameLabel>
@@ -40,8 +40,13 @@
       <Property Name="Klimatogrammen" />
     </ShowAsCollectionAssociation>
   </Class>
-  <Class Name="Klimatogrammen.Klimatogram">
+  <Class Name="Klimatogrammen.Models.Domein.Klimatogram">
     <Position X="8.25" Y="5.5" Width="5" />
+    <AssociationLine Name="_gemiddeldeNeerslag" Type="Klimatogrammen.Models.Domein.Neerslag">
+      <MemberNameLabel ManuallyPlaced="true" ManuallySized="true">
+        <Position X="0.547" Y="0.133" Height="0.182" Width="2.047" />
+      </MemberNameLabel>
+    </AssociationLine>
     <TypeIdentifier>
       <HashCode>AAgAAAAAACAAAAAAgAQAAAAAggAAAAAABgABAAAAAAQ=</HashCode>
       <FileName>Models\Domein\Klimatogram.cs</FileName>
@@ -50,17 +55,17 @@
       <Property Name="Land" />
     </ShowAsAssociation>
     <ShowAsCollectionAssociation>
-      <Field Name="_gemiddeldeNeerslag" />
       <Field Name="_gemiddeldeTemperatuur" />
+      <Field Name="_gemiddeldeNeerslag" />
     </ShowAsCollectionAssociation>
   </Class>
   <Class Name="Klimatogrammen.Models.Domein.Neerslag" Collapsed="true">
-    <Position X="15.5" Y="6" Width="1.5" />
+    <Position X="15.75" Y="6" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAEAAAAAAAAA4AWAAgAAAAAAAIBAAADAAAEAByA=</HashCode>
       <FileName>Models\Domein\Neerslag.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.2" />
+    <Lollipop Position="0.377" />
   </Class>
   <Class Name="Klimatogrammen.Models.Domein.Temperatuur" Collapsed="true">
     <Position X="15.5" Y="7.75" Width="1.5" />
@@ -70,11 +75,41 @@
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
+  <Class Name="Klimatogrammen.Vraag">
+    <Position X="9.75" Y="8.75" Width="3" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAAAAAAABAAAAQAAAAAAAAAAAAAAAACAJBAAAAA=</HashCode>
+      <FileName>Models\Domein\Vraag.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_klimatogram" />
+      <Property Name="Resultaat" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Klimatogrammen.Models.Domein.VraagRepository">
+    <Position X="4.25" Y="9" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAACQAAAABCA=</HashCode>
+      <FileName>Models\Domein\VraagRepository.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Vragen" />
+      <Property Name="JuisteVragen" />
+      <Property Name="FoutieveVragen" />
+    </ShowAsCollectionAssociation>
+  </Class>
   <Enum Name="Klimatogrammen.Models.Domein.Graad">
     <Position X="8.5" Y="3" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAgAAAQAAAAQAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Models\Domein\Graad.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Klimatogrammen.Resultaat">
+    <Position X="13.75" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAACAAA=</HashCode>
+      <FileName>Models\Domein\Resultaat.cs</FileName>
     </TypeIdentifier>
   </Enum>
   <Font Name="Segoe UI" Size="9" />

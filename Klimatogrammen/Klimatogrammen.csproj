@@ -157,8 +157,11 @@
     <Compile Include="Models\Domein\Neerslag.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Models\Domein\Temperatuur.cs" />
+    <Compile Include="Models\Domein\Resultaat.cs" />
     <Compile Include="ViewModels\KlimatogramKiezenIndexViewModel.cs" />
     <Compile Include="ViewModels\LeerlingIndexViewModel.cs" />
+    <Compile Include="Models\Domein\Vraag.cs" />
+    <Compile Include="Models\Domein\VraagRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
