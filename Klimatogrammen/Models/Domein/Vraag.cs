@@ -15,17 +15,26 @@ namespace Klimatogrammen
 
         public Vraag(Klimatogram klimatogram)
         {
-            throw new System.NotImplementedException();
+            _klimatogram = klimatogram;
         }
 
         public Resultaat Resultaat { get; private set; }
+
+        public Maand Maand { get; private set; }
 
         public abstract ICollection<string> GeefMogelijkeAntwoorden();
 
         public abstract string GeefVraagTekst();
 
 
-        public abstract string GeefValidatieTekst();
+        public string GeefValidatieTekst()
+        {
+            return ""; // TODO : Implement
+            //suggestie : switch case Resultaat.Juist en Resultaat.Fout,
+            //return _antwoord + " is correct." of _antwoord + " is fout."
+            //zie analoog met de testen VraagWarmsteMaandGeeftValidatieTekstBijJuist(),
+            // VraagWarmsteMaandGeeftValidatieTekstBijFout() etc
+        }
         public abstract void ValideerVraag(string antwoord);
     }
 }

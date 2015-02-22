@@ -93,6 +93,8 @@
     <Compile Include="Models\KlimatogramTest.cs" />
     <Compile Include="Models\TemperatuurTest.cs" />
     <Compile Include="Models\NeerslagTest.cs" />
+    <Compile Include="Models\VraagRepositoryTest.cs" />
+    <Compile Include="Models\VraagTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controllers\HomeControllerTest.cs" />
   </ItemGroup>

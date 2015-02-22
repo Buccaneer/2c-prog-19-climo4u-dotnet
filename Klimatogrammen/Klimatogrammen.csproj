@@ -136,6 +136,7 @@
     <Compile Include="Infrastructure\LandModelBinder.cs" />
     <Compile Include="Infrastructure\LeerlingModelBinder.cs" />
     <Compile Include="Infrastructure\SessionRepository.cs" />
+    <Compile Include="Models\Domein\Maand.cs" />
     <Compile Include="Models\DAL\IContinentRepository.cs" />
     <Compile Include="Models\DAL\KlimatogrammenContext.cs" />
     <Compile Include="Models\DAL\KlimatogrammenInitializer.cs" />
@@ -155,6 +156,13 @@
     <Compile Include="Models\Domein\Land.cs" />
     <Compile Include="Models\Domein\Leerling.cs" />
     <Compile Include="Models\Domein\Neerslag.cs" />
+    <Compile Include="Models\Domein\VraagAantalDrogeMaanden.cs" />
+    <Compile Include="Models\Domein\VraagKoudsteMaand.cs" />
+    <Compile Include="Models\Domein\VraagNeerslagInDeWinter.cs" />
+    <Compile Include="Models\Domein\VraagNeerslagInDeZomer.cs" />
+    <Compile Include="Models\Domein\VraagTemperatuurKoudsteMaand.cs" />
+    <Compile Include="Models\Domein\VraagTemperatuurWarmsteMaand.cs" />
+    <Compile Include="Models\Domein\VraagWarmsteMaand.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Models\Domein\Temperatuur.cs" />
     <Compile Include="Models\Domein\Resultaat.cs" />

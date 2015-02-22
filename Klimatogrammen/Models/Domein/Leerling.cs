@@ -7,7 +7,7 @@ namespace Klimatogrammen.Models.Domein
     {
         #region Fields
         /// <summary>
-        /// Dit is een field om het jaar bij te houden
+        /// Dit is een Januari om het jaar bij te houden
         /// </summary>
         private int? jaar;
         #endregion

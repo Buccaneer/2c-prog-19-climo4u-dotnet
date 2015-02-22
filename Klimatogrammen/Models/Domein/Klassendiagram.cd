@@ -48,7 +48,7 @@
       </MemberNameLabel>
     </AssociationLine>
     <TypeIdentifier>
-      <HashCode>AAgAAAAAACAAAAAAgAQAAAAAggAAAAAABgABAAAAAAQ=</HashCode>
+      <HashCode>AAgAAAAAACAAAAAAgAQAAAAAggAAAAAAFgABAAAAAAQ=</HashCode>
       <FileName>Models\Domein\Klimatogram.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -76,14 +76,15 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="Klimatogrammen.Vraag">
-    <Position X="9.75" Y="8.75" Width="3" />
+    <Position X="9.75" Y="9" Width="3" />
     <TypeIdentifier>
-      <HashCode>gAAAAAAAAAAABAAAAQAAAAAAAAAAAAAAAACAJBAAAAA=</HashCode>
+      <HashCode>gAAAAEAAAAAABAAAAQAAAAAAAAAAAAAAAACAJBAAAAA=</HashCode>
       <FileName>Models\Domein\Vraag.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
       <Field Name="_klimatogram" />
       <Property Name="Resultaat" />
+      <Property Name="Maand" />
     </ShowAsAssociation>
   </Class>
   <Class Name="Klimatogrammen.Models.Domein.VraagRepository">
@@ -97,6 +98,13 @@
       <Property Name="JuisteVragen" />
       <Property Name="FoutieveVragen" />
     </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Klimatogrammen.Maand">
+    <Position X="13.75" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQQAAQARAAAYAIAAAAEAAABAAAAAAQAAAAAAI=</HashCode>
+      <FileName>Models\Domein\Maand.cs</FileName>
+    </TypeIdentifier>
   </Class>
   <Enum Name="Klimatogrammen.Models.Domein.Graad">
     <Position X="8.5" Y="3" Width="1.5" />

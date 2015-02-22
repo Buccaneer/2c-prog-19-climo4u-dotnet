@@ -18,7 +18,7 @@ namespace Klimatogrammen.Tests.Controllers {
 
         [TestInitialize]
         public void Init() {
-            _sessionRepository = new SessionRepositoryMock();
+            //_sessionRepository = new SessionRepositoryMock();
             _mockContinentenRepository = new Mock<IContinentRepository>();
             TrainMock();
             _klimatogramController = new KlimatogramController(_mockContinentenRepository.Object);
@@ -181,7 +181,7 @@ namespace Klimatogrammen.Tests.Controllers {
         [TestMethod]
         public void GeeftLocatiesVoorGeselecteerdLandWeer() {
             Leerling leerling = new Leerling { Graad = Graad.Twee, Jaar = 1 };
-            _sessionRepository["leerling"] = leerling;
+            //_sessionRepository["leerling"] = leerling;
             var vmLand = new KlimatogramKiezenLandViewModel();
            
             vmLand.Land = "België";
@@ -216,7 +216,7 @@ namespace Klimatogrammen.Tests.Controllers {
         [TestMethod]
         public void LeerlingInSessionWerdUitgebreidMetKlimatogram() {
             Leerling leerling = new Leerling { Graad = Graad.Twee, Jaar = 1 };
-            _sessionRepository["leerling"] = leerling;
+            //_sessionRepository["leerling"] = leerling;
             var vmLocatie = new KlimatogramKiezenLocatieViewModel();
             Land land = _mockContinentenRepository.Object.GeefContinent("Europa").Landen
                 .FirstOrDefault(l => l.Naam.Equals("België"));
