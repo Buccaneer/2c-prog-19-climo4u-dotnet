@@ -113,7 +113,8 @@ namespace Klimatogrammen.Tests.Models
             Neerslag[] gemiddeldeNeer = { 12, 12, 13, 13, 14, 14, 15, 15, 16, 16, 17, 17 };
             Temperatuur[] gemiddeldeTemp = { 5.1, 2.2, 10.5, 12.7, 18, 20.4, 21.2, 25.2, 30.1, 19, 10, 2.2 };
             Klimatogram k = new Klimatogram(gemiddeldeTemp, gemiddeldeNeer);
-            Assert.AreEqual((5.1 + 2.2 + 10.5 + 12.7 + 18 + 20.4 + 21.2 + 25.2 + 30.1 + 19 + 10 + 2.2) / 12, k.TotaalGemiddeldeTemperatuur);
+            double gemiddelde = (5.1 + 2.2 + 10.5 + 12.7 + 18 + 20.4 + 21.2 + 25.2 + 30.1 + 19 + 10 + 2.2)/12;
+            Assert.AreEqual(Math.Round(gemiddelde, 1), k.TotaalGemiddeldeTemperatuur);
         }
     }
 
