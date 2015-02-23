@@ -11,16 +11,18 @@ namespace Klimatogrammen.Models.Domein
         public VraagKoudsteMaand(Klimatogram k)
             : base(k)
         {
+            double laagsteTemperatuur = _klimatogram.GemiddeldeTemperatuur.Min(t => t.Waarde);
+            string correct = Maand.GeefMaand(new List<Temperatuur>(_klimatogram.GemiddeldeTemperatuur).IndexOf(laagsteTemperatuur)).GeefNaam();
+            _antwoord = correct;
         }
 
         public override ICollection<string> GeefMogelijkeAntwoorden()
         {
             ICollection<string> mogelijkeAntwoorden = new Collection<string>();
 
-            foreach (Maand m in Enum.GetValues(typeof(Maand)))
-            {
-                mogelijkeAntwoorden.Add(m.ToString());
-            }
+       foreach (Maand maand in Maand.Maanden)
+           mogelijkeAntwoorden.Add(maand.GeefNaam());
+
             return mogelijkeAntwoorden;
         }
 
@@ -31,9 +33,8 @@ namespace Klimatogrammen.Models.Domein
 
         public override void ValideerVraag(string antwoord)
         {
-            //klopt niet
-            string correct = _klimatogram.GemiddeldeTemperatuur.Min().ToString();
-            Resultaat = correct.Equals(antwoord) ? Resultaat.Juist : Resultaat.Fout;
+
+            Resultaat = _antwoord.Equals(antwoord) ? Resultaat.Juist : Resultaat.Fout;
         }
     }
 }

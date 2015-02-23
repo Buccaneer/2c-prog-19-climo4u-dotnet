@@ -20,8 +20,6 @@ namespace Klimatogrammen
 
         public Resultaat Resultaat { get; set; }
 
-        public Maand Maand { get; private set; }
-
         public abstract ICollection<string> GeefMogelijkeAntwoorden();
 
         public abstract string GeefVraagTekst();
@@ -35,14 +33,9 @@ namespace Klimatogrammen
             //zie analoog met de testen VraagWarmsteMaandGeeftValidatieTekstBijJuist(),
             // VraagWarmsteMaandGeeftValidatieTekstBijFout() etc
 
-            switch (Resultaat)
-            {
-                case(Resultaat.Juist) :
-                    return _antwoord + " is juist!";
-                case (Resultaat.Fout): return _antwoord + " is fout. Probeer opnieuw.";
-                default:
-                    return "";
-            }
+            if (Resultaat == Resultaat.Juist)
+                return _antwoord + " is juist!";
+            return _antwoord + " is fout. Probeer opnieuw.";
         }
         public abstract void ValideerVraag(string antwoord);
     }

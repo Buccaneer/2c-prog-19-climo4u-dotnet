@@ -1,34 +1,55 @@
 ﻿using System;
-using System.Web;
-using System.Web.Services;
-using System.Web.Services.Protocols;
-using System.ComponentModel;
+using System.Collections.Generic;
+using System.Linq;
 
-namespace Klimatogrammen
+namespace Klimatogrammen.Models.Domein
 {
     public sealed class Maand
     {
         private readonly String _naam;
 
-        public static readonly Maand JANUARI = new Maand("Januari");
-        public static readonly Maand FEBRUARI = new Maand("Februari");
-        public static readonly Maand MAART = new Maand("Maart");
-        public static readonly Maand APRIL = new Maand("April");
-        public static readonly Maand MEI = new Maand("Mei");
-        public static readonly Maand JUNI = new Maand("Juni");
-        public static readonly Maand JULI = new Maand("Juli");
-        public static readonly Maand AUGUSTUS = new Maand("Augustus");
-        public static readonly Maand SEPTEMBER = new Maand("September");
-        public static readonly Maand OKTOBER = new Maand("Oktober");
-        public static readonly Maand NOVEMBER = new Maand("November");
-        public static readonly Maand DECEMBER = new Maand("December");
+        public static readonly Maand Januari = new Maand("Januari");
+        public static readonly Maand Februari = new Maand("Februari");
+        public static readonly Maand Maart = new Maand("Maart");
+        public static readonly Maand April = new Maand("April");
+        public static readonly Maand Mei = new Maand("Mei");
+        public static readonly Maand Juni = new Maand("Juni");
+        public static readonly Maand Juli = new Maand("Juli");
+        public static readonly Maand Augustus = new Maand("Augustus");
+        public static readonly Maand September = new Maand("September");
+        public static readonly Maand Oktober = new Maand("Oktober");
+        public static readonly Maand November = new Maand("November");
+        public static readonly Maand December = new Maand("December");
+
+        public static IEnumerable<Maand> Maanden {
+            get {
+                yield return Januari;
+                yield return Februari;
+                yield return Maart;
+                yield return April;
+                yield return Mei;
+                yield return Juni;
+                yield return Juli;
+                yield return Augustus;
+                yield return September;
+                yield return Oktober;
+                yield return November;
+                yield return December;
+
+            }
+        } 
+
+        public static Maand GeefMaand(int nummer) {
+            var maanden = Maanden;
+            return maanden.ElementAt(nummer);
+        }
 
         private Maand(String naam)
         {
             _naam = naam;
         }
 
-        public String geefNaam()
+        public String GeefNaam()
         {
             return _naam;
         }

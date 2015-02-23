@@ -78,13 +78,12 @@
   <Class Name="Klimatogrammen.Vraag">
     <Position X="9.75" Y="9" Width="3" />
     <TypeIdentifier>
-      <HashCode>gAAAAEAAAAAABAAAAQAAAAAAAAAAAAAAAACAJBAAAAA=</HashCode>
+      <HashCode>gAAAAAAAAAAABAAAAQAAAAAAAAAAAAAAAACAJBAAAAA=</HashCode>
       <FileName>Models\Domein\Vraag.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
       <Field Name="_klimatogram" />
       <Property Name="Resultaat" />
-      <Property Name="Maand" />
     </ShowAsAssociation>
   </Class>
   <Class Name="Klimatogrammen.Models.Domein.VraagRepository">
@@ -99,10 +98,10 @@
       <Property Name="FoutieveVragen" />
     </ShowAsCollectionAssociation>
   </Class>
-  <Class Name="Klimatogrammen.Maand">
+  <Class Name="Klimatogrammen.Models.Domein.Maand">
     <Position X="13.75" Y="10.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAQQAAQARAAAYAIAAAAEAAABAAAAAAQAAAAAAI=</HashCode>
+      <HashCode>AQAQAAAQAAAAJAABAAAQAAAEAAAQAAAAAIAAAAAEAAI=</HashCode>
       <FileName>Models\Domein\Maand.cs</FileName>
     </TypeIdentifier>
   </Class>

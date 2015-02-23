@@ -11,19 +11,16 @@ namespace Klimatogrammen.Models.Domein
         public VraagAantalDrogeMaanden(Klimatogram k)
             : base(k)
         {
+            var neerslagen = _klimatogram.GemiddeldeNeerslag.ToArray();
+            double factor = 2.0;
+            int index = 0;
+            int aantal = _klimatogram.GemiddeldeTemperatuur.Count(t => neerslagen[index++].Waarde / factor <= t.Waarde);
+            _antwoord = aantal.ToString();
         }
 
         public override ICollection<string> GeefMogelijkeAntwoorden()
         {
-            ICollection<string> mogelijkeAntwoorden = new Collection<string>();
-            int o = 1;
-
-            for (int i = 0; i < 12; i++)
-            {
-                mogelijkeAntwoorden.Add(o.ToString());
-                o++;
-            }
-            return mogelijkeAntwoorden;
+            return Enumerable.Range(1, 12).Select(n => n.ToString()).ToList();
         }
 
         public override string GeefVraagTekst()
@@ -31,13 +28,8 @@ namespace Klimatogrammen.Models.Domein
             return "Hoeveel droge maanden zijn er (D)? ";
         }
 
-        public override void ValideerVraag(string antwoord)
-        {
-            int aantal = 0;
-            foreach (Neerslag n in _klimatogram.GemiddeldeNeerslag)
-            {
-               //aanvullen
-            }
+        public override void ValideerVraag(string antwoord) {
+            Resultaat = _antwoord.Equals(antwoord) ? Resultaat.Juist : Resultaat.Fout;
         }
     }
 }
