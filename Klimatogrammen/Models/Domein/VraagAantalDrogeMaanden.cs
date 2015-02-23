@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Web;
 
@@ -14,17 +15,29 @@ namespace Klimatogrammen.Models.Domein
 
         public override ICollection<string> GeefMogelijkeAntwoorden()
         {
-            throw new NotImplementedException();
+            ICollection<string> mogelijkeAntwoorden = new Collection<string>();
+            int o = 1;
+
+            for (int i = 0; i < 12; i++)
+            {
+                mogelijkeAntwoorden.Add(o.ToString());
+                o++;
+            }
+            return mogelijkeAntwoorden;
         }
 
         public override string GeefVraagTekst()
         {
-            throw new NotImplementedException();
+            return "Hoeveel droge maanden zijn er (D)? ";
         }
 
         public override void ValideerVraag(string antwoord)
         {
-            throw new NotImplementedException();
+            int aantal = 0;
+            foreach (Neerslag n in _klimatogram.GemiddeldeNeerslag)
+            {
+               //aanvullen
+            }
         }
     }
 }

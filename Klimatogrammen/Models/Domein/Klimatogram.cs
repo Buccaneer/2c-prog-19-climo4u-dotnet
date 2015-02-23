@@ -20,8 +20,8 @@ namespace Klimatogrammen.Models.Domein {
 
         }
 
-        public int BeginJaar { get; set; }
-        public int EindJaar { get; set; }
+        public virtual int BeginJaar { get; set; }
+        public virtual int EindJaar { get; set; }
         public Land Land { get; internal set; }
 
         public virtual System.Collections.Generic.ICollection<Temperatuur> GemiddeldeTemperatuur {
@@ -56,16 +56,16 @@ namespace Klimatogrammen.Models.Domein {
             }
         }
 
-        public string Locatie { get; set; }
+        public virtual string Locatie { get; set; }
 
-        public int TotaalNeerslag {
+        public virtual int TotaalNeerslag {
             get
             {
                 return _gemiddeldeNeerslag.Sum(n => n.Waarde);
             }
         }
 
-        public double TotaalGemiddeldeTemperatuur {
+        public virtual double TotaalGemiddeldeTemperatuur {
             get
             {
                 return Math.Round(_gemiddeldeTemperatuur.Average(t => t.Waarde),1);

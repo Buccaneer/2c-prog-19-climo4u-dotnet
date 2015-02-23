@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Web;
 
@@ -19,7 +20,7 @@ namespace Klimatogrammen.Models.Domein
 
         public override string GeefVraagTekst()
         {
-            throw new NotImplementedException();
+            return "Hoeveelheid neerslag in de zomer? ";
         }
 
         public override void ValideerVraag(string antwoord)

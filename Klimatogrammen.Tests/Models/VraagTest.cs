@@ -81,7 +81,7 @@ namespace Klimatogrammen.Tests.Models
         {
             Vraag v = new VraagWarmsteMaand(mockKlimatogram.Object);
             ICollection<string> mogelijkeAntwoorden = v.GeefMogelijkeAntwoorden();
-            CollectionAssert.AreEquivalent(alleMaandenString, v.GeefMogelijkeAntwoorden().ToList());
+            CollectionAssert.AreEquivalent(alleMaandenString, mogelijkeAntwoorden.ToList());
         }
 
         [TestMethod]
@@ -188,7 +188,7 @@ namespace Klimatogrammen.Tests.Models
         {
             Vraag v = new VraagKoudsteMaand(mockKlimatogram.Object);
             ICollection<string> mogelijkeAntwoorden = v.GeefMogelijkeAntwoorden();
-            CollectionAssert.AreEquivalent(alleMaandenString, v.GeefMogelijkeAntwoorden().ToList());
+            CollectionAssert.AreEquivalent(alleMaandenString, mogelijkeAntwoorden.ToList());
         }
 
         [TestMethod]

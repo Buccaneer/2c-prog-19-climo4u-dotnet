@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Web;
 
@@ -14,17 +15,25 @@ namespace Klimatogrammen.Models.Domein
 
         public override ICollection<string> GeefMogelijkeAntwoorden()
         {
-            throw new NotImplementedException();
+            ICollection<string> mogelijkeAntwoorden = new Collection<string>();
+
+            foreach (Maand m in Enum.GetValues(typeof(Maand)))
+            {
+                mogelijkeAntwoorden.Add(m.ToString());
+            }
+            return mogelijkeAntwoorden;
         }
 
         public override string GeefVraagTekst()
         {
-            throw new NotImplementedException();
+            return "Wat is de koudste maand?";
         }
 
         public override void ValideerVraag(string antwoord)
         {
-            throw new NotImplementedException();
+            //klopt niet
+            string correct = _klimatogram.GemiddeldeTemperatuur.Min().ToString();
+            Resultaat = correct.Equals(antwoord) ? Resultaat.Juist : Resultaat.Fout;
         }
     }
 }
