@@ -13,7 +13,7 @@ using System.Linq;
 namespace Klimatogrammen.Tests.Controllers
 {
     [TestClass]
-    class OefeningVraagControllerTest
+    public class OefeningVraagControllerTest
     {
         private OefeningVragenController _vraagController;
         private Klimatogram _mockKlimatogram;
@@ -92,6 +92,46 @@ namespace Klimatogrammen.Tests.Controllers
             {
                 Assert.IsTrue(vVM.Resultaat);
             }
+        }
+
+        [TestMethod]
+        public void EnkelLeerlingEersteGraadKanVragenMaken()
+        {
+            VraagRepository vRep = VraagRepository.CreerVragenVoorKlimatogram(_mockKlimatogram);
+            RedirectToRouteResult result = _vraagController.Index(new Leerling() { Graad = Graad.Twee }, vRep) as RedirectToRouteResult;
+            //Assert.IsNotNull(result);
+            Assert.AreEqual("Index", result.RouteValues["action"]);
+            Assert.AreEqual("Klimatogram", result.RouteValues["controller"]);
+            RedirectToRouteResult result2 = _vraagController.Index(new Leerling() { Graad = Graad.Drie }, vRep) as RedirectToRouteResult;
+            //Assert.IsNotNull(result);
+            Assert.AreEqual("Index", result.RouteValues["action"]);
+            Assert.AreEqual("Home", result.RouteValues["controller"]); //zie opmerking
+
+            // OPMERKING : 
+            // Moet aangepast worden zodra Controllers beschikbaar zijn zodat Leerling 3de graad meteen naar Oefening gaat
+        }
+
+        [TestMethod]
+        public void LeerlingNullRedirectNaarGraadSelectie()
+        {
+            VraagRepository vRep = VraagRepository.CreerVragenVoorKlimatogram(_mockKlimatogram);
+            RedirectToRouteResult result = _vraagController.Index(null, vRep) as RedirectToRouteResult;
+            //Assert.IsNotNull(result);
+            Assert.AreEqual("Index", result.RouteValues["action"]);
+            Assert.AreEqual("Home", result.RouteValues["controller"]);
+        }
+
+        [TestMethod]
+        public void VragenRepositoryNullRedirectNaarKlimatogramSelectie()
+        {
+            RedirectToRouteResult result = _vraagController.Index(new Leerling() { Graad = Graad.Een }, null) as RedirectToRouteResult;
+            //Assert.IsNotNull(result);
+            Assert.AreEqual("Index", result.RouteValues["action"]);
+            Assert.AreEqual("Klimatogram", result.RouteValues["controller"]);
+            RedirectToRouteResult result2 = _vraagController.Index(new Leerling() { Graad = Graad.Twee }, null) as RedirectToRouteResult;
+            //Assert.IsNotNull(result);
+            Assert.AreEqual("Index", result2.RouteValues["action"]);
+            Assert.AreEqual("Klimatogram", result2.RouteValues["controller"]);
         }
     }
 }
