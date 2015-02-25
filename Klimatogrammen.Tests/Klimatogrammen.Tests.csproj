@@ -87,6 +87,7 @@
   <ItemGroup>
     <Compile Include="Controllers\SessionRepositoryMock.cs" />
     <Compile Include="Controllers\KlimatogramControllerTest.cs" />
+    <Compile Include="Controllers\OefeningVraagControllerTest.cs" />
     <Compile Include="Models\LandTest.cs" />
     <Compile Include="Models\LeerlingTest.cs" />
     <Compile Include="Models\ContinentTest.cs" />
