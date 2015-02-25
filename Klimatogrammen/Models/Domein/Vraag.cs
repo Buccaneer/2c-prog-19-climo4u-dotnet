@@ -34,7 +34,7 @@ namespace Klimatogrammen
             // VraagWarmsteMaandGeeftValidatieTekstBijFout() etc
 
             if (Resultaat == Resultaat.Juist)
-                return _antwoord + " is juist!";
+                return _antwoord + " is juist.";
             return _antwoord + " is fout. Probeer opnieuw.";
         }
         public abstract void ValideerVraag(string antwoord);

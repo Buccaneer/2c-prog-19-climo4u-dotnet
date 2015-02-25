@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Web;
+using WebGrease.Css.Extensions;
 
 namespace Klimatogrammen.Models.Domein
 {
@@ -16,10 +17,7 @@ namespace Klimatogrammen.Models.Domein
         {
             ICollection<string> mogelijkeAntwoorden = new Collection<string>();
 
-            foreach (Maand m in Enum.GetValues(typeof(Maand)))
-            {
-                mogelijkeAntwoorden.Add(m.ToString());
-            }
+            Maand.Maanden.ForEach(m=>mogelijkeAntwoorden.Add(m.GeefNaam()));
             return mogelijkeAntwoorden;
         }
 
@@ -30,9 +28,20 @@ namespace Klimatogrammen.Models.Domein
 
         public override void ValideerVraag(string antwoord)
         {
-            //klopt niet
-            string correct = _klimatogram.GemiddeldeTemperatuur.Min().ToString();
-            Resultaat = correct.Equals(antwoord) ? Resultaat.Juist : Resultaat.Fout;
+            double hoogsteTemperatuur = _klimatogram.GemiddeldeTemperatuur.Max(t => t.Waarde);
+            string correct = Maand.GeefMaand(new List<Temperatuur>(_klimatogram.GemiddeldeTemperatuur).IndexOf(hoogsteTemperatuur)).GeefNaam();
+            
+            if (correct.Equals(antwoord))
+            {
+                Resultaat = Resultaat.Juist;
+                _antwoord = correct;
+            }
+            else
+            {
+                Resultaat = Resultaat.Fout;
+                _antwoord = antwoord;
+            }
+           
         }
     }
 }

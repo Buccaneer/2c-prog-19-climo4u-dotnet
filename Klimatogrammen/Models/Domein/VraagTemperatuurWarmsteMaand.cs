@@ -26,12 +26,13 @@ namespace Klimatogrammen.Models.Domein
 
         public override string GeefVraagTekst()
         {
-            return "Wat is de temperatuur van de warmste maand (Tw)? ";
+            return "Wat is de temperatuur van de warmste maand (Tw)?";
         }
 
         public override void ValideerVraag(string antwoord)
         {
-            string correct = _klimatogram.GemiddeldeTemperatuur.Max().ToString();
+            string correct = _klimatogram.GemiddeldeTemperatuur.Select(temp=>temp.Waarde).ToList().Max().ToString();
+            _antwoord = antwoord;
             Resultaat = correct.Equals(antwoord) ? Resultaat.Juist : Resultaat.Fout;
         }
     }

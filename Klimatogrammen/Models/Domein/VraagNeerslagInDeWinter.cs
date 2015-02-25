@@ -19,7 +19,7 @@ namespace Klimatogrammen.Models.Domein
 
         public override string GeefVraagTekst()
         {
-            return "Hoeveelheid neerslag in de winter? ";
+            return "Hoeveelheid neerslag in de winter?";
         }
 
         public override void ValideerVraag(string antwoord)

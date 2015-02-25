@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Data.Entity.Core.Metadata.Edm;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
 using System.Web;
+using Ninject.Infrastructure.Language;
 
 namespace Klimatogrammen.Models.Domein
 {
@@ -31,7 +34,8 @@ namespace Klimatogrammen.Models.Domein
 
         public override void ValideerVraag(string antwoord)
         {
-            string correct = _klimatogram.GemiddeldeTemperatuur.Min().ToString();
+            string correct = _klimatogram.GemiddeldeTemperatuur.Select(temp=>temp.Waarde).ToList().Min().ToString();
+            _antwoord = antwoord;
             Resultaat = correct.Equals(antwoord) ? Resultaat.Juist : Resultaat.Fout;
         }
     }
