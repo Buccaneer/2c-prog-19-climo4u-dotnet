@@ -7,12 +7,19 @@ namespace Klimatogrammen.Models.Domein {
     public class Klimatogram
     {
         private ICollection<Temperatuur> _gemiddeldeTemperatuur = new List<Temperatuur>();
-        private ICollection<Neerslag> _gemiddeldeNeerslag = new List<Neerslag>(); 
+        private ICollection<Neerslag> _gemiddeldeNeerslag = new List<Neerslag>();
 
         public Klimatogram(ICollection<Temperatuur> gemiddeldeTemperatuur, ICollection<Neerslag> gemiddeldeNeerslag)
         {
             GemiddeldeTemperatuur = gemiddeldeTemperatuur;
             GemiddeldeNeerslag = gemiddeldeNeerslag;
+        }
+
+        public Klimatogram(ICollection<Temperatuur> gemiddeldeTemperatuur, ICollection<Neerslag> gemiddeldeNeerslag, DbGeography coordinaten)
+        {
+            GemiddeldeTemperatuur = gemiddeldeTemperatuur;
+            GemiddeldeNeerslag = gemiddeldeNeerslag;
+            Coordinaten = coordinaten;
         }
 
 

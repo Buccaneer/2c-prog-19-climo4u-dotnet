@@ -11,7 +11,7 @@ namespace Klimatogrammen.Models.DAL.Mapper {
             ToTable("klimatogrammen");
             HasKey(k => k.Locatie);
             Property(k => k.Locatie).IsRequired().HasMaxLength(40);
-
+            Property(k => k.Coordinaten);
         }
     }
 }

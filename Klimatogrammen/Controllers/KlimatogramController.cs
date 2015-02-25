@@ -91,6 +91,7 @@ namespace Klimatogrammen.Controllers {
             leerling.Klimatogram = klimatogram;
 
             object klim = new { klimatogram.GemiddeldeTemperatuur, klimatogram.GemiddeldeNeerslag, klimatogram.BeginJaar, klimatogram.EindJaar, Land = klimatogram.Land.Naam, klimatogram.Locatie, klimatogram.TotaalGemiddeldeTemperatuur, klimatogram.TotaalNeerslag };
+
             return Json(klim);
         }
     }
