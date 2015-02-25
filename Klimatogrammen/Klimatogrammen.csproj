@@ -131,6 +131,7 @@
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\KlimatogramController.cs" />
+    <Compile Include="Controllers\OefeningVragenController.cs" />
     <Compile Include="Infrastructure\ISessionRepository.cs" />
     <Compile Include="Infrastructure\ContinentModelBinder.cs" />
     <Compile Include="Infrastructure\LandModelBinder.cs" />
@@ -227,6 +228,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Vraag\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
