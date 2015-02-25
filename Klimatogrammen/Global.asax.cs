@@ -24,6 +24,7 @@ namespace Klimatogrammen
             ModelBinders.Binders.Add(typeof(Leerling), new LeerlingModelBinder());
             ModelBinders.Binders.Add(typeof(Continent), new ContinentModelBinder());
             ModelBinders.Binders.Add(typeof(Land), new LandModelBinder());
+            ModelBinders.Binders.Add(typeof(VraagRepository), new VraagRepositoryModelBinder());
             db.Database.Initialize(true); 
         }
     }

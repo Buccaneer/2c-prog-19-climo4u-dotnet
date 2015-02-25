@@ -15,13 +15,13 @@ namespace Klimatogrammen.Tests.Controllers
     [TestClass]
     class OefeningVraagControllerTest
     {
-        private VraagController _vraagController;
+        private OefeningVragenController _vraagController;
         private Klimatogram _mockKlimatogram;
 
         [TestInitialize]
         public void Init()
         {
-            _vraagController = new VraagController();
+            _vraagController = new OefeningVragenController();
             _mockKlimatogram = mockKlimatogramTrainen();
         }
 
@@ -43,7 +43,7 @@ namespace Klimatogrammen.Tests.Controllers
         [TestMethod]
         public void IndienGeenKlimatogramRedirectNaarKlimatogram()
         {
-            RedirectToRouteResult result = _vraagController.Index(null) as RedirectToRouteResult;
+            RedirectToRouteResult result = _vraagController.Index(new Leerling{Graad=Graad.Een},null) as RedirectToRouteResult;
             Assert.AreEqual("Index", result.RouteValues["action"]);
             Assert.AreEqual("Klimatogram", result.RouteValues["controller"]);
         }
@@ -51,7 +51,7 @@ namespace Klimatogrammen.Tests.Controllers
         [TestMethod]
         public void GeeftVragenWeer()
         {
-            ViewResult result = _vraagController.Index(VraagRepository.CreerVragenVoorKlimatogram(_mockKlimatogram)) as ViewResult;
+            ViewResult result = _vraagController.Index(new Leerling{Graad=Graad.Een, Klimatogram = _mockKlimatogram},VraagRepository.CreerVragenVoorKlimatogram(_mockKlimatogram)) as ViewResult;
             VragenIndexViewModel vIVM = result.Model as VragenIndexViewModel;
             Assert.AreEqual(7, vIVM.VraagViewModels.Count);
             foreach (VraagViewModel v in vIVM.VraagViewModels)
@@ -70,7 +70,7 @@ namespace Klimatogrammen.Tests.Controllers
             {
                 vVM.Antwoord = vVM.Antwoorden.First().Text;
             }
-            _vraagController.ValideerVragen(vRep, vIVM);
+            _vraagController.Index(new Leerling{Graad=Graad.Een, Klimatogram=_mockKlimatogram}, vRep, vIVM);
             foreach (VraagViewModel vVM in vIVM.VraagViewModels)
             {
                 Assert.IsNotNull(vVM.ValidatieTekst);
@@ -82,12 +82,12 @@ namespace Klimatogrammen.Tests.Controllers
         {
             VraagRepository vRep = VraagRepository.CreerVragenVoorKlimatogram(_mockKlimatogram);
             VragenIndexViewModel vIVM = new VragenIndexViewModel(vRep);
-            string[] antwoorden = { "September", "30.1", "Februari", "2", "9", "87", "88"};
+            string[] antwoorden = { "September", "30,1", "Februari", "2", "9", "87", "88"};
             for (int i = 0; i < 7; i++)
             {
                 vIVM.VraagViewModels.ElementAt(i).Antwoord = antwoorden[i];
             }
-            _vraagController.ValideerVragen(vRep, vIVM);
+            _vraagController.Index(new Leerling{Graad=Graad.Een, Klimatogram = _mockKlimatogram}, vRep, vIVM);
             foreach (VraagViewModel vVM in vIVM.VraagViewModels)
             {
                 Assert.IsTrue(vVM.Resultaat);

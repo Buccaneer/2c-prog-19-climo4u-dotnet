@@ -52,8 +52,8 @@ namespace Klimatogrammen.Models.Domein
             repo.Vragen.Add(new VraagKoudsteMaand(klimatogram));
             repo.Vragen.Add(new VraagTemperatuurKoudsteMaand(klimatogram));
             repo.Vragen.Add(new VraagAantalDrogeMaanden(klimatogram));
-            repo.Vragen.Add(new VraagNeerslagInDeZomer(klimatogram));
-            repo.Vragen.Add(new VraagNeerslagInDeWinter(klimatogram));
+            //repo.Vragen.Add(new VraagNeerslagInDeZomer(klimatogram));
+            //repo.Vragen.Add(new VraagNeerslagInDeWinter(klimatogram));
             return repo;
         }
     }

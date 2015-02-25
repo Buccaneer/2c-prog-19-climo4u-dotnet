@@ -137,6 +137,7 @@
     <Compile Include="Infrastructure\LandModelBinder.cs" />
     <Compile Include="Infrastructure\LeerlingModelBinder.cs" />
     <Compile Include="Infrastructure\SessionRepository.cs" />
+    <Compile Include="Infrastructure\VraagRepositoryModelBinder.cs" />
     <Compile Include="Models\Domein\Maand.cs" />
     <Compile Include="Models\DAL\IContinentRepository.cs" />
     <Compile Include="Models\DAL\KlimatogrammenContext.cs" />
@@ -225,10 +226,10 @@
     <Content Include="Views\Klimatogram\_Continent.cshtml" />
     <Content Include="Views\Klimatogram\_KiesLand.cshtml" />
     <Content Include="Views\Klimatogram\_KiesLocatie.cshtml" />
+    <Content Include="Views\OefeningVragen\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Vraag\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

@@ -22,7 +22,7 @@ namespace Klimatogrammen.Models.Domein
 
             foreach (Temperatuur t in _klimatogram.GemiddeldeTemperatuur)
             {
-                mogelijkeAntwoorden.Add(t.ToString());
+                mogelijkeAntwoorden.Add(t.Waarde.ToString());
             }
             return mogelijkeAntwoorden;
         }

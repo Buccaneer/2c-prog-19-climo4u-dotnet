@@ -8,21 +8,18 @@ using Klimatogrammen.ViewModels;
 
 namespace Klimatogrammen.Controllers
 {
-    public class VraagController : Controller
+    public class OefeningVragenController : Controller
     {
-        // TODO : IMPLEMENT THIS CLASS
-        public ActionResult Index()
+       // TODO : IMPLEMENT THIS CLASS
+        public ActionResult Index(Leerling leerling, VraagRepository vraagRepository)
         {
-            return View();
+            VragenIndexViewModel vIVM = new VragenIndexViewModel(vraagRepository);
+            return View(vIVM);
         }
 
-        public ActionResult Index(VraagRepository vRep)
-        {
-            return View();
-        }
-
-        public ActionResult ValideerVragen(VraagRepository vRep, VragenIndexViewModel vIVM)
-        {
+        [HttpPost]
+        public ActionResult Index(Leerling leerling, VraagRepository vraagRepository, VragenIndexViewModel vragenIndexViewModel)
+        { 
             return View();
         }
     }

@@ -25,6 +25,7 @@ namespace Klimatogrammen.ViewModels
 
     public class VraagViewModel
     {
+        public AntwoordViewModel Antw { get; set; }
         public string VraagTekst { get; set; }
         public SelectList Antwoorden { get; set; }
 
@@ -37,8 +38,10 @@ namespace Klimatogrammen.ViewModels
 
         public VraagViewModel(string vraag, ICollection<string> antwoorden)
         {
+            Antwoord = "1";
             VraagTekst = vraag;
-            Antwoorden = new SelectList(antwoorden, "Antwoord", "Antwoord");
+            Antwoorden = new SelectList(antwoorden);
+            
         }
 
         public VraagViewModel()
@@ -46,5 +49,15 @@ namespace Klimatogrammen.ViewModels
 
         }
 
+    }
+
+    public class AntwoordViewModel
+    {
+        public String Antwoord { get; set; }
+
+        public AntwoordViewModel(string antwoord)
+        {
+            Antwoord = antwoord;
+        }
     }
 }
