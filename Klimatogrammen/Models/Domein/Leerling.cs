@@ -12,10 +12,7 @@ namespace Klimatogrammen.Models.Domein
         private int? jaar;
         #endregion
         #region Properties
-        /// <summary>
-        /// Dit is een property dat de graad van de leerling bijhoudt aan de hand van een enum-klasse
-        /// </summary>
-        public Graad Graad { get; set; }
+
 
         /// <summary>
         /// Dit is een property dat het jaar van de leerling bijhoudt, als de leerling in graad twee zit. 
@@ -47,6 +44,17 @@ namespace Klimatogrammen.Models.Domein
         /// Dit is een property die het gekozen klimatogram van de leerling bijhoudt
         /// </summary>
         public Klimatogram Klimatogram { get; set; }
+
+        public Graad Graad
+        {
+            get
+            {
+                throw new System.NotImplementedException();
+            }
+            set
+            {
+            }
+        }
 
 
 

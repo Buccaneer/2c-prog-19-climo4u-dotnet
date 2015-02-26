@@ -130,8 +130,13 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Models\Domein\BeslissingsPunt.cs" />
+    <Compile Include="Models\Domein\ConstanteParameter.cs" />
     <Compile Include="Controllers\KlimatogramController.cs" />
     <Compile Include="Controllers\OefeningVragenController.cs" />
+    <Compile Include="Models\Domein\DeterminatiePunt.cs" />
+    <Compile Include="Models\Domein\DeterminatieTabel.cs" />
+    <Compile Include="Models\Domein\Graad.cs" />
     <Compile Include="Infrastructure\ISessionRepository.cs" />
     <Compile Include="Infrastructure\ContinentModelBinder.cs" />
     <Compile Include="Infrastructure\LandModelBinder.cs" />
@@ -139,25 +144,21 @@
     <Compile Include="Infrastructure\SessionRepository.cs" />
     <Compile Include="Infrastructure\VraagRepositoryModelBinder.cs" />
     <Compile Include="Models\Domein\Maand.cs" />
-    <Compile Include="Models\DAL\IContinentRepository.cs" />
+    <Compile Include="Models\Domein\IContinentRepository.cs" />
     <Compile Include="Models\DAL\KlimatogrammenContext.cs" />
     <Compile Include="Models\DAL\KlimatogrammenInitializer.cs" />
     <Compile Include="Models\DAL\ContinentRepository.cs" />
     <Compile Include="Models\DAL\Mapper\ContinentMapper.cs" />
     <Compile Include="Models\DAL\Mapper\KlimatogramMapper.cs" />
     <Compile Include="Models\DAL\Mapper\LandMapper.cs" />
-    <Compile Include="Models\DAL\Mapper\NeerslagMapper.cs" />
-    <Compile Include="Models\DAL\Mapper\TemperatuurMapper.cs" />
     <Compile Include="Models\Domein\Continent.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Domein\Graad.cs" />
     <Compile Include="Models\Domein\Klimatogram.cs" />
     <Compile Include="Models\Domein\Land.cs" />
     <Compile Include="Models\Domein\Leerling.cs" />
-    <Compile Include="Models\Domein\Neerslag.cs" />
     <Compile Include="Models\Domein\VraagAantalDrogeMaanden.cs" />
     <Compile Include="Models\Domein\VraagKoudsteMaand.cs" />
     <Compile Include="Models\Domein\VraagNeerslagInDeWinter.cs" />
@@ -165,9 +166,13 @@
     <Compile Include="Models\Domein\VraagTemperatuurKoudsteMaand.cs" />
     <Compile Include="Models\Domein\VraagTemperatuurWarmsteMaand.cs" />
     <Compile Include="Models\Domein\VraagWarmsteMaand.cs" />
+    <Compile Include="Models\Domein\Operator.cs" />
+    <Compile Include="Models\Domein\Parameter.cs" />
+    <Compile Include="Models\Domein\ParameterFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Models\Domein\Temperatuur.cs" />
     <Compile Include="Models\Domein\Resultaat.cs" />
+    <Compile Include="Models\Domein\ResultaatKnoop.cs" />
+    <Compile Include="Models\Domein\Vergelijking.cs" />
     <Compile Include="ViewModels\KlimatogramKiezenIndexViewModel.cs" />
     <Compile Include="ViewModels\LeerlingIndexViewModel.cs" />
     <Compile Include="Models\Domein\Vraag.cs" />

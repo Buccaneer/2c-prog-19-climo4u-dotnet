@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Reflection;
 using Klimatogrammen.ViewModels;
 using WebGrease.Css.Extensions;
 
@@ -42,19 +43,6 @@ namespace Klimatogrammen.Models.Domein
             {
                 _foutieveVragen.Add(v);
             }
-        }
-
-        public static VraagRepository CreerVragenVoorKlimatogram(Klimatogram klimatogram)
-        {
-            VraagRepository repo = new VraagRepository();
-            repo.Vragen.Add(new VraagWarmsteMaand(klimatogram));
-            repo.Vragen.Add(new VraagTemperatuurWarmsteMaand(klimatogram));
-            repo.Vragen.Add(new VraagKoudsteMaand(klimatogram));
-            repo.Vragen.Add(new VraagTemperatuurKoudsteMaand(klimatogram));
-            repo.Vragen.Add(new VraagAantalDrogeMaanden(klimatogram));
-            //repo.Vragen.Add(new VraagNeerslagInDeZomer(klimatogram));
-            //repo.Vragen.Add(new VraagNeerslagInDeWinter(klimatogram));
-            return repo;
         }
     }
 }

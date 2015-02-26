@@ -24,7 +24,8 @@ namespace Klimatogrammen.Models.DAL
                 #region "data"
 
                 Land belgie = new Land("België");
-
+                
+                    
                 Neerslag[] gemiddeldeNeerUkkel = { 12, 12, 13, 13, 14, 14, 15, 15, 16, 16, 17, 17 };
                 Temperatuur[] gemiddeldeTempUkkel = { 5.1, 2.2, 10.5, 12.7, 18, 20.4, 21.2, 25.2, 30.1, 19, 10, 2.2 };
                 belgie.VoegKlimatogramToe(new Klimatogram(gemiddeldeTempUkkel, gemiddeldeNeerUkkel, DbGeography.FromText("POINT(50.8 4.35)")) { Locatie = "Ukkel", BeginJaar = 1961, EindJaar = 2009 });
@@ -113,7 +114,7 @@ namespace Klimatogrammen.Models.DAL
                         eve.Entry.Entity.GetType().Name, eve.Entry.GetValidationResult());
                     foreach (var ve in eve.ValidationErrors)
                     {
-                        s += String.Format("- Property: \"{0}\", Error: \"{1}\"",
+                        s += String.Format("- Graad: \"{0}\", Error: \"{1}\"",
                             ve.PropertyName, ve.ErrorMessage);
                     }
                 }

@@ -21,7 +21,7 @@
             <div class="form-group">
                 @Html.Label(vvm.VraagTekst, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.DropDownList(vvm.Antwoord, vvm.Antwoorden, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.DropDownList(vvm.Antwoord, vvm.Antwoorden, htmlAttributes: new{@class="form-control"} )
                     @Html.ValidationMessage(vvm.Antwoord, "", new { @class = "text-danger" })
                 </div>
             </div>

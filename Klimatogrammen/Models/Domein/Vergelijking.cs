@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Web;
 using System.Web.Services;
 using System.Web.Services.Protocols;
@@ -8,12 +10,9 @@ using Klimatogrammen.Models.Domein;
 
 namespace Klimatogrammen
 {
-    public abstract class Vraag
+    public class Vergelijking
     {
-
-        public Resultaat Resultaat { get; set; }
-
-        public Parameter Parameter
+        public Operator Operator
         {
             get
             {
@@ -24,7 +23,7 @@ namespace Klimatogrammen
             }
         }
 
-        public string VraagTekst
+        public Parameter LinkerParameter
         {
             get
             {
@@ -35,7 +34,21 @@ namespace Klimatogrammen
             }
         }
 
-        public abstract ICollection<string> GeefMogelijkeAntwoorden();
-        public abstract void ValideerVraag(string antwoord, Klimatogram klimatogram);
+        public Parameter RechterParameter
+        {
+            get
+            {
+                throw new System.NotImplementedException();
+            }
+            set
+            {
+            }
+        }
+
+        public bool BerekenResultaat(Klimatogram klimatogram)
+        {
+           
+            throw new System.NotImplementedException();
+        }
     }
 }

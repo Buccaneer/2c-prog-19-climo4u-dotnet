@@ -3,27 +3,25 @@ using System.Collections.Generic;
 using System.Data.Entity.Spatial;
 using System.Linq;
 
-namespace Klimatogrammen.Models.Domein {
+namespace Klimatogrammen.Models.Domein
+{
     public class Klimatogram
     {
-        private ICollection<Temperatuur> _gemiddeldeTemperatuur = new List<Temperatuur>();
-        private ICollection<Neerslag> _gemiddeldeNeerslag = new List<Neerslag>();
 
-        public Klimatogram(ICollection<Temperatuur> gemiddeldeTemperatuur, ICollection<Neerslag> gemiddeldeNeerslag)
+        public Klimatogram(ICollection<Maand> maanden)
         {
-            GemiddeldeTemperatuur = gemiddeldeTemperatuur;
-            GemiddeldeNeerslag = gemiddeldeNeerslag;
+            Maanden = maanden;
         }
 
-        public Klimatogram(ICollection<Temperatuur> gemiddeldeTemperatuur, ICollection<Neerslag> gemiddeldeNeerslag, DbGeography coordinaten)
+        public Klimatogram(ICollection<Maand> maanden , DbGeography coordinaten)
         {
-            GemiddeldeTemperatuur = gemiddeldeTemperatuur;
-            GemiddeldeNeerslag = gemiddeldeNeerslag;
+            Maanden = maanden;
             Coordinaten = coordinaten;
         }
 
 
-        public Klimatogram() {
+        public Klimatogram()
+        {
 
         }
 
@@ -31,55 +29,30 @@ namespace Klimatogrammen.Models.Domein {
         public virtual int EindJaar { get; set; }
         public Land Land { get; internal set; }
 
-        public virtual System.Collections.Generic.ICollection<Temperatuur> GemiddeldeTemperatuur {
-            get
-            {
-                return _gemiddeldeTemperatuur;
-            }
-            set
-            {
-                if (value.Count != 12)
-                {
-                    throw new ArgumentException("Er moeten exact 12 waarden doorgegeven worden.");
-                }
-                
-                _gemiddeldeTemperatuur = value;
-            }
-        }
+        public DbGeography Coordinaten { get; set; }
 
-        public virtual System.Collections.Generic.ICollection<Neerslag> GemiddeldeNeerslag { 
-            get
-            {
-                return _gemiddeldeNeerslag;
-            }
-            set
-            {
-                if (value.Count != 12)
-                {
-                    throw new ArgumentException("Er moeten exact 12 waarden doorgegeven worden.");
-                }
-   
-                _gemiddeldeNeerslag = value;
-            }
-        }
+        public IEnumerable<Maand> Maanden { get; set; }
 
         public virtual string Locatie { get; set; }
 
-        public virtual int TotaalNeerslag {
-            get
-            {
-                return _gemiddeldeNeerslag.Sum(n => n.Waarde);
-            }
+        public ICollection<double> GeefTemperaturen()
+        {
+            return Maanden.Select(maand => maand.Temperatuur).ToList();
         }
 
-        public virtual double TotaalGemiddeldeTemperatuur {
-            get
-            {
-                return Math.Round(_gemiddeldeTemperatuur.Average(t => t.Waarde),1);
-            }
+        public ICollection<int> GeefNeerslagen()
+        {
+            return Maanden.Select(maand => maand.Neerslag).ToList();
         }
 
-        public DbGeography Coordinaten { get; set; }
+        public int GeefTotaleNeerslag()
+        {
+            return Maanden.Sum(maand => maand.Neerslag);
+        }
 
+        public double GeefGemiddeldeTemperatuur()
+        {
+            return Maanden.Average(maand => maand.Temperatuur);
+        }
     }
 }

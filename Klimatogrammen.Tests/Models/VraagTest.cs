@@ -13,7 +13,7 @@ namespace Klimatogrammen.Tests.Models
     {
 
         Mock<Klimatogram> _mockKlimatogram;
-        //List<Maand> alleMaanden;
+        //List<Naam> alleMaanden;
         private ICollection _alleMaandenString;
 
         [TestInitialize]
@@ -39,21 +39,21 @@ namespace Klimatogrammen.Tests.Models
             return mock;
         }
 
-        //private List<Maand> maakLijstMetAlleMaanden()
+        //private List<Naam> maakLijstMetAlleMaanden()
         //{
-        //    List<Maand> m = new List<Maand>();
-        //    m.Add(Maand.JANUARI);
-        //    m.Add(Maand.FEBRUARI);
-        //    m.Add(Maand.MAART);
-        //    m.Add(Maand.APRIL);
-        //    m.Add(Maand.MEI);
-        //    m.Add(Maand.JUNI);
-        //    m.Add(Maand.JULI);
-        //    m.Add(Maand.AUGUSTUS);
-        //    m.Add(Maand.SEPTEMBER);
-        //    m.Add(Maand.OKTOBER);
-        //    m.Add(Maand.NOVEMBER);
-        //    m.Add(Maand.DECEMBER);
+        //    List<Naam> m = new List<Naam>();
+        //    m.Add(Naam.JANUARI);
+        //    m.Add(Naam.FEBRUARI);
+        //    m.Add(Naam.MAART);
+        //    m.Add(Naam.APRIL);
+        //    m.Add(Naam.MEI);
+        //    m.Add(Naam.JUNI);
+        //    m.Add(Naam.JULI);
+        //    m.Add(Naam.AUGUSTUS);
+        //    m.Add(Naam.SEPTEMBER);
+        //    m.Add(Naam.OKTOBER);
+        //    m.Add(Naam.NOVEMBER);
+        //    m.Add(Naam.DECEMBER);
         //    return m;
         //}
 
