@@ -73,7 +73,7 @@ namespace Klimatogrammen
         /// <summary>
         /// Enkel als de gebruiker bij een leaf node zit kan dit een resultaat terug geven. Anders Exception.
         /// </summary>
-        public ResultaatKnoop GeefDeterminatieGebruiker()
+        public Klimatogrammen.DeterminatieKnoop GeefDeterminatieGebruiker()
         {
             throw new System.NotImplementedException();
         }

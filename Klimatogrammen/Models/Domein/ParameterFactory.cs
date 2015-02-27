@@ -13,12 +13,12 @@ namespace Klimatogrammen
             throw new System.NotImplementedException();
         }
 
-        public ContansteParameter<double> MaakConstanteParameter(double waarde)
+        public ConstanteParameter MaakConstanteParameter(double waarde)
         {
             throw new System.NotImplementedException();
         }
 
-        public ConstanteParameter<int> MaakConstanteParameter(int waarde)
+        public ConstanteParameter MaakConstanteParameter(int waarde)
         {
             throw new System.NotImplementedException();
         }

@@ -8,7 +8,7 @@ using Klimatogrammen.Models.Domein;
 
 namespace Klimatogrammen
 {
-    public abstract class Vraag
+    public class Vraag
     {
 
         public Resultaat Resultaat { get; set; }
@@ -34,8 +34,8 @@ namespace Klimatogrammen
             {
             }
         }
-
-        public abstract ICollection<string> GeefMogelijkeAntwoorden();
-        public abstract void ValideerVraag(string antwoord, Klimatogram klimatogram);
+        public void ValideerVraag(string antwoord, Klimatogram klimatogram) {
+            throw new System.NotImplementedException();
+}
     }
 }

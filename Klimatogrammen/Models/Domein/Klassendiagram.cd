@@ -57,11 +57,12 @@
   <Class Name="Klimatogrammen.Vraag">
     <Position X="9.75" Y="9.25" Width="3" />
     <TypeIdentifier>
-      <HashCode>gAAAAAAAAAAABAAAAAAAAAAAAAAQAAAAAACAABAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAABAAAAAAAAAAAAAAQAAAAAACAABAAAAA=</HashCode>
       <FileName>Models\Domein\Vraag.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
       <Property Name="Resultaat" />
+      <Property Name="Parameter" />
     </ShowAsAssociation>
   </Class>
   <Class Name="Klimatogrammen.Graad">
@@ -126,7 +127,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="Klimatogrammen.Vergelijking">
-    <Position X="14.75" Y="12.5" Width="3" />
+    <Position X="15" Y="12" Width="3" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAACAAAAAAAAAIAEAAAAAAAAAAAAAAAAAIAA=</HashCode>
       <FileName>Models\Domein\Vergelijking.cs</FileName>
@@ -134,17 +135,18 @@
     <ShowAsAssociation>
       <Property Name="Operator" />
       <Property Name="RechterParameter" />
+      <Property Name="LinkerParameter" />
     </ShowAsAssociation>
   </Class>
   <Class Name="Klimatogrammen.Parameter">
     <Position X="14.25" Y="14.75" Width="3.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAgAAAAAAAAAAAAAAAACBAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>gAAAAAAAAgAAAAAAAAAAAAAAAACBAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Models\Domein\Parameter.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Klimatogrammen.ConstanteParameter&lt;T&gt;">
-    <Position X="11.75" Y="16.5" Width="2.25" />
+  <Class Name="Klimatogrammen.ConstanteParameter">
+    <Position X="15.5" Y="17.5" Width="2.25" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAACBAABAAAAAAAAAAAA=</HashCode>
       <FileName>Models\Domein\ConstanteParameter.cs</FileName>

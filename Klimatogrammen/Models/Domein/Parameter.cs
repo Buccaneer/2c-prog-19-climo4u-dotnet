@@ -26,5 +26,9 @@ namespace Klimatogrammen
         public abstract IComparable BerekenenWaarde(Klimatogram klimatogram);
 
         public abstract string GeefBeschrijving();
+
+        public ICollection<string> GeefMogelijkeAntwoorden() {
+            throw new System.NotImplementedException();
+}
     }
 }
