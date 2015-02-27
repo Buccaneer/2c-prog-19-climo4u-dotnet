@@ -1,0 +1,35 @@
+﻿namespace Klimatogrammen.Models.Domein {
+    /// <summary>
+    /// Een knoop waar een beslissing moet worden genomen volgens een vergelijking en waar een Ja of Nee tak uit voor
+    /// </summary>
+    public class BeslissingsKnoop : DeterminatieKnoop {
+        public Vergelijking Vergelijking { get; set; }
+
+        public DeterminatieKnoop JaKnoop { get; set; }
+
+        public DeterminatieKnoop NeeKnoop { get; set; }
+
+        public new DeterminatieKnoop NeemNeeKnoop() {
+            return NeeKnoop;
+        }
+
+        public new DeterminatieKnoop NeemJuisteKnoop(Klimatogram klimatogram) {
+            if (Vergelijking.BerekenResultaat(klimatogram))
+                return JaKnoop;
+            return NeeKnoop;
+        }
+
+        public new DeterminatieKnoop NeemJaKnoop() {
+            return JaKnoop;
+        }
+
+        public BeslissingsKnoop() {
+        }
+
+        public BeslissingsKnoop(Vergelijking vergelijking, DeterminatieKnoop jaKnoop, DeterminatieKnoop neeKnoop) {
+            Vergelijking = vergelijking;
+            JaKnoop = jaKnoop;
+            NeeKnoop = neeKnoop;
+        }
+    }
+}
