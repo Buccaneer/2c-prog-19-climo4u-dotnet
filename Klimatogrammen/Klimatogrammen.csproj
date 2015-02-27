@@ -130,11 +130,11 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Models\Domein\BeslissingsPunt.cs" />
+    <Compile Include="Models\Domein\BeslissingsKnoop.cs" />
     <Compile Include="Models\Domein\ConstanteParameter.cs" />
     <Compile Include="Controllers\KlimatogramController.cs" />
     <Compile Include="Controllers\OefeningVragenController.cs" />
-    <Compile Include="Models\Domein\DeterminatiePunt.cs" />
+    <Compile Include="Models\Domein\DeterminatieKnoop.cs" />
     <Compile Include="Models\Domein\DeterminatieTabel.cs" />
     <Compile Include="Models\Domein\Graad.cs" />
     <Compile Include="Infrastructure\ISessionRepository.cs" />

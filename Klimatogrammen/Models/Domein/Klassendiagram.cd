@@ -52,6 +52,7 @@
     </TypeIdentifier>
     <ShowAsAssociation>
       <Property Name="Resultaat" />
+      <Property Name="Parameter" />
     </ShowAsAssociation>
   </Class>
   <Class Name="Klimatogrammen.Graad">
@@ -123,20 +124,21 @@
     </TypeIdentifier>
     <ShowAsAssociation>
       <Property Name="Operator" />
+      <Property Name="RechterParameter" />
+      <Property Name="LinkerParameter" />
     </ShowAsAssociation>
   </Class>
-  <Class Name="Klimatogrammen.ParameterNeerslagWinter">
+  <Class Name="Klimatogrammen.Parameter">
     <Position X="11.5" Y="4" Width="3.5" />
     <TypeIdentifier>
-      <HashCode>gAAAAAAAAAAAAAAIAAAAAAAAAACAAAAAAAAAAAAABAM=</HashCode>
-      <FileName>Models\Domein\Parameters.cs</FileName>
-      <NewMemberFileName>Models\Domein\Parameter.cs</NewMemberFileName>
+      <HashCode>gAAAAAAAAgAAAAAAAAAAAAAAAACBAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Domein\Parameter.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Klimatogrammen.ConstanteParameter">
     <Position X="12.25" Y="6.75" Width="2.25" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAACAAABAAAAAAAAABAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAACBAABAAAAAAAAAAAA=</HashCode>
       <FileName>Models\Domein\ConstanteParameter.cs</FileName>
     </TypeIdentifier>
   </Class>
