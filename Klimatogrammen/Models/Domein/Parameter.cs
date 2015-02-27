@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Web;
 using System.Web.Services;
 using System.Web.Services.Protocols;
@@ -12,23 +13,13 @@ namespace Klimatogrammen
         /// <summary>
         /// Bijvoorbeeld: TK, TW
         /// </summary>
-        public string ParameterId
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
-        }
+        public string ParameterId { get; set; }
 
-        public abstract IComparable BerekenenWaarde(Klimatogram klimatogram);
+        public abstract IComparable BerekenWaarde(Klimatogram klimatogram);
 
         public abstract string GeefBeschrijving();
 
-        public ICollection<string> GeefMogelijkeAntwoorden() {
-            throw new System.NotImplementedException();
-}
+        public abstract ICollection<string> GeefMogelijkeAntwoorden(Klimatogram klimatogram);
+
     }
 }

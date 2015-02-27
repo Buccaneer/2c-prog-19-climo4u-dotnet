@@ -13,29 +13,15 @@ namespace Klimatogrammen
 
         public Resultaat Resultaat { get; set; }
 
-        public Parameter Parameter
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
-        }
+        public Parameter Parameter { get; set; }
 
-        public string VraagTekst
+        public string VraagTekst { get; set; }
+
+        public void ValideerVraag(string antwoord, Klimatogram klimatogram)
         {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
+            Resultaat = Parameter.BerekenWaarde(klimatogram).ToString().Equals(antwoord)
+                ? Resultaat = Resultaat.Juist
+                : Resultaat = Resultaat.Fout;
         }
-        public void ValideerVraag(string antwoord, Klimatogram klimatogram) {
-            throw new System.NotImplementedException();
-}
     }
 }

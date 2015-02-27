@@ -10,17 +10,40 @@ namespace Klimatogrammen
     {
         public Parameter MaakParameter(string code)
         {
-            throw new System.NotImplementedException();
+            switch (code)
+            {
+                case "Warmste Maand":
+                    return new ParameterWarmsteMaand();
+                case "Koudste Maand":
+                    return new ParameterKoudsteMaand();
+                case "Tw":
+                    return new ParameterTemperatuurWarmsteMaand();
+                case "Tk":
+                    return new ParameterTemperatuurKoudsteMaand();
+                case "Nz":
+                    return new ParameterNeerslagZomer();
+                case "Nw":
+                    return new ParameterNeerslagWinter();
+                case "D":
+                    return new ParameterAantalDrogeMaanden();
+                case "Tj":
+                    return new ParameterGemiddeldeTemperatuurJaar();
+                case "Nj":
+                    return new ParameterTotaleNeerslagJaar();
+                default:
+                    throw new ArgumentException("Er werd een ongeldige code meegegeven");
+            }
         }
 
-        public ConstanteParameter MaakConstanteParameter(double waarde)
+        public Parameter MaakConstanteParameter(double waarde)
         {
-            throw new System.NotImplementedException();
+            return new ConstanteParameter(waarde);
         }
 
-        public ConstanteParameter MaakConstanteParameter(int waarde)
+        public Parameter MaakConstanteParameter(int waarde)
         {
-            throw new System.NotImplementedException();
+            return new ConstanteParameter(waarde);
         }
+
     }
 }

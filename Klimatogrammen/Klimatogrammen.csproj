@@ -159,6 +159,7 @@
     <Compile Include="Models\Domein\Klimatogram.cs" />
     <Compile Include="Models\Domein\Land.cs" />
     <Compile Include="Models\Domein\Leerling.cs" />
+    <Compile Include="Models\Domein\Parameters.cs" />
     <Compile Include="Models\Domein\VraagAantalDrogeMaanden.cs" />
     <Compile Include="Models\Domein\VraagKoudsteMaand.cs" />
     <Compile Include="Models\Domein\VraagNeerslagInDeWinter.cs" />

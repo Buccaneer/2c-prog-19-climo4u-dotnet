@@ -4,22 +4,33 @@ using System.Web;
 using System.Web.Services;
 using System.Web.Services.Protocols;
 using System.ComponentModel;
+using Klimatogrammen.Models.Domein;
 
 namespace Klimatogrammen
 {
     public class ConstanteParameter: Parameter
     {
         private double _waarde;
-    
-        public override IComparable BerekenenWaarde(Models.Domein.Klimatogram klimatogram)
+
+        public ConstanteParameter(double waarde)
         {
-            throw new NotImplementedException();
+            _waarde = waarde;
+        }
+    
+        public override IComparable BerekenWaarde(Klimatogram klimatogram)
+        {
+            return _waarde;
         }
 
 
         public override string GeefBeschrijving()
         {
-            throw new NotImplementedException();
+            throw new NotSupportedException();
+        }
+
+        public override ICollection<string> GeefMogelijkeAntwoorden(Klimatogram klimatogram)
+        {
+            throw new NotSupportedException();
         }
     }
 }
