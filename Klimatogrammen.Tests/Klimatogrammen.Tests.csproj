@@ -91,6 +91,7 @@
   <ItemGroup>
     <Compile Include="Controllers\KlimatogramControllerTest.cs" />
     <Compile Include="Controllers\OefeningVraagControllerTest.cs" />
+    <Compile Include="Mock\ContinentFactory.cs" />
     <Compile Include="Mock\KlimatogramMockFactory.cs" />
     <Compile Include="Mock\MaandMockFactory.cs" />
     <Compile Include="Mock\ParameterMockFactory.cs" />

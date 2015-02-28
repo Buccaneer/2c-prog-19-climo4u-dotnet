@@ -12,24 +12,24 @@ using System.Web.Mvc;
 
 namespace Klimatogrammen.Controllers {
     public class KlimatogramController : Controller {
-        private IContinentRepository _klimatogrammenRepository;
+        private IEnumerable<Continent> _continenten;
 
-        public KlimatogramController(IContinentRepository klimatogrammenRepository) {
-            _klimatogrammenRepository = klimatogrammenRepository;
+        public KlimatogramController(IEnumerable<Continent> continenten) {
+            _continenten = continenten;
         }
 
         public ActionResult Index(Leerling leerling) {
             if (leerling == null) {
                 return RedirectToAction("Index", "Home");
             }
-            KlimatogramKiezenIndexViewModel kIVM = null;
+            KlimatogramKiezenIndexViewModel kIVM;
             switch (leerling.Graad.Nummer) {
                 case 1: {
-                        kIVM = new KlimatogramKiezenIndexViewModel(_klimatogrammenRepository.GeefContinent("Europa"));
+                        kIVM = new KlimatogramKiezenIndexViewModel(_continenten.First(c => c.Naam.Equals("Europa")));
                         break;
                     }
                 case 2:
-                    kIVM = new KlimatogramKiezenIndexViewModel(_klimatogrammenRepository.GeefContinenten());
+                    kIVM = new KlimatogramKiezenIndexViewModel(_continenten);
                     break;
                 default:
                     return RedirectToAction("Index", "Home");
@@ -44,7 +44,7 @@ namespace Klimatogrammen.Controllers {
                 return null;
             }
 
-            Continent continent = _klimatogrammenRepository.GeefContinent(kVM.Continent);
+            Continent continent = _continenten.First(c => c.Naam.Equals(kVM.Continent));
 
 
             if (!continent.Landen.Any()) {
@@ -63,14 +63,12 @@ namespace Klimatogrammen.Controllers {
             }
             Land land = continent.Landen.FirstOrDefault(l => l.Naam.Equals(kVM.Land));
 
-            if (kVM.Land == null || !land.Klimatogrammen.Any()) {
+            if (land != null && (kVM.Land == null || !land.Klimatogrammen.Any())) {
                 TempData["Error"] = "Er zijn geen locaties in de databank gevonden voor het geselecteerde land.";
                 return JavaScript("window.location = '" + Url.Action("Index") + "'");
             }
             if (HttpContext != null && HttpContext.Session != null)
                 HttpContext.Session["land"] = land;
-
-
             return PartialView("_KiesLocatie", new KlimatogramKiezenLocatieViewModel(land.Klimatogrammen));
         }
 

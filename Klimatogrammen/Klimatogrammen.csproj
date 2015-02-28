@@ -147,7 +147,6 @@
     <Compile Include="Models\Domein\Maand.cs" />
     <Compile Include="Models\DAL\KlimatogrammenContext.cs" />
     <Compile Include="Models\DAL\KlimatogrammenInitializer.cs" />
-    <Compile Include="Models\DAL\ContinentRepository.cs" />
     <Compile Include="Models\DAL\Mapper\ContinentMapper.cs" />
     <Compile Include="Models\DAL\Mapper\KlimatogramMapper.cs" />
     <Compile Include="Models\DAL\Mapper\LandMapper.cs" />
