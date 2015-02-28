@@ -11,9 +11,10 @@ namespace Klimatogrammen.Models.Domein
         private ICollection<Maand> _maanden; 
         public virtual int BeginJaar { get; set; }
         public virtual int EindJaar { get; set; }
-        public Land Land { get; internal set; }
-        public DbGeography Coordinaten { get; set; }
-        public ICollection<Maand> Maanden
+        public virtual Land Land { get; internal set; }
+        public virtual double? Longitute { get; set; }
+        public virtual double? Latitude { get; set; }
+        public virtual ICollection<Maand> Maanden
         {
             get { return _maanden; }
             set
@@ -24,37 +25,34 @@ namespace Klimatogrammen.Models.Domein
         }
         public virtual string Locatie { get; set; }
 
-        public Klimatogram(ICollection<Maand> maanden, DbGeography coordinaten)
+        public Klimatogram(ICollection<Maand> maanden, double? longitute = null, double? latitude = null)
         {
             maanden.ForEach(m => m.Klimatogram = this);
             Maanden = maanden;
-            Coordinaten = coordinaten;
-        }
-
-        public Klimatogram(ICollection<Maand> maanden) : this(maanden, null)
-        {
+            Longitute = longitute;
+            Latitude = latitude;
         }
 
         public Klimatogram()
         {
         }
 
-        public ICollection<double> GeefTemperaturen()
+        public virtual ICollection<double> GeefTemperaturen()
         {
             return Maanden.Select(maand => maand.Temperatuur).ToList();
         }
 
-        public ICollection<int> GeefNeerslagen()
+        public virtual  ICollection<int> GeefNeerslagen()
         {
             return Maanden.Select(maand => maand.Neerslag).ToList();
         }
 
-        public int GeefTotaleNeerslag()
+        public virtual int GeefTotaleNeerslag()
         {
             return Maanden.Sum(maand => maand.Neerslag);
         }
 
-        public double GeefGemiddeldeTemperatuur()
+        public virtual double GeefGemiddeldeTemperatuur()
         {
             return Maanden.Average(maand => maand.Temperatuur);
         }

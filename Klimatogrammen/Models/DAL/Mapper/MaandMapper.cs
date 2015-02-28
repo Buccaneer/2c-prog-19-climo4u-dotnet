@@ -9,8 +9,8 @@ namespace Klimatogrammen.Models.DAL.Mapper {
 
         public MaandMapper() {
             ToTable("maanden");
-            HasKey(m => m.Naam);
-            Property(m => m.Naam).HasMaxLength(15);
+            
+            Property(m => m.Naam).HasMaxLength(15).IsRequired();
         }
     }
 }

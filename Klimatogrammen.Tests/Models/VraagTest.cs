@@ -48,7 +48,6 @@ namespace Klimatogrammen.Tests.Models {
 
         [TestMethod]
         public void VraagValiderenRoeptNodigeMethodesOp() {
-            var verwacht = Resultaat.Juist;
             _vraag.ValideerVraag("Item2", _mockKlimatogram.Object);
 
 

@@ -11,7 +11,7 @@ namespace Klimatogrammen.ViewModels
     public class LeerlingIndexViewModel
     {
         [Required(ErrorMessage = "Graad moet worden meegegeven.")]
-        public Graad Graad { get; set; }
+        public GraadKiezen Graad { get; set; }
 
         [Range(1,2, ErrorMessage = "Graad moet tussen 1 en 2 liggen.")]
         public int? Jaar { get; set; }
@@ -22,9 +22,15 @@ namespace Klimatogrammen.ViewModels
         }
         
         public LeerlingIndexViewModel(Leerling l) {
-            Graad = l.Graad;
-            Jaar = l.Jaar;
+            Graad = (GraadKiezen) l.Graad.Nummer;
+            Jaar = l.Graad.Jaar;
           
         }
+    }
+
+    public enum GraadKiezen : int{
+        Eerste = 1,
+        Tweede = 2,
+        Derde = 3
     }
 }

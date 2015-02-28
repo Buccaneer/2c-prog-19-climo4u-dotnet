@@ -25,7 +25,7 @@ namespace Klimatogrammen.Tests.Controllers
         public void Init()
         {
            _sessionRepository= new SessionRepositoryMock();
-            homeController = new HomeController(_sessionRepository);
+            homeController = new HomeController(_sessionRepository, null);
         }
 
         [TestMethod]
@@ -43,7 +43,7 @@ namespace Klimatogrammen.Tests.Controllers
         [TestMethod]
         public void IndexHttpPostRedirectNaarAndereView()
         {
-            Leerling leerling = new Leerling{ Graad = new Graad{ Nummer = 2 }, Jaar = 1 };
+            Leerling leerling = new Leerling{ Graad = new Graad{ Nummer = 2 , Jaar = 1 }};
             LeerlingIndexViewModel leerlingIVM = new LeerlingIndexViewModel(leerling);
             RedirectToRouteResult result = homeController.Index(leerlingIVM) as RedirectToRouteResult;
             Assert.AreEqual("Index", result.RouteValues["action"]);
@@ -53,7 +53,7 @@ namespace Klimatogrammen.Tests.Controllers
         [TestMethod]
         public void LeerlingZitInSessieNaCorrectePost()
         {
-            Leerling leerling = new Leerling { Graad = new Graad { Nummer = 2 }, Jaar = 1 };
+            Leerling leerling = new Leerling { Graad = new Graad { Nummer = 2 , Jaar = 1} };
             LeerlingIndexViewModel leerlingIVM = new LeerlingIndexViewModel(leerling);
             homeController.Index(leerlingIVM);
             Assert.IsNotNull(_sessionRepository["leerling"]);
@@ -63,7 +63,7 @@ namespace Klimatogrammen.Tests.Controllers
         [ExpectedException(typeof (ArgumentException))]
         public void IndexGeeftViewTerugBijGraadTweeJaarNul()
         {
-            Leerling leerling = new Leerling { Graad = new Graad { Nummer = 2 }, Jaar = 0 };
+            Leerling leerling = new Leerling { Graad = new Graad { Nummer = 2 , Jaar = 0} };
             LeerlingIndexViewModel leerlingIVM = new LeerlingIndexViewModel(leerling);
             homeController.Index(leerlingIVM);
         }
@@ -72,7 +72,7 @@ namespace Klimatogrammen.Tests.Controllers
         [ExpectedException(typeof (ArgumentException))]
         public void IndexGeeftViewTerugBijGraadEenMetJaarEen()
         {
-            Leerling leerling = new Leerling { Graad = new Graad { Nummer = 1 }, Jaar = 1 };
+            Leerling leerling = new Leerling { Graad = new Graad { Nummer = 1, Jaar = 1} };
             LeerlingIndexViewModel leerlingIVM = new LeerlingIndexViewModel(leerling);
             homeController.Index(leerlingIVM);
         }

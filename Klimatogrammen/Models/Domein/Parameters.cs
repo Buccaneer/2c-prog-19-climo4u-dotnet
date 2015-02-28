@@ -161,7 +161,7 @@ namespace Klimatogrammen
 
         private int BerekenNeerslagZomer(Klimatogram klimatogram, bool correct)
         {
-            var latitude = klimatogram.Coordinaten.Latitude;
+            var latitude = klimatogram.Latitude;
             if (latitude == null)
             {
                 throw new ArgumentException("De coördinaten van het Klimatogram geven geen correcte breedtegraad terug");
@@ -236,7 +236,7 @@ namespace Klimatogrammen
 
         private int BerekenNeerslagWinter(Klimatogram klimatogram, bool correct)
         {
-            var latitude = klimatogram.Coordinaten.Latitude;
+            var latitude = klimatogram.Latitude;
             if (latitude == null)
             {
                 throw new ArgumentException("De coördinaten van het Klimatogram geven geen correcte breedtegraad terug");

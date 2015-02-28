@@ -12,7 +12,7 @@ namespace Klimatogrammen
 {
     public class Maand
     {
-
+        public int MaandId { get; set; }
         public Klimatogram Klimatogram { get; set; }
         
         public string Naam { get; set; }

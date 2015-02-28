@@ -13,9 +13,11 @@ namespace Klimatogrammen.Controllers
 {
     public class HomeController : Controller {
         private ISessionRepository _sessionRepository;
+        private IGraadRepository _graadRepository;
 
-        public HomeController(ISessionRepository sessieRepository) {
+        public HomeController(ISessionRepository sessieRepository, IGraadRepository graadRepitory) {
             _sessionRepository = sessieRepository;
+            _graadRepository = graadRepitory;
         }
 
         public ActionResult Index()
@@ -28,8 +30,9 @@ namespace Klimatogrammen.Controllers
             try {
                 if (ModelState.IsValid) {
                     Leerling l = new Leerling();
-                    l.Graad = leerlingIVM.Graad;
-                        l.Jaar = leerlingIVM.Jaar;
+
+                    Graad graad = _graadRepository.GeefGraad((int) leerlingIVM.Graad, leerlingIVM.Jaar == null ? 0:(int) leerlingIVM.Jaar);
+                    l.Graad = graad;
                     _sessionRepository["leerling"] = l;
                     return RedirectToAction("Index", "Klimatogram");
                 }

@@ -9,12 +9,8 @@ function makeGraph(klimatogram) {
     clearAlert();
     $("#container").css({ "width": "100%", "height": "400px" });
 
-    var temperaturen = $.map(klimatogram.GemiddeldeTemperatuur, function (data) {
-        return data.Waarde;
-    });
-    var neerslagen = $.map(klimatogram.GemiddeldeNeerslag, function (data) {
-        return data.Waarde;
-    });
+    var temperaturen = klimatogram.GemiddeldeTemperatuur;
+    var neerslagen = klimatogram.GemiddeldeNeerslag;
 
     var max;
     var maxNeerslag = Math.max.apply(Math, neerslagen);

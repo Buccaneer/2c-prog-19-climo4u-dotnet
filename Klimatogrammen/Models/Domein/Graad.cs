@@ -16,6 +16,8 @@ namespace Klimatogrammen
 
         public Graad()
         {
+            Continenten = new List<Continent>();
+            Vragen = new List<Vraag>();
         }
 
         public int Nummer
@@ -29,10 +31,10 @@ namespace Klimatogrammen
             }
         }
 
-        public int? Jaar { get; set; }
+        public int Jaar { get; set; }
 
-        public IEnumerable<Continent> Continenten { get; set; }
+        public virtual ICollection<Continent> Continenten { get; set; }
 
-        public IEnumerable<Vraag> Vragen { get; set; }
+        public virtual ICollection<Vraag> Vragen { get; set; }
     }
 }

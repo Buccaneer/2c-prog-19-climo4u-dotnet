@@ -12,24 +12,18 @@ using System.Web.Mvc;
 
 namespace Klimatogrammen.Controllers {
     public class KlimatogramController : Controller {
-        private IEnumerable<Continent> _continenten;
-
-        public KlimatogramController(IEnumerable<Continent> continenten) {
-            _continenten = continenten;
-        }
-
         public ActionResult Index(Leerling leerling) {
-            if (leerling == null) {
+            if (leerling == null || leerling.Graad == null) {
                 return RedirectToAction("Index", "Home");
             }
             KlimatogramKiezenIndexViewModel kIVM;
             switch (leerling.Graad.Nummer) {
                 case 1: {
-                        kIVM = new KlimatogramKiezenIndexViewModel(_continenten.First(c => c.Naam.Equals("Europa")));
+                    kIVM = new KlimatogramKiezenIndexViewModel(leerling.Graad.Continenten.ToList());
                         break;
                     }
                 case 2:
-                    kIVM = new KlimatogramKiezenIndexViewModel(_continenten);
+                    kIVM = new KlimatogramKiezenIndexViewModel(leerling.Graad.Continenten.ToList());
                     break;
                 default:
                     return RedirectToAction("Index", "Home");
@@ -44,7 +38,7 @@ namespace Klimatogrammen.Controllers {
                 return null;
             }
 
-            Continent continent = _continenten.First(c => c.Naam.Equals(kVM.Continent));
+            Continent continent = leerling.Graad.Continenten.First(c => c.Naam.Equals(kVM.Continent));
 
 
             if (!continent.Landen.Any()) {

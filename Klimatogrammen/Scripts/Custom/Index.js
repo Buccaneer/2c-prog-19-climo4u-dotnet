@@ -6,7 +6,7 @@
 });
 
 function behandelElement(waarde, $elem) {
-    if (waarde === "1") {
+    if (waarde === "2") {
         $($elem).fadeIn(1500);
         
     } else {

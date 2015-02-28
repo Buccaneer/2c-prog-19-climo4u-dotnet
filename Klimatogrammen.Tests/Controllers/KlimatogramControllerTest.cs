@@ -22,7 +22,7 @@ namespace Klimatogrammen.Tests.Controllers {
         public void Init() {
             //_sessionRepository = new SessionRepositoryMock();
             _continenten = new ContinentFactory().MaakContinenten();
-            _klimatogramController = new KlimatogramController(_continenten);
+            _klimatogramController = new KlimatogramController();
         }
 
         /// <summary>
@@ -41,7 +41,7 @@ namespace Klimatogrammen.Tests.Controllers {
         /// </summary>
         [TestMethod]
         public void GeeftLijstContinentenWeer() {
-            Leerling leerling = new Leerling { Graad = new Graad { Nummer = 2 }, Jaar = 1 };
+            Leerling leerling = new Leerling { Graad = new Graad { Nummer = 2 , Jaar = 1 }};
             ViewResult result = _klimatogramController.Index(leerling) as ViewResult;
             KlimatogramKiezenIndexViewModel kkIVM = result.Model as KlimatogramKiezenIndexViewModel;
             Assert.AreEqual(7, kkIVM.Continenten.Count());
@@ -53,7 +53,7 @@ namespace Klimatogrammen.Tests.Controllers {
  
         [TestMethod]
         public void GeeftLandenVoorGeselecteerdContinentWeer() {
-            Leerling leerling = new Leerling { Graad = new Graad { Nummer = 2 }, Jaar = 1 };
+            Leerling leerling = new Leerling { Graad = new Graad { Nummer = 2 , Jaar = 1 }};
           
             var vmContinent = new KlimatogramKiezenIndexViewModel();
             vmContinent.Continent = "Europa";
@@ -68,7 +68,7 @@ namespace Klimatogrammen.Tests.Controllers {
         ///  </summary>
         [TestMethod]
         public void GeeftLocatiesVoorGeselecteerdLandWeer() {
-            Leerling leerling = new Leerling { Graad = new Graad { Nummer = 2 }, Jaar = 1 };
+            Leerling leerling = new Leerling { Graad = new Graad { Nummer = 2 , Jaar = 1} };
             //_sessionRepository["leerling"] = leerling;
             var vmLand = new KlimatogramKiezenLandViewModel();
            
@@ -103,7 +103,7 @@ namespace Klimatogrammen.Tests.Controllers {
 
         [TestMethod]
         public void LeerlingInSessionWerdUitgebreidMetKlimatogram() {
-            Leerling leerling = new Leerling { Graad = new Graad { Nummer = 2 }, Jaar = 1 };
+            Leerling leerling = new Leerling { Graad = new Graad { Nummer = 2 , Jaar = 1 }};
             //_sessionRepository["leerling"] = leerling;
             var vmLocatie = new KlimatogramKiezenLocatieViewModel();
             Land land = _continenten.First(c => c.Naam.Equals("Europa")).Landen

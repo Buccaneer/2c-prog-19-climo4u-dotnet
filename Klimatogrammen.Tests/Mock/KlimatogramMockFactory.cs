@@ -37,7 +37,8 @@ namespace Klimatogrammen.Tests.Mock
             mock.Setup(k => k.GeefTotaleNeerslag()).Returns(174);
             mock.Setup(k => k.GeefTemperaturen()).Returns(gemiddeldeTemp);
             mock.Setup(k => k.GeefNeerslagen()).Returns(gemiddeldeNeer);
-            mock.Setup(k => k.Coordinaten).Returns(DbGeography.FromText("POINT(3.733300 51.050000)"));
+            mock.Setup(k => k.Latitude).Returns(3.7333);
+            mock.Setup(k => k.Latitude).Returns(51.0003);
             return mock;
         }
 
