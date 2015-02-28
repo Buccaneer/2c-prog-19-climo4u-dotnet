@@ -20,7 +20,7 @@ namespace Klimatogrammen
             Vragen = new List<Vraag>();
         }
 
-        public int Nummer
+        public virtual int Nummer
         {
             get { return _nummer; }
             set
@@ -31,7 +31,7 @@ namespace Klimatogrammen
             }
         }
 
-        public int Jaar { get; set; }
+        public virtual int Jaar { get; set; }
 
         public virtual ICollection<Continent> Continenten { get; set; }
 

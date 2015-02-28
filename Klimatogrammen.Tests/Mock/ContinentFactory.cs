@@ -13,7 +13,7 @@ namespace Klimatogrammen.Tests.Mock
     public class ContinentFactory
     {
 
-        public IEnumerable<Continent> MaakContinenten()
+        public ICollection<Continent> MaakContinenten()
         {
             Continent noordAmerika = new Continent("Noord-Amerika");
             Continent zuidAmerika = new Continent("Zuid-Amerika");
@@ -103,6 +103,18 @@ namespace Klimatogrammen.Tests.Mock
             continenten.Add(zuidAmerika);
             continenten.Add(oceanie);
             return continenten;
+        }
+
+        public ICollection<Continent> MaakContinenten(int graad)
+        {
+            ICollection<Continent> alleContinenten = MaakContinenten();
+            Collection<Continent> continenten = new Collection<Continent>();
+            if (graad == 1)
+            {
+                continenten.Add(alleContinenten.First(c => c.Naam.Equals("Europa")));
+                return continenten;
+            }
+            return alleContinenten;
         }
 
         private IEnumerable<Maand> VormMaanden(double[] temperaturen, int[] neerslagen)

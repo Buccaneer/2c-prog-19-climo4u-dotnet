@@ -11,18 +11,21 @@ using Moq;
 using System.Linq;
 using Klimatogrammen.Tests.Mock;
 
-namespace Klimatogrammen.Tests.Controllers {
+namespace Klimatogrammen.Tests.Controllers
+{
     [TestClass]
-    public class KlimatogramControllerTest {
+    public class KlimatogramControllerTest
+    {
 
         private KlimatogramController _klimatogramController;
-        private IEnumerable<Continent> _continenten;
-      
+        private GraadMockFactory _graadMockFactory;
+        private Mock<Graad> _graadMock;
+
         [TestInitialize]
-        public void Init() {
-            //_sessionRepository = new SessionRepositoryMock();
-            _continenten = new ContinentFactory().MaakContinenten();
+        public void Init()
+        {
             _klimatogramController = new KlimatogramController();
+            _graadMockFactory = new GraadMockFactory();
         }
 
         /// <summary>
@@ -30,7 +33,8 @@ namespace Klimatogrammen.Tests.Controllers {
         /// </summary>
 
         [TestMethod]
-        public void IndienGeenLeerlingInSessieRedirectNaarGraad() {
+        public void IndienGeenLeerlingInSessieRedirectNaarGraad()
+        {
             RedirectToRouteResult result = _klimatogramController.Index(null) as RedirectToRouteResult;
             Assert.AreEqual("Index", result.RouteValues["action"]);
             Assert.AreEqual("Home", result.RouteValues["controller"]);
@@ -40,26 +44,30 @@ namespace Klimatogrammen.Tests.Controllers {
         /// controleer geeft lijst continenten weer
         /// </summary>
         [TestMethod]
-        public void GeeftLijstContinentenWeer() {
-            Leerling leerling = new Leerling { Graad = new Graad { Nummer = 2 , Jaar = 1 }};
+        public void GeeftLijstContinentenWeer()
+        {
+            _graadMock = _graadMockFactory.MaakTweedeGraadEersteJaarAan();
+            Leerling leerling = new Leerling { Graad = _graadMock.Object };
             ViewResult result = _klimatogramController.Index(leerling) as ViewResult;
             KlimatogramKiezenIndexViewModel kkIVM = result.Model as KlimatogramKiezenIndexViewModel;
-            Assert.AreEqual(7, kkIVM.Continenten.Count());
+            CollectionAssert.AreEqual(_graadMock.Object.Continenten.Select(c => c.Naam).ToList(), kkIVM.Continenten.Select(c => c.Text).ToList());
         }
 
         /// <summary>
         /// controleer geeft correcte lijst met landen voor geselecteerd continent
         /// </summary>
- 
+
         [TestMethod]
-        public void GeeftLandenVoorGeselecteerdContinentWeer() {
-            Leerling leerling = new Leerling { Graad = new Graad { Nummer = 2 , Jaar = 1 }};
-          
+        public void GeeftLandenVoorGeselecteerdContinentWeer()
+        {
+            string europa = "Europa";
+            _graadMock = _graadMockFactory.MaakTweedeGraadEersteJaarAan();
+            Leerling leerling = new Leerling { Graad = _graadMock.Object };
             var vmContinent = new KlimatogramKiezenIndexViewModel();
-            vmContinent.Continent = "Europa";
-            var result = _klimatogramController.Index(leerling,vmContinent) as PartialViewResult;
+            vmContinent.Continent = europa;
+            var result = _klimatogramController.Index(leerling, vmContinent) as PartialViewResult;
             var vmLand = result.Model as KlimatogramKiezenLandViewModel;
-            Assert.AreEqual(_continenten.First(c => c.Naam.Equals("Europa")).Landen.Count, vmLand.Landen.Count());
+            CollectionAssert.AreEqual(_graadMock.Object.Continenten.First(c => c.Naam.Equals(europa)).Landen.Select(l => l.Naam).ToList(), vmLand.Landen.Select(l => l.Text).ToList());
         }
 
 
@@ -67,19 +75,18 @@ namespace Klimatogrammen.Tests.Controllers {
         /// controleer geeft correcte lijst met locaties (klimatogrammen) voor geselecteerd land
         ///  </summary>
         [TestMethod]
-        public void GeeftLocatiesVoorGeselecteerdLandWeer() {
-            Leerling leerling = new Leerling { Graad = new Graad { Nummer = 2 , Jaar = 1} };
-            //_sessionRepository["leerling"] = leerling;
+        public void GeeftLocatiesVoorGeselecteerdLandWeer()
+        {
+            string belgie = "België";
+            string europa = "Europa";
+            _graadMock = _graadMockFactory.MaakTweedeGraadEersteJaarAan();
+            Leerling leerling = new Leerling { Graad = _graadMock.Object };
             var vmLand = new KlimatogramKiezenLandViewModel();
-           
-            vmLand.Land = "België";
-
-            Continent continent = _continenten.First(c => c.Naam.Equals("Europa"));
-            var result = _klimatogramController.KiesLand(leerling,continent,vmLand) as PartialViewResult;
+            vmLand.Land = belgie;
+            var continent = _graadMock.Object.Continenten.First(c => c.Naam.Equals(europa));
+            var result = _klimatogramController.KiesLand(leerling, continent, vmLand) as PartialViewResult;
             var vmLocatie = result.Model as KlimatogramKiezenLocatieViewModel;
-            var count = continent.Landen
-                .FirstOrDefault(l => l.Naam.Equals("België")).Klimatogrammen.Count;
-            Assert.AreEqual(count, vmLocatie.Locaties.Count());
+            CollectionAssert.AreEqual(continent.Landen.First(l => l.Naam.Equals(belgie)).Klimatogrammen.Select(k => k.Locatie).ToList(), vmLocatie.Locaties.Select(l => l.Text).ToList());
         }
 
         /// <summary>
@@ -87,9 +94,10 @@ namespace Klimatogrammen.Tests.Controllers {
         /// </summary>
 
         [TestMethod]
-        public void LeerlingEersteGraadKanEnkelEuropaAlsContinentKiezen() {
-            Leerling leerling = new Leerling { Graad = new Graad { Nummer = 1 } };
-           
+        public void LeerlingEersteGraadKanEnkelEuropaAlsContinentKiezen()
+        {
+            _graadMock = _graadMockFactory.MaakEersteGraadAan();
+            Leerling leerling = new Leerling { Graad = _graadMock.Object };
             var result = _klimatogramController.Index(leerling) as ViewResult;
             var kkIVM = result.Model as KlimatogramKiezenIndexViewModel;
             Assert.AreEqual(1, kkIVM.Continenten.Count());
@@ -102,24 +110,27 @@ namespace Klimatogrammen.Tests.Controllers {
         /// </summary>
 
         [TestMethod]
-        public void LeerlingInSessionWerdUitgebreidMetKlimatogram() {
-            Leerling leerling = new Leerling { Graad = new Graad { Nummer = 2 , Jaar = 1 }};
-            //_sessionRepository["leerling"] = leerling;
+        public void LeerlingInSessionWerdUitgebreidMetKlimatogram()
+        {
+            string ukkel = "Ukkel";
+            _graadMock = _graadMockFactory.MaakTweedeGraadEersteJaarAan();
+            Leerling leerling = new Leerling { Graad = _graadMock.Object };
             var vmLocatie = new KlimatogramKiezenLocatieViewModel();
-            Land land = _continenten.First(c => c.Naam.Equals("Europa")).Landen
+            Land land = _graadMock.Object.Continenten.First(c => c.Naam.Equals("Europa")).Landen
                 .FirstOrDefault(l => l.Naam.Equals("België"));
-
-            vmLocatie.Locatie = "Ukkel";
-            _klimatogramController.KiesLocatie(leerling,land,vmLocatie);
-            Assert.AreEqual(land.Klimatogrammen.First(), leerling.Klimatogram);
+            vmLocatie.Locatie = ukkel;
+            _klimatogramController.KiesLocatie(leerling, land, vmLocatie);
+            Assert.AreEqual(land.Klimatogrammen.First(k => k.Locatie.Equals(ukkel)), leerling.Klimatogram);
         }
 
         /// <summary>
         /// Een leerling van de derde graad mag geen klimatogram kunnen kiezen.
         /// </summary>
         [TestMethod]
-        public void LeerlingVanDerdeGraadMagGeenKlimatogramKunnenKiezen() {
-            RedirectToRouteResult result = _klimatogramController.Index(new Leerling() { Graad = new Graad { Nummer = 3 } }) as RedirectToRouteResult;
+        public void LeerlingVanDerdeGraadMagGeenKlimatogramKunnenKiezen()
+        {
+            _graadMock = _graadMockFactory.MaakDerdeGraadAan();
+            RedirectToRouteResult result = _klimatogramController.Index(new Leerling() { Graad = _graadMock.Object }) as RedirectToRouteResult;
             Assert.IsNotNull(result);
         }
 

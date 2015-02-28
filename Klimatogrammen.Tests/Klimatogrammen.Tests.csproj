@@ -93,12 +93,12 @@
     <Compile Include="Controllers\OefeningVraagControllerTest.cs" />
     <Compile Include="Mock\ContinentFactory.cs" />
     <Compile Include="Mock\GraadMockFactory.cs" />
+    <Compile Include="Mock\GraadRepositoryMock.cs" />
     <Compile Include="Mock\KlimatogramMockFactory.cs" />
     <Compile Include="Mock\MaandMockFactory.cs" />
     <Compile Include="Mock\ParameterMockFactory.cs" />
     <Compile Include="Mock\SessionRepositoryMock.cs" />
     <Compile Include="Models\LandTest.cs" />
-    <Compile Include="Models\LeerlingTest.cs" />
     <Compile Include="Models\ContinentTest.cs" />
     <Compile Include="Models\KlimatogramTest.cs" />
     <Compile Include="Models\ParameterTest.cs" />

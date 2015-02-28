@@ -65,7 +65,8 @@ namespace Klimatogrammen.Tests.Models
             double[] temperaturen = { 5.1, 2.2, 10.5, 12.7, 18, 20.4, 21.2, 25.2, 30.1, 19, 10, 2.2 };
             var maanden = _maandMockFactory.MaakMaandenInJaarMock(neerslagen, temperaturen);
             Klimatogram k = new Klimatogram(maanden.Select(m => m.Object).ToList());
-            double gemiddelde = Math.Round(temperaturen.Average(), 1);
+            //double gemiddelde = Math.Round(temperaturen.Average(), 1);
+            double gemiddelde = temperaturen.Average();
             Assert.AreEqual(gemiddelde, k.GeefGemiddeldeTemperatuur());
         }
     }

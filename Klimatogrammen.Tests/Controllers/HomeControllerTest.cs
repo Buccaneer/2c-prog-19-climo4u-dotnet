@@ -7,6 +7,7 @@ using System.Web.Mvc;
 using System.Web.SessionState;
 using Klimatogrammen.Controllers;
 using Klimatogrammen.Infrastructure;
+using Klimatogrammen.Models.DAL;
 using Klimatogrammen.Models.Domein;
 using Klimatogrammen.Tests.Mock;
 using Klimatogrammen.ViewModels;
@@ -18,34 +19,35 @@ namespace Klimatogrammen.Tests.Controllers
     [TestClass]
     public class HomeControllerTest
     {
-        private HomeController homeController;
+        private HomeController _homeController;
         private ISessionRepository _sessionRepository;
+        private IGraadRepository _graadRepository;
+        private GraadMockFactory _graadMockFactory;
+        private Mock<Graad> _graadMock;
 
         [TestInitialize]
         public void Init()
         {
-           _sessionRepository= new SessionRepositoryMock();
-            homeController = new HomeController(_sessionRepository, null);
+            _sessionRepository= new SessionRepositoryMock();
+            _graadRepository = new GraadRepositoryMock();
+            _graadMockFactory = new GraadMockFactory();
+            _homeController = new HomeController(_sessionRepository, _graadRepository);
         }
 
         [TestMethod]
         public void IndexIsNietNull()
         {
-            // Arrange
-
-            // Act
-            ViewResult result = homeController.Index() as ViewResult;
-
-            // Assert
+            ViewResult result = _homeController.Index() as ViewResult;
             Assert.IsNotNull(result);
         }
 
         [TestMethod]
         public void IndexHttpPostRedirectNaarAndereView()
         {
-            Leerling leerling = new Leerling{ Graad = new Graad{ Nummer = 2 , Jaar = 1 }};
+            _graadMock = _graadMockFactory.MaakTweedeGraadEersteJaarAan();
+            Leerling leerling = new Leerling{ Graad = _graadMock.Object};
             LeerlingIndexViewModel leerlingIVM = new LeerlingIndexViewModel(leerling);
-            RedirectToRouteResult result = homeController.Index(leerlingIVM) as RedirectToRouteResult;
+            RedirectToRouteResult result = _homeController.Index(leerlingIVM) as RedirectToRouteResult;
             Assert.AreEqual("Index", result.RouteValues["action"]);
             Assert.AreEqual("Klimatogram", result.RouteValues["controller"]);
         }
@@ -53,28 +55,33 @@ namespace Klimatogrammen.Tests.Controllers
         [TestMethod]
         public void LeerlingZitInSessieNaCorrectePost()
         {
-            Leerling leerling = new Leerling { Graad = new Graad { Nummer = 2 , Jaar = 1} };
+            _graadMock = _graadMockFactory.MaakTweedeGraadEersteJaarAan();
+            Leerling leerling = new Leerling { Graad = _graadMock.Object };
             LeerlingIndexViewModel leerlingIVM = new LeerlingIndexViewModel(leerling);
-            homeController.Index(leerlingIVM);
+            _homeController.Index(leerlingIVM);
             Assert.IsNotNull(_sessionRepository["leerling"]);
         }
 
         [TestMethod]
         [ExpectedException(typeof (ArgumentException))]
-        public void IndexGeeftViewTerugBijGraadTweeJaarNul()
+        public void IndexGeeftViewTerugBijGraadTweeJaarNul() //overbodige test?
         {
-            Leerling leerling = new Leerling { Graad = new Graad { Nummer = 2 , Jaar = 0} };
+            _graadMock = _graadMockFactory.MaakTweedeGraadEersteJaarAan();
+            _graadMock.Setup(m => m.Jaar).Returns(0);
+            Leerling leerling = new Leerling { Graad = _graadMock.Object };
             LeerlingIndexViewModel leerlingIVM = new LeerlingIndexViewModel(leerling);
-            homeController.Index(leerlingIVM);
+            _homeController.Index(leerlingIVM);
         }
 
         [TestMethod]
         [ExpectedException(typeof (ArgumentException))]
-        public void IndexGeeftViewTerugBijGraadEenMetJaarEen()
+        public void IndexGeeftViewTerugBijGraadEenMetJaarEen() //overbodige test?
         {
-            Leerling leerling = new Leerling { Graad = new Graad { Nummer = 1, Jaar = 1} };
+            _graadMock = _graadMockFactory.MaakEersteGraadAan();
+            _graadMock.Setup(m => m.Jaar).Returns(1);
+            Leerling leerling = new Leerling { Graad = _graadMock.Object };
             LeerlingIndexViewModel leerlingIVM = new LeerlingIndexViewModel(leerling);
-            homeController.Index(leerlingIVM);
+            _homeController.Index(leerlingIVM);
         }
     }
 }

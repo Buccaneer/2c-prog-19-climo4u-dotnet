@@ -14,7 +14,8 @@ using System.Linq;
 namespace Klimatogrammen.Tests.Controllers
 {
     [TestClass]
-    public class OefeningVraagControllerTest {
+    public class OefeningVraagControllerTest 
+    {
         private OefeningVragenController _vraagController;
         private Mock<Klimatogram> _mockKlimatogram;
         private Mock<Graad> _graadMock;
@@ -93,10 +94,8 @@ namespace Klimatogrammen.Tests.Controllers
         }
 
         [TestMethod]
-        public void LeerlingNullRedirectNaarGraadSelectie(){
-    
-
-    //{
+        public void LeerlingNullRedirectNaarGraadSelectie()
+        {
         //    VraagRepository vRep = VraagRepository.CreerVragenVoorKlimatogram(_mockKlimatogram);
             RedirectToRouteResult result = _vraagController.Index(null, null) as RedirectToRouteResult;
             //Assert.IsNotNull(result);
@@ -105,7 +104,7 @@ namespace Klimatogrammen.Tests.Controllers
         }
 
         [TestMethod]
-        public void VragenRepositoryNullRedirectNaarKlimatogramSelectie()
+        public void GeenVragenRedirectNaarKlimatogramSelectie()
         {
             RedirectToRouteResult result = _vraagController.Index(new Leerling() { Graad = _graadMock.Object }, null) as RedirectToRouteResult;
             //Assert.IsNotNull(result);

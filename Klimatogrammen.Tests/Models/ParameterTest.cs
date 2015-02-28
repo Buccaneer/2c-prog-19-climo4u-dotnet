@@ -78,8 +78,10 @@ namespace Klimatogrammen.Tests.Models {
         [TestMethod]
         public void ParameterWarmsteMaandGeeftJuistAntwoordTerug() {
             Parameter p = new ParameterWarmsteMaand();
-
-            Assert.AreEqual("September", p.BerekenWaarde(_mockKlimatogram.Object));
+            var verwacht =
+                _mockKlimatogram.Object.Maanden.First(
+                    m => m.Temperatuur.Equals(_mockKlimatogram.Object.Maanden.Max(t => t.Temperatuur))).Naam;
+            Assert.AreEqual(verwacht, p.BerekenWaarde(_mockKlimatogram.Object));
         }
         #endregion
 
@@ -98,7 +100,7 @@ namespace Klimatogrammen.Tests.Models {
         [TestMethod]
         public void ParameterTemperatuurWarmsteMaandBerekentCorrecteWaarde() {
             Parameter p = new ParameterTemperatuurWarmsteMaand();
-            double verwacht = 25.2;
+            double verwacht = _mockKlimatogram.Object.Maanden.Max(m => m.Temperatuur);
 
             Assert.AreEqual(verwacht, p.BerekenWaarde(_mockKlimatogram.Object));
         }
@@ -119,8 +121,10 @@ namespace Klimatogrammen.Tests.Models {
         [TestMethod]
         public void ParameterKoudsteMaandGeeftJuistAntwoordTerug() {
             Parameter p = new ParameterKoudsteMaand();
-
-            Assert.AreEqual("Februari", p.BerekenWaarde(_mockKlimatogram.Object));
+            var verwacht =
+                _mockKlimatogram.Object.Maanden.First(
+                    m => m.Temperatuur.Equals(_mockKlimatogram.Object.Maanden.Min(t => t.Temperatuur))).Naam;
+            Assert.AreEqual(verwacht, p.BerekenWaarde(_mockKlimatogram.Object));
         }
         #endregion
 
@@ -138,7 +142,7 @@ namespace Klimatogrammen.Tests.Models {
         [TestMethod]
         public void ParameterTemperatuurKoudsteMaandBerekentCorrecteWaarde() {
             Parameter p = new ParameterTemperatuurKoudsteMaand();
-            double verwacht = 2.0;
+            double verwacht = _mockKlimatogram.Object.GeefTemperaturen().Min();
 
             Assert.AreEqual(verwacht, p.BerekenWaarde(_mockKlimatogram.Object));
         }
@@ -151,7 +155,7 @@ namespace Klimatogrammen.Tests.Models {
             Parameter p = new ParameterAantalDrogeMaanden();
 
             ICollection<string> mogelijkeAntwoorden = p.GeefMogelijkeAntwoorden(_mockKlimatogram.Object);
-            ICollection<string> verwacht = Enumerable.Range(0, 13).Select(i => i.ToString()).ToList();
+            ICollection<string> verwacht = Enumerable.Range(1, 12).Select(i => i.ToString()).ToList();
 
             CollectionAssert.AreEquivalent(verwacht.ToList(), mogelijkeAntwoorden.ToList());
         }
@@ -159,7 +163,7 @@ namespace Klimatogrammen.Tests.Models {
         [TestMethod]
         public void ParameterAantalDrogeMaandenBerekentCorrecteWaarde() {
             Parameter p = new ParameterAantalDrogeMaanden();
-            int verwacht = 9;
+            int verwacht = _mockKlimatogram.Object.Maanden.Count(m => m.Neerslag/2.0 <= m.Temperatuur);
 
             Assert.AreEqual(verwacht, p.BerekenWaarde(_mockKlimatogram.Object));
         }
@@ -171,6 +175,7 @@ namespace Klimatogrammen.Tests.Models {
         [TestMethod]
         public void ParameterNeerslagInZomerGeeftAlleMogelijkeAntwoorden() {
             Parameter p = new ParameterNeerslagZomer();
+
             int zomer = 87;
             int winter = 88;
 
@@ -226,7 +231,6 @@ namespace Klimatogrammen.Tests.Models {
         public void ParameterGemiddeldeJaarTemperatuurGeeftCorrecteWaarde() {
             Parameter p = new ParameterGemiddeldeTemperatuurJaar();
             double verwacht = _mockKlimatogram.Object.GeefGemiddeldeTemperatuur();
-
             Assert.AreEqual(verwacht, p.BerekenWaarde(_mockKlimatogram.Object));
         }
         #endregion

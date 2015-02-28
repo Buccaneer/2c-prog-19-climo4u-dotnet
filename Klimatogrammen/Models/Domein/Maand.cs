@@ -12,14 +12,14 @@ namespace Klimatogrammen
 {
     public class Maand
     {
-        public int MaandId { get; set; }
-        public Klimatogram Klimatogram { get; set; }
+        public virtual int MaandId { get; set; }
+        public virtual Klimatogram Klimatogram { get; set; }
         
-        public string Naam { get; set; }
+        public virtual string Naam { get; set; }
 
-        public double Temperatuur { get; set; }
+        public virtual double Temperatuur { get; set; }
 
-        public int Neerslag { get; set; }
+        public virtual int Neerslag { get; set; }
 
         public Maand(Klimatogram k, string naam, double temperatuur, int neerslag)
         {

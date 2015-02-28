@@ -33,8 +33,8 @@ namespace Klimatogrammen.Tests.Mock
             mock.Setup(k => k.EindJaar).Returns(2010);
             mock.Setup(k => k.Maanden).Returns(maanden);
             mock.Setup(k => k.Locatie).Returns("Mock Klimatogram");
-            mock.Setup(k => k.GeefGemiddeldeTemperatuur()).Returns(5.1 + 2.2 + 10.5 + 12.7 + 18 + 20.4 + 21.2 + 25.2 + 30.1 + 19 + 10 + 2.2 / 12);
-            mock.Setup(k => k.GeefTotaleNeerslag()).Returns(174);
+            mock.Setup(k => k.GeefGemiddeldeTemperatuur()).Returns(gemiddeldeTemp.Average());
+            mock.Setup(k => k.GeefTotaleNeerslag()).Returns(gemiddeldeNeer.Sum());
             mock.Setup(k => k.GeefTemperaturen()).Returns(gemiddeldeTemp);
             mock.Setup(k => k.GeefNeerslagen()).Returns(gemiddeldeNeer);
             mock.Setup(k => k.Latitude).Returns(3.7333);
