@@ -5,6 +5,8 @@ namespace Klimatogrammen.Models.Domein {
     /// Een facade met alle logica en eigenschappen voor een determinatietabel voor te stellen.
     /// </summary>
     public class DeterminatieTabel {
+        public int DeterminatieTabelId { get; set; }
+
         public DeterminatieKnoop BeginKnoop { get; set; }
 
         private LinkedList<DeterminatieKnoop> _gebruikersPad;
@@ -81,6 +83,8 @@ namespace Klimatogrammen.Models.Domein {
         /// </summary>
         /// <returns>True of false afhankelijk van hierboven.</returns>
         public bool HeeftLeerlingEindeBereikt() {
+            MaakGebruikersPad();
+
             return _gebruikersPad.Last.Value is ResultaatKnoop;
         }
 
@@ -88,6 +92,8 @@ namespace Klimatogrammen.Models.Domein {
         /// Returneert de knoop of leaf waar de gebruiker zich momenteel bevindt in de determinatietabel.
         /// </summary>
         public DeterminatieKnoop GeefDeterminatieGebruiker() {
+            MaakGebruikersPad();
+
             return _gebruikersPad.Last.Value;
         }
 
