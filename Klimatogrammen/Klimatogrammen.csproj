@@ -160,13 +160,6 @@
     <Compile Include="Models\Domein\Land.cs" />
     <Compile Include="Models\Domein\Leerling.cs" />
     <Compile Include="Models\Domein\Parameters.cs" />
-    <Compile Include="Models\Domein\VraagAantalDrogeMaanden.cs" />
-    <Compile Include="Models\Domein\VraagKoudsteMaand.cs" />
-    <Compile Include="Models\Domein\VraagNeerslagInDeWinter.cs" />
-    <Compile Include="Models\Domein\VraagNeerslagInDeZomer.cs" />
-    <Compile Include="Models\Domein\VraagTemperatuurKoudsteMaand.cs" />
-    <Compile Include="Models\Domein\VraagTemperatuurWarmsteMaand.cs" />
-    <Compile Include="Models\Domein\VraagWarmsteMaand.cs" />
     <Compile Include="Models\Domein\Operator.cs" />
     <Compile Include="Models\Domein\Parameter.cs" />
     <Compile Include="Models\Domein\ParameterFactory.cs" />

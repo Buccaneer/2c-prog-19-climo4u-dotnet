@@ -10,6 +10,7 @@ using System.Web.SessionState;
 using Klimatogrammen.Controllers;
 using Klimatogrammen.Infrastructure;
 using Klimatogrammen.Models.Domein;
+using Klimatogrammen.Tests.Mock;
 using Klimatogrammen.ViewModels;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;

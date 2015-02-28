@@ -23,17 +23,14 @@ namespace Klimatogrammen.Tests.Models
         [ExpectedException(typeof(ArgumentException))]
         public void IndienLeerlingTweedeGraadMagJaarNietNullZijn()
         {
-            Leerling l = new Leerling();
-            l.Graad = Graad.Twee;
-            l.Jaar = null;
+            Leerling l = new Leerling {Graad = new Graad {Nummer = 2}, Jaar = null};
         }
 
         [TestMethod]
         public void LeerlingTweedeGraadIsCorrect()
         {
-            Leerling l = new Leerling() { Graad = Graad.Twee, Jaar = 1 };
-
-            Assert.AreEqual(l.Graad, Graad.Twee);
+            Leerling l = new Leerling() { Graad = new Graad { Nummer = 2 }, Jaar = 1 };
+            Assert.AreEqual(l.Graad.Nummer, 2);
             Assert.AreEqual(l.Jaar, 1);
         }
 
@@ -41,28 +38,28 @@ namespace Klimatogrammen.Tests.Models
         [ExpectedException(typeof(ArgumentException))]
         public void LeerlingTweedeGraadMetJaarOnderDeGrensWaarde()
         {
-            Leerling l = new Leerling() { Graad = Graad.Twee, Jaar = 0 };
+            Leerling l = new Leerling() { Graad = new Graad{ Nummer = 2 }, Jaar = 0 };
         }
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
         public void LeerlingTweedeGraadMetJaarBovenDeGrensWaarde()
         {
-            Leerling l = new Leerling() { Graad = Graad.Twee, Jaar = 3 };
+            Leerling l = new Leerling() { Graad = new Graad { Nummer = 2 }, Jaar = 3 };
         }
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
         public void LeerlingEersteGraadMagGeenJaarMeeKrijgen()
         {
-            Leerling l = new Leerling() { Graad = Graad.Een, Jaar = 1 };
+            Leerling l = new Leerling() { Graad = new Graad { Nummer = 1 }, Jaar = 1 };
         }
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
         public void LeerlingDerdeGraadMagGeenJaarMeeKrijgen()
         {
-            Leerling l = new Leerling() { Graad = Graad.Drie, Jaar = 1 };
+            Leerling l = new Leerling() { Graad = new Graad { Nummer = 3 }, Jaar = 1 };
         }
 
 
