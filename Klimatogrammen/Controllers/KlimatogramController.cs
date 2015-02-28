@@ -83,7 +83,7 @@ namespace Klimatogrammen.Controllers {
             leerling.Klimatogram = klimatogram;
 
             object klim = new { GemiddeldeTemperatuur = klimatogram.Maanden.Select(maand => maand.Temperatuur).ToList(),
-                                GemiddeldeNeerslag = klimatogram.Maanden.Select(maand => maand.Temperatuur).ToList(),
+                                GemiddeldeNeerslag = klimatogram.Maanden.Select(maand => maand.Neerslag).ToList(),
                                 klimatogram.BeginJaar,
                                 klimatogram.EindJaar,
                                 Land = klimatogram.Land.Naam,
