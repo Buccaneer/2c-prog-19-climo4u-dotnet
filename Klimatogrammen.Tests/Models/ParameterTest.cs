@@ -161,7 +161,7 @@ namespace Klimatogrammen.Tests.Models {
             Parameter p = new ParameterAantalDrogeMaanden();
             int verwacht = 9;
 
-            Assert.AreEqual(9, p.BerekenWaarde(_mockKlimatogram.Object));
+            Assert.AreEqual(verwacht, p.BerekenWaarde(_mockKlimatogram.Object));
         }
 
         #endregion
