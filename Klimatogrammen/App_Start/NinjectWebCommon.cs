@@ -1,6 +1,7 @@
 using Klimatogrammen.Controllers;
 using Klimatogrammen.Infrastructure;
 using Klimatogrammen.Models.DAL;
+using Klimatogrammen.Models.Domein;
 using Microsoft.Ajax.Utilities;
 
 [assembly: WebActivatorEx.PreApplicationStartMethod(typeof(Klimatogrammen.App_Start.NinjectWebCommon), "Start")]
@@ -69,7 +70,7 @@ namespace Klimatogrammen.App_Start
                 .Bind<ISessionRepository>()
                 .To<SessionRepository>()
                 .InRequestScope();
-            kernel.Bind<IContinentRepository>().To<ContinentRepository>().InRequestScope();
+            kernel.Bind<IGraadRepository>().To<GraadRepository>().InRequestScope();
             kernel.Bind<KlimatogrammenContext>().ToSelf().InSingletonScope();
 
         }        
