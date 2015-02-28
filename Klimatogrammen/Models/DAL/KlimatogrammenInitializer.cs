@@ -20,6 +20,11 @@ namespace Klimatogrammen.Models.DAL
         {
             try
             {
+                Graad eersteGraad = new Graad() {Nummer = 1};
+                Graad tweedeGraadEersteJaar = new Graad() {Nummer = 2, Jaar = 1};
+                Graad tweedeGraadTweedeJaar = new Graad() {Nummer = 2, Jaar = 2};
+                Graad derdeGraad = new Graad() {Nummer =3};
+
                 Continent noordAmerika = new Continent("Noord-Amerika");
                 Continent zuidAmerika = new Continent("Zuid-Amerika");
                 Continent antartica = new Continent("Antartica");
@@ -27,7 +32,7 @@ namespace Klimatogrammen.Models.DAL
                 Continent azie = new Continent("Azië");
                 Continent afrika = new Continent("Afrika");
                 Continent oceanie = new Continent("Oceanië");
-                #region "data"
+                #region "data Continenten"
 
                 Land belgie = new Land("België");
                 
@@ -105,7 +110,12 @@ namespace Klimatogrammen.Models.DAL
                 oceanie.VoegLandToe(australie);
 
                 #endregion
-                context.Continenten.AddRange(new[] { noordAmerika, zuidAmerika, antartica, europa, azie, afrika, oceanie });
+
+                eersteGraad.Continenten = new [] {europa};
+                tweedeGraadEersteJaar.Continenten = new [] {europa,antartica,noordAmerika,zuidAmerika,azie,afrika,oceanie};
+                tweedeGraadTweedeJaar.Continenten = new [] { europa, antartica, noordAmerika, zuidAmerika, azie, afrika, oceanie };
+                derdeGraad.Continenten = new [] { europa, antartica, noordAmerika, zuidAmerika, azie, afrika, oceanie };
+                context.Graden.AddRange(new[] { eersteGraad, tweedeGraadEersteJaar,tweedeGraadTweedeJaar,derdeGraad });
                 context.SaveChanges();
 
 

@@ -15,7 +15,7 @@ namespace Klimatogrammen.Models.DAL {
             
         }
 
-        public DbSet<Continent> Continenten { get; set; }
+        public DbSet<Graad> Graden { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder) {
             base.OnModelCreating(modelBuilder);
