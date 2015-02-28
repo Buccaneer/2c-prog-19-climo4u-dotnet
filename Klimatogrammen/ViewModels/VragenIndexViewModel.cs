@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using WebGrease.Css.Extensions;
 
 namespace Klimatogrammen.ViewModels
 {
@@ -12,13 +13,10 @@ namespace Klimatogrammen.ViewModels
     {
         public ICollection<VraagViewModel> VraagViewModels { get; set; }
 
-        public VragenIndexViewModel(VraagRepository vRep)
+        public VragenIndexViewModel(IEnumerable<Vraag> vragen, Klimatogram klimatogram)
         {
             VraagViewModels = new List<VraagViewModel>();
-            foreach(Vraag v in vRep.Vragen)
-            {
-                VraagViewModels.Add(new VraagViewModel(v.GeefVraagTekst(), v.GeefMogelijkeAntwoorden()));
-            }
+            vragen.ForEach(v => VraagViewModels.Add(new VraagViewModel(v.VraagTekst, v.Parameter.GeefMogelijkeAntwoorden(klimatogram))));
         }
 
     }
@@ -46,7 +44,6 @@ namespace Klimatogrammen.ViewModels
 
         public VraagViewModel()
         {
-
         }
 
     }

@@ -13,13 +13,9 @@ namespace Klimatogrammen
     public class Graad
     {
         private int _nummer;
-        private IEnumerable<Continent> _continenten;
-        private IEnumerable<Vraag> _vragen;
 
         public Graad()
         {
-            _continenten = new Collection<Continent>();
-            _vragen = new Collection<Vraag>();
         }
 
         public int Nummer
@@ -33,28 +29,10 @@ namespace Klimatogrammen
             }
         }
 
-        public IEnumerable<Continent> Continenten
-        {
-            get
-            {
-                if (Nummer == 1)
-                {
-                    return _continenten.Where(c => c.Naam.Equals("Europa"));
-                }
-                return _continenten;
-            }
-            set { _continenten = value; }
-        }
+        public int? Jaar { get; set; }
 
-        public IEnumerable<Vraag> Vragen
-        {
-            get
-            {
-                if (Nummer == 1)
-                    return _vragen;
-                throw new NotSupportedException();
-            }
-            set { _vragen = value; }
-        }
+        public IEnumerable<Continent> Continenten { get; set; }
+
+        public IEnumerable<Vraag> Vragen { get; set; }
     }
 }

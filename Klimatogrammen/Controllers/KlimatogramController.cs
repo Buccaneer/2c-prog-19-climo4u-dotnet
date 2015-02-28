@@ -23,15 +23,15 @@ namespace Klimatogrammen.Controllers {
                 return RedirectToAction("Index", "Home");
             }
             KlimatogramKiezenIndexViewModel kIVM = null;
-            switch (leerling.Graad) {
-                case Graad.Een: {
+            switch (leerling.Graad.Nummer) {
+                case 1: {
                         kIVM = new KlimatogramKiezenIndexViewModel(_klimatogrammenRepository.GeefContinent("Europa"));
                         break;
                     }
-                case Graad.Twee:
+                case 2:
                     kIVM = new KlimatogramKiezenIndexViewModel(_klimatogrammenRepository.GeefContinenten());
                     break;
-                case Graad.Drie:
+                default:
                     return RedirectToAction("Index", "Home");
             }
 
@@ -90,7 +90,15 @@ namespace Klimatogrammen.Controllers {
                 HttpContext.Session["klimatogram"] = klimatogram;
             leerling.Klimatogram = klimatogram;
 
-            object klim = new { klimatogram.GemiddeldeTemperatuur, klimatogram.GemiddeldeNeerslag, klimatogram.BeginJaar, klimatogram.EindJaar, Land = klimatogram.Land.Naam, klimatogram.Locatie, klimatogram.TotaalGemiddeldeTemperatuur, klimatogram.TotaalNeerslag };
+            object klim = new { GemiddeldeTemperatuur = klimatogram.Maanden.Select(maand => maand.Temperatuur).ToList(),
+                                GemiddeldeNeerslag = klimatogram.Maanden.Select(maand => maand.Temperatuur).ToList(),
+                                klimatogram.BeginJaar,
+                                klimatogram.EindJaar,
+                                Land = klimatogram.Land.Naam,
+                                klimatogram.Locatie,
+                                TotaalGemiddeldeTemperatuur = klimatogram.GeefGemiddeldeTemperatuur(),
+                                TotaalNeerslag = klimatogram.GeefTotaleNeerslag()
+            };
 
             return Json(klim);
         }

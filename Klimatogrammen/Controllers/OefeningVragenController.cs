@@ -11,14 +11,14 @@ namespace Klimatogrammen.Controllers
     public class OefeningVragenController : Controller
     {
        // TODO : IMPLEMENT THIS CLASS
-        public ActionResult Index(Leerling leerling, VraagRepository vraagRepository)
+        public ActionResult Index(Leerling leerling, IEnumerable<Vraag> vragen)
         {
-            VragenIndexViewModel vIVM = new VragenIndexViewModel(vraagRepository);
+            VragenIndexViewModel vIVM = new VragenIndexViewModel(vragen, leerling.Klimatogram);
             return View(vIVM);
         }
 
         [HttpPost]
-        public ActionResult Index(Leerling leerling, VraagRepository vraagRepository, VragenIndexViewModel vragenIndexViewModel)
+        public ActionResult Index(Leerling leerling, IEnumerable<Vraag> vragen, VragenIndexViewModel vragenIndexViewModel)
         { 
             return View();
         }

@@ -6,12 +6,15 @@ using System.Threading.Tasks;
 using Klimatogrammen.Models.Domein;
 using Moq;
 
-namespace Klimatogrammen.Tests.Mock {
-    class ParameterMockFactory {
-        public Mock<Parameter> MaakParameterMock() {
+namespace Klimatogrammen.Tests.Mock
+{
+    public class ParameterMockFactory
+    {
+        public Mock<Parameter> MaakParameterMock()
+        {
             KlimatogramMockFactory kmf = new KlimatogramMockFactory();
             Mock<Klimatogram> klimMock = kmf.MaakKlimatogramMock();
-           Mock<Parameter> mock = new Mock<Parameter>();
+            Mock<Parameter> mock = new Mock<Parameter>();
             mock.Setup(p => p.GeefBeschrijving()).Returns("Gemockte parameter");
             mock.Setup(p => p.GeefMogelijkeAntwoorden(klimMock.Object))
                 .Returns(Enumerable.Range(1, 3).Select(i => "Item" + i).ToList());

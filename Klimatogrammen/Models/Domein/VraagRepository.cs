@@ -34,7 +34,7 @@ namespace Klimatogrammen.Models.Domein
         public void ValideerVraag(int vraag, string antwoord)
         {
             Vraag v = Vragen.ElementAt(vraag);
-            v.ValideerVraag(antwoord);
+            //v.ValideerVraag(antwoord);
             if (v.Resultaat.Equals(Resultaat.Juist))
             {
                 _juisteVragen.Add(v);

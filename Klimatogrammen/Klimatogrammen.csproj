@@ -143,8 +143,8 @@
     <Compile Include="Infrastructure\LeerlingModelBinder.cs" />
     <Compile Include="Infrastructure\SessionRepository.cs" />
     <Compile Include="Infrastructure\VraagRepositoryModelBinder.cs" />
+    <Compile Include="Models\Domein\IGraadRepository.cs" />
     <Compile Include="Models\Domein\Maand.cs" />
-    <Compile Include="Models\Domein\IContinentRepository.cs" />
     <Compile Include="Models\DAL\KlimatogrammenContext.cs" />
     <Compile Include="Models\DAL\KlimatogrammenInitializer.cs" />
     <Compile Include="Models\DAL\ContinentRepository.cs" />
