@@ -16,6 +16,7 @@ namespace Klimatogrammen.Tests.Mock {
             mock.Setup(p => p.GeefMogelijkeAntwoorden(klimMock.Object))
                 .Returns(Enumerable.Range(1, 3).Select(i => "Item" + i).ToList());
             mock.Setup(p => p.BerekenWaarde(klimMock.Object)).Returns("Item2");
+            return mock;
         }
     }
 }

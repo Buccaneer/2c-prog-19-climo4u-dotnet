@@ -11,11 +11,11 @@ namespace Klimatogrammen.Infrastructure
     {
         public object BindModel(ControllerContext controllerContext, ModelBindingContext modelBindingContext)
         {
-            Leerling leerling = controllerContext.HttpContext.Session["leerling"] as Leerling;
-            if (controllerContext.HttpContext.Session["vraagRepository"] == null && leerling != null)
-            {
-                return VraagRepository.CreerVragenVoorKlimatogram(leerling.Klimatogram);
-            }
+            //Leerling leerling = controllerContext.HttpContext.Session["leerling"] as Leerling;
+            //if (controllerContext.HttpContext.Session["vraagRepository"] == null && leerling != null)
+            //{
+            //    return VraagRepository.CreerVragenVoorKlimatogram(leerling.Klimatogram);
+            //}
             return controllerContext.HttpContext.Session["vraagRepository"] as VraagRepository;
         }
     }

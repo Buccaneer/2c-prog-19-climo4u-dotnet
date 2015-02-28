@@ -1,12 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Web;
-using System.Web.Services;
-using System.Web.Services.Protocols;
-using System.ComponentModel;
-using Klimatogrammen.Models.Domein;
 
-namespace Klimatogrammen
+namespace Klimatogrammen.Models.Domein
 {
     public abstract class Parameter
     {
