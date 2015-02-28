@@ -12,13 +12,14 @@ namespace Klimatogrammen
 {
     public class Graad
     {
-        private IEnumerable<Continent> _continenten;
         private int _nummer;
-        private IVraagRepository _vraagRepository;
+        private IEnumerable<Continent> _continenten;
+        private IEnumerable<Vraag> _vragen;
 
         public Graad()
         {
             _continenten = new Collection<Continent>();
+            _vragen = new Collection<Vraag>();
         }
 
         public int Nummer
@@ -49,11 +50,11 @@ namespace Klimatogrammen
         {
             get
             {
-                throw new System.NotImplementedException();
+                if (Nummer == 1)
+                    return _vragen;
+                throw new NotSupportedException();
             }
-            set
-            {
-            }
+            set { _vragen = value; }
         }
     }
 }

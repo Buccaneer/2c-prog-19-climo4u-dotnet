@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using Klimatogrammen.Infrastructure;
 
-namespace Klimatogrammen.Tests.Controllers {
+namespace Klimatogrammen.Tests.Mock {
     class SessionRepositoryMock : ISessionRepository {
         private IDictionary<string, object> _data = new Dictionary<string, object>(); 
         public object this[string sleutel] {

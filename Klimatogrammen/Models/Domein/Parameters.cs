@@ -114,8 +114,24 @@ namespace Klimatogrammen
 
     public class ParameterNeerslagZomer : Parameter
     {
-        private const string zomerNoorderBreedte = "April Mei Juni Juli Augustus September";
-        private const string zomerZuiderBreedte = "Oktober November December Januari Februari Maart";
+        private readonly string[] _zomerNoorderBreedte =
+        {
+            "April",
+            "Mei",
+            "Juni",
+            "Juli",
+            "Augustus",
+            "September"
+        };
+        private readonly string[] _zomerZuiderBreedte =
+        {
+            "Januari",
+            "Februari",
+            "Maart",
+            "Oktober",
+            "November",
+            "December"
+        };
 
         public override IComparable BerekenWaarde(Klimatogram klimatogram)
         {
@@ -130,7 +146,7 @@ namespace Klimatogrammen
             ICollection<string> mogelijkeAntwoorden = new Collection<string>();
             string neerslagCorrect = BerekenNeerslagZomer(klimatogram, true).ToString();
             string neerslagIncorrect = BerekenNeerslagZomer(klimatogram, false).ToString();
-            if (new Random().Next(0, 1) == 0) //willekeurige volgorde
+            if (new Random().Next(0, 2) == 0) //willekeurige volgorde
             {
                 mogelijkeAntwoorden.Add(neerslagCorrect);
                 mogelijkeAntwoorden.Add(neerslagIncorrect);
@@ -159,11 +175,11 @@ namespace Klimatogrammen
             {
                 if (latitude >= 0)
                 {
-                    if (zomerNoorderBreedte.Contains(m.Naam)) neerslag += m.Neerslag;
+                    if (_zomerNoorderBreedte.Contains(m.Naam)) neerslag += m.Neerslag;
                 }
                 else
                 {
-                    if (zomerZuiderBreedte.Contains(m.Naam)) neerslag += m.Neerslag;
+                    if (_zomerZuiderBreedte.Contains(m.Naam)) neerslag += m.Neerslag;
                 }
             }
             return neerslag;
@@ -172,8 +188,25 @@ namespace Klimatogrammen
 
     public class ParameterNeerslagWinter : Parameter
     {
-        private const string winterNoorderBreedte = "Oktober November December Januari Februari Maart";
-        private const string winterZuiderBreedte = "April Mei Juni Juli Augustus September";
+        private readonly string[] _winterNoorderBreedte =
+        {
+            "Januari",
+            "Februari",
+            "Maart",
+            "Oktober",
+            "November",
+            "December"
+        };
+
+        private readonly string[] _winterZuiderBreedte =
+        {
+            "April",
+            "Mei",
+            "Juni",
+            "Juli",
+            "Augustus",
+            "September"
+        };
 
         public override IComparable BerekenWaarde(Klimatogram klimatogram)
         {
@@ -188,7 +221,7 @@ namespace Klimatogrammen
             ICollection<string> mogelijkeAntwoorden = new Collection<string>();
             string neerslagCorrect = BerekenNeerslagWinter(klimatogram, true).ToString();
             string neerslagIncorrect = BerekenNeerslagWinter(klimatogram, false).ToString();
-            if (new Random().Next(0, 1) == 0) //willekeurige volgorde
+            if (new Random().Next(0, 2) == 0) //willekeurige volgorde
             {
                 mogelijkeAntwoorden.Add(neerslagCorrect);
                 mogelijkeAntwoorden.Add(neerslagIncorrect);
@@ -217,11 +250,11 @@ namespace Klimatogrammen
             {
                 if (latitude >= 0)
                 {
-                    if (winterNoorderBreedte.Contains(m.Naam)) neerslag += m.Neerslag;
+                    if (_winterNoorderBreedte.Contains(m.Naam)) neerslag += m.Neerslag;
                 }
                 else
                 {
-                    if (winterZuiderBreedte.Contains(m.Naam)) neerslag += m.Neerslag;
+                    if (_winterZuiderBreedte.Contains(m.Naam)) neerslag += m.Neerslag;
                 }
             }
             return neerslag;
@@ -230,11 +263,11 @@ namespace Klimatogrammen
 
     public class ParameterAantalDrogeMaanden : Parameter
     {
-        private const double factor = 2.0;
+        private readonly double _factor = 2.0;
 
         public override IComparable BerekenWaarde(Klimatogram klimatogram)
         {
-            return klimatogram.Maanden.Count(m => m.Neerslag / factor <= m.Temperatuur); ;
+            return klimatogram.Maanden.Count(m => m.Neerslag / _factor <= m.Temperatuur);
         }
         public override string GeefBeschrijving()
         {

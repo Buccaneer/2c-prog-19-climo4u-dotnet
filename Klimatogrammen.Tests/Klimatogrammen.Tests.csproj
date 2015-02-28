@@ -33,6 +33,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.2\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="Moq">
@@ -85,15 +89,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controllers\SessionRepositoryMock.cs" />
     <Compile Include="Controllers\KlimatogramControllerTest.cs" />
     <Compile Include="Controllers\OefeningVraagControllerTest.cs" />
+    <Compile Include="Mock\KlimatogramMockFactory.cs" />
+    <Compile Include="Mock\MaandMockFactory.cs" />
+    <Compile Include="Mock\SessionRepositoryMock.cs" />
     <Compile Include="Models\LandTest.cs" />
     <Compile Include="Models\LeerlingTest.cs" />
     <Compile Include="Models\ContinentTest.cs" />
     <Compile Include="Models\KlimatogramTest.cs" />
-    <Compile Include="Models\TemperatuurTest.cs" />
-    <Compile Include="Models\NeerslagTest.cs" />
     <Compile Include="Models\VraagRepositoryTest.cs" />
     <Compile Include="Models\VraagTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
