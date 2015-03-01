@@ -17,6 +17,8 @@ namespace Klimatogrammen.Models.DAL {
 
         public DbSet<Graad> Graden { get; set; }
 
+        public DbSet<DeterminatieTabel> DeterminatieTabel { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder) {
             base.OnModelCreating(modelBuilder);
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();

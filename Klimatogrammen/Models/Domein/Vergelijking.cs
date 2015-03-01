@@ -5,6 +5,8 @@ namespace Klimatogrammen.Models.Domein {
     /// Stelt een vergelijking voor tussen twee parameters. Een vergelijking in de vorm van A vergelijkingsoperator B.
     /// </summary>
     public class Vergelijking {
+        public int VergelijkingId { get; set; }
+
         public Operator Operator { get; set; }
 
         public Parameter LinkerParameter { get; set; }

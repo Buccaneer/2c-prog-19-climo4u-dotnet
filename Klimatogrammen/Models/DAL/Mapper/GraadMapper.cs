@@ -11,7 +11,7 @@ namespace Klimatogrammen.Models.DAL.Mapper {
         public GraadMapper() {
             ToTable("graden");
             HasKey(g => new {g.Nummer, g.Jaar});
-            Ignore(g => g.Vragen);
+         //   Ignore(g => g.Vragen);
             HasMany(g => g.Continenten).WithMany();
         }
     }
