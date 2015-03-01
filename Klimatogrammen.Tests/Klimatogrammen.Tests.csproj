@@ -92,6 +92,7 @@
     <Compile Include="Controllers\KlimatogramControllerTest.cs" />
     <Compile Include="Controllers\OefeningVraagControllerTest.cs" />
     <Compile Include="Mock\ContinentFactory.cs" />
+    <Compile Include="Mock\DeterminatieTabelMock.cs" />
     <Compile Include="Mock\GraadMockFactory.cs" />
     <Compile Include="Mock\GraadRepositoryMock.cs" />
     <Compile Include="Mock\KlimatogramMockFactory.cs" />
@@ -102,12 +103,14 @@
     <Compile Include="Models\ContinentTest.cs" />
     <Compile Include="Models\KlimatogramTest.cs" />
     <Compile Include="Models\ParameterTest.cs" />
+    <Compile Include="Models\DeterminatieTabelTest.cs" />
     <Compile Include="Models\VraagTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controllers\HomeControllerTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App.config" />
+    <Content Include="Mock\DeterminatieTabel mock.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

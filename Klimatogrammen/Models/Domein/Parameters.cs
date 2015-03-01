@@ -310,4 +310,25 @@ namespace Klimatogrammen
             throw new NotSupportedException(); //wordt niet gebruikt bij de vragen
         }
     }
+
+    public class AantalMaandenTemperatuurParameter : Parameter
+    {
+        public double Temperatuur { get; set; }
+
+   
+        public override IComparable BerekenWaarde(Klimatogram klimatogram)
+        {
+            return klimatogram.Maanden.Count(maand => maand.Temperatuur >= Temperatuur);
+        }
+
+        public override string GeefBeschrijving()
+        {
+            return "Aantal maanden groter of gelijk aan x temperatuur";
+        }
+
+        public override ICollection<string> GeefMogelijkeAntwoorden(Klimatogram klimatogram)
+        {
+            throw new NotSupportedException();
+        }
+    }
 }
