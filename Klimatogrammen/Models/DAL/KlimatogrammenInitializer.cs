@@ -47,8 +47,8 @@ namespace Klimatogrammen.Models.DAL
 
             //Nee knoop aanmaken van de beginknoop
             Vergelijking vergelijking3 = new Vergelijking();
-            vergelijking3.LinkerParameter = new AantalMaandenTemperatuurParameter { Temperatuur = 10 };
-            vergelijking3.RechterParameter = parameterFactory.MaakConstanteParameter(4);
+            vergelijking3.LinkerParameter = parameterFactory.MaakParameter("Tw4");
+            vergelijking3.RechterParameter = parameterFactory.MaakConstanteParameter(10);
             vergelijking3.Operator = Operator.KleinerDan;
 
             //Resultaatknoop aanmaken van vergelijking 3

@@ -4,7 +4,7 @@ namespace Klimatogrammen.Models.Domein
 {
     public class ParameterFactory
     {
-        private Parameter[] _parameters = new Parameter[9];
+        private Parameter[] _parameters = new Parameter[10];
         public Parameter MaakParameter(string code)
         {
             switch (code)
@@ -36,6 +36,9 @@ namespace Klimatogrammen.Models.Domein
                 case "Nj":
                     return _parameters[8] ??
                            (_parameters[8] =new ParameterTotaleNeerslagJaar() {ParameterId = "Nj"});
+                case "Tw4":
+                    return _parameters[9] ??
+                         (_parameters[9] = new TemperatuurVierdeWarmsteMaandParameter() { ParameterId = "Tw4" });
                 default:
                     throw new ArgumentException("Er werd een ongeldige code meegegeven");
             }

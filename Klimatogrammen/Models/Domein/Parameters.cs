@@ -279,30 +279,7 @@ namespace Klimatogrammen
         }
     }
 
-    public class AantalMaandenTemperatuurParameter : Parameter
-    {
-        public double Temperatuur { get; set; }
-
-        public AantalMaandenTemperatuurParameter() {
-            ParameterId = "Aantal maanden temperatuur hoger dan";
-        }
    
-        public override IComparable BerekenWaarde(Klimatogram klimatogram)
-        {
-            return klimatogram.Maanden.Count(maand => maand.Temperatuur >= Temperatuur);
-        }
-
-        public override string GeefBeschrijving()
-        {
-            return "Aantal maanden groter of gelijk aan x temperatuur";
-        }
-
-        public override ICollection<string> GeefMogelijkeAntwoorden(Klimatogram klimatogram)
-        {
-            throw new NotSupportedException();
-        }
-    }
-
     public class TemperatuurVierdeWarmsteMaandParameter : Parameter
     {
 
