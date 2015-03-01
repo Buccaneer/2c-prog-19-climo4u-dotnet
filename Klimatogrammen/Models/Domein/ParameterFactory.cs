@@ -9,23 +9,23 @@ namespace Klimatogrammen.Models.Domein
             switch (code)
             {
                 case "Warmste Maand":
-                    return new ParameterWarmsteMaand();
+                    return new ParameterWarmsteMaand() {ParameterId = "Warmste Maand"};
                 case "Koudste Maand":
-                    return new ParameterKoudsteMaand();
+                    return new ParameterKoudsteMaand() {ParameterId = "Koudste Maand"};
                 case "Tw":
-                    return new ParameterTemperatuurWarmsteMaand();
+                    return new ParameterTemperatuurWarmsteMaand() {ParameterId = "Tw"};
                 case "Tk":
-                    return new ParameterTemperatuurKoudsteMaand();
+                    return new ParameterTemperatuurKoudsteMaand() {ParameterId = "Tk"};
                 case "Nz":
-                    return new ParameterNeerslagZomer();
+                    return new ParameterNeerslagZomer() {ParameterId = "Nz"};
                 case "Nw":
-                    return new ParameterNeerslagWinter();
+                    return new ParameterNeerslagWinter() {ParameterId = "Nw"};
                 case "D":
-                    return new ParameterAantalDrogeMaanden();
+                    return new ParameterAantalDrogeMaanden() {ParameterId = "D"};
                 case "Tj":
-                    return new ParameterGemiddeldeTemperatuurJaar();
+                    return new ParameterGemiddeldeTemperatuurJaar() {ParameterId = "Tj"};
                 case "Nj":
-                    return new ParameterTotaleNeerslagJaar();
+                    return new ParameterTotaleNeerslagJaar() {ParameterId = "Nj"};
                 default:
                     throw new ArgumentException("Er werd een ongeldige code meegegeven");
             }
