@@ -1,4 +1,6 @@
-﻿namespace Klimatogrammen.Models.Domein {
+﻿using System;
+
+namespace Klimatogrammen.Models.Domein {
     /// <summary>
     /// Stelt een vergelijking voor tussen twee parameters. Een vergelijking in de vorm van A vergelijkingsoperator B.
     /// </summary>
@@ -10,15 +12,15 @@
         public Parameter RechterParameter { get; set; }
 
         /// <summary>
-        /// Berekend het resultaat van deze vergelijking.
+        /// Berekent het resultaat van deze vergelijking.
         /// </summary>
         /// <param name="klimatogram">Het klimatogram waarmee dat de parameters moeten worden opgevuld.</param>
         /// <returns>Resultaat vergelijking.</returns>
         public bool BerekenResultaat(Klimatogram klimatogram) {
 
 
-            double links = (double)LinkerParameter.BerekenWaarde(klimatogram); ;
-            double rechts = (double)RechterParameter.BerekenWaarde(klimatogram);
+            double links = Double.Parse(LinkerParameter.BerekenWaarde(klimatogram).ToString());
+            double rechts = Double.Parse(RechterParameter.BerekenWaarde(klimatogram).ToString());
 
             switch (Operator) {
                 case Operator.GelijkAan:

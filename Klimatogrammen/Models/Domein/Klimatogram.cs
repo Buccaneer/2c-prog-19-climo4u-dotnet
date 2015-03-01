@@ -54,7 +54,7 @@ namespace Klimatogrammen.Models.Domein
 
         public virtual double GeefGemiddeldeTemperatuur()
         {
-            return Maanden.Average(maand => maand.Temperatuur);
+            return Math.Round(Maanden.Average(maand => maand.Temperatuur),1);
         }
     }
 }
