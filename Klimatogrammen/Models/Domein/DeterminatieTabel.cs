@@ -5,7 +5,7 @@ namespace Klimatogrammen.Models.Domein {
     /// Een facade met alle logica en eigenschappen voor een determinatietabel voor te stellen.
     /// </summary>
     public class DeterminatieTabel {
-        public int DeterminatieTabelId { get; set; }
+        public string Naam { get; set; }
 
         public DeterminatieKnoop BeginKnoop { get; set; }
 

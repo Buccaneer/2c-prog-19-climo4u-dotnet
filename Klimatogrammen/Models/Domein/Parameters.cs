@@ -315,6 +315,9 @@ namespace Klimatogrammen
     {
         public double Temperatuur { get; set; }
 
+        public AantalMaandenTemperatuurParameter() {
+            ParameterId = "Aantal maanden temperatuur hoger dan";
+        }
    
         public override IComparable BerekenWaarde(Klimatogram klimatogram)
         {

@@ -130,9 +130,15 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Models\DAL\DeterminatieTabelRepository.cs" />
     <Compile Include="Models\DAL\GraadRepository.cs" />
+    <Compile Include="Models\DAL\Mapper\DeterminatieKnoopMapper.cs" />
+    <Compile Include="Models\DAL\Mapper\DeterminatieTabelMapper.cs" />
     <Compile Include="Models\DAL\Mapper\GraadMapper.cs" />
     <Compile Include="Models\DAL\Mapper\MaandMapper.cs" />
+    <Compile Include="Models\DAL\Mapper\ParameterMapper.cs" />
+    <Compile Include="Models\DAL\Mapper\VergelijkingMapper.cs" />
+    <Compile Include="Models\DAL\Mapper\VraagMapper.cs" />
     <Compile Include="Models\Domein\BeslissingsKnoop.cs" />
     <Compile Include="Models\Domein\ConstanteParameter.cs" />
     <Compile Include="Controllers\KlimatogramController.cs" />
@@ -146,6 +152,7 @@
     <Compile Include="Infrastructure\LeerlingModelBinder.cs" />
     <Compile Include="Infrastructure\SessionRepository.cs" />
     <Compile Include="Infrastructure\VraagRepositoryModelBinder.cs" />
+    <Compile Include="Models\Domein\IDeterminatieTabelRepository.cs" />
     <Compile Include="Models\Domein\IGraadRepository.cs" />
     <Compile Include="Models\Domein\Maand.cs" />
     <Compile Include="Models\DAL\KlimatogrammenContext.cs" />

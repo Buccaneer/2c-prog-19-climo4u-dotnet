@@ -11,6 +11,8 @@ namespace Klimatogrammen
     public class Vraag
     {
 
+        public int VraagId { get; set; }
+
         public Resultaat Resultaat { get; set; }
 
         public Parameter Parameter { get; set; }
