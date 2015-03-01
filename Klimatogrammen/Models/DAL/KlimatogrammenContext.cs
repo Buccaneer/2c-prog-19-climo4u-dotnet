@@ -11,7 +11,9 @@ using Klimatogrammen.Models.Domein;
 namespace Klimatogrammen.Models.DAL {
     public class KlimatogrammenContext : DbContext {
 
-        public KlimatogrammenContext() : base("Klimatogrammen") {
+        public KlimatogrammenContext()
+            : base("Projecten2Groep19_db")
+        {
             
         }
 

@@ -5,20 +5,20 @@ using System.Web;
 using System.Web.Mvc;
 using Klimatogrammen.Models.Domein;
 using Klimatogrammen.ViewModels;
+using WebGrease.Css.Extensions;
 
 namespace Klimatogrammen.Controllers
 {
     public class OefeningVragenController : Controller
     {
-       // TODO : IMPLEMENT THIS CLASS
-        public ActionResult Index(Leerling leerling, IEnumerable<Vraag> vragen)
+        public ActionResult Index(Leerling leerling)
         {
-            VragenIndexViewModel vIVM = new VragenIndexViewModel(vragen, leerling.Klimatogram);
-            return View(vIVM);
+            IEnumerable<VraagViewModel> vraagVM = leerling.Graad.Vragen.Select(vraag => new VraagViewModel(vraag, leerling.Klimatogram));
+            return View(vraagVM);
         }
 
         [HttpPost]
-        public ActionResult Index(Leerling leerling, IEnumerable<Vraag> vragen, VragenIndexViewModel vragenIndexViewModel)
+        public ActionResult Index(Leerling leerling, IEnumerable<Vraag> vragen, VraagViewModel vragenViewModel)
         { 
             return View();
         }

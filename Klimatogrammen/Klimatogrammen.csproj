@@ -194,6 +194,7 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Models\Domein\Klassendiagram.cd" />
+    <None Include="Properties\PublishProfiles\Projecten2Groep19.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\Custom\Index.js" />
     <Content Include="Scripts\Custom\klimatogramIndex.js" />

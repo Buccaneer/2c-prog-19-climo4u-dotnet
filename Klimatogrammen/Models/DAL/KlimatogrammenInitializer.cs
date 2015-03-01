@@ -112,7 +112,7 @@ namespace Klimatogrammen.Models.DAL
             return tabel;
         }
 
-        private DeterminatieTabel MaakGrooteDeterminatieTabel() {
+        private DeterminatieTabel MaakGroteDeterminatieTabel() {
             return null;
         }
         private  ParameterFactory parameterFactory = new ParameterFactory();
@@ -134,7 +134,7 @@ namespace Klimatogrammen.Models.DAL
                 eersteGraad.Vragen.Add(new Vraag() { Parameter = parameterFactory.MaakParameter("Nz"), VraagTekst = "Hoeveelheid neerslag in de zomer?" });
                 eersteGraad.Vragen.Add(new Vraag() { Parameter = parameterFactory.MaakParameter("Nw"), VraagTekst = "Hoeveelheid neerslag in de winter?" });
 
-
+                //TODO: Graad 1 krijgt kleine tabel, graad 2 krijgt grote
                 context.DeterminatieTabel.Add(MaakKleineDeterminatieTabel());
 
                 Continent noordAmerika = new Continent("Noord-Amerika");

@@ -9,18 +9,6 @@ using WebGrease.Css.Extensions;
 
 namespace Klimatogrammen.ViewModels
 {
-    public class VragenIndexViewModel
-    {
-        public ICollection<VraagViewModel> VraagViewModels { get; set; }
-
-        public VragenIndexViewModel(IEnumerable<Vraag> vragen, Klimatogram klimatogram)
-        {
-            VraagViewModels = new List<VraagViewModel>();
-            vragen.ForEach(v => VraagViewModels.Add(new VraagViewModel(v.VraagTekst, v.Parameter.GeefMogelijkeAntwoorden(klimatogram))));
-        }
-
-    }
-
     public class VraagViewModel
     {
         public AntwoordViewModel Antw { get; set; }
@@ -34,11 +22,10 @@ namespace Klimatogrammen.ViewModels
 
         public string ValidatieTekst { get; set; }
 
-        public VraagViewModel(string vraag, ICollection<string> antwoorden)
+        public VraagViewModel(Vraag vraag, Klimatogram klimatogram)
         {
-            Antwoord = "1";
-            VraagTekst = vraag;
-            Antwoorden = new SelectList(antwoorden);
+            VraagTekst = vraag.VraagTekst;
+            Antwoorden = new SelectList(vraag.Parameter.GeefMogelijkeAntwoorden(klimatogram));
             
         }
 
