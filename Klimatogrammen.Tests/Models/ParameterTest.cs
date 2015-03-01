@@ -252,5 +252,25 @@ namespace Klimatogrammen.Tests.Models {
             Assert.AreEqual(verwacht, p.BerekenWaarde(_mockKlimatogram.Object));
         }
         #endregion
+
+        #region "Temperatuur vierde warmste maand"
+        [TestMethod]
+        [ExpectedException(typeof(NotSupportedException))]
+        public void ParameterAantalMaandenTemperatuurGeeftExceptionBijAanroepenMogelijkeAntwoordenTerug()
+        {
+            Parameter p = new TemperatuurVierdeWarmsteMaandParameter();
+
+            p.GeefMogelijkeAntwoorden(_mockKlimatogram.Object);
+        }
+
+        [TestMethod]
+        public void ParameterAantalMaandenTemperatuurBerekentCorrecteWaarde()
+        {
+            Parameter p = new TemperatuurVierdeWarmsteMaandParameter();
+            double verwacht = _mockKlimatogram.Object.Maanden.ToList().OrderByDescending(m => m.Temperatuur).ElementAt(3).Temperatuur;
+
+            Assert.AreEqual(verwacht, p.BerekenWaarde(_mockKlimatogram.Object));
+        }
+        #endregion
     }
 }

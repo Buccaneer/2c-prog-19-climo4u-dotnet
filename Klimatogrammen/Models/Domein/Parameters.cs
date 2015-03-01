@@ -12,15 +12,7 @@ namespace Klimatogrammen
     {
         public override IComparable BerekenWaarde(Klimatogram klimatogram)
         {
-            Maand maand = klimatogram.Maanden.First();
-            foreach (Maand m in klimatogram.Maanden)
-            {
-                if (m.Temperatuur > maand.Temperatuur)
-                {
-                    maand = m;
-                }
-            }
-            return maand.Naam;
+            return klimatogram.Maanden.First(m => m.Temperatuur.Equals(klimatogram.Maanden.Max(t => t.Temperatuur))).Naam;
         }
         public override string GeefBeschrijving()
         {
@@ -38,15 +30,7 @@ namespace Klimatogrammen
     {
         public override IComparable BerekenWaarde(Klimatogram klimatogram)
         {
-            Maand maand = klimatogram.Maanden.First();
-            foreach (Maand m in klimatogram.Maanden)
-            {
-                if (m.Temperatuur < maand.Temperatuur)
-                {
-                    maand = m;
-                }
-            }
-            return maand.Naam;
+            return klimatogram.Maanden.First(m => m.Temperatuur.Equals(klimatogram.Maanden.Min(t => t.Temperatuur))).Naam;
         }
         public override string GeefBeschrijving()
         {
@@ -64,15 +48,7 @@ namespace Klimatogrammen
     {
         public override IComparable BerekenWaarde(Klimatogram klimatogram)
         {
-            Maand maand = klimatogram.Maanden.First();
-            foreach (Maand m in klimatogram.Maanden)
-            {
-                if (m.Temperatuur > maand.Temperatuur)
-                {
-                    maand = m;
-                }
-            }
-            return maand.Temperatuur;
+            return klimatogram.Maanden.Max(m => m.Temperatuur);
         }
         public override string GeefBeschrijving()
         {
@@ -90,15 +66,7 @@ namespace Klimatogrammen
     {
         public override IComparable BerekenWaarde(Klimatogram klimatogram)
         {
-            Maand maand = klimatogram.Maanden.First();
-            foreach (Maand m in klimatogram.Maanden)
-            {
-                if (m.Temperatuur < maand.Temperatuur)
-                {
-                    maand = m;
-                }
-            }
-            return maand.Temperatuur;
+            return klimatogram.Maanden.Min(m => m.Temperatuur);
         }
         public override string GeefBeschrijving()
         {
@@ -308,6 +276,25 @@ namespace Klimatogrammen
         public override ICollection<string> GeefMogelijkeAntwoorden(Klimatogram klimatogram)
         {
             throw new NotSupportedException(); //wordt niet gebruikt bij de vragen
+        }
+    }
+
+    public class TemperatuurVierdeWarmsteMaandParameter : Parameter
+    {
+
+        public override IComparable BerekenWaarde(Klimatogram klimatogram)
+        {
+            return klimatogram.Maanden.ToList().OrderByDescending(m => m.Temperatuur).ElementAt(3).Temperatuur;
+        }
+
+        public override string GeefBeschrijving()
+        {
+            return "De temperatuur van de vierde warmste maand";
+        }
+
+        public override ICollection<string> GeefMogelijkeAntwoorden(Klimatogram klimatogram)
+        {
+            throw new NotSupportedException();
         }
     }
 }

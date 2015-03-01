@@ -23,7 +23,7 @@ namespace Klimatogrammen.Tests.Models
         private MaandMockFactory _maandMockFactory;
 
         [TestInitialize]
-        public void init()
+        public void Init()
         {
             _maandMockFactory = new MaandMockFactory();
         }
