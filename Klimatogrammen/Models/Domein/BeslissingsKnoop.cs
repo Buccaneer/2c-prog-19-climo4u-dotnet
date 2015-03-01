@@ -9,17 +9,17 @@
 
         public DeterminatieKnoop NeeKnoop { get; set; }
 
-        public new DeterminatieKnoop NeemNeeKnoop() {
+        public override DeterminatieKnoop NeemNeeKnoop() {
             return NeeKnoop;
         }
 
-        public new DeterminatieKnoop NeemJuisteKnoop(Klimatogram klimatogram) {
+        public override DeterminatieKnoop NeemJuisteKnoop(Klimatogram klimatogram) {
             if (Vergelijking.BerekenResultaat(klimatogram))
                 return JaKnoop;
             return NeeKnoop;
         }
 
-        public new DeterminatieKnoop NeemJaKnoop() {
+        public override DeterminatieKnoop NeemJaKnoop() {
             return JaKnoop;
         }
 

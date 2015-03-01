@@ -16,8 +16,7 @@ namespace Klimatogrammen
 
         public Graad()
         {
-            Continenten = new List<Continent>();
-            Vragen = new List<Vraag>();
+         
         }
 
         public virtual int Nummer
