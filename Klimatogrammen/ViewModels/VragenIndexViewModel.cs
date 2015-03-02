@@ -29,17 +29,27 @@ namespace Klimatogrammen.ViewModels
     public class VraagViewModel
     {
         public string VraagTekst { get; set; }
+
         public SelectList Antwoorden { get; set; }
 
-        public bool Resultaat { get; set; }
-
-        public string ValidatieTekst { get; set; }
+        public bool? Resultaat { get; set; }
 
         public VraagViewModel(Vraag vraag, Klimatogram klimatogram)
         {
             VraagTekst = vraag.VraagTekst;
             Antwoorden = new SelectList(vraag.Parameter.GeefMogelijkeAntwoorden(klimatogram));
-
+            switch (vraag.Resultaat)
+            {
+                case Models.Domein.Resultaat.Fout:
+                    Resultaat = false;
+                    break;
+                case Models.Domein.Resultaat.Juist:
+                    Resultaat = true;
+                    break;
+                default:
+                    Resultaat = null;
+                    break;
+            }
         }
 
         public VraagViewModel()
@@ -50,6 +60,7 @@ namespace Klimatogrammen.ViewModels
 
     public class AntwoordViewModel
     {
+        [Required(ErrorMessage = "Alle antwoorden moeten ingevuld zijn", AllowEmptyStrings = false)]
         public string[] Antwoord { get; set; }
 
         public AntwoordViewModel(string[] antwoord)

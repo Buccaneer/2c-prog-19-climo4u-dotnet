@@ -198,6 +198,7 @@
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\Custom\Index.js" />
     <Content Include="Scripts\Custom\klimatogramIndex.js" />
+    <Content Include="Scripts\Custom\ToonKlimatogramBijLoad.js" />
     <Content Include="Scripts\highcharts-3d.js" />
     <Content Include="Scripts\highcharts-3d.src.js" />
     <Content Include="Scripts\highcharts-all.js" />

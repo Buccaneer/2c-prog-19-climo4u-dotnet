@@ -20,7 +20,7 @@
 
         public Vraag()
         {
-            Resultaat = Resultaat.Fout;
+            Resultaat = Resultaat.Onbepaald;
         }
     }
 }
