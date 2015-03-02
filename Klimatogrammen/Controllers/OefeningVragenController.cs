@@ -13,13 +13,14 @@ namespace Klimatogrammen.Controllers
     {
         public ActionResult Index(Leerling leerling)
         {
-            IEnumerable<VraagViewModel> vraagVM = leerling.Graad.Vragen.Select(vraag => new VraagViewModel(vraag, leerling.Klimatogram));
+            VragenIndexViewModel vraagVM = new VragenIndexViewModel(leerling.Graad.Vragen, leerling.Klimatogram);
             return View(vraagVM);
         }
 
         [HttpPost]
-        public ActionResult Index(Leerling leerling, IEnumerable<Vraag> vragen, VraagViewModel vragenViewModel)
+        public ActionResult Index(Leerling leerling, [Bind(Prefix = "Antwoorden")] AntwoordViewModel antwoorden)
         { 
+
             return View();
         }
     }

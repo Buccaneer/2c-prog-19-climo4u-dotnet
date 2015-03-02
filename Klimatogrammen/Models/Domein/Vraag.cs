@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Web;
-using System.Web.Services;
-using System.Web.Services.Protocols;
-using System.ComponentModel;
-using Klimatogrammen.Models.Domein;
-
-namespace Klimatogrammen
+﻿namespace Klimatogrammen.Models.Domein
 {
     public class Vraag
     {
@@ -24,6 +16,11 @@ namespace Klimatogrammen
             Resultaat = Parameter.BerekenWaarde(klimatogram).ToString().Equals(antwoord)
                 ? Resultaat = Resultaat.Juist
                 : Resultaat = Resultaat.Fout;
+        }
+
+        public Vraag()
+        {
+            Resultaat = Resultaat.Fout;
         }
     }
 }
