@@ -12,6 +12,10 @@ namespace Klimatogrammen
     {
         private double _waarde;
 
+        public ConstanteParameter() {
+            
+        }
+
         public ConstanteParameter(double waarde)
         {
             _waarde = waarde;
