@@ -3,11 +3,11 @@
     /// Een knoop waar een beslissing moet worden genomen volgens een vergelijking en waar een Ja of Nee tak uit voor
     /// </summary>
     public class BeslissingsKnoop : DeterminatieKnoop {
-        public Vergelijking Vergelijking { get; set; }
+        public virtual Vergelijking Vergelijking { get; set; }
 
-        public DeterminatieKnoop JaKnoop { get; set; }
+        public virtual DeterminatieKnoop JaKnoop { get; set; }
 
-        public DeterminatieKnoop NeeKnoop { get; set; }
+        public virtual DeterminatieKnoop NeeKnoop { get; set; }
 
         public override DeterminatieKnoop NeemNeeKnoop() {
             return NeeKnoop;

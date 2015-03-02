@@ -10,7 +10,9 @@ namespace Klimatogrammen.Models.DAL {
         private KlimatogrammenContext _context;
         private DbSet<Graad> _graden;
         public Graad GeefGraad(int graad, int jaar) {
-            return _graden.FirstOrDefault(g => g.Nummer == graad && g.Jaar == jaar);
+            return _graden
+                .Include(g => g.Vragen.Select(v => v.Parameter))
+                .FirstOrDefault(g => g.Nummer == graad && g.Jaar == jaar);
         }
 
         public GraadRepository(KlimatogrammenContext context) {

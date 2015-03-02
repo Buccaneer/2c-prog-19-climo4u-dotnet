@@ -9,9 +9,9 @@ namespace Klimatogrammen.Models.Domein {
 
         public Operator Operator { get; set; }
 
-        public Parameter LinkerParameter { get; set; }
+        public virtual Parameter LinkerParameter { get; set; }
 
-        public Parameter RechterParameter { get; set; }
+        public virtual Parameter RechterParameter { get; set; }
 
         /// <summary>
         /// Berekent het resultaat van deze vergelijking.
