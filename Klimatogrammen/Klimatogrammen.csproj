@@ -151,7 +151,6 @@
     <Compile Include="Infrastructure\LandModelBinder.cs" />
     <Compile Include="Infrastructure\LeerlingModelBinder.cs" />
     <Compile Include="Infrastructure\SessionRepository.cs" />
-    <Compile Include="Infrastructure\VraagRepositoryModelBinder.cs" />
     <Compile Include="Models\Domein\IDeterminatieTabelRepository.cs" />
     <Compile Include="Models\Domein\IGraadRepository.cs" />
     <Compile Include="Models\Domein\Maand.cs" />
@@ -179,7 +178,6 @@
     <Compile Include="ViewModels\KlimatogramKiezenIndexViewModel.cs" />
     <Compile Include="ViewModels\LeerlingIndexViewModel.cs" />
     <Compile Include="Models\Domein\Vraag.cs" />
-    <Compile Include="Models\Domein\VraagRepository.cs" />
     <Compile Include="ViewModels\VragenIndexViewModel.cs" />
   </ItemGroup>
   <ItemGroup>

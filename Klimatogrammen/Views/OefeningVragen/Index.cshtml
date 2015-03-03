@@ -26,12 +26,12 @@
                     @Html.DropDownListFor(model => model.Antwoorden.Antwoord[count], v.Antwoorden, htmlAttributes: new {@class = "form-control"})
                     @Html.ValidationMessageFor(model => model.Antwoorden.Antwoord[count], "", new {@class = "text-danger"})
                     @if (v.Resultaat == false)
-                        {
+                    {
                         @Html.Label("Dit is niet correct, probeer opnieuw!", new {@class = "text-danger"})
-                        }else if (v.Resultaat == true)
-                        {
-                            @Html.Label("Dit is juist, goed zo!", new {@class="text-success"})
-                        }
+                    }else if (v.Resultaat == true)
+                    {
+                        @Html.Label("Dit is juist, goed zo!", new {@class="text-success"})
+                    }
                 </div>
             </div>
 
@@ -39,10 +39,14 @@
         }
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Valideer" class="btn btn-default" />
+                @Html.ActionLink("Stoppen", "Index", "Home",null, new{@class = "btn btn-default"})
             </div>
+           
         </div>
     </div>
+
+    
 }
 
 @section Scripts {
