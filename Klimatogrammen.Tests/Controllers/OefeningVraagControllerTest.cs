@@ -32,7 +32,7 @@ namespace Klimatogrammen.Tests.Controllers
         [TestMethod]
         public void IndienGeenKlimatogramRedirectNaarKlimatogram() {
             RedirectToRouteResult result =
-                _vraagController.Index(new Leerling {Graad = _graadMock.Object}, null) as RedirectToRouteResult;
+                _vraagController.Index(new Leerling {Graad = _graadMock.Object}) as RedirectToRouteResult;
             Assert.AreEqual("Index", result.RouteValues["action"]);
             Assert.AreEqual("Klimatogram", result.RouteValues["controller"]);
         }
@@ -40,38 +40,42 @@ namespace Klimatogrammen.Tests.Controllers
         [TestMethod]
         public void GeeftVragenWeer() {
             ViewResult result =
-                _vraagController.Index(new Leerling {Graad = _graadMock.Object, Klimatogram = _mockKlimatogram.Object},
-                 _graadMock.Object.Vragen) as ViewResult;
-            VragenIndexViewModel vIVM = result.Model as VragenIndexViewModel;
-            Assert.AreEqual(7, vIVM.VraagViewModels.Count);
-            foreach (VraagViewModel v in vIVM.VraagViewModels) {
+                _vraagController.Index(new Leerling {Graad = _graadMock.Object, Klimatogram = _mockKlimatogram.Object}) as ViewResult;
+           VragenIndexViewModel vIVM = result.Model as VragenIndexViewModel;
+            Assert.AreEqual(_graadMock.Object.Vragen.Count, vIVM.Vragen.Count);
+            foreach (VraagViewModel v in vIVM.Vragen) {
                 Assert.IsNotNull(v.Antwoorden);
                 Assert.IsNotNull(v.VraagTekst);
             }
         }
 
         [TestMethod]
-        public void ValideertVragen() {
-            VragenIndexViewModel vIVM = new VragenIndexViewModel(_graadMock.Object.Vragen, _mockKlimatogram.Object);
-            foreach (VraagViewModel vVM in vIVM.VraagViewModels) {
-                vVM.Antwoord = vVM.Antwoorden.First().Text;
-            }
-            _vraagController.Index(new Leerling {Graad = _graadMock.Object, Klimatogram = _mockKlimatogram.Object},
-                _graadMock.Object.Vragen, vIVM);
-            foreach (VraagViewModel vVM in vIVM.VraagViewModels) {
-                Assert.IsNotNull(vVM.ValidatieTekst);
-            }
+        public void ValideertVragenFoutief() {
+            AntwoordViewModel aVM = new AntwoordViewModel(new string[] {"Juli"});
+            
+            ViewResult result = _vraagController.Index(new Leerling {Graad = _graadMock.Object, Klimatogram = _mockKlimatogram.Object},
+                aVM) as ViewResult;
+
+            VragenIndexViewModel vivm = result.Model as VragenIndexViewModel;
+
+            Assert.IsNotNull(vivm.Vragen.ElementAt(0).Resultaat);
+            Assert.IsFalse(vivm.Vragen.ElementAt(0).Resultaat.Value);
         }
 
         [TestMethod]
         public void AlleVragenZijnCorrect() {
-            VragenIndexViewModel vIVM = new VragenIndexViewModel(_graadMock.Object.Vragen, _mockKlimatogram.Object);
-            string[] antwoorden = {"September"};
-            vIVM.VraagViewModels.ElementAt(0).Antwoord = "September";
-            _vraagController.Index(new Leerling {Graad = _graadMock.Object, Klimatogram = _mockKlimatogram.Object},
-                _graadMock.Object.Vragen, vIVM);
-            foreach (VraagViewModel vVM in vIVM.VraagViewModels) {
-                Assert.IsTrue(vVM.Resultaat);
+            string[] antwoorden = { "September" };
+            AntwoordViewModel avm = new AntwoordViewModel(antwoorden);
+           
+
+
+            ViewResult result = _vraagController.Index(new Leerling {Graad = _graadMock.Object, Klimatogram = _mockKlimatogram.Object},
+                avm)as ViewResult;
+
+            VragenIndexViewModel vIVM = result.Model as VragenIndexViewModel;
+            foreach (VraagViewModel vVM in vIVM.Vragen) {
+                Assert.IsNotNull(vVM.Resultaat);
+                Assert.IsTrue(vVM.Resultaat.Value);
             }
         }
 
@@ -79,15 +83,16 @@ namespace Klimatogrammen.Tests.Controllers
         public void EnkelLeerlingEersteGraadKanVragenMaken() {
             _graadMock = _graadMockFactory.MaakTweedeGraadEersteJaarAan();
             RedirectToRouteResult result =
-                _vraagController.Index(new Leerling() {Graad = _graadMock.Object}, _graadMock.Object.Vragen) as
+                _vraagController.Index(new Leerling() {Graad = _graadMock.Object, Klimatogram = _mockKlimatogram.Object}) as
                     RedirectToRouteResult;
             //Assert.IsNotNull(result);
             Assert.AreEqual("Index", result.RouteValues["action"]);
             Assert.AreEqual("Klimatogram", result.RouteValues["controller"]);
-            //RedirectToRouteResult result2 = _vraagController.Index(new Leerling() { Graad = Graad.Drie }, vRep) as RedirectToRouteResult;
-            ////Assert.IsNotNull(result);
-            //Assert.AreEqual("Index", result.RouteValues["action"]);
-            //Assert.AreEqual("Home", result.RouteValues["controller"]); //zie opmerking
+            _graadMock = _graadMockFactory.MaakDerdeGraadAan();
+            RedirectToRouteResult result2 = _vraagController.Index(new Leerling() { Graad= _graadMock.Object,Klimatogram = _mockKlimatogram.Object}) as RedirectToRouteResult;
+            //Assert.IsNotNull(result);
+            Assert.AreEqual("Index", result.RouteValues["action"]);
+            Assert.AreEqual("Determinatie", result.RouteValues["controller"]); //zie opmerking
 
             // OPMERKING : 
             // Moet aangepast worden zodra Controllers beschikbaar zijn zodat Leerling 3de graad meteen naar Oefening gaat
@@ -97,23 +102,46 @@ namespace Klimatogrammen.Tests.Controllers
         public void LeerlingNullRedirectNaarGraadSelectie()
         {
         //    VraagRepository vRep = VraagRepository.CreerVragenVoorKlimatogram(_mockKlimatogram);
-            RedirectToRouteResult result = _vraagController.Index(null, null) as RedirectToRouteResult;
+            RedirectToRouteResult result = _vraagController.Index(null) as RedirectToRouteResult;
             //Assert.IsNotNull(result);
             Assert.AreEqual("Index", result.RouteValues["action"]);
             Assert.AreEqual("Home", result.RouteValues["controller"]);
         }
 
         [TestMethod]
-        public void GeenVragenRedirectNaarKlimatogramSelectie()
-        {
-            RedirectToRouteResult result = _vraagController.Index(new Leerling() { Graad = _graadMock.Object }, null) as RedirectToRouteResult;
+        public void GeenVragenRedirectNaarKlimatogramSelectie() {
+            _graadMock = _graadMockFactory.MaakTweedeGraadTweedeJaarAan();
+            RedirectToRouteResult result = _vraagController.Index(new Leerling() { Graad = _graadMock.Object, Klimatogram = _mockKlimatogram.Object}) as RedirectToRouteResult;
             //Assert.IsNotNull(result);
             Assert.AreEqual("Index", result.RouteValues["action"]);
             Assert.AreEqual("Klimatogram", result.RouteValues["controller"]);
-            RedirectToRouteResult result2 = _vraagController.Index(new Leerling() { Graad = _graadMock.Object }, null) as RedirectToRouteResult;
+            _graadMock = _graadMockFactory.MaakDerdeGraadAan();
+            RedirectToRouteResult result2 = _vraagController.Index(new Leerling() { Graad = _graadMock.Object , Klimatogram = _mockKlimatogram.Object}) as RedirectToRouteResult;
             //Assert.IsNotNull(result);
             Assert.AreEqual("Index", result2.RouteValues["action"]);
             Assert.AreEqual("Klimatogram", result2.RouteValues["controller"]);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(InvalidOperationException))]
+        public void GetJsonGeeftEnkelJsonTerugAlsErEenLeerlingBestaatMetKlimatogramIn() {
+            // getJson() --> regels GetJson() plaats fail in commentaar.
+            Assert.Fail("getJson() is geen geldige naam :p gelieve GetJson() te gebruiken.");
+
+            Leerling l = new Leerling() {Graad = _graadMock.Object};
+            JsonResult result = _vraagController.getJSON(l) as JsonResult;
+        
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(InvalidOperationException))]
+        public void GetJsonGooitFoutmeldingBijAanroepenZonderleerling() {
+            // getJson() --> regels GetJson() plaats fail in commentaar.
+            Assert.Fail("getJson() is geen geldige naam :p gelieve GetJson() te gebruiken.");
+
+            Leerling l = new Leerling() { Graad = _graadMock.Object };
+            JsonResult result = _vraagController.getJSON(null) as JsonResult;
+
         }
     }
 }

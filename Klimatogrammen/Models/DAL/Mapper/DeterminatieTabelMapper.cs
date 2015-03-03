@@ -9,7 +9,6 @@ namespace Klimatogrammen.Models.DAL.Mapper {
     public class DeterminatieTabelMapper : EntityTypeConfiguration<DeterminatieTabel> {
         public DeterminatieTabelMapper() {
             ToTable("determinatietabellen");
-            HasKey(d => d.Naam);
         }
     }
 }

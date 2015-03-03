@@ -71,7 +71,6 @@ namespace Klimatogrammen.App_Start
                 .To<SessionRepository>()
                 .InRequestScope();
             kernel.Bind<IGraadRepository>().To<GraadRepository>().InRequestScope();
-            kernel.Bind<IDeterminatieTabelRepository>().To<DeterminatieTabelRepository>().InRequestScope();
             kernel.Bind<KlimatogrammenContext>().ToSelf().InSingletonScope();
 
         }        

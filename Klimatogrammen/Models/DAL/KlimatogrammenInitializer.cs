@@ -11,7 +11,7 @@ using Klimatogrammen.Models.Domein;
 
 namespace Klimatogrammen.Models.DAL
 {
-    public class KlimatogrammenInitializer : System.Data.Entity.DropCreateDatabaseAlways<KlimatogrammenContext>
+    public class KlimatogrammenInitializer : System.Data.Entity.DropCreateDatabaseIfModelChanges<KlimatogrammenContext>
     {
         private IEnumerable<Maand> VormMaanden(double[] temperaturen, int[] neerslagen) {
             string[] maanden = new string[] {"Januari","Februari","Maart","April","Mei", "Juni","Juli","Augustus","September","Oktober","November","December"};
@@ -22,20 +22,19 @@ namespace Klimatogrammen.Models.DAL
             //Determinatietabel aanmaken
             DeterminatieTabel tabel = new DeterminatieTabel();
 
-            //Factory aanmaken voor parameters
-            tabel.Naam = "Kleine tabel";
+            
 
             //Nieuwe vergelijking aanmaken (Tw < 10°C)
             Vergelijking vergelijking = new Vergelijking();
-            vergelijking.LinkerParameter = parameterFactory.MaakParameter("Tw");
-            vergelijking.RechterParameter = parameterFactory.MaakConstanteParameter(10);
+            vergelijking.LinkerParameter = _parameterFactory.MaakParameter("Tw");
+            vergelijking.RechterParameter = _parameterFactory.MaakConstanteParameter(10);
             vergelijking.Operator = Operator.KleinerDan;
 
             //Ja knoop aanmaken van de eerste vergelijking
             //Vergelijking aanmaken van de ja knoop (Tw < 0°C)
             Vergelijking vergelijking2 = new Vergelijking();
-            vergelijking2.LinkerParameter = parameterFactory.MaakParameter("Tw");
-            vergelijking2.RechterParameter = parameterFactory.MaakConstanteParameter(0);
+            vergelijking2.LinkerParameter = _parameterFactory.MaakParameter("Tw");
+            vergelijking2.RechterParameter = _parameterFactory.MaakConstanteParameter(0);
             vergelijking2.Operator = Operator.KleinerDan;
 
             //Resultaatknoop voor ja en nee Tw < 0°C
@@ -47,8 +46,8 @@ namespace Klimatogrammen.Models.DAL
 
             //Nee knoop aanmaken van de beginknoop
             Vergelijking vergelijking3 = new Vergelijking();
-            vergelijking3.LinkerParameter = parameterFactory.MaakParameter("Tw4");
-            vergelijking3.RechterParameter = parameterFactory.MaakConstanteParameter(10);
+            vergelijking3.LinkerParameter = _parameterFactory.MaakParameter("Tw4");
+            vergelijking3.RechterParameter = _parameterFactory.MaakConstanteParameter(10);
             vergelijking3.Operator = Operator.KleinerDan;
 
             //Resultaatknoop aanmaken van vergelijking 3
@@ -56,8 +55,8 @@ namespace Klimatogrammen.Models.DAL
 
             //Nee knoop aanmaken van vergelijking 3
             Vergelijking vergelijking4 = new Vergelijking();
-            vergelijking4.LinkerParameter = parameterFactory.MaakParameter("Tk");
-            vergelijking4.RechterParameter = parameterFactory.MaakConstanteParameter(18);
+            vergelijking4.LinkerParameter = _parameterFactory.MaakParameter("Tk");
+            vergelijking4.RechterParameter = _parameterFactory.MaakConstanteParameter(18);
             vergelijking4.Operator = Operator.KleinerDan;
 
             //Resultaat knoop nee aanmaken van vergelijking 4
@@ -65,8 +64,8 @@ namespace Klimatogrammen.Models.DAL
 
             //Vergelijking aanmaken van ja knoop 2
             Vergelijking vergelijking5 = new Vergelijking();
-            vergelijking5.LinkerParameter = parameterFactory.MaakParameter("Nj");
-            vergelijking5.RechterParameter = parameterFactory.MaakConstanteParameter(400);
+            vergelijking5.LinkerParameter = _parameterFactory.MaakParameter("Nj");
+            vergelijking5.RechterParameter = _parameterFactory.MaakConstanteParameter(400);
             vergelijking5.Operator = Operator.GroterDan;
 
             //Resultaat knoop nee aanmaken van vergelijking 5
@@ -74,8 +73,8 @@ namespace Klimatogrammen.Models.DAL
 
             //Vergelijking aanmaken van ja knoop 3
             Vergelijking vergelijking6 = new Vergelijking();
-            vergelijking6.LinkerParameter = parameterFactory.MaakParameter("Tk");
-            vergelijking6.RechterParameter = parameterFactory.MaakConstanteParameter(-3);
+            vergelijking6.LinkerParameter = _parameterFactory.MaakParameter("Tk");
+            vergelijking6.RechterParameter = _parameterFactory.MaakConstanteParameter(-3);
             vergelijking6.Operator = Operator.KleinerDan;
 
             //Resultaat knoop aanmaken van vergelijking 6
@@ -83,8 +82,8 @@ namespace Klimatogrammen.Models.DAL
 
             //Vergelijking aanmaken van nee knoop 3
             Vergelijking vergelijking7 = new Vergelijking();
-            vergelijking7.LinkerParameter = parameterFactory.MaakParameter("Tw");
-            vergelijking7.RechterParameter = parameterFactory.MaakConstanteParameter(22);
+            vergelijking7.LinkerParameter = _parameterFactory.MaakParameter("Tw");
+            vergelijking7.RechterParameter = _parameterFactory.MaakConstanteParameter(22);
             vergelijking7.Operator = Operator.KleinerDan;
 
             //Resultaat knoop aanmaken van vergelijking 7
@@ -113,9 +112,45 @@ namespace Klimatogrammen.Models.DAL
         }
 
         private DeterminatieTabel MaakGroteDeterminatieTabel() {
-            return null;
+            DeterminatieTabel dt = new DeterminatieTabel();
+
+            ResultaatKnoop jajaResultaatKnoop = new ResultaatKnoop("Ijswoestijnklimaat","Koud klimaat zonder dooiseizoen");
+            ResultaatKnoop janeeResultaatKnoop = new ResultaatKnoop("Toendraklimaat","Koud klimaat met dooiseizoen");
+            ResultaatKnoop neejaResultaatKnoop = new ResultaatKnoop("Taigaklimaat","Koudgematigd klimaat met strenge winter");
+            ResultaatKnoop neeneejajaResultaatKnoop = new ResultaatKnoop("Woestijnklimaat van de middelbreedten","Gematigd altijd droog klimaat");
+            ResultaatKnoop neeneejaneeResultaatKnoop = new ResultaatKnoop("Woestijnklmaat van de tropen","Warm altijd droog klimaat");
+            ResultaatKnoop neeneeneejajaResultaatKnoop = new ResultaatKnoop("Steppeklimaat","Gematigd, droog klimaat");
+            ResultaatKnoop neeneeneejaneejaResultaatKnoop = new ResultaatKnoop("Taigaklimaat","Koudgematigd klimaat met strenge winter");
+            ResultaatKnoop neeneeneejaneeneejajaResultaatKnoop = new ResultaatKnoop("Gemengd-woudklimaat","Koelgematigd klimaat met koude winter");
+            ResultaatKnoop neeneeneejaneeneejaneejaResultaatKnoop = new ResultaatKnoop("Loofbosklimaat","Koelgematigd klimaat met zachte winter");
+            ResultaatKnoop neeneeneejaneeneejaneeneeResultaatKnoop = new ResultaatKnoop("Subtropisch regenwoudklimaat","Warmgematigd altijd nat klimaat");
+            ResultaatKnoop neeneeneejaneeneeneejajaResultaatKnoop = new ResultaatKnoop("Hardbladige-vegetatieklimaat van de centrale middelbreedten","Koelgematigd klimaat met natte winter");
+            ResultaatKnoop neeneeneejaneeneeneejaneeResultaatKnoop = new ResultaatKnoop("Hardbladige-vegetatieklimaat van de subtropen","Warmgematigd klimaat met natte winter");
+            ResultaatKnoop neeneeneejaneeneeneeneeResultaatKnoop = new ResultaatKnoop("Subtropisch savanneklimaat","Warmgematigd klimaat met natte zomer");
+            ResultaatKnoop neeneeneeneeneeResultaatKnoop = new ResultaatKnoop("Tropisch savanneklimaat", "Warm klimaat met nat seizoen");
+            ResultaatKnoop neeneeneeneejaResultaatKnoop = new ResultaatKnoop("Tropisch regenwoudklimaat","Warm altijd nat klimaat");
+
+
+            BeslissingsKnoop jaBeslissingsKnoop = new BeslissingsKnoop(new Vergelijking(_parameterFactory.MaakParameter("Tw"),Operator.KleinerDanOfGelijkAan, _parameterFactory.MaakConstanteParameter(0)), jajaResultaatKnoop,janeeResultaatKnoop );
+            BeslissingsKnoop neeneejaBeslissingsKnoop = new BeslissingsKnoop(new Vergelijking(_parameterFactory.MaakParameter("Tk"), Operator.KleinerDanOfGelijkAan, _parameterFactory.MaakConstanteParameter(15)),neeneejajaResultaatKnoop,neeneejaneeResultaatKnoop );
+            BeslissingsKnoop neeneeneeneeBeslissingsKnoop = new BeslissingsKnoop(new Vergelijking(_parameterFactory.MaakParameter("D"), Operator.KleinerDanOfGelijkAan, _parameterFactory.MaakConstanteParameter(1)),neeneeneeneejaResultaatKnoop, neeneeneeneeneeResultaatKnoop );
+            BeslissingsKnoop neeneeneejaneeneeneejaBeslissingsKnoop = new BeslissingsKnoop(new Vergelijking(_parameterFactory.MaakParameter("Tw"),Operator.KleinerDanOfGelijkAan,_parameterFactory.MaakConstanteParameter(22)),neeneeneejaneeneeneejajaResultaatKnoop, neeneeneejaneeneeneejaneeResultaatKnoop );
+            BeslissingsKnoop neeneeneejaneeneeneeBeslissingsKnoop = new BeslissingsKnoop(new Vergelijking(_parameterFactory.MaakParameter("Nz"), Operator.KleinerDanOfGelijkAan, _parameterFactory.MaakParameter("Nw")), neeneeneejaneeneeneejaBeslissingsKnoop,neeneeneejaneeneeneeneeResultaatKnoop );
+            BeslissingsKnoop neeneeneejaneeneejaneeBeslissingsKnoop = new BeslissingsKnoop(new Vergelijking(_parameterFactory.MaakParameter("Tw"), Operator.KleinerDanOfGelijkAan, _parameterFactory.MaakConstanteParameter(22)), neeneeneejaneeneejaneejaResultaatKnoop,neeneeneejaneeneejaneeneeResultaatKnoop );
+            BeslissingsKnoop neeneeneejaneeneejaBeslissingsKnoop = new BeslissingsKnoop(new Vergelijking(_parameterFactory.MaakParameter("Tk"),Operator.KleinerDanOfGelijkAan, _parameterFactory.MaakConstanteParameter(-3)),neeneeneejaneeneejajaResultaatKnoop, neeneeneejaneeneejaneeBeslissingsKnoop );
+            BeslissingsKnoop neeneeneejaneeneeBeslissingsKnoop = new BeslissingsKnoop(new Vergelijking(_parameterFactory.MaakParameter("D"), Operator.KleinerDanOfGelijkAan, _parameterFactory.MaakConstanteParameter(1)),neeneeneejaneeneejaBeslissingsKnoop, neeneeneejaneeneeneeBeslissingsKnoop );
+            BeslissingsKnoop neeneeneejaneeBeslissingsKnoop = new BeslissingsKnoop(new Vergelijking(_parameterFactory.MaakParameter("Tk"), Operator.KleinerDanOfGelijkAan, _parameterFactory.MaakConstanteParameter(-10)), neeneeneejaneejaResultaatKnoop, neeneeneejaneeneeBeslissingsKnoop );
+            BeslissingsKnoop neeneeneejaBeslissingsKnoop = new BeslissingsKnoop(new Vergelijking(_parameterFactory.MaakParameter("Nj"), Operator.KleinerDanOfGelijkAan, _parameterFactory.MaakConstanteParameter(400)),neeneeneejajaResultaatKnoop,neeneeneejaneeBeslissingsKnoop);
+            BeslissingsKnoop neeneeneeBeslissingsKnoop = new BeslissingsKnoop(new Vergelijking(_parameterFactory.MaakParameter("Tk"), Operator.KleinerDanOfGelijkAan, _parameterFactory.MaakConstanteParameter(18)), neeneeneejaBeslissingsKnoop, neeneeneeneeBeslissingsKnoop);
+            BeslissingsKnoop neeneeBeslissingsKnoop = new BeslissingsKnoop(new Vergelijking(_parameterFactory.MaakParameter("Nj"),Operator.KleinerDanOfGelijkAan, _parameterFactory.MaakConstanteParameter(200)), neeneejaBeslissingsKnoop, neeneeneeBeslissingsKnoop );
+            BeslissingsKnoop neeBeslissingsKnoop = new BeslissingsKnoop(new Vergelijking(_parameterFactory.MaakParameter("Tj"), Operator.KleinerDanOfGelijkAan, _parameterFactory.MaakConstanteParameter(0)),neejaResultaatKnoop,neeneeBeslissingsKnoop );
+            BeslissingsKnoop hoofdKnoop = new BeslissingsKnoop(new Vergelijking(_parameterFactory.MaakParameter("Tw"),Operator.KleinerDanOfGelijkAan, _parameterFactory.MaakConstanteParameter(10)),jaBeslissingsKnoop,neeBeslissingsKnoop );
+
+            dt.BeginKnoop = hoofdKnoop;
+
+            return dt;
         }
-        private  ParameterFactory parameterFactory = new ParameterFactory();
+        private  ParameterFactory _parameterFactory = new ParameterFactory();
         protected override void Seed(KlimatogrammenContext context)
         {
             try
@@ -126,16 +161,21 @@ namespace Klimatogrammen.Models.DAL
                 Graad derdeGraad = new Graad() {Nummer =3};
       
                 eersteGraad.Vragen = new Collection<Vraag>();
-                eersteGraad.Vragen.Add(new Vraag() {Parameter = parameterFactory.MaakParameter("Warmste Maand"), VraagTekst = "Wat is de warmste maand?"});
-                eersteGraad.Vragen.Add(new Vraag() { Parameter = parameterFactory.MaakParameter("Tw"), VraagTekst = "Wat is de temperatuur van de warmste maand (Tw)?" });
-                eersteGraad.Vragen.Add(new Vraag() { Parameter = parameterFactory.MaakParameter("Koudste Maand"), VraagTekst = "Wat is de koudste maand?" });
-                eersteGraad.Vragen.Add(new Vraag() { Parameter = parameterFactory.MaakParameter("Tk"), VraagTekst = "Wat is de temperatuur van de koudste maan (Tk)?" });
-                eersteGraad.Vragen.Add(new Vraag() { Parameter = parameterFactory.MaakParameter("D"), VraagTekst = "Hoeveel droge maanden zijn er (D)?" });
-                eersteGraad.Vragen.Add(new Vraag() { Parameter = parameterFactory.MaakParameter("Nz"), VraagTekst = "Hoeveelheid neerslag in de zomer?" });
-                eersteGraad.Vragen.Add(new Vraag() { Parameter = parameterFactory.MaakParameter("Nw"), VraagTekst = "Hoeveelheid neerslag in de winter?" });
+                eersteGraad.Vragen.Add(new Vraag() {Parameter = _parameterFactory.MaakParameter("Warmste Maand"), VraagTekst = "Wat is de warmste maand?"});
+                eersteGraad.Vragen.Add(new Vraag() { Parameter = _parameterFactory.MaakParameter("Tw"), VraagTekst = "Wat is de temperatuur van de warmste maand (Tw)?" });
+                eersteGraad.Vragen.Add(new Vraag() { Parameter = _parameterFactory.MaakParameter("Koudste Maand"), VraagTekst = "Wat is de koudste maand?" });
+                eersteGraad.Vragen.Add(new Vraag() { Parameter = _parameterFactory.MaakParameter("Tk"), VraagTekst = "Wat is de temperatuur van de koudste maan (Tk)?" });
+                eersteGraad.Vragen.Add(new Vraag() { Parameter = _parameterFactory.MaakParameter("D"), VraagTekst = "Hoeveel droge maanden zijn er (D)?" });
+                eersteGraad.Vragen.Add(new Vraag() { Parameter = _parameterFactory.MaakParameter("Nz"), VraagTekst = "Hoeveelheid neerslag in de zomer?" });
+                eersteGraad.Vragen.Add(new Vraag() { Parameter = _parameterFactory.MaakParameter("Nw"), VraagTekst = "Hoeveelheid neerslag in de winter?" });
 
                 //TODO: Graad 1 krijgt kleine tabel, graad 2 krijgt grote
-                context.DeterminatieTabel.Add(MaakKleineDeterminatieTabel());
+                DeterminatieTabel klein = MaakKleineDeterminatieTabel();
+                DeterminatieTabel groot = MaakGroteDeterminatieTabel();
+
+                eersteGraad.DeterminatieTabel = klein;
+                tweedeGraadEersteJaar.DeterminatieTabel =
+                    tweedeGraadTweedeJaar.DeterminatieTabel = derdeGraad.DeterminatieTabel = groot;
 
                 Continent noordAmerika = new Continent("Noord-Amerika");
                 Continent zuidAmerika = new Continent("Zuid-Amerika");

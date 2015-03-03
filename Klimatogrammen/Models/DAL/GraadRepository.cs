@@ -12,6 +12,7 @@ namespace Klimatogrammen.Models.DAL {
         public Graad GeefGraad(int graad, int jaar) {
             return _graden
                 .Include(g => g.Vragen.Select(v => v.Parameter))
+                .Include(g => g.DeterminatieTabel.BeginKnoop)
                 .FirstOrDefault(g => g.Nummer == graad && g.Jaar == jaar);
         }
 
