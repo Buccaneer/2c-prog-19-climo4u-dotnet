@@ -10,7 +10,9 @@ namespace Klimatogrammen.Models.DAL {
         private KlimatogrammenContext _context;
         private DbSet<DeterminatieTabel> _determinatieTabelen;
         public DeterminatieTabel GeefTabel(string naam) {
-            return _determinatieTabelen.Include(d => d.BeginKnoop).FirstOrDefault(d => d.Naam.Equals(naam));
+            return _determinatieTabelen.Include(d => d.BeginKnoop)
+                
+                .FirstOrDefault(d => d.Naam.Equals(naam));
         }
 
         
