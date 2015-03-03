@@ -92,7 +92,7 @@ namespace Klimatogrammen.Controllers {
                                 TotaalNeerslag = klimatogram.GeefTotaleNeerslag()
             };
 
-            return Json(klim);
+            return Json(klim, JsonRequestBehavior.AllowGet);
         }
     }
 }

@@ -3,7 +3,7 @@
   <Class Name="Klimatogrammen.Models.Domein.Leerling">
     <Position X="6.25" Y="14.25" Width="3.25" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAgAAAAAAAAAAAAQAgAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAgAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Models\Domein\Leerling.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -22,7 +22,7 @@
     </ShowAsCollectionAssociation>
   </Class>
   <Class Name="Klimatogrammen.Models.Domein.Land">
-    <Position X="11" Y="9.5" Width="1.5" />
+    <Position X="11.75" Y="9.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AgABAAAAAAAAAAAAEAAABAAAAAAAAAAAAQAAAAAAAAI=</HashCode>
       <FileName>Models\Domein\Land.cs</FileName>
@@ -44,10 +44,10 @@
       <Property Name="Maanden" />
     </ShowAsCollectionAssociation>
   </Class>
-  <Class Name="Klimatogrammen.Vraag">
+  <Class Name="Klimatogrammen.Models.Domein.Vraag">
     <Position X="11" Y="14" Width="3" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAABAAAAAAAAAAAAAAQAAAAAACAABAAAAA=</HashCode>
+      <HashCode>AAAAAEAAAAAABAAAAAAAAAAAAAAQAAAAAACAABAAAAA=</HashCode>
       <FileName>Models\Domein\Vraag.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -93,21 +93,21 @@
   <Class Name="Klimatogrammen.Models.Domein.ParameterFactory">
     <Position X="14.5" Y="1" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAgAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAgAAAAAAAEAAAAAAAAAAAAAAAAAAACAAAAAAAAAAA=</HashCode>
       <FileName>Models\Domein\ParameterFactory.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Klimatogrammen.Models.Domein.DeterminatieKnoop">
     <Position X="6" Y="3.5" Width="3" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAABAAAAAAAAAAAAAAAAAAEBAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAABAEAAAAAAAAAAAAAAAAEBAAAAAAAAAA=</HashCode>
       <FileName>Models\Domein\DeterminatieKnoop.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Klimatogrammen.Models.Domein.DeterminatieTabel">
     <Position X="1.75" Y="1.75" Width="3.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAIQBAAABQAEgAAAAQAAAAAQAAEBAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAIQAAAABQAEgAABAQAAAAAQAAEBAAAAAAAAAA=</HashCode>
       <FileName>Models\Domein\DeterminatieTabel.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -141,7 +141,7 @@
       </MemberNameLabel>
     </AssociationLine>
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAACAAAAAAAAAIAEAAAAAAAAAAAAAAAAAIAA=</HashCode>
+      <HashCode>AAAAAAAAAACAAAAAAAAAIAEAAAAAAAAAAAQAAAAAIAA=</HashCode>
       <FileName>Models\Domein\Vergelijking.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -150,10 +150,10 @@
       <Property Name="RechterParameter" />
     </ShowAsAssociation>
   </Class>
-  <Enum Name="Klimatogrammen.Resultaat">
+  <Enum Name="Klimatogrammen.Models.Domein.Resultaat">
     <Position X="14.75" Y="14.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAACAAA=</HashCode>
+      <HashCode>AAAAAAIAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAACAAA=</HashCode>
       <FileName>Models\Domein\Resultaat.cs</FileName>
     </TypeIdentifier>
   </Enum>

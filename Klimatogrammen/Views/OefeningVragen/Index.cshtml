@@ -1,5 +1,6 @@
-﻿@using Klimatogrammen.ViewModels
-@model IEnumerable<Klimatogrammen.ViewModels.VraagViewModel>
+﻿@using System.Threading
+@using Klimatogrammen.ViewModels
+@model VragenIndexViewModel
 
 @{
     ViewBag.Title = "Index";
@@ -7,53 +8,50 @@
 
 <h2>Inleidende vragen</h2>
 
+<div id="container"></div>
+<div id="legend"></div>
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-
+    int count = 0;
     <div class="form-horizontal">
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @foreach (var v in Model)
-        {
+
+        @foreach (var v in Model.Vragen){
             <div class="form-group">
-                @Html.Label(v.VraagTekst, htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.Label(v.VraagTekst, htmlAttributes: new {@class = "control-label col-md-2"})
                 <div class="col-md-10">
-                    @Html.DropDownList(v.Antwoord, v.Antwoorden, htmlAttributes: new{@class="form-control"} )
-                    @Html.ValidationMessage(v.Antwoord, "", new { @class = "text-danger" })
+                    @Html.DropDownListFor(model => model.Antwoorden.Antwoord[count], v.Antwoorden, htmlAttributes: new {@class = "form-control"})
+                    @Html.ValidationMessageFor(model => model.Antwoorden.Antwoord[count], "", new {@class = "text-danger"})
+                    @if (v.Resultaat == false)
+                    {
+                        @Html.Label("Dit is niet correct, probeer opnieuw!", new {@class = "text-danger"})
+                    }else if (v.Resultaat == true)
+                    {
+                        @Html.Label("Dit is juist, goed zo!", new {@class="text-success"})
+                    }
                 </div>
             </div>
 
-            @*<div class="form-group">
-                @Html.Label("Antwoorden", htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.DropDownList(vvm.Antw.Antwoord, vvm.Antwoorden, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessage(vvm.VraagTekst, "", new { @class = "text-danger" })
-                </div>
-            </div>*@
-        };
-
-        @*<div class="form-group">
-                @Html.LabelFor(model => model.ValidatieTekst, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.ValidatieTekst, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.ValidatieTekst, "", new { @class = "text-danger" })
-                </div>
-            </div>*@
-
+            count++;
+        }
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Valideer" class="btn btn-default" />
+                @Html.ActionLink("Stoppen", "Index", "Home",null, new{@class = "btn btn-default"})
             </div>
+           
         </div>
     </div>
-}
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+    
+}
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/unobtrusive")
+    <script src="~/Scripts/highcharts.js"></script>
+    <script src="~/Scripts/Custom/ToonKlimatogramBijLoad.js"></script>
 }
