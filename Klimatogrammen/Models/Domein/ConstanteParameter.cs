@@ -10,20 +10,19 @@ namespace Klimatogrammen
 {
     public class ConstanteParameter: Parameter
     {
-        private double _waarde;
+        public double Waarde { get; set; }
 
         public ConstanteParameter() {
             
         }
 
-        public ConstanteParameter(double waarde)
-        {
-            _waarde = waarde;
+        public ConstanteParameter(double waarde) {
+            Waarde = waarde;
         }
     
         public override IComparable BerekenWaarde(Klimatogram klimatogram)
         {
-            return _waarde;
+            return Waarde;
         }
 
 
