@@ -1,4 +1,5 @@
 ﻿@using System.Threading
+@using Klimatogrammen.Models.Domein
 @using Klimatogrammen.ViewModels
 @model VragenIndexViewModel
 
@@ -39,14 +40,20 @@
         }
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Valideer" class="btn btn-default" />
-                @Html.ActionLink("Stoppen", "Index", "Home",null, new{@class = "btn btn-default"})
+              
+                    <input type="submit" value="Valideer" class="btn btn-primary" />
+                
+               
+                    @Html.ActionLink("Volgende oefening", "Index", "Determinatie", null, new { @class = "btn btn-primary" })
+                
+
+                @Html.ActionLink("Stoppen", "Index", "Home",null, new{@class = "btn btn-primary"})
             </div>
-           
+
         </div>
     </div>
 
-    
+
 }
 
 @section Scripts {

@@ -87,7 +87,7 @@ namespace Klimatogrammen.Tests.Controllers
                     RedirectToRouteResult;
             //Assert.IsNotNull(result);
             Assert.AreEqual("Index", result.RouteValues["action"]);
-            Assert.AreEqual("Klimatogram", result.RouteValues["controller"]);
+            Assert.AreEqual("Determinatie", result.RouteValues["controller"]);
             _graadMock = _graadMockFactory.MaakDerdeGraadAan();
             RedirectToRouteResult result2 = _vraagController.Index(new Leerling() { Graad= _graadMock.Object,Klimatogram = _mockKlimatogram.Object}) as RedirectToRouteResult;
             //Assert.IsNotNull(result);
@@ -109,38 +109,39 @@ namespace Klimatogrammen.Tests.Controllers
         }
 
         [TestMethod]
-        public void GeenVragenRedirectNaarKlimatogramSelectie() {
+        public void GeenVragenRedirectNaarDeterminatieSelectie() {
             _graadMock = _graadMockFactory.MaakTweedeGraadTweedeJaarAan();
             RedirectToRouteResult result = _vraagController.Index(new Leerling() { Graad = _graadMock.Object, Klimatogram = _mockKlimatogram.Object}) as RedirectToRouteResult;
             //Assert.IsNotNull(result);
             Assert.AreEqual("Index", result.RouteValues["action"]);
-            Assert.AreEqual("Klimatogram", result.RouteValues["controller"]);
+            Assert.AreEqual("Determinatie", result.RouteValues["controller"]);
             _graadMock = _graadMockFactory.MaakDerdeGraadAan();
             RedirectToRouteResult result2 = _vraagController.Index(new Leerling() { Graad = _graadMock.Object , Klimatogram = _mockKlimatogram.Object}) as RedirectToRouteResult;
             //Assert.IsNotNull(result);
             Assert.AreEqual("Index", result2.RouteValues["action"]);
-            Assert.AreEqual("Klimatogram", result2.RouteValues["controller"]);
+            //Home gaat nog veranderen naar determinatie
+            Assert.AreEqual("Home", result2.RouteValues["controller"]);
         }
 
         [TestMethod]
-        [ExpectedException(typeof(InvalidOperationException))]
+        [ExpectedException(typeof(NullReferenceException))]
         public void GetJsonGeeftEnkelJsonTerugAlsErEenLeerlingBestaatMetKlimatogramIn() {
             // getJson() --> regels GetJson() plaats fail in commentaar.
-            Assert.Fail("getJson() is geen geldige naam :p gelieve GetJson() te gebruiken.");
+            //Assert.Fail("getJson() is geen geldige naam :p gelieve GetJson() te gebruiken.");
 
             Leerling l = new Leerling() {Graad = _graadMock.Object};
-            JsonResult result = _vraagController.getJSON(l) as JsonResult;
+            JsonResult result = _vraagController.GetJSON(l) as JsonResult;
         
         }
 
         [TestMethod]
-        [ExpectedException(typeof(InvalidOperationException))]
+        [ExpectedException(typeof(NullReferenceException))]
         public void GetJsonGooitFoutmeldingBijAanroepenZonderleerling() {
             // getJson() --> regels GetJson() plaats fail in commentaar.
-            Assert.Fail("getJson() is geen geldige naam :p gelieve GetJson() te gebruiken.");
+            //Assert.Fail("getJson() is geen geldige naam :p gelieve GetJson() te gebruiken.");
 
             Leerling l = new Leerling() { Graad = _graadMock.Object };
-            JsonResult result = _vraagController.getJSON(null) as JsonResult;
+            JsonResult result = _vraagController.GetJSON(null) as JsonResult;
 
         }
     }

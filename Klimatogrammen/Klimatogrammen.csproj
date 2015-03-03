@@ -130,6 +130,8 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\DeterminatieController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Models\DAL\GraadRepository.cs" />
     <Compile Include="Models\DAL\Mapper\DeterminatieKnoopMapper.cs" />
     <Compile Include="Models\DAL\Mapper\DeterminatieTabelMapper.cs" />
@@ -158,7 +160,7 @@
     <Compile Include="Models\DAL\Mapper\KlimatogramMapper.cs" />
     <Compile Include="Models\DAL\Mapper\LandMapper.cs" />
     <Compile Include="Models\Domein\Continent.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\GraadController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -173,6 +175,7 @@
     <Compile Include="Models\Domein\Resultaat.cs" />
     <Compile Include="Models\Domein\ResultaatKnoop.cs" />
     <Compile Include="Models\Domein\Vergelijking.cs" />
+    <Compile Include="ViewModels\DeterminatieViewModel.cs" />
     <Compile Include="ViewModels\KlimatogramKiezenIndexViewModel.cs" />
     <Compile Include="ViewModels\LeerlingIndexViewModel.cs" />
     <Compile Include="Models\Domein\Vraag.cs" />
@@ -226,13 +229,15 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
-    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Graad\Index.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Klimatogram\Index.cshtml" />
     <Content Include="Views\Klimatogram\_Continent.cshtml" />
     <Content Include="Views\Klimatogram\_KiesLand.cshtml" />
     <Content Include="Views\Klimatogram\_KiesLocatie.cshtml" />
     <Content Include="Views\OefeningVragen\Index.cshtml" />
+    <Content Include="Views\Determinatie\Index.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

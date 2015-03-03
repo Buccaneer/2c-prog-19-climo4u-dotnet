@@ -1,5 +1,5 @@
 ﻿$(document).ready(function() {
-    $.getJSON("/OefeningVragen/getJSON", {},function(klimatogram) {
+    $.getJSON("/OefeningVragen/GetJSON", {},function(klimatogram) {
         $("#container").css({ "width": "100%", "height": "400px" });
 
     var temperaturen = klimatogram.GemiddeldeTemperatuur;

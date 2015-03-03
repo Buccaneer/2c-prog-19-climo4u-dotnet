@@ -1,0 +1,33 @@
+﻿@model Klimatogrammen.ViewModels.DeterminatieIndexViewModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Systeem doet een poging tot determineren</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.KlimaatType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KlimaatType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VegetatieType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VegetatieType)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

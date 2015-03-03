@@ -1,43 +1,22 @@
-﻿@model Klimatogrammen.ViewModels.LeerlingIndexViewModel
+﻿
 @{
     ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Start een oefening</h2>
+<h2>Oefeningensite voor klimatogrammen</h2>
 
+<p>Welkom op deze oefensite om jullie aardrijkkundige kennis te vergroten en in te oefenen, met name het gebruik van klimatogrammen.</p>
+<p>Op de volgende pagina's kan je uw graad selecteren. Afhankelijk van je graad kan je volgende scenario's verwachten:</p>
 
-@using (Html.BeginForm()) 
-{
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>Kies uw graad</h4>
-        <hr />
-        @Html.ValidationSummary(false, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.Graad, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EnumDropDownListFor(m => m.Graad, "-- Selecteer --", htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.Graad, "", new { @class = "text-danger" })
-            </div>
-        </div>
-        <div class="form-group" id="jaar">
-            @Html.LabelFor(model => model.Jaar, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Jaar, new { htmlAttributes = new { @class = "form-control", @min = 1, @max=2 } })
-                @Html.ValidationMessageFor(model => model.Jaar, "", new { @class = "text-danger" })
-            </div>
-        </div>
+<ul>
+    <li><b>Graad 1</b>: Kies een klimatogram van een stad in Europa. Vervolgens mag je korte vraagjes oplossen om nadien zelf over te gaan tot determinatie.</li>
+    <li><b>Graad 2</b>: Kies een klimatogram van een stad wereldwijd. Afhankelijk van het jaar krijg je extra informatie bij het determineren.</li>
+    <li><b>Graad 3</b>: Plaats zes steden op een wereldkaart, rekening houdende met de verkregen klimatogrammen.</li>
+</ul>
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Doorgaan" class="btn btn-default" />
-            </div>
-        </div>
-    </div>
-}
-@section scripts {
-@Scripts.Render("~/bundles/jqueryval")
-    <script src="~/Scripts/Custom/Index.js"></script>
-}
+<p>Veel succes!</p>
+
+<p>
+    @Html.ActionLink("Ga naar de volgende pagina", "Index", "Graad", null, new { @class = "btn btn-primary" })
+</p>
+

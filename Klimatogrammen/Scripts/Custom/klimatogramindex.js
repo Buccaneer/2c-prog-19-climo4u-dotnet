@@ -116,6 +116,6 @@ function makeGraph(klimatogram) {
     tabel += '<p><b> Gemiddelde temperatuur: </b>' + klimatogram.TotaalGemiddeldeTemperatuur + '</p>';
     $("#legend").html(tabel);
 
-    var actionButton = "<a href=/OefeningVragen/Index class='btn btn-default'>Verder gaan</a>";
+    var actionButton = "<a href=/OefeningVragen/Index class='btn btn-primary'>Verder gaan</a>";
     $("#legend").after(actionButton);
 }

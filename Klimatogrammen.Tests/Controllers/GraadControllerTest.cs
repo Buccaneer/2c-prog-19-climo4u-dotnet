@@ -17,9 +17,9 @@ using Moq;
 namespace Klimatogrammen.Tests.Controllers
 {
     [TestClass]
-    public class HomeControllerTest
+    public class GraadControllerTest
     {
-        private HomeController _homeController;
+        private GraadController _homeController;
         private ISessionRepository _sessionRepository;
         private IGraadRepository _graadRepository;
         private GraadMockFactory _graadMockFactory;
@@ -31,7 +31,7 @@ namespace Klimatogrammen.Tests.Controllers
             _sessionRepository= new SessionRepositoryMock();
             _graadRepository = new GraadRepositoryMock();
             _graadMockFactory = new GraadMockFactory();
-            _homeController = new HomeController(_sessionRepository, _graadRepository);
+            _homeController = new GraadController(_sessionRepository, _graadRepository);
         }
 
         [TestMethod]
