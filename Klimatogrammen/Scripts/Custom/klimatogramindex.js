@@ -117,5 +117,5 @@ function makeGraph(klimatogram) {
     $("#legend").html(tabel);
 
     var actionButton = "<a href=/OefeningVragen/Index class='btn btn-primary'>Verder gaan</a>";
-    $("#legend").after(actionButton);
+    $("#legend").append(actionButton);
 }

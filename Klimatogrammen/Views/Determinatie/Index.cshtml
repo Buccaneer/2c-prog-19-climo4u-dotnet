@@ -1,10 +1,10 @@
 ﻿@model Klimatogrammen.ViewModels.DeterminatieIndexViewModel
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Determineren";
 }
 
-<h2>Systeem doet een poging tot determineren</h2>
+<h2>Systeem determineert de klimatogram</h2>
 
 <div>
     <hr />
@@ -28,6 +28,5 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
-    @Html.ActionLink("Back to List", "Index")
+   @Html.ActionLink("Stoppen", "Index", "Home", null, new { @class = "btn btn-primary" })
 </p>
