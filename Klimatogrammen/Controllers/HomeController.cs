@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Klimatogrammen.Models.Domein;
+using WebGrease.Css.Extensions;
 
 namespace Klimatogrammen.Controllers
 {
@@ -12,7 +13,10 @@ namespace Klimatogrammen.Controllers
         // GET: Home
         public ActionResult Index()
         {
-     
+            Leerling leerling = HttpContext.Session["leerling"] as Leerling;
+            if(leerling != null)
+            leerling.Graad.Vragen.ForEach(v => v.Resultaat = Resultaat.Onbepaald);
+            
             HttpContext.Session.RemoveAll();
            
             

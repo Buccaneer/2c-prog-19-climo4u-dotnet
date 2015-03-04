@@ -155,7 +155,7 @@ namespace Klimatogrammen.Tests.Models {
             Parameter p = new ParameterAantalDrogeMaanden();
 
             ICollection<string> mogelijkeAntwoorden = p.GeefMogelijkeAntwoorden(_mockKlimatogram.Object);
-            ICollection<string> verwacht = Enumerable.Range(1, 12).Select(i => i.ToString()).ToList();
+            ICollection<string> verwacht = Enumerable.Range(0, 13).Select(i => i.ToString()).ToList();
 
             CollectionAssert.AreEquivalent(verwacht.ToList(), mogelijkeAntwoorden.ToList());
         }
