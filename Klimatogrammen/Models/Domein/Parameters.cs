@@ -243,7 +243,7 @@ namespace Klimatogrammen
         }
         public override ICollection<string> GeefMogelijkeAntwoorden(Klimatogram klimatogram)
         {
-            return Enumerable.Range(1, 12).Select(n => n.ToString()).ToList();
+            return Enumerable.Range(0, 13).Select(n => n.ToString()).ToList();
         }
     }
 

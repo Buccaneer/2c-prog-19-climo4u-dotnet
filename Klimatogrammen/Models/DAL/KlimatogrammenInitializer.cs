@@ -189,18 +189,66 @@ namespace Klimatogrammen.Models.DAL
                 Land belgie = new Land("België");
                 
                     
-                int[] gemiddeldeNeerUkkel = { 12, 12, 13, 13, 14, 14, 15, 15, 16, 16, 17, 17 };
-                double[] gemiddeldeTempUkkel = { 5.1, 2.2, 10.5, 12.7, 18, 20.4, 21.2, 25.2, 30.1, 19, 10, 2.2 };
+                int[] gemiddeldeNeerUkkel = {67,54,73,57,70,78,75,63,59,71,78,76 };
+                double[] gemiddeldeTempUkkel = { 2.5,3.2,5.7,8.7,12.7,15.5,17.2,17.0,14.4,10.4,6.0,3.4};
                 belgie.VoegKlimatogramToe(new Klimatogram(VormMaanden(gemiddeldeTempUkkel, gemiddeldeNeerUkkel).ToList(), 50.8, 4.35) { Locatie = "Ukkel", BeginJaar = 1961, EindJaar = 2009 });
                 europa.VoegLandToe(belgie);
 
+                belgie.VoegKlimatogramToe(new Klimatogram(VormMaanden(
+                new double[] { 2.2,3.1,5.3,8.8,12.3,15.6,17.0,16.9,14.3,10.1,6.0,3.2 },
+                new int[] { 62,49,48,49,60,70,80,80,73,71,67,67 }).ToList(), 51.2, 4.45
+            ) { BeginJaar = 1961, EindJaar = 1990, Locatie = "Antwerpen - Deurne" });
 
+                belgie.VoegKlimatogramToe(new Klimatogram(VormMaanden(
+               new double[] { -1.0,0.2,2.4,6.0,9.6,12.8,14.4,14.3,11.9,7.7,3.0,0.1 },
+               new int[] { 90,74,73,69,77,84,93,94,89,92,91,95 }).ToList(), 50.033056, 5.4
+           ) { BeginJaar = 1961, EindJaar = 1990, Locatie = "St-Hubert" });
+
+                belgie.VoegKlimatogramToe(new Klimatogram(VormMaanden(
+             new double[] { -2.1,-1.2,1.0,4.8,8.8,12.0,13.6,13.4,10.9,6.8,2.0,-1.1 },
+             new int[] { 140,112,103,91,98,103,106,101,96,110,124,142 }).ToList(), 50.466944, 6.182778
+         ) { BeginJaar = 1961, EindJaar = 1990, Locatie = "Elsenborn" });
+
+                belgie.VoegKlimatogramToe(new Klimatogram(VormMaanden(
+   new double[] { 2.4,3.0,5.2,8.4,12.1,15.1,16.8,16.6,14.3,10.3,6.2,3.2 },
+   new int[] { 51,42,46,50,59,65,72,74,72,72,64,59 }).ToList(), 50.966667, 3.816667
+) { BeginJaar = 1961, EindJaar = 1990, Locatie = "Gent - Melle" });
+
+                Land frankrijk = new Land("Frankrijk");
+
+
+                frankrijk.VoegKlimatogramToe(new Klimatogram(VormMaanden(
+            new double[] { 8.6,9.0,10.1,12.3,15.7,19.1,21.9,22.1,19.9,16.7,12.6,9.6},
+            new int[] { 74,70,58,52,40,19,11,20,44,87,96,76}).ToList(), 41.966944,8.8
+        ) { BeginJaar = 1961, EindJaar = 1990, Locatie = "Ajaccio" });
+
+                frankrijk.VoegKlimatogramToe(new Klimatogram(VormMaanden(
+            new double[] { 5.9,7.1,8.8,11.3,14.6,17.8,20.2,19.9,18.0,14.0,9.1,6.4 },
+            new int[] { 100,86,76,72,77,56,47,54,74,88,94,99}).ToList(), 40.8333333, 0.7
+        ) { BeginJaar = 1961, EindJaar = 1990, Locatie = "Bordeaux" });
+               
+                frankrijk.VoegKlimatogramToe(new Klimatogram(VormMaanden(
+            new double[] { 3.5,4.5,6.8,9.7,13.3,16.4,18.4,18.2,15.7,11.8,6.9,4.3},
+            new int[] { 54,46,54,47,63,58,54,52,54,56,56,56 }).ToList(), 48.966667,2.45
+        ) { BeginJaar = 1961, EindJaar = 1990, Locatie = "Parijs" });
+
+                europa.Landen.Add(frankrijk);
 
                 Land griekenland = new Land("Griekenland");
                 griekenland.VoegKlimatogramToe(new Klimatogram(VormMaanden(
                 new double[] { 10.0, 10.5, 12.4, 16.0, 20.6, 25.0, 27.8, 24.3, 19.3, 15.4, 12.0, 9.0 },
                 new int[] { 45, 48, 44, 25, 14, 6, 6, 8, 10, 48, 51, 66 }).ToList(), 50.8, 4.35
             ) { BeginJaar = 1961, EindJaar = 1990, Locatie = "Athene" });
+
+                griekenland.VoegKlimatogramToe(new Klimatogram(VormMaanden(
+            new double[] { 5.0,6.7,9.6,14.2,19.5,24.2,26.5,25.8,21.8,16.1,10.9,6.7 },
+            new int[] { 37,40,46,36,44,32,26,21,26,41,58,53 }).ToList(), 40.516667,22.966667
+        ) { BeginJaar = 1961, EindJaar = 1990, Locatie = "Thessaloniki" });
+
+                griekenland.VoegKlimatogramToe(new Klimatogram(VormMaanden(
+   new double[] { 11.7,12.0,16.6,16.7,20.5,24.7,26.9,26.9,24.6,20.6,16.4,13.4 },
+   new int[] { 148,118,75,24,14,3,0,0,7,64,88,145 }).ToList(), 36.4, 28.066667
+) { BeginJaar = 1961, EindJaar = 1990, Locatie = "Rhodos" });
 
                 Land kameroen = new Land("Kameroen");
                 kameroen.VoegKlimatogramToe(new Klimatogram(VormMaanden(
