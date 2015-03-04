@@ -164,12 +164,11 @@ namespace Klimatogrammen.Models.DAL
                 eersteGraad.Vragen.Add(new Vraag() {Parameter = _parameterFactory.MaakParameter("Warmste Maand"), VraagTekst = "Wat is de warmste maand?"});
                 eersteGraad.Vragen.Add(new Vraag() { Parameter = _parameterFactory.MaakParameter("Tw"), VraagTekst = "Wat is de temperatuur van de warmste maand (Tw)?" });
                 eersteGraad.Vragen.Add(new Vraag() { Parameter = _parameterFactory.MaakParameter("Koudste Maand"), VraagTekst = "Wat is de koudste maand?" });
-                eersteGraad.Vragen.Add(new Vraag() { Parameter = _parameterFactory.MaakParameter("Tk"), VraagTekst = "Wat is de temperatuur van de koudste maan (Tk)?" });
+                eersteGraad.Vragen.Add(new Vraag() { Parameter = _parameterFactory.MaakParameter("Tk"), VraagTekst = "Wat is de temperatuur van de koudste maand (Tk)?" });
                 eersteGraad.Vragen.Add(new Vraag() { Parameter = _parameterFactory.MaakParameter("D"), VraagTekst = "Hoeveel droge maanden zijn er (D)?" });
                 eersteGraad.Vragen.Add(new Vraag() { Parameter = _parameterFactory.MaakParameter("Nz"), VraagTekst = "Hoeveelheid neerslag in de zomer?" });
                 eersteGraad.Vragen.Add(new Vraag() { Parameter = _parameterFactory.MaakParameter("Nw"), VraagTekst = "Hoeveelheid neerslag in de winter?" });
 
-                //TODO: Graad 1 krijgt kleine tabel, graad 2 krijgt grote
                 DeterminatieTabel klein = MaakKleineDeterminatieTabel();
                 DeterminatieTabel groot = MaakGroteDeterminatieTabel();
 
@@ -190,7 +189,7 @@ namespace Klimatogrammen.Models.DAL
                 
                     
                 int[] gemiddeldeNeerUkkel = {67,54,73,57,70,78,75,63,59,71,78,76 };
-                double[] gemiddeldeTempUkkel = { 2.5,3.2,5.7,8.7,12.7,15.5,17.2,17.0,14.4,10.4,6.0,3.4};
+                double[] gemiddeldeTempUkkel = { 2.5,3.2,5.7,8.7,12.7,15.5,17.2,17.2,14.4,10.4,2.5,3.4};
                 belgie.VoegKlimatogramToe(new Klimatogram(VormMaanden(gemiddeldeTempUkkel, gemiddeldeNeerUkkel).ToList(), 50.8, 4.35) { Locatie = "Ukkel", BeginJaar = 1961, EindJaar = 2009 });
                 europa.VoegLandToe(belgie);
 

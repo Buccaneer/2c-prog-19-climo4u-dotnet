@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text.RegularExpressions;
 
 namespace Klimatogrammen.Models.Domein {
@@ -73,5 +74,14 @@ namespace Klimatogrammen.Models.Domein {
             klimatogram.Land = null;
         }
 
+        public bool HeeftKlimatogrammen()
+        {
+            return Klimatogrammen.Any();
+        }
+
+        public Klimatogram GeefKlimatogram(string locatie)
+        {
+            return Klimatogrammen.FirstOrDefault(l => l.Locatie.Equals(locatie));
+        }
     }
 }

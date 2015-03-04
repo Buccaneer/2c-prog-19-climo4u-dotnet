@@ -40,13 +40,14 @@
         }
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-              
+                @if (!Model.AllesJuist)
+                    {
                     <input type="submit" value="Valideer" class="btn btn-primary" />
-                
-               
+                    }
+                    else
+                    {
                     @Html.ActionLink("Volgende oefening", "Index", "Determinatie", null, new { @class = "btn btn-primary" })
-                
-
+                    }
                 @Html.ActionLink("Stoppen", "Index", "Home",null, new{@class = "btn btn-primary"})
             </div>
 

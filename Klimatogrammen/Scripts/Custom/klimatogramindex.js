@@ -3,10 +3,12 @@
     $("#container").html("");
     $("#container").removeAttr('style');
     $("#legend").html("");
+    $("#verderGaan").remove();
 }
 
 function makeGraph(klimatogram) {
-    clearAlert();
+        clearAlert();
+    if (klimatogram.Land !== undefined) {
     $("#container").css({ "width": "100%", "height": "400px" });
 
     var temperaturen = klimatogram.GemiddeldeTemperatuur;
@@ -27,6 +29,9 @@ function makeGraph(klimatogram) {
 
     max += 10;
     var chart = new Highcharts.Chart({
+        credits: {
+            enabled:false
+        },
         legend: {
             enabled: false
         },
@@ -116,6 +121,9 @@ function makeGraph(klimatogram) {
     tabel += '<p><b> Gemiddelde temperatuur: </b>' + klimatogram.TotaalGemiddeldeTemperatuur + '</p>';
     $("#legend").html(tabel);
 
-    var actionButton = "<a href=/OefeningVragen/Index class='btn btn-primary'>Verder gaan</a>";
-    $("#legend").append(actionButton);
+        $("#buttons").removeClass("col-md-offset-2").removeClass("col-md-10");
+
+    var actionButton = "<a href=/OefeningVragen/Index class='btn btn-primary' id='verderGaan'>Verder gaan</a>";
+    $("#buttons").prepend(actionButton);
+    }
 }

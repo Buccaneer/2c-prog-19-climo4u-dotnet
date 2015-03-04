@@ -1,4 +1,5 @@
 ﻿using System.Collections.ObjectModel;
+using System.Net.Configuration;
 using Klimatogrammen.Models.Domein;
 using System;
 using System.Collections.Generic;
@@ -13,11 +14,13 @@ namespace Klimatogrammen.ViewModels
 
     public class VragenIndexViewModel
     {
+        public bool AllesJuist { get; set; }
         public ICollection<VraagViewModel> Vragen { get; set; }
         public AntwoordViewModel Antwoorden { get; set; }
 
         public VragenIndexViewModel(IEnumerable<Vraag> vragen, Klimatogram klimatogram)
         {
+            AllesJuist= vragen.All(v=>v.Resultaat == Resultaat.Juist);
             Vragen = new Collection<VraagViewModel>();
             foreach (var vraag in vragen)
             {

@@ -18,13 +18,10 @@ namespace Klimatogrammen.Controllers {
             }
             KlimatogramKiezenIndexViewModel kIVM;
             switch (leerling.Graad.Nummer) {
-                case 1: {
-                    kIVM = new KlimatogramKiezenIndexViewModel(leerling.Graad.Continenten.ToList());
+                case 1: case 2: {
+                    kIVM = new KlimatogramKiezenIndexViewModel(leerling.GeefContinenten().ToList());
                         break;
                     }
-                case 2:
-                    kIVM = new KlimatogramKiezenIndexViewModel(leerling.Graad.Continenten.ToList());
-                    break;
                 default:
                     return RedirectToAction("Index", "Home");
             }
@@ -38,8 +35,7 @@ namespace Klimatogrammen.Controllers {
                 return null;
             }
 
-            Continent continent = leerling.Graad.Continenten.First(c => c.Naam.Equals(kVM.Continent));
-
+            Continent continent = leerling.GeefContinent(kVM.Continent);
 
             if (!continent.Landen.Any()) {
                 TempData["Error"] = "Er zijn geen landen in de databank gevonden voor het geselecteerde continent.";
@@ -55,9 +51,9 @@ namespace Klimatogrammen.Controllers {
             if (!ModelState.IsValid) {
                 return null;
             }
-            Land land = continent.Landen.FirstOrDefault(l => l.Naam.Equals(kVM.Land));
+            Land land = continent.GeefLand(kVM.Land);
 
-            if (land != null && (kVM.Land == null || !land.Klimatogrammen.Any())) {
+            if (land != null && (kVM.Land == null || !land.HeeftKlimatogrammen())) {
                 TempData["Error"] = "Er zijn geen locaties in de databank gevonden voor het geselecteerde land.";
                 return JavaScript("window.location = '" + Url.Action("Index") + "'");
             }
@@ -72,7 +68,7 @@ namespace Klimatogrammen.Controllers {
                 return null;
             }
 
-            Klimatogram klimatogram = land.Klimatogrammen.FirstOrDefault(l => l.Locatie.Equals(kVM.Locatie));
+            Klimatogram klimatogram = land.GeefKlimatogram(kVM.Locatie);
 
             if (kVM.Locatie == null || klimatogram == null) {
                 TempData["Error"] = "Er zijn geen klimatogrammen in de databank gevonden voor de geselecteerde locatie.";
@@ -82,15 +78,7 @@ namespace Klimatogrammen.Controllers {
                 HttpContext.Session["klimatogram"] = klimatogram;
             leerling.Klimatogram = klimatogram;
 
-            object klim = new { GemiddeldeTemperatuur = klimatogram.Maanden.Select(maand => maand.Temperatuur).ToList(),
-                                GemiddeldeNeerslag = klimatogram.Maanden.Select(maand => maand.Neerslag).ToList(),
-                                klimatogram.BeginJaar,
-                                klimatogram.EindJaar,
-                                Land = klimatogram.Land.Naam,
-                                klimatogram.Locatie,
-                                TotaalGemiddeldeTemperatuur = klimatogram.GeefGemiddeldeTemperatuur(),
-                                TotaalNeerslag = klimatogram.GeefTotaleNeerslag()
-            };
+            object klim = klimatogram.MaakJsonObject();
 
             return Json(klim, JsonRequestBehavior.AllowGet);
         }

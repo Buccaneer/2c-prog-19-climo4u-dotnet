@@ -20,6 +20,9 @@
 
     max += 10;
     var chart = new Highcharts.Chart({
+        credits: {
+            enabled:false
+        },
         legend: {
             enabled: false
         },

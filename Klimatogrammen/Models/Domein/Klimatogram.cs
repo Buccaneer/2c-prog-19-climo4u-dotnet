@@ -56,5 +56,21 @@ namespace Klimatogrammen.Models.Domein
         {
             return Math.Round(Maanden.Average(maand => maand.Temperatuur),1);
         }
+
+        public object MaakJsonObject()
+        {
+            object klim = new
+            {
+                GemiddeldeTemperatuur = Maanden.Select(maand => maand.Temperatuur).ToList(),
+                GemiddeldeNeerslag = Maanden.Select(maand => maand.Neerslag).ToList(),
+                BeginJaar,
+                EindJaar,
+                Land = Land.Naam,
+                Locatie,
+                TotaalGemiddeldeTemperatuur = GeefGemiddeldeTemperatuur(),
+                TotaalNeerslag = GeefTotaleNeerslag()
+            };
+            return klim;
+        }
     }
 }

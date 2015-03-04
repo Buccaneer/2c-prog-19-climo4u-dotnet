@@ -22,10 +22,6 @@ namespace Klimatogrammen.ViewModels
         }
         
         public LeerlingIndexViewModel(Leerling l) {
-            //test
-            //if (l.Graad.Nummer < 1 || l.Graad.Nummer > 3) throw new ArgumentException("TEST");
-            //if (l.Graad.Jaar < 1 || l.Graad.Jaar > 2) throw new ArgumentException("TEST");
-            //einde test
             Graad = (GraadKiezen) l.Graad.Nummer;
             Jaar = l.Graad.Jaar;
           

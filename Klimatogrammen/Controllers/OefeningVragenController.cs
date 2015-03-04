@@ -27,39 +27,17 @@ namespace Klimatogrammen.Controllers
             if (route != null)
                 return route;
 
-            string[] antwden= new string[antwoorden.Antwoord.Length];
+            string[] antwden= leerling.ValideerVragen(antwoorden.Antwoord);
             
-            for (int i = 0; i < leerling.Graad.Vragen.Count; i++)
-            {
-                leerling.Graad.Vragen.ElementAt(i).ValideerVraag(antwoorden.Antwoord[i], leerling.Klimatogram);
-                if (leerling.Graad.Vragen.ElementAt(i).Resultaat == Resultaat.Juist)
-                {
-                    antwden[i] = antwoorden.Antwoord[i];
-                }
-                else
-                {
-                    antwden[i] = null;
-                }
-            }
             AntwoordViewModel antw = new AntwoordViewModel(antwden);
-            VragenIndexViewModel vraagVM = new VragenIndexViewModel(leerling.Graad.Vragen, leerling.Klimatogram){Antwoorden=antw};
+            VragenIndexViewModel vraagVM = new VragenIndexViewModel(leerling.GeefVragen(), leerling.Klimatogram){Antwoorden=antw};
             return View(vraagVM);
         }
 
         public ActionResult GetJSON(Leerling leerling)
         {
             Klimatogram klimatogram = leerling.Klimatogram;
-            object klim = new
-            {
-                GemiddeldeTemperatuur = klimatogram.Maanden.Select(maand => maand.Temperatuur).ToList(),
-                GemiddeldeNeerslag = klimatogram.Maanden.Select(maand => maand.Neerslag).ToList(),
-                klimatogram.BeginJaar,
-                klimatogram.EindJaar,
-                Land = klimatogram.Land.Naam,
-                klimatogram.Locatie,
-                TotaalGemiddeldeTemperatuur = klimatogram.GeefGemiddeldeTemperatuur(),
-                TotaalNeerslag = klimatogram.GeefTotaleNeerslag()
-            };
+            object klim = klimatogram.MaakJsonObject();
             return Json(klim, JsonRequestBehavior.AllowGet);
         }
 

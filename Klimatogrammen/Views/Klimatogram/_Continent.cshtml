@@ -27,11 +27,13 @@
 
 <script>
     $('#Continent').change(function () {
-        $("#continentForm").submit();
+        $("#buttons").addClass("col-md-offset-2").addClass("col-md-10");
         $("#locatie").html("");
         $("#land").html("");
         $("#container").html("");
         $("#container").removeAttr('style');
         $("#legend").html("");
+        $("#verderGaan").remove();
+        $("#continentForm").submit();
     });
 </script>

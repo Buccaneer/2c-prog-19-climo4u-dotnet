@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text.RegularExpressions;
 
 namespace Klimatogrammen.Models.Domein {
@@ -69,6 +70,11 @@ namespace Klimatogrammen.Models.Domein {
         public void VerwijderLand(Land land)
         {
             Landen.Remove(land);
+        }
+
+        public Land GeefLand(string land)
+        {
+            return Landen.FirstOrDefault(l => l.Naam.Equals(land));
         }
     }
 }
