@@ -195,7 +195,7 @@ namespace Klimatogrammen.Models.DAL
                 europa.VoegLandToe(belgie);
 
                 belgie.VoegKlimatogramToe(new Klimatogram(VormMaanden(
-                new double[] { 2.2,3.1,5.3,8.8,12.3,15.6,17.0,16.9,14.3,10.1,6.0,3.2 },
+                new double[] { 2.2,2.2,5.3,8.8,12.3,15.6,17.0,17.0,14.3,10.1,6.0,3.2 },
                 new int[] { 62,49,48,49,60,70,80,80,73,71,67,67 }).ToList(), 51.2, 4.45
             ) { BeginJaar = 1961, EindJaar = 1990, Locatie = "Antwerpen - Deurne" });
 

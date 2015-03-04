@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Data;
 using System.Linq;
+using System.Text;
 using Klimatogrammen.Models.Domein;
 using WebGrease.Css.Extensions;
 
@@ -12,8 +13,24 @@ namespace Klimatogrammen
     {
         public override IComparable BerekenWaarde(Klimatogram klimatogram)
         {
-            return klimatogram.Maanden.First(m => m.Temperatuur.Equals(klimatogram.Maanden.Max(t => t.Temperatuur))).Naam;
-                }
+            Maand max =  klimatogram.Maanden.First(m => m.Temperatuur.Equals(klimatogram.Maanden.Max(t => t.Temperatuur)));
+            StringBuilder sb = new StringBuilder();
+            bool first = true;
+
+            foreach (Maand maand in klimatogram.Maanden.Where(maand => maand.Temperatuur.Equals(max.Temperatuur))) {
+                if (!first)
+                    sb.Append("|");
+                else
+                    first = false;
+                sb.Append(maand.Naam);
+              
+                
+            }
+
+
+            return sb.ToString();
+
+        }
         public override string GeefBeschrijving()
         {
             return "Warmste Maand";
@@ -30,7 +47,23 @@ namespace Klimatogrammen
     {
         public override IComparable BerekenWaarde(Klimatogram klimatogram)
         {
-            return klimatogram.Maanden.First(m => m.Temperatuur.Equals(klimatogram.Maanden.Min(t => t.Temperatuur))).Naam;
+            Maand min = klimatogram.Maanden.First(m => m.Temperatuur.Equals(klimatogram.Maanden.Min(t => t.Temperatuur)));
+            StringBuilder sb = new StringBuilder();
+
+            bool first = true;
+
+            foreach (Maand maand in klimatogram.Maanden.Where(maand => maand.Temperatuur.Equals(min.Temperatuur))) {
+                if (!first)
+                    sb.Append("|");
+                else
+                    first = false;
+                sb.Append(maand.Naam);
+
+
+            }
+
+
+            return sb.ToString();
         }
         public override string GeefBeschrijving()
         {

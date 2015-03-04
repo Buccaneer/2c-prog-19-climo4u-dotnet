@@ -11,9 +11,14 @@
 
         public string VraagTekst { get; set; }
 
-        public void ValideerVraag(string antwoord, Klimatogram klimatogram)
-        {
-            Resultaat = Parameter.BerekenWaarde(klimatogram).ToString().Equals(antwoord)
+        public void ValideerVraag(string antwoord, Klimatogram klimatogram) {
+            string juisteAntwoord = Parameter.BerekenWaarde(klimatogram).ToString();
+            if (juisteAntwoord.Contains("|")) {
+                Resultaat = juisteAntwoord.Contains(antwoord)
+               ? Resultaat = Resultaat.Juist
+               : Resultaat = Resultaat.Fout;
+            } else
+            Resultaat = juisteAntwoord.Equals(antwoord)
                 ? Resultaat = Resultaat.Juist
                 : Resultaat = Resultaat.Fout;
         }
