@@ -38,7 +38,7 @@ namespace Klimatogrammen.Controllers {
             Continent continent = leerling.GeefContinent(kVM.Continent);
 
             if (!continent.Landen.Any()) {
-                TempData["Error"] = "Er zijn geen landen in de databank gevonden voor het geselecteerde continent.";
+                TempData["Error"] = "Er zijn geen gegevens beschikbaar voor het geselecteerde continent.";
                 return JavaScript("window.location = '" + Url.Action("Index") + "'");
             }
             if (HttpContext != null && HttpContext.Session != null)
@@ -54,7 +54,7 @@ namespace Klimatogrammen.Controllers {
             Land land = continent.GeefLand(kVM.Land);
 
             if (land != null && (kVM.Land == null || !land.HeeftKlimatogrammen())) {
-                TempData["Error"] = "Er zijn geen locaties in de databank gevonden voor het geselecteerde land.";
+                TempData["Error"] = "Er zijn geen gegevens beschikbaar voor het geselecteerde land.";
                 return JavaScript("window.location = '" + Url.Action("Index") + "'");
             }
             if (HttpContext != null && HttpContext.Session != null)
@@ -71,7 +71,7 @@ namespace Klimatogrammen.Controllers {
             Klimatogram klimatogram = land.GeefKlimatogram(kVM.Locatie);
 
             if (kVM.Locatie == null || klimatogram == null) {
-                TempData["Error"] = "Er zijn geen klimatogrammen in de databank gevonden voor de geselecteerde locatie.";
+                TempData["Error"] = "Er zijn geen gegevens beschikbaar voor de geselecteerde locatie.";
                 return JavaScript("window.location = '" + Url.Action("Index") + "'");
             }
             if (HttpContext != null && HttpContext.Session != null)

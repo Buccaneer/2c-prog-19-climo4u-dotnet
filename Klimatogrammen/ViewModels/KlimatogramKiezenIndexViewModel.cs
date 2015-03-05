@@ -52,7 +52,7 @@ namespace Klimatogrammen.ViewModels
 
     public class KlimatogramKiezenLocatieViewModel
     {
-        [Required(ErrorMessage = "Er moet een land geselecteerd worden.")]
+        [Required(ErrorMessage = "Er moet een locatie geselecteerd worden.")]
         public string Locatie { get; set; }
         public SelectList Locaties { get; set; }
 

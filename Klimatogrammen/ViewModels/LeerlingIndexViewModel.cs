@@ -4,33 +4,45 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Klimatogrammen.Infrastructure;
 using Klimatogrammen.Models.Domein;
 
 namespace Klimatogrammen.ViewModels
 {
     public class LeerlingIndexViewModel
     {
-        [Required(ErrorMessage = "Graad moet worden meegegeven.")]
+        public const string jaarErrorMessage = "Jaar moet worden meegegeven bij de tweede graad.";
+        public const string graadErrorMessage = "Graad moet worden meegegeven.";
+
+        [RequiredIf("Graad", GraadKiezen.Tweede, ErrorMessage = jaarErrorMessage)]
+        [EnumDataType(typeof(JaarKiezen), ErrorMessage = jaarErrorMessage)]
+        public JaarKiezen? Jaar { get; set; }
+
+        [Required(ErrorMessage = graadErrorMessage)]
+        [EnumDataType(typeof(GraadKiezen), ErrorMessage = graadErrorMessage)]
         public GraadKiezen Graad { get; set; }
 
-        [Range(1,2, ErrorMessage = "Jaar moet 1 of 2 zijn.")]
-        public int? Jaar { get; set; }
-
-
-        public LeerlingIndexViewModel() {
-            
+        public LeerlingIndexViewModel()
+        {
         }
-        
-        public LeerlingIndexViewModel(Leerling l) {
-            Graad = (GraadKiezen) l.Graad.Nummer;
-            Jaar = l.Graad.Jaar;
-          
+
+        public LeerlingIndexViewModel(Leerling l)
+        {
+            Graad = (GraadKiezen)l.Graad.Nummer;
+            Jaar = (JaarKiezen)l.Graad.Jaar;
         }
     }
 
-    public enum GraadKiezen : int{
+    public enum GraadKiezen : int
+    {
         Eerste = 1,
         Tweede = 2,
         Derde = 3
+    }
+
+    public enum JaarKiezen : int
+    {
+        Eerste = 1,
+        Tweede = 2
     }
 }

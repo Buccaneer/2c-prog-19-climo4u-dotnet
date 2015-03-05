@@ -14,7 +14,6 @@
     <div class="form-horizontal">
         <h4>Kies uw graad</h4>
         <hr />
-        @Html.ValidationSummary(false, "", new { @class = "text-danger" })
         <div class="form-group">
             @Html.LabelFor(model => model.Graad, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -25,7 +24,7 @@
         <div class="form-group" id="jaar">
             @Html.LabelFor(model => model.Jaar, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Jaar, new { htmlAttributes = new { @class = "form-control", @min = 1, @max=2 } })
+                @Html.EnumDropDownListFor(model => model.Jaar, "-- Selecteer --", htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.Jaar, "", new { @class = "text-danger" })
             </div>
         </div>

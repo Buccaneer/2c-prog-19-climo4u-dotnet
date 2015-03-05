@@ -14,7 +14,7 @@ namespace Klimatogrammen.Controllers
         public ActionResult Index()
         {
             Leerling leerling = HttpContext.Session["leerling"] as Leerling;
-            if(leerling != null)
+            if (leerling != null && leerling.Graad != null && leerling.Graad.Vragen != null)
             leerling.Graad.Vragen.ForEach(v => v.Resultaat = Resultaat.Onbepaald);
             
             HttpContext.Session.RemoveAll();
