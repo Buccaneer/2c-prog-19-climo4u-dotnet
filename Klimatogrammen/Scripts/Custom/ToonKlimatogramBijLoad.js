@@ -36,7 +36,7 @@
             text: 'Klimatologische gemiddelden ' + klimatogram.BeginJaar + " - " + klimatogram.EindJaar
         },
         xAxis: {
-            categories: ['Jan', 'Feb', 'Maa', 'Apr', 'Mei', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dec']
+            categories: ['Jan<br>'+temperaturen[0] + '°C<br>'+neerslagen[0]+'mm' , 'Feb<br>'+temperaturen[1] + '°C<br>'+neerslagen[1]+'mm', 'Maa<br>'+temperaturen[2] + '°C<br>'+neerslagen[2]+'mm', 'Apr<br>'+temperaturen[3] + '°C<br>'+neerslagen[3]+'mm', 'Mei<br>'+temperaturen[4] + '°C<br>'+neerslagen[4]+'mm', 'Jun<br>'+temperaturen[5] + '°C<br>'+neerslagen[5]+'mm', 'Jul<br>'+temperaturen[6] + '°C<br>'+neerslagen[6]+'mm', 'Aug<br>'+temperaturen[7] + '°C<br>'+neerslagen[7]+'mm', 'Sep<br>'+temperaturen[8] + '°C<br>'+neerslagen[8]+'mm', 'Okt<br>'+temperaturen[9] + '°C<br>'+neerslagen[9]+'mm', 'Nov<br>'+temperaturen[10] + '°C<br>'+neerslagen[10]+'mm', 'Dec<br>'+temperaturen[11] + '°C<br>'+neerslagen[11]+'mm']
         },
         yAxis: [
             {
@@ -69,7 +69,29 @@
             }
         ],
         tooltip: {
-            shared: true
+            shared: true,
+             formatter: function() {
+            var s = "";
+            $.each(this.points, function(i, point) {
+                var str;
+                var label;
+                if (i == 0) {
+                    str = geefMaand(this.x.split("<br>")[0]) + '<br>';
+                } else {
+                    str = '';
+                }
+              
+                
+                if (point.series.name == "Neerslag") {
+                    label = 'Neerslag: ' + '<strong>' + point.y + 'mm</strong><br>';
+                } else {
+                    label = "Temperatuur: " + '<strong>'+ point.y + '°C</strong>';
+                }
+                s+=('<span>' + str + label + '<span>');
+            });
+
+                 return s;
+             },
         },
         series: [
             {
@@ -89,27 +111,39 @@
 
     });
 
-    var tabel = '<table class="legende table-bordered"><tr><td class=data>N in mm</td>';
-    var neerslag = "";
-    $.map(neerslagen, function (data) {
-        neerslag += '<td class = data>' + data + '</td>';
-    });
-    tabel += neerslag;
-    tabel += '</tr>';
-    tabel += '<tr><td class=data>T in °C</td>';
-
-    var temperatuur = "";
-    $.map(temperaturen, function (data) {
-        temperatuur += '<td class = data>' + data + '</td>';
-    });
-
-    tabel += temperatuur;
-    tabel += '</tr>';
-
-    tabel += '</table>';
-
-    tabel += '<br/><p><b> Totale neerslag: </b>' + klimatogram.TotaalNeerslag + '</p>';
-    tabel += '<p><b> Gemiddelde temperatuur: </b>' + klimatogram.TotaalGemiddeldeTemperatuur + '</p>';
-    $("#legend").html(tabel);
+    var html = '<br/><p><b> Totale neerslag: </b>' + klimatogram.TotaalNeerslag + '</p>';
+    html += '<p><b> Gemiddelde temperatuur: </b>' + klimatogram.TotaalGemiddeldeTemperatuur + '</p>';
+    $("#legend").html(html);
     });
 });
+
+function geefMaand(maand) {
+    switch(maand) {
+                    case 'Jan':
+                        return 'Januari';
+                    case 'Feb':
+                        return 'Februari';
+                    case 'Maa':
+                        return 'Maart';
+                    case 'Apr':
+                        return 'April';
+                    case 'Mei':
+                        return 'Mei';
+                    case 'Jun':
+                        return 'Juni';
+                    case 'Jul':
+                        return 'Juli';
+                    case 'Aug':
+                        return 'Augustus';
+                    case 'Sep':
+                        return 'September';
+                    case 'Okt':
+                        return 'Oktober';
+                    case 'Nov':
+                        return 'November';
+                    case 'Dec':
+                        return 'December';
+                    default :
+                        return maand;
+                }
+}
