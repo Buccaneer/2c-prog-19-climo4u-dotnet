@@ -38,8 +38,8 @@ namespace Klimatogrammen.Models.DAL
             vergelijking2.Operator = Operator.KleinerDan;
 
             //Resultaatknoop voor ja en nee Tw < 0°C
-            DeterminatieKnoop resultaatKnoopJa = new ResultaatKnoop("", "Koud zonder dooiseizoen");
-            DeterminatieKnoop resultaatKnoopNee = new ResultaatKnoop("", "Koud met dooiseizoen");
+            DeterminatieKnoop resultaatKnoopJa = new ResultaatBlad("", "Koud zonder dooiseizoen");
+            DeterminatieKnoop resultaatKnoopNee = new ResultaatBlad("", "Koud met dooiseizoen");
 
             //Ja knoop instellen van de ja tak van de eerste vergelijking
             DeterminatieKnoop jaKnoop = new BeslissingsKnoop(vergelijking2, resultaatKnoopJa, resultaatKnoopNee);
@@ -51,7 +51,7 @@ namespace Klimatogrammen.Models.DAL
             vergelijking3.Operator = Operator.KleinerDan;
 
             //Resultaatknoop aanmaken van vergelijking 3
-            DeterminatieKnoop resultaatKnoopJa2 = new ResultaatKnoop("", "Koud gematigd");
+            DeterminatieKnoop resultaatKnoopJa2 = new ResultaatBlad("", "Koud gematigd");
 
             //Nee knoop aanmaken van vergelijking 3
             Vergelijking vergelijking4 = new Vergelijking();
@@ -60,7 +60,7 @@ namespace Klimatogrammen.Models.DAL
             vergelijking4.Operator = Operator.KleinerDan;
 
             //Resultaat knoop nee aanmaken van vergelijking 4
-            DeterminatieKnoop resultaatKnoopNee2 = new ResultaatKnoop("", "Warm");
+            DeterminatieKnoop resultaatKnoopNee2 = new ResultaatBlad("", "Warm");
 
             //Vergelijking aanmaken van ja knoop 2
             Vergelijking vergelijking5 = new Vergelijking();
@@ -69,7 +69,7 @@ namespace Klimatogrammen.Models.DAL
             vergelijking5.Operator = Operator.GroterDan;
 
             //Resultaat knoop nee aanmaken van vergelijking 5
-            DeterminatieKnoop resultaatKnoopNee4 = new ResultaatKnoop("", "Gematigd en droog");
+            DeterminatieKnoop resultaatKnoopNee4 = new ResultaatBlad("", "Gematigd en droog");
 
             //Vergelijking aanmaken van ja knoop 3
             Vergelijking vergelijking6 = new Vergelijking();
@@ -78,7 +78,7 @@ namespace Klimatogrammen.Models.DAL
             vergelijking6.Operator = Operator.KleinerDan;
 
             //Resultaat knoop aanmaken van vergelijking 6
-            DeterminatieKnoop resultaatKnoopJa3 = new ResultaatKnoop("", "Koel gematigd met strenge winter");
+            DeterminatieKnoop resultaatKnoopJa3 = new ResultaatBlad("", "Koel gematigd met strenge winter");
 
             //Vergelijking aanmaken van nee knoop 3
             Vergelijking vergelijking7 = new Vergelijking();
@@ -87,8 +87,8 @@ namespace Klimatogrammen.Models.DAL
             vergelijking7.Operator = Operator.KleinerDan;
 
             //Resultaat knoop aanmaken van vergelijking 7
-            DeterminatieKnoop resultaatKnoopJa4 = new ResultaatKnoop("", "Koel gematigd met zachte winter");
-            DeterminatieKnoop resultaatKnoopNee3 = new ResultaatKnoop("", "Warm gematigd met natte winter");
+            DeterminatieKnoop resultaatKnoopJa4 = new ResultaatBlad("", "Koel gematigd met zachte winter");
+            DeterminatieKnoop resultaatKnoopNee3 = new ResultaatBlad("", "Warm gematigd met natte winter");
 
             //Nee knoop aanmaken van vergelijking 6
             DeterminatieKnoop neeKnoop3 = new BeslissingsKnoop(vergelijking7, resultaatKnoopJa4, resultaatKnoopNee3);
@@ -114,21 +114,21 @@ namespace Klimatogrammen.Models.DAL
         private DeterminatieTabel MaakGroteDeterminatieTabel() {
             DeterminatieTabel dt = new DeterminatieTabel();
 
-            ResultaatKnoop jajaResultaatKnoop = new ResultaatKnoop("Ijswoestijnklimaat","Koud klimaat zonder dooiseizoen");
-            ResultaatKnoop janeeResultaatKnoop = new ResultaatKnoop("Toendraklimaat","Koud klimaat met dooiseizoen");
-            ResultaatKnoop neejaResultaatKnoop = new ResultaatKnoop("Taigaklimaat","Koudgematigd klimaat met strenge winter");
-            ResultaatKnoop neeneejajaResultaatKnoop = new ResultaatKnoop("Woestijnklimaat van de middelbreedten","Gematigd altijd droog klimaat");
-            ResultaatKnoop neeneejaneeResultaatKnoop = new ResultaatKnoop("Woestijnklmaat van de tropen","Warm altijd droog klimaat");
-            ResultaatKnoop neeneeneejajaResultaatKnoop = new ResultaatKnoop("Steppeklimaat","Gematigd, droog klimaat");
-            ResultaatKnoop neeneeneejaneejaResultaatKnoop = new ResultaatKnoop("Taigaklimaat","Koudgematigd klimaat met strenge winter");
-            ResultaatKnoop neeneeneejaneeneejajaResultaatKnoop = new ResultaatKnoop("Gemengd-woudklimaat","Koelgematigd klimaat met koude winter");
-            ResultaatKnoop neeneeneejaneeneejaneejaResultaatKnoop = new ResultaatKnoop("Loofbosklimaat","Koelgematigd klimaat met zachte winter");
-            ResultaatKnoop neeneeneejaneeneejaneeneeResultaatKnoop = new ResultaatKnoop("Subtropisch regenwoudklimaat","Warmgematigd altijd nat klimaat");
-            ResultaatKnoop neeneeneejaneeneeneejajaResultaatKnoop = new ResultaatKnoop("Hardbladige-vegetatieklimaat van de centrale middelbreedten","Koelgematigd klimaat met natte winter");
-            ResultaatKnoop neeneeneejaneeneeneejaneeResultaatKnoop = new ResultaatKnoop("Hardbladige-vegetatieklimaat van de subtropen","Warmgematigd klimaat met natte winter");
-            ResultaatKnoop neeneeneejaneeneeneeneeResultaatKnoop = new ResultaatKnoop("Subtropisch savanneklimaat","Warmgematigd klimaat met natte zomer");
-            ResultaatKnoop neeneeneeneeneeResultaatKnoop = new ResultaatKnoop("Tropisch savanneklimaat", "Warm klimaat met nat seizoen");
-            ResultaatKnoop neeneeneeneejaResultaatKnoop = new ResultaatKnoop("Tropisch regenwoudklimaat","Warm altijd nat klimaat");
+            ResultaatBlad jajaResultaatKnoop = new ResultaatBlad("Ijswoestijnklimaat","Koud klimaat zonder dooiseizoen");
+            ResultaatBlad janeeResultaatKnoop = new ResultaatBlad("Toendraklimaat","Koud klimaat met dooiseizoen");
+            ResultaatBlad neejaResultaatKnoop = new ResultaatBlad("Taigaklimaat","Koudgematigd klimaat met strenge winter");
+            ResultaatBlad neeneejajaResultaatKnoop = new ResultaatBlad("Woestijnklimaat van de middelbreedten","Gematigd altijd droog klimaat");
+            ResultaatBlad neeneejaneeResultaatKnoop = new ResultaatBlad("Woestijnklmaat van de tropen","Warm altijd droog klimaat");
+            ResultaatBlad neeneeneejajaResultaatKnoop = new ResultaatBlad("Steppeklimaat","Gematigd, droog klimaat");
+            ResultaatBlad neeneeneejaneejaResultaatKnoop = new ResultaatBlad("Taigaklimaat","Koudgematigd klimaat met strenge winter");
+            ResultaatBlad neeneeneejaneeneejajaResultaatKnoop = new ResultaatBlad("Gemengd-woudklimaat","Koelgematigd klimaat met koude winter");
+            ResultaatBlad neeneeneejaneeneejaneejaResultaatKnoop = new ResultaatBlad("Loofbosklimaat","Koelgematigd klimaat met zachte winter");
+            ResultaatBlad neeneeneejaneeneejaneeneeResultaatKnoop = new ResultaatBlad("Subtropisch regenwoudklimaat","Warmgematigd altijd nat klimaat");
+            ResultaatBlad neeneeneejaneeneeneejajaResultaatKnoop = new ResultaatBlad("Hardbladige-vegetatieklimaat van de centrale middelbreedten","Koelgematigd klimaat met natte winter");
+            ResultaatBlad neeneeneejaneeneeneejaneeResultaatKnoop = new ResultaatBlad("Hardbladige-vegetatieklimaat van de subtropen","Warmgematigd klimaat met natte winter");
+            ResultaatBlad neeneeneejaneeneeneeneeResultaatKnoop = new ResultaatBlad("Subtropisch savanneklimaat","Warmgematigd klimaat met natte zomer");
+            ResultaatBlad neeneeneeneeneeResultaatKnoop = new ResultaatBlad("Tropisch savanneklimaat", "Warm klimaat met nat seizoen");
+            ResultaatBlad neeneeneeneejaResultaatKnoop = new ResultaatBlad("Tropisch regenwoudklimaat","Warm altijd nat klimaat");
 
 
             BeslissingsKnoop jaBeslissingsKnoop = new BeslissingsKnoop(new Vergelijking(_parameterFactory.MaakParameter("Tw"),Operator.KleinerDanOfGelijkAan, _parameterFactory.MaakConstanteParameter(0)), jajaResultaatKnoop,janeeResultaatKnoop );

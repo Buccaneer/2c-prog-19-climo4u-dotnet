@@ -15,7 +15,7 @@ namespace Klimatogrammen.ViewModels
             
         }
 
-        public DeterminatieIndexViewModel(ResultaatKnoop knoop)
+        public DeterminatieIndexViewModel(ResultaatBlad knoop)
         {
             KlimaatType = knoop.KlimaatType;
             VegetatieType = knoop.VegetatieType;

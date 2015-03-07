@@ -7,29 +7,13 @@ namespace Klimatogrammen.Models.Domein {
     public abstract class DeterminatieKnoop {
         public int DeterminatieKnoopId { get; set; }
 
+        public virtual DeterminatieKnoop Ouder { get; set; }
+
         /// <summary>
         /// Retourneer volgens de opgeloste vergelijking en het klimatogram de juiste Knoop.
         /// </summary>
         /// <param name="klimatogram">Het klimatogram waaruit de gegevens moeten worden gehaald.</param>
         /// <returns>Volgende knoop of leaf punt in de determinatietabel.</returns>
-        public virtual DeterminatieKnoop NeemJuisteKnoop(Klimatogram klimatogram) {
-            throw new NotSupportedException();
-        }
-
-        /// <summary>
-        /// De gebruiker selecteerd Ja, het systeem retourneerd de volgende Ja knoop.
-        /// </summary>
-        /// <returns>Volgende knoop of leaf punt in de determinatietabel.</returns>
-        public virtual DeterminatieKnoop NeemJaKnoop() {
-            throw new NotSupportedException();
-        }
-
-        /// <summary>
-        /// De gebruiker selecteerd Nee, het systeem retourneerd de volgende Nee knoop.
-        /// </summary>
-        /// <returns>Volgende knoop of leaf punt in de determinatietabel.</returns>
-        public virtual DeterminatieKnoop NeemNeeKnoop() {
-            throw new NotSupportedException();
-        }
+        public abstract DeterminatieKnoop Determineer(Klimatogram klimatogram);
     }
 }

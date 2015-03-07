@@ -100,25 +100,28 @@
   <Class Name="Klimatogrammen.Models.Domein.DeterminatieKnoop">
     <Position X="6" Y="3.5" Width="3" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAABAEAAAAAAAAAAAAAAAAEBAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAEAAAAAAAAAAAAAQAAAgAAAAAAAAAA=</HashCode>
       <FileName>Models\Domein\DeterminatieKnoop.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Ouder" />
+    </ShowAsAssociation>
   </Class>
   <Class Name="Klimatogrammen.Models.Domein.DeterminatieTabel">
     <Position X="1.75" Y="1.75" Width="3.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAIQBAAABQAEgAAAAQAAAAAQAAEBAAAAAAAAAA=</HashCode>
+      <HashCode>AAAgAAAIABAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAQ=</HashCode>
       <FileName>Models\Domein\DeterminatieTabel.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
       <Property Name="BeginKnoop" />
     </ShowAsAssociation>
   </Class>
-  <Class Name="Klimatogrammen.Models.Domein.ResultaatKnoop">
-    <Position X="5" Y="6.75" Width="1.5" />
+  <Class Name="Klimatogrammen.Models.Domein.ResultaatBlad">
+    <Position X="5" Y="6.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACEAAAAAAAAAA=</HashCode>
-      <FileName>Models\Domein\ResultaatKnoop.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAQAACEAAAAAAAAAA=</HashCode>
+      <FileName>Models\Domein\ResultaatBlad.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Klimatogrammen.Models.Domein.BeslissingsKnoop">
@@ -129,7 +132,7 @@
       </MemberNameLabel>
     </AssociationLine>
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAABAACAAAAAAAAAAAAAQAMBAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAACAAAAAAAAAAAAQQAIAAAAAAAAAAA=</HashCode>
       <FileName>Models\Domein\BeslissingsKnoop.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>

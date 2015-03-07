@@ -174,7 +174,7 @@
     <Compile Include="Models\Domein\ParameterFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Models\Domein\Resultaat.cs" />
-    <Compile Include="Models\Domein\ResultaatKnoop.cs" />
+    <Compile Include="Models\Domein\ResultaatBlad.cs" />
     <Compile Include="Models\Domein\Vergelijking.cs" />
     <Compile Include="ViewModels\DeterminatieViewModel.cs" />
     <Compile Include="ViewModels\KlimatogramKiezenIndexViewModel.cs" />

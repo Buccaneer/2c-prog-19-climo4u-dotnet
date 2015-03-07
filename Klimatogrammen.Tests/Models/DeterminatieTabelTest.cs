@@ -22,7 +22,7 @@ namespace Klimatogrammen.Tests.Models
         [TestMethod]
         public void DeterminerenGeeftJuisteKlimaatTerug()
         {
-            ResultaatKnoop resultaat = _determinatieTabel.Determineer(_klimatogramMock.Object);
+            ResultaatBlad resultaat = _determinatieTabel.Determineer(_klimatogramMock.Object);
             string verwacht = "Gematigd en droog";
            
             Assert.AreEqual(verwacht, resultaat.KlimaatType);
@@ -36,7 +36,7 @@ namespace Klimatogrammen.Tests.Models
             while (!_determinatieTabel.HeeftLeerlingEindeBereikt())
                 _determinatieTabel.NeemNeeKnoop();
 
-            Assert.AreEqual(verwacht, _determinatieTabel.ValideerGebruikersPad());
+            Assert.AreEqual(verwacht, _determinatieTabel.ValideerGebruiker());
         }
 
         [TestMethod]
@@ -49,7 +49,7 @@ namespace Klimatogrammen.Tests.Models
             _determinatieTabel.NeemJaKnoop();
             _determinatieTabel.NeemNeeKnoop();
 
-            Assert.AreEqual(verwacht, _determinatieTabel.ValideerGebruikersPad());
+            Assert.AreEqual(verwacht, _determinatieTabel.ValideerGebruiker());
         }
 
         [TestMethod]
@@ -58,7 +58,7 @@ namespace Klimatogrammen.Tests.Models
             _determinatieTabel.Determineer(_klimatogramMock.Object);
             var huidige = _determinatieTabel.GeefDeterminatieGebruiker();
             _determinatieTabel.NeemJaKnoop();
-            _determinatieTabel.ValideerGebruikersPad();
+            _determinatieTabel.ValideerGebruiker();
             var nu = _determinatieTabel.GeefDeterminatieGebruiker();
 
             Assert.AreEqual(huidige,nu);

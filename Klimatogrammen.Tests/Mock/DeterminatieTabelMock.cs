@@ -38,8 +38,8 @@ namespace Klimatogrammen.Tests.Mock
            vergelijking2.Operator = Operator.KleinerDan;
 
            //Resultaatknoop voor ja en nee Tw < 0°C
-           DeterminatieKnoop resultaatKnoopJa = new ResultaatKnoop("","Koud zonder dooiseizoen");
-           DeterminatieKnoop resultaatKnoopNee = new ResultaatKnoop("","Koud met dooiseizoen");
+           DeterminatieKnoop resultaatKnoopJa = new ResultaatBlad("","Koud zonder dooiseizoen");
+           DeterminatieKnoop resultaatKnoopNee = new ResultaatBlad("","Koud met dooiseizoen");
 
            //Ja knoop instellen van de ja tak van de eerste vergelijking
            DeterminatieKnoop jaKnoop = new BeslissingsKnoop(vergelijking2, resultaatKnoopJa, resultaatKnoopNee);
@@ -51,7 +51,7 @@ namespace Klimatogrammen.Tests.Mock
            vergelijking3.Operator = Operator.KleinerDan;
 
            //Resultaatknoop aanmaken van vergelijking 3
-           DeterminatieKnoop resultaatKnoopJa2 = new ResultaatKnoop("","Koud gematigd");
+           DeterminatieKnoop resultaatKnoopJa2 = new ResultaatBlad("","Koud gematigd");
 
            //Nee knoop aanmaken van vergelijking 3
            Vergelijking vergelijking4 = new Vergelijking();
@@ -60,7 +60,7 @@ namespace Klimatogrammen.Tests.Mock
            vergelijking4.Operator = Operator.KleinerDan;
 
            //Resultaat knoop nee aanmaken van vergelijking 4
-           DeterminatieKnoop resultaatKnoopNee2 = new ResultaatKnoop("", "Warm");
+           DeterminatieKnoop resultaatKnoopNee2 = new ResultaatBlad("", "Warm");
 
            //Vergelijking aanmaken van ja knoop 2
            Vergelijking vergelijking5 = new Vergelijking();
@@ -69,7 +69,7 @@ namespace Klimatogrammen.Tests.Mock
            vergelijking5.Operator = Operator.GroterDan;
 
            //Resultaat knoop nee aanmaken van vergelijking 5
-           DeterminatieKnoop resultaatKnoopNee4 = new ResultaatKnoop("","Gematigd en droog"); 
+           DeterminatieKnoop resultaatKnoopNee4 = new ResultaatBlad("","Gematigd en droog"); 
 
            //Vergelijking aanmaken van ja knoop 3
            Vergelijking vergelijking6 = new Vergelijking();
@@ -78,7 +78,7 @@ namespace Klimatogrammen.Tests.Mock
            vergelijking6.Operator = Operator.KleinerDan;
 
            //Resultaat knoop aanmaken van vergelijking 6
-           DeterminatieKnoop resultaatKnoopJa3 = new ResultaatKnoop("","Koel gematigd met strenge winter");
+           DeterminatieKnoop resultaatKnoopJa3 = new ResultaatBlad("","Koel gematigd met strenge winter");
 
            //Vergelijking aanmaken van nee knoop 3
            Vergelijking vergelijking7 = new Vergelijking();
@@ -87,8 +87,8 @@ namespace Klimatogrammen.Tests.Mock
            vergelijking7.Operator=Operator.KleinerDan;
 
            //Resultaat knoop aanmaken van vergelijking 7
-           DeterminatieKnoop resultaatKnoopJa4 = new ResultaatKnoop("","Koel gematigd met zachte winter");
-           DeterminatieKnoop resultaatKnoopNee3 = new ResultaatKnoop("","Warm gematigd met natte winter");
+           DeterminatieKnoop resultaatKnoopJa4 = new ResultaatBlad("","Koel gematigd met zachte winter");
+           DeterminatieKnoop resultaatKnoopNee3 = new ResultaatBlad("","Warm gematigd met natte winter");
 
            //Nee knoop aanmaken van vergelijking 6
            DeterminatieKnoop neeKnoop3 = new BeslissingsKnoop(vergelijking7, resultaatKnoopJa4, resultaatKnoopNee3);

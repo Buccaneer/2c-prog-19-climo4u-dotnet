@@ -9,18 +9,10 @@
 
         public virtual DeterminatieKnoop NeeKnoop { get; set; }
 
-        public override DeterminatieKnoop NeemNeeKnoop() {
-            return NeeKnoop;
-        }
-
-        public override DeterminatieKnoop NeemJuisteKnoop(Klimatogram klimatogram) {
+        public override DeterminatieKnoop Determineer(Klimatogram klimatogram) {
             if (Vergelijking.BerekenResultaat(klimatogram))
-                return JaKnoop;
-            return NeeKnoop;
-        }
-
-        public override DeterminatieKnoop NeemJaKnoop() {
-            return JaKnoop;
+                return JaKnoop.Determineer(klimatogram);
+            return NeeKnoop.Determineer(klimatogram);
         }
 
         public BeslissingsKnoop() {
@@ -30,6 +22,8 @@
             Vergelijking = vergelijking;
             JaKnoop = jaKnoop;
             NeeKnoop = neeKnoop;
+            JaKnoop.Ouder = this;
+            NeeKnoop.Ouder = this;
         }
     }
 }

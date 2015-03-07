@@ -14,7 +14,7 @@ namespace Klimatogrammen.Controllers
         public ActionResult Index(Leerling leerling)
         {
             DeterminatieTabel tabel = leerling.Graad.DeterminatieTabel;
-            ResultaatKnoop knoop = tabel.Determineer(leerling.Klimatogram);
+            ResultaatBlad knoop = tabel.Determineer(leerling.Klimatogram);
             DeterminatieIndexViewModel determinatieIndexViewModel = new DeterminatieIndexViewModel(knoop);
             return View(determinatieIndexViewModel);
         }
