@@ -7,8 +7,6 @@ namespace Klimatogrammen.Models.Domein {
     public abstract class DeterminatieKnoop {
         public int DeterminatieKnoopId { get; set; }
 
-        public virtual DeterminatieKnoop Ouder { get; set; }
-
         /// <summary>
         /// Retourneer volgens de opgeloste vergelijking en het klimatogram de juiste Knoop.
         /// </summary>

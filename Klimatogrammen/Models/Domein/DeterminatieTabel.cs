@@ -24,6 +24,16 @@ namespace Klimatogrammen.Models.Domein {
             return _juisteDeterminatie == gebruikersKnoop ? Resultaat.Juist : Resultaat.Fout;
         }
 
+        public object MaakJsonObject()
+        {
+            return BeginKnoop;
+        }
+
+        public string[] GeefAlleVegetatieTypes()
+        {
+            throw new System.NotImplementedException();
+        }
+
         public DeterminatieTabel(DeterminatieKnoop beginKnoop) {
             BeginKnoop = beginKnoop;
         }

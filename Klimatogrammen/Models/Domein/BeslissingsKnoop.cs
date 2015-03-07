@@ -22,8 +22,6 @@
             Vergelijking = vergelijking;
             JaKnoop = jaKnoop;
             NeeKnoop = neeKnoop;
-            JaKnoop.Ouder = this;
-            NeeKnoop.Ouder = this;
         }
     }
 }

@@ -176,6 +176,7 @@
     <Compile Include="Models\Domein\Resultaat.cs" />
     <Compile Include="Models\Domein\ResultaatBlad.cs" />
     <Compile Include="Models\Domein\Vergelijking.cs" />
+    <Compile Include="VegetatieType.cs" />
     <Compile Include="ViewModels\DeterminatieViewModel.cs" />
     <Compile Include="ViewModels\KlimatogramKiezenIndexViewModel.cs" />
     <Compile Include="ViewModels\LeerlingIndexViewModel.cs" />

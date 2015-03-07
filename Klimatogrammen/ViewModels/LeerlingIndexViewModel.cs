@@ -14,22 +14,26 @@ namespace Klimatogrammen.ViewModels
         public const string jaarErrorMessage = "Jaar moet worden meegegeven bij de tweede graad.";
         public const string graadErrorMessage = "Graad moet worden meegegeven.";
         private JaarKiezen? _jaar;
+        private GraadKiezen _graad;
 
         [RequiredIf("Graad", GraadKiezen.Tweede, ErrorMessage = jaarErrorMessage)]
         [EnumDataType(typeof(JaarKiezen), ErrorMessage = jaarErrorMessage)]
-        public JaarKiezen? Jaar {
-            get
-            {
-                return _jaar; 
-            }
-            set {
-                _jaar = Graad == GraadKiezen.Tweede ? value : null;
-            }
-        }
+        public JaarKiezen? Jaar { get; set; }
 
         [Required(ErrorMessage = graadErrorMessage)]
         [EnumDataType(typeof(GraadKiezen), ErrorMessage = graadErrorMessage)]
-        public GraadKiezen Graad { get; set; }
+        public GraadKiezen Graad
+        {
+            get { return _graad; }
+            set
+            {
+                if (value != GraadKiezen.Tweede)
+                {
+                    Jaar = null;
+                }
+                _graad = value;
+            }
+        }
 
         public LeerlingIndexViewModel()
         {
