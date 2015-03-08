@@ -15,8 +15,11 @@ $(function () {
             $(item).html("");
             var determinatieTabel = new DeterminatieTabel(item, data,postUrl,postName);
             determinatieTabel.teken();
-            if (antwoord !== "" && gebruikerAntwoord !== "") {
+            if (antwoord != 0 && gebruikerAntwoord != 0) {
                 determinatieTabel.valideer(gebruikerAntwoord, antwoord);
+                if (antwoord == gebruikerAntwoord) {
+                    determinatieTabel.paper.off("cell:pointerclick");
+                }
             }
         });
     });
@@ -51,6 +54,7 @@ function DeterminatieTabel(item, data, postUrl,postName) {
         var self = this;
         this.paper.off('cell:highlight');
         this.paper.off('cell:mouseover');
+  
         this.paper.on('cell:pointerclick',
             function (cellView) {
                 if (cellView.model.innernode !== undefined) {
