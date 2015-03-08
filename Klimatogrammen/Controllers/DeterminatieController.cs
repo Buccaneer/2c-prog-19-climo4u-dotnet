@@ -13,6 +13,9 @@ namespace Klimatogrammen.Controllers
         // GET: Determinatie
         public ActionResult Index(Leerling leerling)
         {
+            ActionResult route = RedirectIndienNodig(leerling);
+            if (route != null)
+                return route;
             return View(new DeterminatieIndexViewModel());
         }
 
@@ -48,6 +51,24 @@ namespace Klimatogrammen.Controllers
             DeterminatieTabel tabel = leerling.Graad.DeterminatieTabel;
             object tbl = tabel.MaakJsonObject();
             return Json(tbl, JsonRequestBehavior.AllowGet);
+        }
+
+        private ActionResult RedirectIndienNodig(Leerling leerling)
+        {
+            if (leerling == null || leerling.Graad == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            if (leerling.Graad.Nummer == 3)
+            {
+                //TODO: controller voor kaartje bestaat nog niet dus nu naar home
+                return RedirectToAction("Index", "Home");
+            }
+            if (leerling.Klimatogram == null)
+            {
+                return RedirectToAction("Index", "Klimatogram");
+            }
+            return null;
         }
 
 

@@ -97,12 +97,21 @@ namespace Klimatogrammen.Tests.Controllers
             // OPMERKING : 
             // Moet aangepast worden zodra Controllers beschikbaar zijn zodat Leerling 3de graad meteen naar Oefening gaat
         }
+        [TestMethod]
+        public void LeerlingNullRedirectNaarHome()
+        {
+            //    VraagRepository vRep = VraagRepository.CreerVragenVoorKlimatogram(_mockKlimatogram);
+            RedirectToRouteResult result = _vraagController.Index(null) as RedirectToRouteResult;
+            //Assert.IsNotNull(result);
+            Assert.AreEqual("Index", result.RouteValues["action"]);
+            Assert.AreEqual("Home", result.RouteValues["controller"]);
+        }
 
         [TestMethod]
-        public void LeerlingNullRedirectNaarGraadSelectie()
+        public void GraadNullRedirectNaarHomeSelectie()
         {
-        //    VraagRepository vRep = VraagRepository.CreerVragenVoorKlimatogram(_mockKlimatogram);
-            RedirectToRouteResult result = _vraagController.Index(null) as RedirectToRouteResult;
+            //    VraagRepository vRep = VraagRepository.CreerVragenVoorKlimatogram(_mockKlimatogram);
+            RedirectToRouteResult result = _vraagController.Index(new Leerling { Graad = null, Klimatogram = _mockKlimatogram.Object }) as RedirectToRouteResult;
             //Assert.IsNotNull(result);
             Assert.AreEqual("Index", result.RouteValues["action"]);
             Assert.AreEqual("Home", result.RouteValues["controller"]);
