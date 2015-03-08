@@ -14,6 +14,10 @@ namespace Klimatogrammen.Models.Domein {
             return this;
         }
 
+        public override void Laad() {
+            // Alle virtual members eens aanroepen hier geen.
+        }
+
         public ResultaatBlad() { }
 
         public ResultaatBlad(string vegType, string klimType) {

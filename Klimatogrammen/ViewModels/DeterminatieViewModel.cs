@@ -9,8 +9,8 @@ namespace Klimatogrammen.ViewModels
 {
     public class DeterminatieIndexViewModel
     {
-        public string GebruikersAntwoord { get; set; }
-        public string Antwoord { get; set; }
+        public int GebruikersAntwoord { get; set; }
+        public int Antwoord { get; set; }
         public bool Correct { get; set; }
         public DeterminatieIndexViewModel()
         {   

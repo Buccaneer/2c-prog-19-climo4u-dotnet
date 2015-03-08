@@ -20,7 +20,8 @@ namespace Klimatogrammen.Controllers
         public ActionResult Index(Leerling leerling, DeterminatieIndexViewModel determinatieVM)
         {
             DeterminatieTabel tabel = leerling.Graad.DeterminatieTabel;
-            determinatieVM.Correct = determinatieVM.GebruikersAntwoord.Equals(tabel.Determineer(leerling.Klimatogram).KlimaatType);
+            determinatieVM.Antwoord = tabel.Determineer(leerling.Klimatogram).DeterminatieKnoopId;
+            determinatieVM.Correct = determinatieVM.GebruikersAntwoord.Equals(determinatieVM.Antwoord);
             if (determinatieVM.Correct)
             {
                 if (leerling.Graad.Nummer == 1)

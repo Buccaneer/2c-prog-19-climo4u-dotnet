@@ -13,5 +13,7 @@ namespace Klimatogrammen.Models.Domein {
         /// <param name="klimatogram">Het klimatogram waaruit de gegevens moeten worden gehaald.</param>
         /// <returns>Volgende knoop of leaf punt in de determinatietabel.</returns>
         public abstract DeterminatieKnoop Determineer(Klimatogram klimatogram);
+
+        public abstract void Laad();
     }
 }

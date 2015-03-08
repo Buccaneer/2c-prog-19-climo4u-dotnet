@@ -15,6 +15,15 @@
             return NeeKnoop.Determineer(klimatogram);
         }
 
+        public override void Laad() {
+
+            Vergelijking.Operator = Vergelijking.Operator;
+            if (JaKnoop != null)
+            JaKnoop.Laad();
+            if (NeeKnoop != null)
+            NeeKnoop.Laad();
+        }
+
         public BeslissingsKnoop() {
         }
 
