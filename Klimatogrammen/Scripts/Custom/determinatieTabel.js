@@ -53,15 +53,17 @@ function DeterminatieTabel(item, data, postUrl,postName) {
         this.paper.off('cell:mouseover');
         this.paper.on('cell:pointerclick',
             function (cellView) {
-                self.boom.clear();
-                var n = cellView.model.innernode;
-                n.vulMetKleur('blue', null);
-            
-                if (n.data.vegetatieType !== undefined) {
-                    var h = $(form).find("input[type=text]");
-                    $(h).val(n.data.id);
-                    $(form).submit();
-                    
+                if (cellView.model.innernode !== undefined) {
+                    self.boom.clear();
+                    var n = cellView.model.innernode;
+                    n.vulMetKleur('blue', null);
+
+                    if (n.data.vegetatieType !== undefined) {
+                        var h = $(form).find("input[type=text]");
+                        $(h).val(n.data.id);
+                        $(form).submit();
+
+                    }
                 }
             }
         );
