@@ -139,6 +139,7 @@
     <Compile Include="Models\DAL\Mapper\GraadMapper.cs" />
     <Compile Include="Models\DAL\Mapper\MaandMapper.cs" />
     <Compile Include="Models\DAL\Mapper\ParameterMapper.cs" />
+    <Compile Include="Models\DAL\Mapper\VegetatieTypeMapper.cs" />
     <Compile Include="Models\DAL\Mapper\VergelijkingMapper.cs" />
     <Compile Include="Models\DAL\Mapper\VraagMapper.cs" />
     <Compile Include="Models\Domein\BeslissingsKnoop.cs" />
@@ -176,7 +177,7 @@
     <Compile Include="Models\Domein\Resultaat.cs" />
     <Compile Include="Models\Domein\ResultaatBlad.cs" />
     <Compile Include="Models\Domein\Vergelijking.cs" />
-    <Compile Include="VegetatieType.cs" />
+    <Compile Include="Models\Domein\VegetatieType.cs" />
     <Compile Include="ViewModels\DeterminatieViewModel.cs" />
     <Compile Include="ViewModels\KlimatogramKiezenIndexViewModel.cs" />
     <Compile Include="ViewModels\LeerlingIndexViewModel.cs" />
