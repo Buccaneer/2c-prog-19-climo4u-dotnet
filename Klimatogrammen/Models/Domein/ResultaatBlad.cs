@@ -6,7 +6,7 @@ namespace Klimatogrammen.Models.Domein {
     /// </summary>
     public class ResultaatBlad : DeterminatieKnoop {
 
-        public string VegetatieType { get; private set; }
+        public virtual VegetatieType VegetatieType { get; private set; }
 
         public string KlimaatType { get; private set; }
 
@@ -20,8 +20,8 @@ namespace Klimatogrammen.Models.Domein {
 
         public ResultaatBlad() { }
 
-        public ResultaatBlad(string vegType, string klimType) {
-            VegetatieType = vegType;
+        public ResultaatBlad(VegetatieType vegetatieType, string klimType) {
+            VegetatieType = vegetatieType;
             KlimaatType = klimType;
         }
 
