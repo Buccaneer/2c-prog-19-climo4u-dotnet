@@ -1,6 +1,15 @@
 ﻿/**
 * Toon een determinatietabel.
 */
+var kleuren = {
+    'standaardKnoopKleur': '#7cb5ec', // #33a6e8
+    'standaardLijnKleur' : 'black',
+    'geselecteerdKleur': '#317eac',
+    'foutKleur': '#b94a48', //#b83d3a
+    'juistKleur': '#468847',
+    'tekstKleur' : 'black'
+};
+
 $(function () {
     $(".determinatietabel").each(function (index, item) {
         var url = $(item).attr("data-url");
@@ -60,7 +69,7 @@ function DeterminatieTabel(item, data, postUrl,postName) {
                 if (cellView.model.innernode !== undefined) {
                     self.boom.clear();
                     var n = cellView.model.innernode;
-                    n.vulMetKleur('blue', null);
+                    n.vulMetKleur(kleuren.geselecteerdKleur, null);
 
                     if (n.data.vegetatieType !== undefined) {
                         var h = $(form).find("input[type=text]");
@@ -93,9 +102,9 @@ function DeterminatieTabel(item, data, postUrl,postName) {
             }
         });
         if (gebruiker !== null)
-            gebruiker.vulMetKleur('green', null);
+            gebruiker.vulMetKleur(kleuren.juistKleur, null);
         if (gebruiker !== systeem)
-            systeem.valideer('red', null);
+            systeem.valideer(kleuren.foutKleur, null);
     }
 }
 
@@ -136,19 +145,19 @@ function Node(data, ja, nee) {
     this.rect = new joint.shapes.basic.Rect({
         position: { x: 0, y: 10 },
         size: { width: 200, height: 40 },
-        attrs: { rect: { fill: 'black' }, text: { text: this.toString(), fill: 'white' } },
+        attrs: { rect: { fill: kleuren.standaardKnoopKleur, stroke: kleuren.standaardLijnKleur, 'stroke-width': 1 }, text: { text: this.toString(), fill: kleuren.tekstKleur } },
     });
     this.clear = function() {
-        this.rect.attr({ rect: { fill: 'black' } });
+        this.rect.attr({ rect: { fill: kleuren.standaardKnoopKleur } });
         if (this.linkJa !== undefined) {
             this.linkJa.attr({
-                '.connection': { stroke: 'black' }
+                '.connection': { stroke: kleuren.standaardLijnKleur, 'stroke-width': 1 }
             });
             this.ja.clear();
         }
         if (this.linkNee !== undefined) {
             this.linkNee.attr({
-                '.connection': { stroke: 'black', 'stroke-width': 1 }
+                '.connection': { stroke: kleuren.standaardLijnKleur, 'stroke-width': 1 }
             });
             this.nee.clear();
         }
@@ -163,7 +172,7 @@ function Node(data, ja, nee) {
             }
         }
         var k = this.rect.toJSON().attrs.rect.fill;
-        if (k !== 'black') {
+        if (k !== kleuren.standaardKnoopKleur) {
             this.clear();
             this.rect.attr({
                 rect: { fill: kleur }
@@ -182,7 +191,7 @@ function Node(data, ja, nee) {
                 {
                     position: .5,
                     attrs: {
-                        text: { fill: 'black', text: 'Ja' }
+                        text: { fill: kleuren.tekstKleur, text: 'Ja' }
                     }
                 }
             ]
@@ -197,7 +206,7 @@ function Node(data, ja, nee) {
                {
                    position: .5,
                    attrs: {
-                       text: { fill: 'black', text: 'Nee' }
+                       text: { fill: kleuren.tekstKleur, text: 'Nee' }
                    }
                }
             ]
@@ -238,7 +247,7 @@ function Node(data, ja, nee) {
         });
         if (link !== null) {
             link.attr({
-                '.connection': { stroke: kleur, 'stroke-width': 2 }
+                '.connection': { stroke: kleur, 'stroke-width': 1 }
             });
         }
         if (this.parent !== null)

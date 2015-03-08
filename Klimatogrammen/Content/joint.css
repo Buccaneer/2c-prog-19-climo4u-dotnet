@@ -71,7 +71,7 @@ the whole group of elements. Each plugin can provide its own stylesheet.
 
 .element {
    /* Give the user a hint that he can drag&drop the element. */
-   cursor: move;
+   cursor: pointer !important;
 }
 
 .element * {
@@ -230,4 +230,8 @@ Do not allow adding new vertices: .connection-wrap { pointer-events: none; }
     vertical-align: middle;
     display: table-cell;
     padding: 0px 5px 0px 5px;
+}
+
+.determinatietabel .link {
+    cursor: default !important;
 }
