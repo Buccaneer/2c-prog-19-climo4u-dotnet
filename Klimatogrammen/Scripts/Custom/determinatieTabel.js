@@ -28,6 +28,7 @@ $(function () {
                 determinatieTabel.valideer(gebruikerAntwoord, antwoord);
                 if (antwoord == gebruikerAntwoord) {
                     determinatieTabel.paper.off("cell:pointerclick");
+                    $(item).css('pointer-events', 'none');
                 }
             }
         });
@@ -56,7 +57,7 @@ function DeterminatieTabel(item, data, postUrl,postName) {
             el: $(item),
             model: this.graph,
             width: (grid.maxX + 1) * (grid.width + grid.marginright),
-            height: grid.y * (grid.height + grid.marginbottom),
+            height: grid.y * (grid.height + grid.marginbottom) * 0.9,
             gridSize: 1,
             interactive: false
         });
@@ -140,10 +141,10 @@ function Node(data, ja, nee) {
             return parameterToString(data.LinkerParameter) + " " + operatorToString(data.Operator) + " " + parameterToString(data.RechterParameter);
         }
        
-        return data.vegetatieType + "\n" + data.klimaatType;
+        return data.klimaatType;
     };
     this.rect = new joint.shapes.basic.Rect({
-        position: { x: 0, y: 10 },
+        position: { x: 1, y: 10 },
         size: { width: 200, height: 40 },
         attrs: { rect: { fill: kleuren.standaardKnoopKleur, stroke: kleuren.standaardLijnKleur, 'stroke-width': 1 }, text: { text: this.toString(), fill: kleuren.tekstKleur } },
     });
@@ -151,13 +152,15 @@ function Node(data, ja, nee) {
         this.rect.attr({ rect: { fill: kleuren.standaardKnoopKleur } });
         if (this.linkJa !== undefined) {
             this.linkJa.attr({
-                '.connection': { stroke: kleuren.standaardLijnKleur, 'stroke-width': 1 }
+                '.connection': { stroke: kleuren.standaardLijnKleur, 'stroke-width': 1 },
+                '.marker-target': { fill: kleuren.standaardLijnKleur, d: 'M 10 0 L 0 5 L 10 10 z' }
             });
             this.ja.clear();
         }
         if (this.linkNee !== undefined) {
             this.linkNee.attr({
-                '.connection': { stroke: kleuren.standaardLijnKleur, 'stroke-width': 1 }
+                '.connection': { stroke: kleuren.standaardLijnKleur, 'stroke-width': 1 },
+                '.marker-target': { fill: kleuren.standaardLijnKleur, d: 'M 10 0 L 0 5 L 10 10 z' }
             });
             this.nee.clear();
         }
@@ -196,6 +199,10 @@ function Node(data, ja, nee) {
                 }
             ]
         });
+        this.linkJa.attr({
+            '.connection': { stroke: kleuren.standaardLijnKleur, 'stroke-width': 1 },
+            '.marker-target': { fill: kleuren.standaardLijnKleur, d: 'M 10 0 L 0 5 L 10 10 z' }
+        });
     }
 
     if (nee !== null && nee !== undefined) {
@@ -210,6 +217,10 @@ function Node(data, ja, nee) {
                    }
                }
             ]
+        });
+        this.linkNee.attr({
+            '.connection': { stroke: kleuren.standaardLijnKleur, 'stroke-width': 1 },
+            '.marker-target': { fill: kleuren.standaardLijnKleur, d: 'M 10 0 L 0 5 L 10 10 z' }
         });
 
         nee.parent = this;
@@ -247,7 +258,8 @@ function Node(data, ja, nee) {
         });
         if (link !== null) {
             link.attr({
-                '.connection': { stroke: kleur, 'stroke-width': 1 }
+                '.connection': { stroke: kleur, 'stroke-width': 1 },
+                '.marker-target': { fill: kleur, d: 'M 10 0 L 0 5 L 10 10 z' }
             });
         }
         if (this.parent !== null)
