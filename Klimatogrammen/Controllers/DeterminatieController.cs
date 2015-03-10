@@ -34,25 +34,22 @@ namespace Klimatogrammen.Controllers
                 }
                 else
                 {
-                    determinatieVM.VraagVM = new VegetatieVraagViewModel(leerling);
-                    if (leerling.Graad.Jaar == 1)
-                    {
-                        determinatieVM.PartialViewName = "_Graad2jaar1";
-                  
-                    }
-                    else
-                    {
-                        determinatieVM.PartialViewName = "_Graad2jaar2";
-                    } 
+                    determinatieVM.VraagVM = new VegetatieVraagViewModel(leerling, tabel.VegetatieType.Foto);
+                    determinatieVM.PartialViewName = leerling.Graad.Jaar == 1 ? "_Graad2jaar1" : "_Graad2jaar2";
                 }
             }
             return View(determinatieVM);
         }
 
         [HttpPost]
-        public ActionResult VerbeterVraagGraad2(Leerling leerling, string antwoord)
+        public ActionResult VerbeterVraagGraad2(Leerling leerling, DeterminatieIndexViewModel determinatieVM)
         {
-            throw new NotImplementedException();
+            DeterminatieTabel tabel = leerling.Graad.DeterminatieTabel;
+            if (determinatieVM.VraagVM.GebruikersAntwoord.Equals(tabel.VegetatieType.Naam))
+            {
+                determinatieVM.VraagVM.Correct = true;
+            }
+            return View("Index", determinatieVM);
         }
 
         public ActionResult GetJSON(Leerling leerling)

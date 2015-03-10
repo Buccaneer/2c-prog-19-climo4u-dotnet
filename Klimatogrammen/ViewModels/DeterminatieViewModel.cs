@@ -28,12 +28,13 @@ namespace Klimatogrammen.ViewModels
     {
         public SelectList Antwoorden { get; set; }
         public string GebruikersAntwoord { get; set; }
+        public bool Correct { get; set; }
         public string Foto { get; set; }
 
-        public VegetatieVraagViewModel(Leerling leerling)
+        public VegetatieVraagViewModel(Leerling leerling, string foto)
         {
             Antwoorden = new SelectList(leerling.Graad.DeterminatieTabel.AlleVegetatieTypes.Select(s => s.Naam));
-        
+            Foto = foto;
         }
 
     }

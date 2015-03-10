@@ -100,14 +100,14 @@
   <Class Name="Klimatogrammen.Models.Domein.DeterminatieKnoop">
     <Position X="6" Y="3.5" Width="3" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAEAAAAAAAAAAAAAQAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAEAAAAAAAAAAAAAQAAAggAAAAAAAAA=</HashCode>
       <FileName>Models\Domein\DeterminatieKnoop.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Klimatogrammen.Models.Domein.DeterminatieTabel">
     <Position X="1.75" Y="1.75" Width="3.5" />
     <TypeIdentifier>
-      <HashCode>CAAgAAAIABAAAAAAAAAAAAAgAAAAQAAAAAAAAAAAAAQ=</HashCode>
+      <HashCode>CAAgAAAIABAAAAAAAAAAAAAAAAAAYAACAAAAAAAAAAQ=</HashCode>
       <FileName>Models\Domein\DeterminatieTabel.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -117,9 +117,12 @@
   <Class Name="Klimatogrammen.Models.Domein.ResultaatBlad">
     <Position X="5" Y="6.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAQAACEAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAQAACkgAAAAAAAAA=</HashCode>
       <FileName>Models\Domein\ResultaatBlad.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="VegetatieType" />
+    </ShowAsAssociation>
   </Class>
   <Class Name="Klimatogrammen.Models.Domein.BeslissingsKnoop">
     <Position X="8.25" Y="6.75" Width="1.5" />
@@ -129,7 +132,7 @@
       </MemberNameLabel>
     </AssociationLine>
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAACAAAAAAAAAAAAQQAIAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAACAAAAAAAAAAAAQQAIggAAAAAAAAA=</HashCode>
       <FileName>Models\Domein\BeslissingsKnoop.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -155,11 +158,11 @@
       <Property Name="RechterParameter" />
     </ShowAsAssociation>
   </Class>
-  <Class Name="Klimatogrammen.VegetatieType">
+  <Class Name="Klimatogrammen.Models.Domein.VegetatieType">
     <Position X="2.25" Y="6.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAQAAAAAA=</HashCode>
-      <FileName>VegetatieType.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAABAABAAAAAAAAAAAAAAAQAAAAAA=</HashCode>
+      <FileName>Models\Domein\VegetatieType.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Enum Name="Klimatogrammen.Models.Domein.Resultaat">
