@@ -204,6 +204,7 @@
     <Content Include="Scripts\Custom\Index.js" />
     <Content Include="Scripts\Custom\klimatogramIndex.js" />
     <Content Include="Scripts\Custom\ToonKlimatogramBijLoad.js" />
+    <Content Include="Scripts\Custom\vegetatiescript.js" />
     <Content Include="Scripts\highcharts-3d.js" />
     <Content Include="Scripts\highcharts-3d.src.js" />
     <Content Include="Scripts\highcharts-all.js" />
@@ -245,6 +246,9 @@
     <Content Include="Views\OefeningVragen\Index.cshtml" />
     <Content Include="Views\Determinatie\Index.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Determinatie\_Graad1.cshtml" />
+    <Content Include="Views\Determinatie\_Graad2jaar1.cshtml" />
+    <Content Include="Views\Determinatie\_Graad2jaar2.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

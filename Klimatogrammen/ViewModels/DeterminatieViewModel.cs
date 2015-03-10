@@ -37,6 +37,8 @@ namespace Klimatogrammen.ViewModels
             Foto = foto;
         }
 
+        public VegetatieVraagViewModel() {}
+
     }
 
     public class VegetatieAntwoordViewModel
@@ -50,6 +52,8 @@ namespace Klimatogrammen.ViewModels
             Foto = foto;
         }
 
+        public VegetatieAntwoordViewModel() {
+        }
     }
 
 }

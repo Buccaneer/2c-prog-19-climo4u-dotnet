@@ -1,0 +1,14 @@
+﻿@model Klimatogrammen.ViewModels.VegetatieAntwoordViewModel
+
+<div>
+    <h4>@Model.Antwoord</h4>
+	<hr />
+    @if (Model.Foto == "") {
+        <img src="http://backgroundsbase.com/wp-content/uploads/2015/03/beautiful-mountain-wallpapers-hd-awesome.jpg" class="img-responsive" />
+    } else {
+        <img src="@Model.Foto" class="img-responsive" />
+    }
+</div>
+<p>
+ 
+</p>

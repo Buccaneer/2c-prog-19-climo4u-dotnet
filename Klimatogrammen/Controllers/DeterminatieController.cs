@@ -42,13 +42,28 @@ namespace Klimatogrammen.Controllers
         }
 
         [HttpPost]
-        public ActionResult VerbeterVraagGraad2(Leerling leerling, DeterminatieIndexViewModel determinatieVM)
+        public ActionResult VerbeterVraagGraad2(Leerling leerling, VegetatieVraagViewModel vraagVM)
         {
             DeterminatieTabel tabel = leerling.Graad.DeterminatieTabel;
+
+            var determinatieVM = new DeterminatieIndexViewModel();
+            determinatieVM.VraagVM = new VegetatieVraagViewModel(leerling, tabel.VegetatieType.Foto);
+            determinatieVM.VraagVM.GebruikersAntwoord = vraagVM.GebruikersAntwoord;
+            determinatieVM.Antwoord = tabel.Determineer(leerling.Klimatogram).DeterminatieKnoopId;
+            determinatieVM.Correct = true;
+            determinatieVM.GebruikersAntwoord = determinatieVM.Antwoord;
             if (determinatieVM.VraagVM.GebruikersAntwoord.Equals(tabel.VegetatieType.Naam))
             {
                 determinatieVM.VraagVM.Correct = true;
             }
+            else {
+                determinatieVM.VraagVM.Correct = false;
+
+            }
+           
+         
+                determinatieVM.PartialViewName = leerling.Graad.Jaar == 1 ? "_Graad2jaar1" : "_Graad2jaar2";
+            
             return View("Index", determinatieVM);
         }
 

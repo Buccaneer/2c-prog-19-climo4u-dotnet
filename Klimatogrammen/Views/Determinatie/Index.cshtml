@@ -1,4 +1,5 @@
-﻿@model Klimatogrammen.ViewModels.DeterminatieIndexViewModel
+﻿@using Microsoft.Ajax.Utilities
+@model Klimatogrammen.ViewModels.DeterminatieIndexViewModel
 
 @{
     ViewBag.Title = "Determineren";
@@ -13,20 +14,32 @@
          data-post-name="GebruikersAntwoord"
          data-post-url="@Url.Action("Index","Determinatie")"
          data-antwoord="@Model.Antwoord"
-         data-gebruikerantwoord ="@Model.GebruikersAntwoord">
-   
+         data-gebruikerantwoord="@Model.GebruikersAntwoord">
 
+
+    </div>
+
+    <div>
+
+        @if (Model.Correct) {
+            if (Model.PartialViewName.Contains("Graad1")) {
+                Html.RenderPartial(Model.PartialViewName, Model.AntwoordVM);
+            } else {
+                Html.RenderPartial(Model.PartialViewName, Model.VraagVM);
+            }
+        }
     </div>
 </div>
 <p>
-   @Html.ActionLink("Stoppen", "Index", "Home", null, new { @class = "btn btn-primary" })
+    @Html.ActionLink("Stoppen", "Index", "Home", null, new { @class = "btn btn-primary" })
 </p>
 @section scripts {
     <script src="~/Scripts/joint.js"></script>
     <script src="~/Scripts/Custom/determinatieTabel.js"></script>
 
-<script src="~/Scripts/highcharts.js"></script>
-<script src="~/Scripts/Custom/ToonKlimatogramBijLoad.js"></script>
+    <script src="~/Scripts/highcharts.js"></script>
+    <script src="~/Scripts/Custom/ToonKlimatogramBijLoad.js"></script>
+<script src="~/Scripts/Custom/vegetatiescript.js"></script>
 
 }
 @section css {

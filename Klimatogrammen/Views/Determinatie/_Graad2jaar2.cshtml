@@ -1,0 +1,57 @@
+﻿@model Klimatogrammen.ViewModels.VegetatieVraagViewModel
+
+
+@using (Html.BeginForm("VerbeterVraagGraad2", "Determinatie")) {
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Welk vegetatietype is dit?</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+        <div class="form-group center-block">
+            @if (Model.Correct.HasValue) {
+                if (Model.Foto == "") {
+                     <img id="hint" style="display: none;" src="http://backgroundsbase.com/wp-content/uploads/2015/03/beautiful-mountain-wallpapers-hd-awesome.jpg" class="img-responsive" />
+                 }
+                 else {
+                     <img id="hint" style="display:none" src="@Model.Foto" class="img-responsive" />
+                 }
+            }
+        </div>
+        <div class="form-group">
+
+            <div class="col-md-10">
+                @if (Model.Correct != true) {
+                    @Html.DropDownListFor(model => model.GebruikersAntwoord, Model.Antwoorden, htmlAttributes: new { @class = "form-control" })
+                } else {
+                    @Html.Label(Model.GebruikersAntwoord, new { })
+                    ;
+                }
+                @if (Model.Correct != null) {
+                    if (Model.Correct == false) {
+                        @Html.Label("Dit is niet correct, probeer opnieuw!", new { @class = "text-danger" })
+                    } else if (Model.Correct == true) {
+                        @Html.Label("Dit is juist, goed zo!", new { @class = "text-success" })
+                    }
+                }
+
+            </div>
+
+        </div>
+
+
+        <div class="form-group">
+            @if (Model.Correct.HasValue && Model.Correct == false) {
+                <a class="btn btn-primary" id="btnHint">Toon hint</a>
+            }
+            @if (Model.Correct == null || Model.Correct == false) {
+                <input type="submit" value="Valideer" class="btn btn-primary" />
+            }
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+}
