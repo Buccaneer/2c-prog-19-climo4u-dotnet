@@ -96,6 +96,7 @@
     <Compile Include="Mock\DeterminatieTabelMock.cs" />
     <Compile Include="Mock\GraadMockFactory.cs" />
     <Compile Include="Mock\GraadRepositoryMock.cs" />
+    <Compile Include="Mock\GroteDeterminatieTabelMock.cs" />
     <Compile Include="Mock\KlimatogramMockFactory.cs" />
     <Compile Include="Mock\MaandMockFactory.cs" />
     <Compile Include="Mock\ParameterMockFactory.cs" />

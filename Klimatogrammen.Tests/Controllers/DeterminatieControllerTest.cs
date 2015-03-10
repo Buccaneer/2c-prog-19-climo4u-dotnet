@@ -15,6 +15,7 @@ namespace Klimatogrammen.Tests.Controllers
         private DeterminatieController _determinatieController;
         private Mock<Klimatogram> _mockKlimatogram;
         private Mock<Graad> _graadMock;
+        private DeterminatieTabel _determinatieTabelMock;
         private GraadMockFactory _graadMockFactory = new GraadMockFactory();
 
         [TestInitialize]
@@ -51,6 +52,62 @@ namespace Klimatogrammen.Tests.Controllers
             DeterminatieIndexViewModel dIVM = result.Model as DeterminatieIndexViewModel;
             Assert.IsTrue(dIVM is DeterminatieIndexViewModel);
         }
+
+        [TestMethod]
+        public void ViewVegetatieTypeIsNotNull()
+        {
+            DeterminatieIndexViewModel determinatieVM = new DeterminatieIndexViewModel();
+            Leerling leerling = new Leerling {Graad = _graadMock.Object, Klimatogram = _mockKlimatogram.Object};
+            ViewResult vr =
+                _determinatieController.Index(leerling
+                   , determinatieVM) as ViewResult;
+            
+            Assert.IsNotNull(vr);
+        }
+
+        [TestMethod]
+        public void VegetatieTypeGraad1GeeftPartialViewNameTerug()
+        {
+            DeterminatieIndexViewModel determinatieVM = new DeterminatieIndexViewModel();
+            Leerling leerling = new Leerling { Graad = _graadMock.Object, Klimatogram = _mockKlimatogram.Object };
+            determinatieVM.Correct = true;
+            ActionResult ac =
+                _determinatieController.Index(leerling
+                   , determinatieVM);
+            
+
+            Assert.AreEqual("_Graad1", determinatieVM.PartialViewName);
+        }
+
+        [TestMethod]
+        public void VegetatieTypeGraad2Jaar1GeeftPartialViewNameTerug()
+        {
+            DeterminatieIndexViewModel determinatieVM = new DeterminatieIndexViewModel();
+            _graadMock = _graadMockFactory.MaakTweedeGraadEersteJaarAan();
+            Leerling leerling = new Leerling { Graad = _graadMock.Object, Klimatogram = _mockKlimatogram.Object };
+            determinatieVM.Correct = true;
+            ActionResult ac =
+                _determinatieController.Index(leerling
+                   , determinatieVM);
+
+
+            Assert.AreEqual("_Graad2jaar1", determinatieVM.PartialViewName);
+        }
+        [TestMethod]
+        public void VegetatieTypeGraad2Jaar2GeeftPartialViewNameTerug()
+        {
+            DeterminatieIndexViewModel determinatieVM = new DeterminatieIndexViewModel();
+            _graadMock = _graadMockFactory.MaakTweedeGraadTweedeJaarAan();
+            Leerling leerling = new Leerling { Graad = _graadMock.Object, Klimatogram = _mockKlimatogram.Object };
+            determinatieVM.Correct = true;
+            ActionResult ac =
+                _determinatieController.Index(leerling
+                   , determinatieVM);
+            Assert.AreEqual("_Graad2jaar2", determinatieVM.PartialViewName);
+        }
+
+
+
 
         [TestMethod]
         public void LeerlingNullRedirectNaarHome()
@@ -90,8 +147,9 @@ namespace Klimatogrammen.Tests.Controllers
             // getJson() --> regels GetJson() plaats fail in commentaar.
             //Assert.Fail("getJson() is geen geldige naam :p gelieve GetJson() te gebruiken.");
 
-            Leerling l = new Leerling() { Graad = _graadMock.Object };
+            Leerling l = new Leerling{ Graad = _graadMock.Object, Klimatogram = null};
             JsonResult result = _determinatieController.GetJSON(l) as JsonResult;
+            
 
         }
 
@@ -102,7 +160,7 @@ namespace Klimatogrammen.Tests.Controllers
             // getJson() --> regels GetJson() plaats fail in commentaar.
             //Assert.Fail("getJson() is geen geldige naam :p gelieve GetJson() te gebruiken.");
 
-            Leerling l = new Leerling() { Graad = _graadMock.Object };
+         
             JsonResult result = _determinatieController.GetJSON(null) as JsonResult;
 
         }

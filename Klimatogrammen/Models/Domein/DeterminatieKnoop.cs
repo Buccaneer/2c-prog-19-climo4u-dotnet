@@ -6,7 +6,7 @@ namespace Klimatogrammen.Models.Domein {
     /// Abstracte componentklasse, vormt basis tot de composite voor de determinatietabel voor te stellen.
     /// </summary>
     public abstract class DeterminatieKnoop {
-        public int DeterminatieKnoopId { get; set; }
+        public virtual int DeterminatieKnoopId { get; set; }
 
         /// <summary>
         /// Retourneer volgens de opgeloste vergelijking en het klimatogram de juiste Knoop.

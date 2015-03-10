@@ -16,7 +16,7 @@ namespace Klimatogrammen.Tests.Mock
        /// </summary>
        /// <returns>Retourneert een determinatietabel</returns>
 
-       public DeterminatieTabel MaakDeterminatieTabel()
+       public DeterminatieTabel MaakDeterminatieTabelEersteGraad()
        {
            //Determinatietabel aanmaken
            DeterminatieTabel tabel = new DeterminatieTabel();

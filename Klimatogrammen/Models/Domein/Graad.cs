@@ -32,7 +32,7 @@ namespace Klimatogrammen
 
         public virtual int Jaar { get; set; }
 
-        public DeterminatieTabel DeterminatieTabel { get; set; }
+        public virtual DeterminatieTabel DeterminatieTabel { get; set; }
 
         public virtual ICollection<Continent> Continenten { get; set; }
 

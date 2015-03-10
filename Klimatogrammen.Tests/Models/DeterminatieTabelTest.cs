@@ -15,7 +15,7 @@ namespace Klimatogrammen.Tests.Models
         [TestInitialize]
         public void Init()
         {
-            _determinatieTabel = new DeterminatieTabelMock().MaakDeterminatieTabel();
+            _determinatieTabel = new DeterminatieTabelMock().MaakDeterminatieTabelEersteGraad();
             _klimatogramMock = new KlimatogramMockFactory().MaakKlimatogramMock();
         }
 

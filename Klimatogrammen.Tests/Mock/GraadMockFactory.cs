@@ -21,6 +21,7 @@ namespace Klimatogrammen.Tests.Mock
             mock.Setup(g => g.Vragen)
                 .Returns(new Vraag[] { new Vraag() { Parameter = new ParameterWarmsteMaand(), VraagTekst = "Geef warmste maand?" } });
             mock.Setup(g => g.Continenten).Returns(new ContinentFactory().MaakContinenten(graad));
+            mock.Setup(l => l.DeterminatieTabel).Returns(new DeterminatieTabelMock().MaakDeterminatieTabelEersteGraad);
             //Continent c = new Continent("Europa");
             //Land belgie = new Land("België");
 
@@ -42,6 +43,7 @@ namespace Klimatogrammen.Tests.Mock
             mock.Setup(g => g.Nummer).Returns(graad);
             mock.Setup(g => g.Jaar).Returns(1);
             mock.Setup(g => g.Continenten).Returns(new ContinentFactory().MaakContinenten(graad));
+            mock.Setup(l => l.DeterminatieTabel).Returns(new GroteDeterminatieTabelMock().MaakDeterminatieTabel);
         //    Continent c = new Continent("Europa");
         //    Land belgie = new Land("België");
 
@@ -71,6 +73,7 @@ namespace Klimatogrammen.Tests.Mock
             mock.Setup(g => g.Nummer).Returns(graad);
             mock.Setup(g => g.Jaar).Returns(2);
             mock.Setup(g => g.Continenten).Returns(new ContinentFactory().MaakContinenten(graad));
+            mock.Setup(l => l.DeterminatieTabel).Returns(new GroteDeterminatieTabelMock().MaakDeterminatieTabel);
             
             return mock;
         }
@@ -82,6 +85,7 @@ namespace Klimatogrammen.Tests.Mock
 
             mock.Setup(g => g.Nummer).Returns(graad);
             mock.Setup(g => g.Continenten).Returns(new ContinentFactory().MaakContinenten(graad));
+            mock.Setup(l => l.DeterminatieTabel).Returns(new GroteDeterminatieTabelMock().MaakDeterminatieTabel);
             //Continent c = new Continent("Europa");
             //Land belgie = new Land("België");
 
