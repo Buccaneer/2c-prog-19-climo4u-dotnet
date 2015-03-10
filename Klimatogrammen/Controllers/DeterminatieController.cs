@@ -29,21 +29,30 @@ namespace Klimatogrammen.Controllers
             {
                 if (leerling.Graad.Nummer == 1)
                 {
-                    //vegetatietype + foto
+                    determinatieVM.PartialViewName = "_Graad1";
+                    determinatieVM.AntwoordVM = new VegetatieAntwoordViewModel(tabel.VegetatieType.Naam,tabel.VegetatieType.Foto);
                 }
                 else
                 {
+                    determinatieVM.VraagVM = new VegetatieVraagViewModel(leerling);
                     if (leerling.Graad.Jaar == 1)
                     {
-                        //vraag vegetatietype + foto
+                        determinatieVM.PartialViewName = "_Graad2jaar1";
+                  
                     }
                     else
                     {
-                        //vraag vegetatietype
-                    }
+                        determinatieVM.PartialViewName = "_Graad2jaar2";
+                    } 
                 }
             }
             return View(determinatieVM);
+        }
+
+        [HttpPost]
+        public ActionResult VerbeterVraagGraad2(Leerling leerling, string antwoord)
+        {
+            throw new NotImplementedException();
         }
 
         public ActionResult GetJSON(Leerling leerling)

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Klimatogrammen.Models.Domein {
     /// <summary>
@@ -13,6 +14,8 @@ namespace Klimatogrammen.Models.Domein {
         /// <param name="klimatogram">Het klimatogram waaruit de gegevens moeten worden gehaald.</param>
         /// <returns>Volgende knoop of leaf punt in de determinatietabel.</returns>
         public abstract DeterminatieKnoop Determineer(Klimatogram klimatogram);
+
+        public abstract void MaakLijstMetAlleVegetatieTypes(List<VegetatieType> lijst);
 
         public abstract void Laad();
     }

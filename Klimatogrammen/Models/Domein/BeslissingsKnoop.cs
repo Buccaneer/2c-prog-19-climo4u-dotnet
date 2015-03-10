@@ -1,4 +1,6 @@
-﻿namespace Klimatogrammen.Models.Domein {
+﻿using System.Collections.Generic;
+
+namespace Klimatogrammen.Models.Domein {
     /// <summary>
     /// Een knoop waar een beslissing moet worden genomen volgens een vergelijking en waar een Ja of Nee tak uit voor
     /// </summary>
@@ -13,6 +15,12 @@
             if (Vergelijking.BerekenResultaat(klimatogram))
                 return JaKnoop.Determineer(klimatogram);
             return NeeKnoop.Determineer(klimatogram);
+        }
+
+        public override void MaakLijstMetAlleVegetatieTypes(List<VegetatieType> lijst)
+        {
+            JaKnoop.MaakLijstMetAlleVegetatieTypes(lijst);
+            NeeKnoop.MaakLijstMetAlleVegetatieTypes(lijst);
         }
 
         public override void Laad() {

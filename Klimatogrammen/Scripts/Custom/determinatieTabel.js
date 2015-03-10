@@ -144,7 +144,7 @@ function Node(data, ja, nee) {
         return data.klimaatType;
     };
     this.rect = new joint.shapes.basic.Rect({
-        position: { x: 1, y: 10 },
+        position: { x: 2, y: 11 },
         size: { width: 200, height: 40 },
         attrs: { rect: { fill: kleuren.standaardKnoopKleur, stroke: kleuren.standaardLijnKleur, 'stroke-width': 1 }, text: { text: this.toString(), fill: kleuren.tekstKleur } },
     });
@@ -210,11 +210,11 @@ function Node(data, ja, nee) {
             source: { id: this.rect.id },
             target: { id: nee.rect.id },
             labels: [
-               {
-                   position: .5,
-                   attrs: {
-                       text: { fill: kleuren.tekstKleur, text: 'Nee' }
-                   }
+            {
+                position: .5,
+                attrs: {
+                    text: { fill: kleuren.tekstKleur, text: 'Nee' }
+                }
                }
             ]
         });

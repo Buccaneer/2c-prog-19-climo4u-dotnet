@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Klimatogrammen.Models.Domein {
     /// <summary>
@@ -12,6 +13,11 @@ namespace Klimatogrammen.Models.Domein {
 
         public override DeterminatieKnoop Determineer(Klimatogram klimatogram) {
             return this;
+        }
+
+        public override void MaakLijstMetAlleVegetatieTypes(List<VegetatieType> lijst)
+        {
+            lijst.Add(VegetatieType);
         }
 
         public override void Laad() {

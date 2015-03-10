@@ -1,4 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using Microsoft.Ajax.Utilities;
 
 namespace Klimatogrammen.Models.Domein {
     /// <summary>
@@ -29,9 +32,19 @@ namespace Klimatogrammen.Models.Domein {
             return BeginKnoop;
         }
 
-        public string[] GeefAlleVegetatieTypes()
+        public IEnumerable<VegetatieType> AlleVegetatieTypes
         {
-            throw new System.NotImplementedException();
+            get
+            {
+              var vtypes = new List<VegetatieType>();
+                BeginKnoop.MaakLijstMetAlleVegetatieTypes(vtypes);
+                return vtypes;
+            }
+        }
+
+        public VegetatieType VegetatieType 
+        {
+            get { return _juisteDeterminatie.VegetatieType; }
         }
 
         public DeterminatieTabel(DeterminatieKnoop beginKnoop) {

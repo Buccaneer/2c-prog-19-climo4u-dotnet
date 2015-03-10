@@ -12,9 +12,16 @@ namespace Klimatogrammen.ViewModels
         public int GebruikersAntwoord { get; set; }
         public int Antwoord { get; set; }
         public bool Correct { get; set; }
+
+        public VegetatieVraagViewModel VraagVM { get; set; }
+
+        public VegetatieAntwoordViewModel AntwoordVM { get; set; }
+        public string PartialViewName { get; set; }
         public DeterminatieIndexViewModel()
-        {   
+        {
+            PartialViewName = null;
         }
+
     }
 
     public class VegetatieVraagViewModel
@@ -25,7 +32,8 @@ namespace Klimatogrammen.ViewModels
 
         public VegetatieVraagViewModel(Leerling leerling)
         {
-            Antwoorden = new SelectList(leerling.Graad.DeterminatieTabel.GeefAlleVegetatieTypes());
+            Antwoorden = new SelectList(leerling.Graad.DeterminatieTabel.AlleVegetatieTypes.Select(s => s.Naam));
+        
         }
 
     }
@@ -34,6 +42,12 @@ namespace Klimatogrammen.ViewModels
     {
         public string Antwoord { get; set; }
         public string Foto { get; set; }
+
+        public VegetatieAntwoordViewModel(string antwoord, string foto)
+        {
+            Antwoord = antwoord;
+            Foto = foto;
+        }
 
     }
 
