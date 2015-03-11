@@ -4,11 +4,12 @@
     <h4>@Model.Antwoord</h4>
 	<hr />
     @if (Model.Foto == "") {
-        <img src="http://backgroundsbase.com/wp-content/uploads/2015/03/beautiful-mountain-wallpapers-hd-awesome.jpg" class="img-responsive" />
+       <img src="http://upload.wikimedia.org/wikipedia/commons/c/c9/-Insert_image_here-.svg" class="img-responsive" />
     } else {
         <img src="@Model.Foto" class="img-responsive" />
     }
 </div>
 <p>
- 
+ @Html.ActionLink("Stoppen", "Index", "Home", null, new { @class = "btn btn-primary" })
+
 </p>

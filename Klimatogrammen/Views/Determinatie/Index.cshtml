@@ -6,9 +6,9 @@
 }
 
 <h2>Determineer klimatogram</h2>
-
 <div>
     <div id="container"></div>
+    <div id="legend"></div>
     <hr />
     <div class="determinatietabel" data-url="@Url.Action("GetJSON","Determinatie")"
          data-post-name="GebruikersAntwoord"
@@ -22,24 +22,32 @@
     <div>
 
         @if (Model.Correct) {
+         
             if (Model.PartialViewName.Contains("Graad1")) {
                 Html.RenderPartial(Model.PartialViewName, Model.AntwoordVM);
             } else {
                 Html.RenderPartial(Model.PartialViewName, Model.VraagVM);
             }
         }
+        else {
+            <p>
+                @Html.ActionLink("Stoppen", "Index", "Home", null, new { @class = "btn btn-primary" })
+
+            </p>
+        }
     </div>
 </div>
-<p>
-    @Html.ActionLink("Stoppen", "Index", "Home", null, new { @class = "btn btn-primary" })
-</p>
+
+    
 @section scripts {
     <script src="~/Scripts/joint.js"></script>
     <script src="~/Scripts/Custom/determinatieTabel.js"></script>
 
     <script src="~/Scripts/highcharts.js"></script>
     <script src="~/Scripts/Custom/ToonKlimatogramBijLoad.js"></script>
-<script src="~/Scripts/Custom/vegetatiescript.js"></script>
+    @if (Model.Correct) {
+        <script src="~/Scripts/Custom/vegetatiescript.js"></script>
+    }
 
 }
 @section css {

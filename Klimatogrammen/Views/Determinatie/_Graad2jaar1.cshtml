@@ -11,7 +11,7 @@
         <div class="form-group center-block">
 
             @if (Model.Foto == "") {
-    <img src="http://backgroundsbase.com/wp-content/uploads/2015/03/beautiful-mountain-wallpapers-hd-awesome.jpg" class="img-responsive" />
+    <img src="http://upload.wikimedia.org/wikipedia/commons/c/c9/-Insert_image_here-.svg" class="img-responsive" />
 } else {
                 <img src="@Model.Foto" class="img-responsive" />
             }
@@ -20,7 +20,7 @@
 
             <div class="col-md-10">
                 @if (Model.Correct != true) {
-                    @Html.DropDownListFor(model => model.GebruikersAntwoord, Model.Antwoorden, htmlAttributes: new {@class = "form-control"})
+                    @Html.DropDownListFor(model => model.GebruikersAntwoord, Model.Antwoorden,"-- Selecteer --", htmlAttributes: new {@class = "form-control"})
                 }
                 else {
                     @Html.Label(Model.GebruikersAntwoord, new {})
@@ -32,6 +32,7 @@
                         @Html.Label("Dit is niet correct, probeer opnieuw!", new {@class = "text-danger"})
                     }else if (Model.Correct == true)
                     {
+                        <br />
                         @Html.Label("Dit is juist, goed zo!", new {@class="text-success"})
                     }
                 }
@@ -44,7 +45,10 @@
         <div class="form-group">
             @if (Model.Correct == null || Model.Correct == false) {
                 <input type="submit" value="Valideer" class="btn btn-primary" />
+             
+
             }  
+            @Html.ActionLink("Stoppen", "Index", "Home", null, new { @class = "btn btn-primary" })
         </div>
     </div>
 }

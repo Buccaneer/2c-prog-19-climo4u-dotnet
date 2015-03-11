@@ -38,7 +38,7 @@ namespace Klimatogrammen.Models.Domein
                            (_parameters[8] =new ParameterTotaleNeerslagJaar() {ParameterId = "Nj"});
                 case "Tw4":
                     return _parameters[9] ??
-                         (_parameters[9] = new TemperatuurVierdeWarmsteMaandParameter() { ParameterId = "Tw4" });
+                         (_parameters[9] = new TemperatuurVierdeWarmsteMaandParameter() { ParameterId = "T 4de Warmste Maand" });
                 default:
                     throw new ArgumentException("Er werd een ongeldige code meegegeven");
             }

@@ -1,6 +1,8 @@
 ﻿$(function() {
     $("#btnHint").on('click', function () {
-        $("#hint").show();
-        $(this).remove();
+        $("#hint").fadeIn(600);
+        $(this).fadeOut(600,function() { $(this).remove(); });
     });
+
+  
 });

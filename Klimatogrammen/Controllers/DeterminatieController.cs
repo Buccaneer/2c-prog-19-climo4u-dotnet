@@ -52,7 +52,7 @@ namespace Klimatogrammen.Controllers
             determinatieVM.Antwoord = tabel.Determineer(leerling.Klimatogram).DeterminatieKnoopId;
             determinatieVM.Correct = true;
             determinatieVM.GebruikersAntwoord = determinatieVM.Antwoord;
-            if (determinatieVM.VraagVM.GebruikersAntwoord.Equals(tabel.VegetatieType.Naam))
+            if (determinatieVM.VraagVM.GebruikersAntwoord != null &&  determinatieVM.VraagVM.GebruikersAntwoord.Equals(tabel.VegetatieType.Naam))
             {
                 determinatieVM.VraagVM.Correct = true;
             }

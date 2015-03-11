@@ -29,6 +29,13 @@ $(function () {
                 if (antwoord == gebruikerAntwoord) {
                     determinatieTabel.paper.off("cell:pointerclick");
                     $(item).css('pointer-events', 'none');
+                    var container = $('body');
+                    var scrollTo = $('h4').first();
+
+
+                    container.animate({
+                        scrollTop: scrollTo.offset().top - container.offset().top + container.scrollTop()
+                    });
                 }
             }
         });
@@ -82,7 +89,7 @@ function DeterminatieTabel(item, data, postUrl,postName) {
             }
         );
         this.paper.scale(0.8);
-       $(item).css('pointer-events', 'auto');
+        $(item).css('pointer-events', 'auto');
         this.graph.addCells(items);
     };
 
@@ -215,7 +222,7 @@ function Node(data, ja, nee) {
                 attrs: {
                     text: { fill: kleuren.tekstKleur, text: 'Nee' }
                 }
-               }
+            }
             ]
         });
         this.linkNee.attr({
@@ -282,9 +289,9 @@ function LayoutGrid() {
     this.maxX = 0;
     this.y = 0;
     this.width = 200;
-    this.height = 30;
+    this.height = 40;
     this.marginright = 50;
-    this.marginbottom = 10;
+    this.marginbottom = 5;
     this.maakGrid = function (node) {
         this.voegNodeToe(node);
         var self = this;
@@ -299,8 +306,8 @@ function LayoutGrid() {
         if (node === null) return;
 
         if (node.data.klimaatType !== undefined) {
-            this.resultaatSet.push([node, (this.y * (this.height + this.marginbottom)) - 10]);
-            node.rect.resize(400, 50);
+            this.resultaatSet.push([node, (this.y * (this.height + this.marginbottom))]);
+            node.rect.resize(400, this.height);
         } else {
             node.rect.translate((this.x * (this.width + this.marginright)), (this.y * (this.height + this.marginbottom)));
         }
@@ -312,7 +319,7 @@ function LayoutGrid() {
         this.x = xprev;
         this.y++;
         if (node.nee !== undefined && node.nee !== null && node.nee.data.klimaatType !== undefined) {
-            var w = ((this.x) * (this.width + this.marginright)) + (this.width) / 2;
+            var w = ((this.x) * (this.width + this.marginright)) + (this.width) / 2 + 2;
             var h = (this.y * (this.height + this.marginbottom)) + (this.height / 2) + 10;
             node.linkNee.set('vertices', [{ x: w, y: h }]);
         }
