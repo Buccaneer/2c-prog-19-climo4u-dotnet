@@ -11,7 +11,7 @@ using Klimatogrammen.Models.Domein;
 
 namespace Klimatogrammen.Models.DAL
 {
-    public class KlimatogrammenInitializer : System.Data.Entity.DropCreateDatabaseAlways<KlimatogrammenContext>
+    public class KlimatogrammenInitializer : System.Data.Entity.DropCreateDatabaseIfModelChanges<KlimatogrammenContext>
     {
         private IEnumerable<Maand> VormMaanden(double[] temperaturen, int[] neerslagen) {
             string[] maanden = new string[] {"Januari","Februari","Maart","April","Mei", "Juni","Juli","Augustus","September","Oktober","November","December"};
@@ -38,8 +38,8 @@ namespace Klimatogrammen.Models.DAL
             vergelijking2.Operator = Operator.KleinerDan;
 
             //Resultaatknoop voor ja en nee Tw < 0°C
-            DeterminatieKnoop resultaatKnoopJa = new ResultaatBlad(new VegetatieType("",""), "Koud zonder dooiseizoen");
-            DeterminatieKnoop resultaatKnoopNee = new ResultaatBlad(new VegetatieType("", ""), "Koud met dooiseizoen");
+            DeterminatieKnoop resultaatKnoopJa = new ResultaatBlad(new VegetatieType("Koud zonder dooiseizoen vegetatietype",""), "Koud zonder dooiseizoen");
+            DeterminatieKnoop resultaatKnoopNee = new ResultaatBlad(new VegetatieType("Koud met dooiseizoen vegetatietype", ""), "Koud met dooiseizoen");
 
             //Ja knoop instellen van de ja tak van de eerste vergelijking
             DeterminatieKnoop jaKnoop = new BeslissingsKnoop(vergelijking2, resultaatKnoopJa, resultaatKnoopNee);
@@ -51,7 +51,7 @@ namespace Klimatogrammen.Models.DAL
             vergelijking3.Operator = Operator.KleinerDan;
 
             //Resultaatknoop aanmaken van vergelijking 3
-            DeterminatieKnoop resultaatKnoopJa2 = new ResultaatBlad(new VegetatieType("", ""), "Koud gematigd");
+            DeterminatieKnoop resultaatKnoopJa2 = new ResultaatBlad(new VegetatieType("Koud gematigd vegetatietype", ""), "Koud gematigd");
 
             //Nee knoop aanmaken van vergelijking 3
             Vergelijking vergelijking4 = new Vergelijking();
@@ -60,7 +60,7 @@ namespace Klimatogrammen.Models.DAL
             vergelijking4.Operator = Operator.KleinerDan;
 
             //Resultaat knoop nee aanmaken van vergelijking 4
-            DeterminatieKnoop resultaatKnoopNee2 = new ResultaatBlad(new VegetatieType("", ""), "Warm");
+            DeterminatieKnoop resultaatKnoopNee2 = new ResultaatBlad(new VegetatieType("Warm vegetatietype", ""), "Warm");
 
             //Vergelijking aanmaken van ja knoop 2
             Vergelijking vergelijking5 = new Vergelijking();
@@ -69,7 +69,7 @@ namespace Klimatogrammen.Models.DAL
             vergelijking5.Operator = Operator.GroterDan;
 
             //Resultaat knoop nee aanmaken van vergelijking 5
-            DeterminatieKnoop resultaatKnoopNee4 = new ResultaatBlad(new VegetatieType("", ""), "Gematigd en droog");
+            DeterminatieKnoop resultaatKnoopNee4 = new ResultaatBlad(new VegetatieType("Gematigd en droog vegetatietype", ""), "Gematigd en droog");
 
             //Vergelijking aanmaken van ja knoop 3
             Vergelijking vergelijking6 = new Vergelijking();
@@ -78,7 +78,7 @@ namespace Klimatogrammen.Models.DAL
             vergelijking6.Operator = Operator.KleinerDan;
 
             //Resultaat knoop aanmaken van vergelijking 6
-            DeterminatieKnoop resultaatKnoopJa3 = new ResultaatBlad(new VegetatieType("", ""), "Koel gematigd met strenge winter");
+            DeterminatieKnoop resultaatKnoopJa3 = new ResultaatBlad(new VegetatieType("Koel gematigd met strenge winter vegetatietype", ""), "Koel gematigd met strenge winter");
 
             //Vergelijking aanmaken van nee knoop 3
             Vergelijking vergelijking7 = new Vergelijking();
@@ -87,8 +87,8 @@ namespace Klimatogrammen.Models.DAL
             vergelijking7.Operator = Operator.KleinerDan;
 
             //Resultaat knoop aanmaken van vergelijking 7
-            DeterminatieKnoop resultaatKnoopJa4 = new ResultaatBlad(new VegetatieType("", ""), "Koel gematigd met zachte winter");
-            DeterminatieKnoop resultaatKnoopNee3 = new ResultaatBlad(new VegetatieType("", ""), "Warm gematigd met natte winter");
+            DeterminatieKnoop resultaatKnoopJa4 = new ResultaatBlad(new VegetatieType("Koel gematigd met zachte winter vegetatietype", ""), "Koel gematigd met zachte winter");
+            DeterminatieKnoop resultaatKnoopNee3 = new ResultaatBlad(new VegetatieType("Warm gematigd met natte winter vegetatietype", ""), "Warm gematigd met natte winter");
 
             //Nee knoop aanmaken van vergelijking 6
             DeterminatieKnoop neeKnoop3 = new BeslissingsKnoop(vergelijking7, resultaatKnoopJa4, resultaatKnoopNee3);

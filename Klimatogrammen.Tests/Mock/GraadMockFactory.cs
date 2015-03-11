@@ -21,7 +21,9 @@ namespace Klimatogrammen.Tests.Mock
             mock.Setup(g => g.Vragen)
                 .Returns(new Vraag[] { new Vraag() { Parameter = new ParameterWarmsteMaand(), VraagTekst = "Geef warmste maand?" } });
             mock.Setup(g => g.Continenten).Returns(new ContinentFactory().MaakContinenten(graad));
-            mock.Setup(l => l.DeterminatieTabel).Returns(new DeterminatieTabelMock().MaakDeterminatieTabelEersteGraad);
+            DeterminatieTabel determinatieTabel = new DeterminatieTabelMock().MaakDeterminatieTabelEersteGraad();
+            determinatieTabel.Determineer(new KlimatogramMockFactory().MaakKlimatogramMock().Object);
+            mock.Setup(l => l.DeterminatieTabel).Returns(determinatieTabel);
             //Continent c = new Continent("Europa");
             //Land belgie = new Land("België");
 
@@ -43,7 +45,9 @@ namespace Klimatogrammen.Tests.Mock
             mock.Setup(g => g.Nummer).Returns(graad);
             mock.Setup(g => g.Jaar).Returns(1);
             mock.Setup(g => g.Continenten).Returns(new ContinentFactory().MaakContinenten(graad));
-            mock.Setup(l => l.DeterminatieTabel).Returns(new GroteDeterminatieTabelMock().MaakDeterminatieTabel);
+            DeterminatieTabel determinatieTabel = new GroteDeterminatieTabelMock().MaakDeterminatieTabel();
+            determinatieTabel.Determineer(new KlimatogramMockFactory().MaakKlimatogramMock().Object);
+            mock.Setup(l => l.DeterminatieTabel).Returns(determinatieTabel);
         //    Continent c = new Continent("Europa");
         //    Land belgie = new Land("België");
 
@@ -73,7 +77,9 @@ namespace Klimatogrammen.Tests.Mock
             mock.Setup(g => g.Nummer).Returns(graad);
             mock.Setup(g => g.Jaar).Returns(2);
             mock.Setup(g => g.Continenten).Returns(new ContinentFactory().MaakContinenten(graad));
-            mock.Setup(l => l.DeterminatieTabel).Returns(new GroteDeterminatieTabelMock().MaakDeterminatieTabel);
+            DeterminatieTabel determinatieTabel = new GroteDeterminatieTabelMock().MaakDeterminatieTabel();
+            determinatieTabel.Determineer(new KlimatogramMockFactory().MaakKlimatogramMock().Object);
+            mock.Setup(l => l.DeterminatieTabel).Returns(determinatieTabel);
             
             return mock;
         }

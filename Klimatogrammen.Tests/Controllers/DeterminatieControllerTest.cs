@@ -121,14 +121,12 @@ namespace Klimatogrammen.Tests.Controllers
         public void VerbeterGraadVraag2GeeftWaarden()
         {
             VegetatieVraagViewModel VraagVM = new VegetatieVraagViewModel();
-            DeterminatieIndexViewModel determinatieVM = new DeterminatieIndexViewModel();
             Leerling leerling = new Leerling { Graad = _graadMock.Object, Klimatogram = _mockKlimatogram.Object };
-            ActionResult vr =
+            ViewResult vr =
                 _determinatieController.VerbeterVraagGraad2(leerling
-                   , VraagVM) as ActionResult;
+                   , VraagVM) as ViewResult;
+            DeterminatieIndexViewModel determinatieVM = vr.Model as DeterminatieIndexViewModel;
 
-
-            Assert.IsNotNull(determinatieVM.VraagVM.GebruikersAntwoord);
             Assert.IsNotNull(determinatieVM.Antwoord);
             Assert.IsNotNull(determinatieVM.GebruikersAntwoord);
         }
