@@ -106,6 +106,33 @@ namespace Klimatogrammen.Tests.Controllers
             Assert.AreEqual("_Graad2jaar2", determinatieVM.PartialViewName);
         }
 
+        [TestMethod]
+        public void VerbeterGraadVraag2GeeftViewTerug()
+        {   VegetatieVraagViewModel VraagVM = new VegetatieVraagViewModel();
+            Leerling leerling = new Leerling { Graad = _graadMock.Object, Klimatogram = _mockKlimatogram.Object };
+            ViewResult vr =
+                _determinatieController.VerbeterVraagGraad2(leerling
+                   , VraagVM) as ViewResult;
+
+            Assert.IsNotNull(vr);
+        }
+
+        [TestMethod]
+        public void VerbeterGraadVraag2GeeftWaarden()
+        {
+            VegetatieVraagViewModel VraagVM = new VegetatieVraagViewModel();
+            DeterminatieIndexViewModel determinatieVM = new DeterminatieIndexViewModel();
+            Leerling leerling = new Leerling { Graad = _graadMock.Object, Klimatogram = _mockKlimatogram.Object };
+            ActionResult vr =
+                _determinatieController.VerbeterVraagGraad2(leerling
+                   , VraagVM) as ActionResult;
+
+
+            Assert.IsNotNull(determinatieVM.VraagVM.GebruikersAntwoord);
+            Assert.IsNotNull(determinatieVM.Antwoord);
+            Assert.IsNotNull(determinatieVM.GebruikersAntwoord);
+        }
+
 
 
 
@@ -138,19 +165,6 @@ namespace Klimatogrammen.Tests.Controllers
             Assert.AreEqual("Index", result2.RouteValues["action"]);
             //Home gaat nog veranderen naar determinatie
             Assert.AreEqual("Home", result2.RouteValues["controller"]);
-        }
-
-        [TestMethod]
-        [ExpectedException(typeof(NullReferenceException))]
-        public void GetJsonGeeftEnkelJsonTerugAlsErEenLeerlingBestaatMetKlimatogramIn()
-        {
-            // getJson() --> regels GetJson() plaats fail in commentaar.
-            //Assert.Fail("getJson() is geen geldige naam :p gelieve GetJson() te gebruiken.");
-
-            Leerling l = new Leerling{ Graad = _graadMock.Object, Klimatogram = null};
-            JsonResult result = _determinatieController.GetJSON(l) as JsonResult;
-            
-
         }
 
         [TestMethod]
