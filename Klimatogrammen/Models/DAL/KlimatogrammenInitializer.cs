@@ -11,7 +11,7 @@ using Klimatogrammen.Models.Domein;
 
 namespace Klimatogrammen.Models.DAL
 {
-    public class KlimatogrammenInitializer : System.Data.Entity.DropCreateDatabaseIfModelChanges<KlimatogrammenContext>
+    public class KlimatogrammenInitializer : System.Data.Entity.DropCreateDatabaseAlways<KlimatogrammenContext>
     {
         private IEnumerable<Maand> VormMaanden(double[] temperaturen, int[] neerslagen) {
             string[] maanden = new string[] {"Januari","Februari","Maart","April","Mei", "Juni","Juli","Augustus","September","Oktober","November","December"};
@@ -38,8 +38,8 @@ namespace Klimatogrammen.Models.DAL
             vergelijking2.Operator = Operator.KleinerDan;
 
             //Resultaatknoop voor ja en nee Tw < 0°C
-            DeterminatieKnoop resultaatKnoopJa = new ResultaatBlad(new VegetatieType("Koud zonder dooiseizoen vegetatietype",""), "Koud zonder dooiseizoen");
-            DeterminatieKnoop resultaatKnoopNee = new ResultaatBlad(new VegetatieType("Koud met dooiseizoen vegetatietype", ""), "Koud met dooiseizoen");
+            DeterminatieKnoop resultaatKnoopJa = new ResultaatBlad(new VegetatieType("IJswoestijn", "http://upload.wikimedia.org/wikipedia/commons/b/bd/AntarcticaDomeCSnow.jpg"), "Koud zonder dooiseizoen");
+            DeterminatieKnoop resultaatKnoopNee = new ResultaatBlad(new VegetatieType("Toendra", "http://upload.wikimedia.org/wikipedia/commons/8/87/Tundra_in_Siberia.jpg"), "Koud met dooiseizoen");
 
             //Ja knoop instellen van de ja tak van de eerste vergelijking
             DeterminatieKnoop jaKnoop = new BeslissingsKnoop(vergelijking2, resultaatKnoopJa, resultaatKnoopNee);
@@ -51,7 +51,7 @@ namespace Klimatogrammen.Models.DAL
             vergelijking3.Operator = Operator.KleinerDan;
 
             //Resultaatknoop aanmaken van vergelijking 3
-            DeterminatieKnoop resultaatKnoopJa2 = new ResultaatBlad(new VegetatieType("Koud gematigd vegetatietype", ""), "Koud gematigd");
+            DeterminatieKnoop resultaatKnoopJa2 = new ResultaatBlad(new VegetatieType("Taiga", "http://upload.wikimedia.org/wikipedia/commons/2/2d/Picea_glauca_taiga.jpg"), "Koud gematigd");
 
             //Nee knoop aanmaken van vergelijking 3
             Vergelijking vergelijking4 = new Vergelijking();
@@ -60,7 +60,7 @@ namespace Klimatogrammen.Models.DAL
             vergelijking4.Operator = Operator.KleinerDan;
 
             //Resultaat knoop nee aanmaken van vergelijking 4
-            DeterminatieKnoop resultaatKnoopNee2 = new ResultaatBlad(new VegetatieType("Warm vegetatietype", ""), "Warm");
+            DeterminatieKnoop resultaatKnoopNee2 = new ResultaatBlad(new VegetatieType("Tropisch savanne", "http://upload.wikimedia.org/wikipedia/commons/1/11/Savanna_towards_the_south-east_from_the_south-west_of_Taita_Hills_Game_Lodge_within_the_Taita_Hills_Wildlife_Sanctuary_in_Kenya.jpg"), "Warm");
 
             //Vergelijking aanmaken van ja knoop 2
             Vergelijking vergelijking5 = new Vergelijking();
@@ -69,7 +69,7 @@ namespace Klimatogrammen.Models.DAL
             vergelijking5.Operator = Operator.GroterDan;
 
             //Resultaat knoop nee aanmaken van vergelijking 5
-            DeterminatieKnoop resultaatKnoopNee4 = new ResultaatBlad(new VegetatieType("Gematigd en droog vegetatietype", ""), "Gematigd en droog");
+            DeterminatieKnoop resultaatKnoopNee4 = new ResultaatBlad(new VegetatieType("Steppe", "http://upload.wikimedia.org/wikipedia/commons/d/d5/2013-07-04_15_37_14_Sagebrush-steppe_along_U.S._Route_93_in_central_Elko_County_in_Nevada.jpg"), "Gematigd en droog");
 
             //Vergelijking aanmaken van ja knoop 3
             Vergelijking vergelijking6 = new Vergelijking();
@@ -78,7 +78,7 @@ namespace Klimatogrammen.Models.DAL
             vergelijking6.Operator = Operator.KleinerDan;
 
             //Resultaat knoop aanmaken van vergelijking 6
-            DeterminatieKnoop resultaatKnoopJa3 = new ResultaatBlad(new VegetatieType("Koel gematigd met strenge winter vegetatietype", ""), "Koel gematigd met strenge winter");
+            DeterminatieKnoop resultaatKnoopJa3 = new ResultaatBlad(new VegetatieType("Taiga", "http://upload.wikimedia.org/wikipedia/commons/2/2d/Picea_glauca_taiga.jpg"), "Koel gematigd met strenge winter");
 
             //Vergelijking aanmaken van nee knoop 3
             Vergelijking vergelijking7 = new Vergelijking();
@@ -87,8 +87,8 @@ namespace Klimatogrammen.Models.DAL
             vergelijking7.Operator = Operator.KleinerDan;
 
             //Resultaat knoop aanmaken van vergelijking 7
-            DeterminatieKnoop resultaatKnoopJa4 = new ResultaatBlad(new VegetatieType("Koel gematigd met zachte winter vegetatietype", ""), "Koel gematigd met zachte winter");
-            DeterminatieKnoop resultaatKnoopNee3 = new ResultaatBlad(new VegetatieType("Warm gematigd met natte winter vegetatietype", ""), "Warm gematigd met natte winter");
+            DeterminatieKnoop resultaatKnoopJa4 = new ResultaatBlad(new VegetatieType("Loofbos", "http://upload.wikimedia.org/wikipedia/commons/c/c6/Brussels_Zonienwoud.jpg"), "Koel gematigd met zachte winter");
+            DeterminatieKnoop resultaatKnoopNee3 = new ResultaatBlad(new VegetatieType("Hardbladige-vegetatie van de subtropen", "http://upload.wikimedia.org/wikipedia/commons/9/93/Garrigue_herault.jpg"), "Warm gematigd met natte winter");
 
             //Nee knoop aanmaken van vergelijking 6
             DeterminatieKnoop neeKnoop3 = new BeslissingsKnoop(vergelijking7, resultaatKnoopJa4, resultaatKnoopNee3);
@@ -114,21 +114,21 @@ namespace Klimatogrammen.Models.DAL
         private DeterminatieTabel MaakGroteDeterminatieTabel() {
             DeterminatieTabel dt = new DeterminatieTabel();
 
-            ResultaatBlad jajaResultaatKnoop = new ResultaatBlad(new VegetatieType("Ijswoestijnklimaat", "http://upload.wikimedia.org/wikipedia/commons/b/bd/AntarcticaDomeCSnow.jpg"), "Koud klimaat zonder dooiseizoen");
-            ResultaatBlad janeeResultaatKnoop = new ResultaatBlad(new VegetatieType("Toendraklimaat", "http://upload.wikimedia.org/wikipedia/commons/8/87/Tundra_in_Siberia.jpg"), "Koud klimaat met dooiseizoen");
-            ResultaatBlad neejaResultaatKnoop = new ResultaatBlad(new VegetatieType("Taigaklimaat", "http://upload.wikimedia.org/wikipedia/commons/2/2d/Picea_glauca_taiga.jpg"), "Koudgematigd klimaat met strenge winter");
-            ResultaatBlad neeneejajaResultaatKnoop = new ResultaatBlad(new VegetatieType("Woestijnklimaat van de middelbreedten", "http://upload.wikimedia.org/wikipedia/commons/a/ae/Snow_Comes_to_the_Atacama_Desert.jpg"), "Gematigd altijd droog klimaat");
-            ResultaatBlad neeneejaneeResultaatKnoop = new ResultaatBlad(new VegetatieType("Woestijnklimaat van de tropen", "http://upload.wikimedia.org/wikipedia/commons/2/29/Thorn_Tree_Sossusvlei_Namib_Desert_Namibia_Luca_Galuzzi_2004a.JPG"), "Warm altijd droog klimaat");
-            ResultaatBlad neeneeneejajaResultaatKnoop = new ResultaatBlad(new VegetatieType("Steppeklimaat", "http://upload.wikimedia.org/wikipedia/commons/d/d5/2013-07-04_15_37_14_Sagebrush-steppe_along_U.S._Route_93_in_central_Elko_County_in_Nevada.jpg"), "Gematigd, droog klimaat");
-            ResultaatBlad neeneeneejaneejaResultaatKnoop = new ResultaatBlad(new VegetatieType("Taigaklimaat", "http://upload.wikimedia.org/wikipedia/commons/2/2d/Picea_glauca_taiga.jpg"), "Koudgematigd klimaat met strenge winter");
-            ResultaatBlad neeneeneejaneeneejajaResultaatKnoop = new ResultaatBlad(new VegetatieType("Gemengd-woudklimaat", "http://upload.wikimedia.org/wikipedia/commons/d/d6/Mixed_forest_near_Santa_Fe.jpg"), "Koelgematigd klimaat met koude winter");
-            ResultaatBlad neeneeneejaneeneejaneejaResultaatKnoop = new ResultaatBlad(new VegetatieType("Loofbosklimaat", "http://upload.wikimedia.org/wikipedia/commons/c/c6/Brussels_Zonienwoud.jpg"), "Koelgematigd klimaat met zachte winter");
-            ResultaatBlad neeneeneejaneeneejaneeneeResultaatKnoop = new ResultaatBlad(new VegetatieType("Subtropisch regenwoudklimaat", "http://upload.wikimedia.org/wikipedia/commons/d/d0/Aerial_view_of_the_Amazon_Rainforest.jpg"), "Warmgematigd altijd nat klimaat");
-            ResultaatBlad neeneeneejaneeneeneejajaResultaatKnoop = new ResultaatBlad(new VegetatieType("Hardbladige-vegetatieklimaat van de centrale middelbreedten", "http://en.wikipedia.org/wiki/Sclerophyll#mediaviewer/File:Fynbos-landscape-1.jpg"), "Koelgematigd klimaat met natte winter");
-            ResultaatBlad neeneeneejaneeneeneejaneeResultaatKnoop = new ResultaatBlad(new VegetatieType("Hardbladige-vegetatieklimaat van de subtropen", "http://upload.wikimedia.org/wikipedia/commons/9/93/Garrigue_herault.jpg"), "Warmgematigd klimaat met natte winter");
-            ResultaatBlad neeneeneejaneeneeneeneeResultaatKnoop = new ResultaatBlad(new VegetatieType("Subtropisch savanneklimaat", "http://upload.wikimedia.org/wikipedia/commons/1/11/Savanna_towards_the_south-east_from_the_south-west_of_Taita_Hills_Game_Lodge_within_the_Taita_Hills_Wildlife_Sanctuary_in_Kenya.jpg"), "Warmgematigd klimaat met natte zomer");
-            ResultaatBlad neeneeneeneeneeResultaatKnoop = new ResultaatBlad(new VegetatieType("Tropisch savanneklimaat", "http://upload.wikimedia.org/wikipedia/commons/1/11/Savanna_towards_the_south-east_from_the_south-west_of_Taita_Hills_Game_Lodge_within_the_Taita_Hills_Wildlife_Sanctuary_in_Kenya.jpg"), "Warm klimaat met nat seizoen");
-            ResultaatBlad neeneeneeneejaResultaatKnoop = new ResultaatBlad(new VegetatieType("Tropisch regenwoudklimaat", "http://upload.wikimedia.org/wikipedia/commons/d/d0/Aerial_view_of_the_Amazon_Rainforest.jpg"), "Warm altijd nat klimaat");
+            ResultaatBlad jajaResultaatKnoop = new ResultaatBlad(new VegetatieType("IJswoestijn", "http://upload.wikimedia.org/wikipedia/commons/b/bd/AntarcticaDomeCSnow.jpg"), "Koud klimaat zonder dooiseizoen");
+            ResultaatBlad janeeResultaatKnoop = new ResultaatBlad(new VegetatieType("Toendra", "http://upload.wikimedia.org/wikipedia/commons/8/87/Tundra_in_Siberia.jpg"), "Koud klimaat met dooiseizoen");
+            ResultaatBlad neejaResultaatKnoop = new ResultaatBlad(new VegetatieType("Taiga", "http://upload.wikimedia.org/wikipedia/commons/2/2d/Picea_glauca_taiga.jpg"), "Koudgematigd klimaat met strenge winter");
+            ResultaatBlad neeneejajaResultaatKnoop = new ResultaatBlad(new VegetatieType("Woestijn van de middelbreedten", "http://upload.wikimedia.org/wikipedia/commons/a/ae/Snow_Comes_to_the_Atacama_Desert.jpg"), "Gematigd altijd droog klimaat");
+            ResultaatBlad neeneejaneeResultaatKnoop = new ResultaatBlad(new VegetatieType("Woestijn van de tropen", "http://upload.wikimedia.org/wikipedia/commons/2/29/Thorn_Tree_Sossusvlei_Namib_Desert_Namibia_Luca_Galuzzi_2004a.JPG"), "Warm altijd droog klimaat");
+            ResultaatBlad neeneeneejajaResultaatKnoop = new ResultaatBlad(new VegetatieType("Steppe", "http://upload.wikimedia.org/wikipedia/commons/d/d5/2013-07-04_15_37_14_Sagebrush-steppe_along_U.S._Route_93_in_central_Elko_County_in_Nevada.jpg"), "Gematigd, droog klimaat");
+            ResultaatBlad neeneeneejaneejaResultaatKnoop = new ResultaatBlad(new VegetatieType("Taiga", "http://upload.wikimedia.org/wikipedia/commons/2/2d/Picea_glauca_taiga.jpg"), "Koudgematigd klimaat met strenge winter");
+            ResultaatBlad neeneeneejaneeneejajaResultaatKnoop = new ResultaatBlad(new VegetatieType("Gemengd-woud", "http://upload.wikimedia.org/wikipedia/commons/d/d6/Mixed_forest_near_Santa_Fe.jpg"), "Koelgematigd klimaat met koude winter");
+            ResultaatBlad neeneeneejaneeneejaneejaResultaatKnoop = new ResultaatBlad(new VegetatieType("Loofbos", "http://upload.wikimedia.org/wikipedia/commons/c/c6/Brussels_Zonienwoud.jpg"), "Koelgematigd klimaat met zachte winter");
+            ResultaatBlad neeneeneejaneeneejaneeneeResultaatKnoop = new ResultaatBlad(new VegetatieType("Subtropisch regenwoud", "http://upload.wikimedia.org/wikipedia/commons/d/d0/Aerial_view_of_the_Amazon_Rainforest.jpg"), "Warmgematigd altijd nat klimaat");
+            ResultaatBlad neeneeneejaneeneeneejajaResultaatKnoop = new ResultaatBlad(new VegetatieType("Hardbladige-vegetatie van de centrale middelbreedten", "http://en.wikipedia.org/wiki/Sclerophyll#mediaviewer/File:Fynbos-landscape-1.jpg"), "Koelgematigd klimaat met natte winter");
+            ResultaatBlad neeneeneejaneeneeneejaneeResultaatKnoop = new ResultaatBlad(new VegetatieType("Hardbladige-vegetatie van de subtropen", "http://upload.wikimedia.org/wikipedia/commons/9/93/Garrigue_herault.jpg"), "Warmgematigd klimaat met natte winter");
+            ResultaatBlad neeneeneejaneeneeneeneeResultaatKnoop = new ResultaatBlad(new VegetatieType("Subtropisch savanne", "http://upload.wikimedia.org/wikipedia/commons/1/11/Savanna_towards_the_south-east_from_the_south-west_of_Taita_Hills_Game_Lodge_within_the_Taita_Hills_Wildlife_Sanctuary_in_Kenya.jpg"), "Warmgematigd klimaat met natte zomer");
+            ResultaatBlad neeneeneeneeneeResultaatKnoop = new ResultaatBlad(new VegetatieType("Tropisch savanne", "http://upload.wikimedia.org/wikipedia/commons/1/11/Savanna_towards_the_south-east_from_the_south-west_of_Taita_Hills_Game_Lodge_within_the_Taita_Hills_Wildlife_Sanctuary_in_Kenya.jpg"), "Warm klimaat met nat seizoen");
+            ResultaatBlad neeneeneeneejaResultaatKnoop = new ResultaatBlad(new VegetatieType("Tropisch regenwoud", "http://upload.wikimedia.org/wikipedia/commons/d/d0/Aerial_view_of_the_Amazon_Rainforest.jpg"), "Warm altijd nat klimaat");
 
 
             BeslissingsKnoop jaBeslissingsKnoop = new BeslissingsKnoop(new Vergelijking(_parameterFactory.MaakParameter("Tw"),Operator.KleinerDanOfGelijkAan, _parameterFactory.MaakConstanteParameter(0)), jajaResultaatKnoop,janeeResultaatKnoop );
