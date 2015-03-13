@@ -17,6 +17,14 @@ namespace Klimatogrammen.Models.Domein
         public Graad Graad { get; set; }
         #endregion
 
+        public IList<Klimatogram> KlimatogrammenDerdeGraad
+        {
+            get
+            {
+                throw new System.NotImplementedException();
+            }
+        }
+
         public Continent GeefContinent(string continent)
         {
             return Graad.GeefContinent(continent);

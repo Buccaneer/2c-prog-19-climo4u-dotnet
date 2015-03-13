@@ -50,7 +50,7 @@ namespace Klimatogrammen.Tests.Controllers
             Leerling leerling = new Leerling { Graad = _graadMock.Object };
             ViewResult result = _klimatogramController.Index(leerling) as ViewResult;
             KlimatogramKiezenIndexViewModel kkIVM = result.Model as KlimatogramKiezenIndexViewModel;
-            CollectionAssert.AreEqual(_graadMock.Object.Continenten.Select(c => c.Naam).ToList(), kkIVM.Continenten.Select(c => c.Text).ToList());
+            CollectionAssert.AreEqual(_graadMock.Object.Continenten.Select(c => c.Naam).ToList(), kkIVM.Werelddelen.Select(c => c.Text).ToList());
         }
 
         /// <summary>
@@ -64,7 +64,7 @@ namespace Klimatogrammen.Tests.Controllers
             _graadMock = _graadMockFactory.MaakTweedeGraadEersteJaarAan();
             Leerling leerling = new Leerling { Graad = _graadMock.Object };
             var vmContinent = new KlimatogramKiezenIndexViewModel();
-            vmContinent.Continent = europa;
+            vmContinent.Werelddeel = europa;
             var result = _klimatogramController.Index(leerling, vmContinent) as PartialViewResult;
             var vmLand = result.Model as KlimatogramKiezenLandViewModel;
             CollectionAssert.AreEqual(_graadMock.Object.Continenten.First(c => c.Naam.Equals(europa)).Landen.Select(l => l.Naam).ToList(), vmLand.Landen.Select(l => l.Text).ToList());
@@ -100,8 +100,8 @@ namespace Klimatogrammen.Tests.Controllers
             Leerling leerling = new Leerling { Graad = _graadMock.Object };
             var result = _klimatogramController.Index(leerling) as ViewResult;
             var kkIVM = result.Model as KlimatogramKiezenIndexViewModel;
-            Assert.AreEqual(1, kkIVM.Continenten.Count());
-            Assert.AreEqual("Europa", kkIVM.Continenten.First().Text);
+            Assert.AreEqual(1, kkIVM.Werelddelen.Count());
+            Assert.AreEqual("Europa", kkIVM.Werelddelen.First().Text);
         }
 
         /// <summary>

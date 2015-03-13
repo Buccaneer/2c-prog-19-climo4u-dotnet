@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using Klimatogrammen.Models.Domein;
 using Klimatogrammen.ViewModels;
+using WebGrease.Css.Extensions;
 
 namespace Klimatogrammen.Controllers
 {
@@ -16,7 +17,7 @@ namespace Klimatogrammen.Controllers
             ActionResult route = RedirectIndienNodig(leerling);
             if (route != null)
                 return route;
-            return View(new DeterminatieIndexViewModel());
+            return View(new DeterminatieIndexViewModel(){Vragen = leerling.GeefVragen().Select(s=> new VraagViewModel(s, leerling.Klimatogram)).ToList(), Antwoorden=leerling.GeefVragen().Select(v=>v.Parameter.BerekenWaarde(leerling.Klimatogram).ToString()).ToArray() });
         }
 
         [HttpPost]

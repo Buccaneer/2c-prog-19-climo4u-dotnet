@@ -55,7 +55,7 @@ namespace Klimatogrammen.ViewModels
 
     public enum JaarKiezen : int
     {
-        Eerste = 1,
-        Tweede = 2
+        Derde = 1,
+        Vierde = 2
     }
 }

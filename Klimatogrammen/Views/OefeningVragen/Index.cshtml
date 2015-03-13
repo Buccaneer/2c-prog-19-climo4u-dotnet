@@ -22,8 +22,9 @@
 
         @foreach (var v in Model.Vragen){
             <div class="form-group">
-                @Html.Label(v.VraagTekst, htmlAttributes: new {@class = "control-label col-md-2"})
-                <div class="col-md-10">
+               
+                @Html.Label(v.VraagTekst, htmlAttributes: new {@class = "control-label"})
+                <div >
                     @Html.DropDownListFor(model => model.Antwoorden.Antwoord[count], v.Antwoorden, htmlAttributes: new {@class = "form-control"})
                     @Html.ValidationMessageFor(model => model.Antwoorden.Antwoord[count], "", new {@class = "text-danger"})
                     @if (v.Resultaat == false)
@@ -39,7 +40,7 @@
             count++;
         }
         <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
+            <div>
                 @if (!Model.AllesJuist)
                     {
                     <input type="submit" value="Valideer" class="btn btn-primary" />

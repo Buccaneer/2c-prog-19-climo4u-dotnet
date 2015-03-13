@@ -16,7 +16,7 @@ namespace Klimatogrammen.Controllers
             ActionResult route = RedirectIndienNodig(leerling);
             if (route != null)
                 return route;
-            VragenIndexViewModel vraagVM = new VragenIndexViewModel(leerling.Graad.Vragen, leerling.Klimatogram);
+            VragenIndexViewModel vraagVM = new VragenIndexViewModel(leerling.GeefVragen(), leerling.Klimatogram);
             return View(vraagVM);
         }
 

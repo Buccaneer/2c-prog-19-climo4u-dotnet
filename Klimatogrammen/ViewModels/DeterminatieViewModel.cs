@@ -12,7 +12,8 @@ namespace Klimatogrammen.ViewModels
         public int GebruikersAntwoord { get; set; }
         public int Antwoord { get; set; }
         public bool Correct { get; set; }
-
+        public IList<VraagViewModel> Vragen { get; set; }
+        public string[] Antwoorden { get; set; }
         public VegetatieVraagViewModel VraagVM { get; set; }
 
         public VegetatieAntwoordViewModel AntwoordVM { get; set; }
@@ -32,9 +33,7 @@ namespace Klimatogrammen.ViewModels
         public string Foto { get; set; }
 
         public VegetatieVraagViewModel(Leerling leerling, string foto) {
-            var t = leerling.Graad.DeterminatieTabel.AlleVegetatieTypes.Select(s => s.Naam).Distinct().ToList();
-            t.Shuffle();
-            Antwoorden = new SelectList(t);
+            Antwoorden = new SelectList(leerling.Graad.DeterminatieTabel.AlleVegetatieTypes.OrderBy(s=>s.Naam).Select(s=>s.Naam).Distinct());
             Foto = foto;
         }
 
@@ -56,20 +55,4 @@ namespace Klimatogrammen.ViewModels
         public VegetatieAntwoordViewModel() {
         }
     }
-
-    public static class ShuffleExtension {
-        private static Random _random = new Random();
-        public static void Shuffle<T>(this IList<T> list) {
-           
-            int n = list.Count;
-            while (n > 1) {
-                n--;
-                int k = _random.Next(n + 1);
-                T value = list[k];
-                list[k] = list[n];
-                list[n] = value;
-            }
-        }
-    }
-
 }

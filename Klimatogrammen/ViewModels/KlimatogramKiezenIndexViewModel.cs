@@ -12,20 +12,20 @@ namespace Klimatogrammen.ViewModels
 {
     public class KlimatogramKiezenIndexViewModel
     {
-        public SelectList Continenten { get; set; }
+        public SelectList Werelddelen { get; set; }
 
         [Required(ErrorMessage = "Er moet een continent geselecteerd worden.")]
-        public string Continent { get; set; }
+        public string Werelddeel { get; set; }
 
         public KlimatogramKiezenIndexViewModel(IEnumerable<Continent> continenten)
         {
-            Continenten = new SelectList(continenten, "Naam", "Naam");
+            Werelddelen = new SelectList(continenten, "Naam", "Naam");
         }
 
         public KlimatogramKiezenIndexViewModel(Continent continent)
         {
             IEnumerable<Continent> c = new Collection<Continent> {continent};
-            Continenten = new SelectList(c, "Naam","Naam");
+            Werelddelen = new SelectList(c, "Naam","Naam");
         }
 
         public KlimatogramKiezenIndexViewModel()

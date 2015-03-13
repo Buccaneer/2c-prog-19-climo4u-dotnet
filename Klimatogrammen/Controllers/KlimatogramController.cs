@@ -35,7 +35,7 @@ namespace Klimatogrammen.Controllers {
                 return null;
             }
 
-            Continent continent = leerling.GeefContinent(kVM.Continent);
+            Continent continent = leerling.GeefContinent(kVM.Werelddeel);
 
             if (!continent.Landen.Any()) {
                 TempData["Error"] = "Er zijn geen gegevens beschikbaar voor het geselecteerde continent.";

@@ -10,6 +10,22 @@
     <div id="container"></div>
     <div id="legend"></div>
     <hr />
+    @if (Model.Vragen != null)
+    {
+        <div>
+            <p >Dit zijn je juiste antwoorden die je op weg kunnen helpen bij de determinatie:</p>
+
+            @{ int count = 0; }
+
+            @foreach (var vraag in Model.Vragen)
+            {
+                <div class="col-md-6">
+                    <strong>@vraag.VraagTekst: </strong>@Model.Antwoorden[count]
+                </div>
+                count++;
+            }
+        </div>
+    }
     <div class="determinatietabel" data-url="@Url.Action("GetJSON","Determinatie")"
          data-post-name="GebruikersAntwoord"
          data-post-url="@Url.Action("Index","Determinatie")"

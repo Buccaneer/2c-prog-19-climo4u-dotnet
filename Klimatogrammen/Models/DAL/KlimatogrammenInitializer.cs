@@ -162,12 +162,12 @@ namespace Klimatogrammen.Models.DAL
       
                 eersteGraad.Vragen = new Collection<Vraag>();
                 eersteGraad.Vragen.Add(new Vraag() {Parameter = _parameterFactory.MaakParameter("Warmste Maand"), VraagTekst = "Wat is de warmste maand?"});
-                eersteGraad.Vragen.Add(new Vraag() { Parameter = _parameterFactory.MaakParameter("Tw"), VraagTekst = "Wat is de temperatuur van de warmste maand (Tw)?" });
+                eersteGraad.Vragen.Add(new Vraag() { Parameter = _parameterFactory.MaakParameter("Tw"), VraagTekst = "Wat is de temperatuur van de warmste maand in °C (Tw)?" });
                 eersteGraad.Vragen.Add(new Vraag() { Parameter = _parameterFactory.MaakParameter("Koudste Maand"), VraagTekst = "Wat is de koudste maand?" });
-                eersteGraad.Vragen.Add(new Vraag() { Parameter = _parameterFactory.MaakParameter("Tk"), VraagTekst = "Wat is de temperatuur van de koudste maand (Tk)?" });
+                eersteGraad.Vragen.Add(new Vraag() { Parameter = _parameterFactory.MaakParameter("Tk"), VraagTekst = "Wat is de temperatuur van de koudste maand in °C (Tk)?" });
                 eersteGraad.Vragen.Add(new Vraag() { Parameter = _parameterFactory.MaakParameter("D"), VraagTekst = "Hoeveel droge maanden zijn er (D)?" });
-                eersteGraad.Vragen.Add(new Vraag() { Parameter = _parameterFactory.MaakParameter("Nz"), VraagTekst = "Hoeveelheid neerslag in de zomer?" });
-                eersteGraad.Vragen.Add(new Vraag() { Parameter = _parameterFactory.MaakParameter("Nw"), VraagTekst = "Hoeveelheid neerslag in de winter?" });
+                eersteGraad.Vragen.Add(new Vraag() { Parameter = _parameterFactory.MaakParameter("Nz"), VraagTekst = "Hoeveelheid neerslag in de zomer in millimeter?" });
+                eersteGraad.Vragen.Add(new Vraag() { Parameter = _parameterFactory.MaakParameter("Nw"), VraagTekst = "Hoeveelheid neerslag in de winter in millimeter?" });
 
                 DeterminatieTabel klein = MaakKleineDeterminatieTabel();
                 DeterminatieTabel groot = MaakGroteDeterminatieTabel();
@@ -178,12 +178,11 @@ namespace Klimatogrammen.Models.DAL
 
                 Continent noordAmerika = new Continent("Noord-Amerika");
                 Continent zuidAmerika = new Continent("Zuid-Amerika");
-                Continent antartica = new Continent("Antartica");
                 Continent europa = new Continent("Europa");
                 Continent azie = new Continent("Azië");
                 Continent afrika = new Continent("Afrika");
                 Continent oceanie = new Continent("Oceanië");
-                #region "data Continenten"
+                #region "data Werelddelen"
 
                 Land belgie = new Land("België");
                 
@@ -311,7 +310,7 @@ namespace Klimatogrammen.Models.DAL
                 #endregion
                 eersteGraad.Continenten =new Collection<Continent>();
                 eersteGraad.Continenten.Add(europa);
-                var contintent = new[] {europa, antartica, noordAmerika, zuidAmerika, azie, afrika, oceanie};
+                var contintent = new[] {europa, noordAmerika, zuidAmerika, azie, afrika, oceanie};
 
                 tweedeGraadEersteJaar.Continenten = new Collection<Continent>();
                 tweedeGraadTweedeJaar.Continenten = new Collection<Continent>();

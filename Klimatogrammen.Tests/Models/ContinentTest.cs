@@ -8,7 +8,7 @@ namespace Klimatogrammen.Tests.Models
 {
     /// <summary>
     /// OPMERKING : TESTKLASSE IS EIGENLIJK NIET NODIG WANT DE CONTINENTEN KOMEN UIT DE DATABASE
-    /// Deze testklasse bevat testen voor de klasse Continent
+    /// Deze testklasse bevat testen voor de klasse Werelddeel
     /// Volgende zaken worden getest:
     ///         * Correcte naam
     ///         * Naam null

@@ -45,7 +45,7 @@ function makeGraph(klimatogram) {
             text: 'Klimatologische gemiddelden ' + klimatogram.BeginJaar + " - " + klimatogram.EindJaar
         },
         xAxis: {
-             categories: ['Jan<br>'+temperaturen[0] + '°C<br>'+neerslagen[0]+'mm' , 'Feb<br>'+temperaturen[1] + '°C<br>'+neerslagen[1]+'mm', 'Maa<br>'+temperaturen[2] + '°C<br>'+neerslagen[2]+'mm', 'Apr<br>'+temperaturen[3] + '°C<br>'+neerslagen[3]+'mm', 'Mei<br>'+temperaturen[4] + '°C<br>'+neerslagen[4]+'mm', 'Jun<br>'+temperaturen[5] + '°C<br>'+neerslagen[5]+'mm', 'Jul<br>'+temperaturen[6] + '°C<br>'+neerslagen[6]+'mm', 'Aug<br>'+temperaturen[7] + '°C<br>'+neerslagen[7]+'mm', 'Sep<br>'+temperaturen[8] + '°C<br>'+neerslagen[8]+'mm', 'Okt<br>'+temperaturen[9] + '°C<br>'+neerslagen[9]+'mm', 'Nov<br>'+temperaturen[10] + '°C<br>'+neerslagen[10]+'mm', 'Dec<br>'+temperaturen[11] + '°C<br>'+neerslagen[11]+'mm']
+             categories: ['Jan<br>'+temperaturen[0] + '°C<br>'+neerslagen[0]+'mmN' , 'Feb<br>'+temperaturen[1] + '°C<br>'+neerslagen[1]+'mmN', 'Maa<br>'+temperaturen[2] + '°C<br>'+neerslagen[2]+'mmN', 'Apr<br>'+temperaturen[3] + '°C<br>'+neerslagen[3]+'mmN', 'Mei<br>'+temperaturen[4] + '°C<br>'+neerslagen[4]+'mmN', 'Jun<br>'+temperaturen[5] + '°C<br>'+neerslagen[5]+'mmN', 'Jul<br>'+temperaturen[6] + '°C<br>'+neerslagen[6]+'mmN', 'Aug<br>'+temperaturen[7] + '°C<br>'+neerslagen[7]+'mmN', 'Sep<br>'+temperaturen[8] + '°C<br>'+neerslagen[8]+'mmN', 'Okt<br>'+temperaturen[9] + '°C<br>'+neerslagen[9]+'mmN', 'Nov<br>'+temperaturen[10] + '°C<br>'+neerslagen[10]+'mmN', 'Dec<br>'+temperaturen[11] + '°C<br>'+neerslagen[11]+'mmN']
         },
         yAxis: [
             {
@@ -92,7 +92,7 @@ function makeGraph(klimatogram) {
               
                 
                 if (point.series.name == "Neerslag") {
-                    label = 'Neerslag: ' + '<strong>' + point.y + 'mm</strong><br>';
+                    label = 'Neerslag: ' + '<strong>' + point.y + 'mmN</strong><br>';
                 } else {
                     label = "Temperatuur: " + '<strong>'+ point.y + '°C</strong>';
                 }
@@ -120,8 +120,8 @@ function makeGraph(klimatogram) {
 
     });
 
-    var html = '<br/><p><b> Totale neerslag: </b>' + klimatogram.TotaalNeerslag + '</p>';
-    html += '<p><b> Gemiddelde temperatuur: </b>' + klimatogram.TotaalGemiddeldeTemperatuur + '</p>';
+    var html = '<br/><p><b> Totale neerslag: </b>' + klimatogram.TotaalNeerslag + ' millimeter</p>';
+    html += '<p><b> Gemiddelde temperatuur: </b>' + klimatogram.TotaalGemiddeldeTemperatuur + '°C</p>';
     $("#legend").html(html);
 
         $("#buttons").removeClass("col-md-offset-2").removeClass("col-md-10");

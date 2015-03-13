@@ -24,7 +24,7 @@ namespace Klimatogrammen.Tests.Mock
             DeterminatieTabel determinatieTabel = new DeterminatieTabelMock().MaakDeterminatieTabelEersteGraad();
             determinatieTabel.Determineer(new KlimatogramMockFactory().MaakKlimatogramMock().Object);
             mock.Setup(l => l.DeterminatieTabel).Returns(determinatieTabel);
-            //Continent c = new Continent("Europa");
+            //Werelddeel c = new Werelddeel("Europa");
             //Land belgie = new Land("België");
 
 
@@ -33,7 +33,7 @@ namespace Klimatogrammen.Tests.Mock
             //belgie.VoegKlimatogramToe(new Klimatogram(VormMaanden(gemiddeldeTempUkkel, gemiddeldeNeerUkkel).ToList(), 50.3, 4.5) { Locatie = "Ukkel", BeginJaar = 1961, EindJaar = 2009 });
             //c.VoegLandToe(belgie);
 
-            //mock.Setup(g => g.Continenten).Returns(new Continent[] { c });
+            //mock.Setup(g => g.Werelddelen).Returns(new Werelddeel[] { c });
             return mock;
         }
 
@@ -48,7 +48,7 @@ namespace Klimatogrammen.Tests.Mock
             DeterminatieTabel determinatieTabel = new GroteDeterminatieTabelMock().MaakDeterminatieTabel();
             determinatieTabel.Determineer(new KlimatogramMockFactory().MaakKlimatogramMock().Object);
             mock.Setup(l => l.DeterminatieTabel).Returns(determinatieTabel);
-        //    Continent c = new Continent("Europa");
+        //    Werelddeel c = new Werelddeel("Europa");
         //    Land belgie = new Land("België");
 
 
@@ -63,9 +63,9 @@ namespace Klimatogrammen.Tests.Mock
         //    new int[] { 17, 51, 140, 180, 220, 162, 70, 102, 254, 296, 111, 25 }).ToList(), 40.5, -6.3
         //) { BeginJaar = 1961, EindJaar = 1990, Locatie = "Yaounde" });
 
-        //    Continent afrika = new Continent("afrika");
+        //    Werelddeel afrika = new Werelddeel("afrika");
         //    afrika.Landen.Add(kameroen);
-        //    mock.Setup(g => g.Continenten).Returns(new Continent[] { c, afrika });
+        //    mock.Setup(g => g.Werelddelen).Returns(new Werelddeel[] { c, afrika });
             return mock;
         }
 
@@ -92,7 +92,7 @@ namespace Klimatogrammen.Tests.Mock
             mock.Setup(g => g.Nummer).Returns(graad);
             mock.Setup(g => g.Continenten).Returns(new ContinentFactory().MaakContinenten(graad));
             mock.Setup(l => l.DeterminatieTabel).Returns(new GroteDeterminatieTabelMock().MaakDeterminatieTabel);
-            //Continent c = new Continent("Europa");
+            //Werelddeel c = new Werelddeel("Europa");
             //Land belgie = new Land("België");
 
 
@@ -101,7 +101,7 @@ namespace Klimatogrammen.Tests.Mock
             //belgie.VoegKlimatogramToe(new Klimatogram(VormMaanden(gemiddeldeTempUkkel, gemiddeldeNeerUkkel).ToList(), 50.3, 4.5) { Locatie = "Ukkel", BeginJaar = 1961, EindJaar = 2009 });
             //c.VoegLandToe(belgie);
 
-            //mock.Setup(g => g.Continenten).Returns(new Continent[] { c });
+            //mock.Setup(g => g.Werelddelen).Returns(new Werelddeel[] { c });
             return mock;
         }
 
