@@ -132,6 +132,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\DeterminatieController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LocatieOefeningController.cs" />
     <Compile Include="Infrastructure\RequiredIfAttribute.cs" />
     <Compile Include="Models\DAL\GraadRepository.cs" />
     <Compile Include="Models\DAL\Mapper\DeterminatieKnoopMapper.cs" />
@@ -253,6 +254,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\LocatieOefening\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
   <Class Name="Klimatogrammen.Models.Domein.Leerling">
-    <Position X="6.25" Y="14.25" Width="3.25" />
+    <Position X="5" Y="5.5" Width="3.25" />
     <TypeIdentifier>
-      <HashCode>AAAAAAgAAAAAAAACAAAAAAUEgAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAgAAAAAABACAAAAAAUEgAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Models\Domein\Leerling.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -12,7 +12,7 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="Klimatogrammen.Models.Domein.Continent">
-    <Position X="10.5" Y="16.5" Width="1.5" />
+    <Position X="11.25" Y="3.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAEAAAAAgAAAQAAAAAAABABAAAAgAAAAAAAAAAAAAAI=</HashCode>
       <FileName>Models\Domein\Continent.cs</FileName>
@@ -22,7 +22,7 @@
     </ShowAsCollectionAssociation>
   </Class>
   <Class Name="Klimatogrammen.Models.Domein.Land">
-    <Position X="11.75" Y="9.5" Width="1.5" />
+    <Position X="9.75" Y="7.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AgABAAAAAQAAAAAAEAAABAAAAAAAAAAAAQAAAAAACAI=</HashCode>
       <FileName>Models\Domein\Land.cs</FileName>
@@ -32,7 +32,7 @@
     </ShowAsCollectionAssociation>
   </Class>
   <Class Name="Klimatogrammen.Models.Domein.Klimatogram">
-    <Position X="5.25" Y="9" Width="5" />
+    <Position X="4" Y="8.25" Width="5" />
     <TypeIdentifier>
       <HashCode>CAAAABAAACAAAAAAAAAIAABAiCCAAAAAAgEAAAAAAAQ=</HashCode>
       <FileName>Models\Domein\Klimatogram.cs</FileName>
@@ -45,7 +45,7 @@
     </ShowAsCollectionAssociation>
   </Class>
   <Class Name="Klimatogrammen.Models.Domein.Vraag">
-    <Position X="11" Y="14" Width="3" />
+    <Position X="12.75" Y="8.25" Width="3" />
     <TypeIdentifier>
       <HashCode>AAAAAEAAAAAABAAAAAAAAAAAAAAQAAAAAACAABAAAAA=</HashCode>
       <FileName>Models\Domein\Vraag.cs</FileName>
@@ -56,7 +56,7 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="Klimatogrammen.Graad">
-    <Position X="6.5" Y="16.75" Width="2.5" />
+    <Position X="5.25" Y="0.75" Width="2.5" />
     <TypeIdentifier>
       <HashCode>AAACAAgAAAAAAAACAQACAAEEAAAAAAAAAAAAAAgABIA=</HashCode>
       <FileName>Models\Domein\Graad.cs</FileName>
@@ -67,7 +67,7 @@
     </ShowAsCollectionAssociation>
   </Class>
   <Class Name="Klimatogrammen.Maand">
-    <Position X="3" Y="10" Width="1.5" />
+    <Position X="1.75" Y="9" Width="1.5" />
     <TypeIdentifier>
       <HashCode>EAAAAAAAAAAAAAAAEAAABAAAgAAAAAAABAAAAAAAAAA=</HashCode>
       <FileName>Models\Domein\Maand.cs</FileName>
@@ -77,35 +77,35 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="Klimatogrammen.Models.Domein.Parameter">
-    <Position X="10.5" Y="3.5" Width="3.5" />
+    <Position X="13.25" Y="15.25" Width="3.5" />
     <TypeIdentifier>
       <HashCode>gAAAAAAAAgAAAAAAAAAAAAAAAACAAAAAAAAAAAAABAA=</HashCode>
       <FileName>Models\Domein\Parameter.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Klimatogrammen.ConstanteParameter">
-    <Position X="11.25" Y="6.25" Width="2.25" />
+    <Position X="14" Y="18" Width="2.25" />
     <TypeIdentifier>
       <HashCode>gAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAEABAA=</HashCode>
       <FileName>Models\Domein\ConstanteParameter.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Klimatogrammen.Models.Domein.ParameterFactory">
-    <Position X="14.5" Y="1" Width="1.5" />
+  <Class Name="Klimatogrammen.Models.Domein.ParameterFactory" Collapsed="true">
+    <Position X="19" Y="0.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAgAAAAAAAEAAAAAAAAAAAAAAAAAAACAAAAAAAAAAA=</HashCode>
       <FileName>Models\Domein\ParameterFactory.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Klimatogrammen.Models.Domein.DeterminatieKnoop">
-    <Position X="6" Y="3.5" Width="3" />
+    <Position X="8.75" Y="15.25" Width="3" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAEAAAAAAAAAAAAAQAAAggAAAAAAAAA=</HashCode>
       <FileName>Models\Domein\DeterminatieKnoop.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Klimatogrammen.Models.Domein.DeterminatieTabel">
-    <Position X="1.75" Y="1.75" Width="3.5" />
+    <Position X="4.5" Y="13.75" Width="3.5" />
     <TypeIdentifier>
       <HashCode>CAAgAAAIABAAAAAAAAAAAAAAAAAAYAACAAAAAAAAAAQ=</HashCode>
       <FileName>Models\Domein\DeterminatieTabel.cs</FileName>
@@ -115,7 +115,7 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="Klimatogrammen.Models.Domein.ResultaatBlad">
-    <Position X="5" Y="6.25" Width="1.5" />
+    <Position X="8.25" Y="18" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAQAACkgAAAAAAAAA=</HashCode>
       <FileName>Models\Domein\ResultaatBlad.cs</FileName>
@@ -125,12 +125,7 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="Klimatogrammen.Models.Domein.BeslissingsKnoop">
-    <Position X="8.25" Y="6.75" Width="1.5" />
-    <AssociationLine Name="NeeKnoop" Type="Klimatogrammen.Models.Domein.DeterminatieKnoop">
-      <MemberNameLabel ManuallyPlaced="true">
-        <Position X="-0.984" Y="0.102" />
-      </MemberNameLabel>
-    </AssociationLine>
+    <Position X="10.5" Y="18" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAACAAAAAAAAAAAAQQAIggAAAAAAAAA=</HashCode>
       <FileName>Models\Domein\BeslissingsKnoop.cs</FileName>
@@ -142,12 +137,7 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="Klimatogrammen.Models.Domein.Vergelijking">
-    <Position X="9.5" Y="1" Width="3" />
-    <AssociationLine Name="RechterParameter" Type="Klimatogrammen.Models.Domein.Parameter">
-      <MemberNameLabel ManuallyPlaced="true">
-        <Position X="-1.328" Y="0.145" />
-      </MemberNameLabel>
-    </AssociationLine>
+    <Position X="12.25" Y="11.75" Width="3" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAACAAAAAAAAAIAEAAAAAAAAAAAQAAAAAIAA=</HashCode>
       <FileName>Models\Domein\Vergelijking.cs</FileName>
@@ -159,21 +149,21 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="Klimatogrammen.Models.Domein.VegetatieType">
-    <Position X="2.25" Y="6.25" Width="1.5" />
+    <Position X="5.25" Y="18.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAABAABAAAAAAAAAAAAAAAQAAAAAA=</HashCode>
       <FileName>Models\Domein\VegetatieType.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Enum Name="Klimatogrammen.Models.Domein.Resultaat">
-    <Position X="14.75" Y="14.25" Width="1.5" />
+    <Position X="16.5" Y="8.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAIAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAACAAA=</HashCode>
       <FileName>Models\Domein\Resultaat.cs</FileName>
     </TypeIdentifier>
   </Enum>
   <Enum Name="Klimatogrammen.Models.Domein.Operator">
-    <Position X="6.75" Y="0.75" Width="1.5" />
+    <Position X="9.5" Y="11.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>IABAAAAAAAAAgAAAAAAAAAAAAAAEAAAAAgAAgAAAAAA=</HashCode>
       <FileName>Models\Domein\Operator.cs</FileName>

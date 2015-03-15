@@ -106,6 +106,7 @@
     <Compile Include="Models\KlimatogramTest.cs" />
     <Compile Include="Models\ParameterTest.cs" />
     <Compile Include="Models\DeterminatieTabelTest.cs" />
+    <Compile Include="Models\LeerlingTest.cs" />
     <Compile Include="Models\VergelijkingTest.cs" />
     <Compile Include="Models\VraagTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

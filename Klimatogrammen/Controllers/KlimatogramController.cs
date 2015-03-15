@@ -23,7 +23,7 @@ namespace Klimatogrammen.Controllers {
                         break;
                     }
                 default:
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index", "LocatieOefening");
             }
 
             return View(kIVM);
