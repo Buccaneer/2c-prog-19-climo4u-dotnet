@@ -227,7 +227,7 @@ namespace Klimatogrammen.Models.DAL
                
                 frankrijk.VoegKlimatogramToe(new Klimatogram(VormMaanden(
             new double[] { 3.5,4.5,6.8,9.7,13.3,16.4,18.4,18.2,15.7,11.8,6.9,4.3},
-            new int[] { 54,46,54,47,63,58,54,52,54,56,56,56 }).ToList(), 48.966667,2.45
+            new int[] { 54, 46, 54, 47, 63, 58, 54, 52, 54, 56, 56, 56 }).ToList(), 48.85661, 2.35222
         ) { BeginJaar = 1961, EindJaar = 1990, Locatie = "Parijs" });
 
                 europa.Landen.Add(frankrijk);
@@ -235,67 +235,67 @@ namespace Klimatogrammen.Models.DAL
                 Land griekenland = new Land("Griekenland");
                 griekenland.VoegKlimatogramToe(new Klimatogram(VormMaanden(
                 new double[] { 10.0, 10.5, 12.4, 16.0, 20.6, 25.0, 27.8, 24.3, 19.3, 15.4, 12.0, 9.0 },
-                new int[] { 45, 48, 44, 25, 14, 6, 6, 8, 10, 48, 51, 66 }).ToList(), 50.8, 4.35
+                new int[] { 45, 48, 44, 25, 14, 6, 6, 8, 10, 48, 51, 66 }).ToList(), 37.9, 23.716667
             ) { BeginJaar = 1961, EindJaar = 1990, Locatie = "Athene" });
 
                 griekenland.VoegKlimatogramToe(new Klimatogram(VormMaanden(
             new double[] { 5.0,6.7,9.6,14.2,19.5,24.2,26.5,25.8,21.8,16.1,10.9,6.7 },
-            new int[] { 37,40,46,36,44,32,26,21,26,41,58,53 }).ToList(), 40.516667,22.966667
+            new int[] { 37, 40, 46, 36, 44, 32, 26, 21, 26, 41, 58, 53 }).ToList(), 40.64006, 22.94442
         ) { BeginJaar = 1961, EindJaar = 1990, Locatie = "Thessaloniki" });
 
                 griekenland.VoegKlimatogramToe(new Klimatogram(VormMaanden(
    new double[] { 11.7,12.0,16.6,16.7,20.5,24.7,26.9,26.9,24.6,20.6,16.4,13.4 },
-   new int[] { 148,118,75,24,14,3,0,0,7,64,88,145 }).ToList(), 36.4, 28.066667
+   new int[] { 148, 118, 75, 24, 14, 3, 0, 0, 7, 64, 88, 145 }).ToList(), 36.43496, 28.066667
 ) { BeginJaar = 1961, EindJaar = 1990, Locatie = "Rhodos" });
 
                 Land kameroen = new Land("Kameroen");
                 kameroen.VoegKlimatogramToe(new Klimatogram(VormMaanden(
                 new double[]  { 23.7, 25.3, 25.0, 24.6, 24.1, 23.4, 22.6, 23.0, 23.1, 23.3, 23.7, 23.7 },
-                new int[] { 17, 51, 140, 180, 220, 162, 70, 102, 254, 296, 111, 25 }).ToList(), 50.8, 4.35
+                new int[] { 17, 51, 140, 180, 220, 162, 70, 102, 254, 296, 111, 25 }).ToList(), 3.833333, 11.516667
             ) { BeginJaar = 1961, EindJaar = 1990, Locatie = "Yaounde" });
 
                 Land brazillie = new Land("Brazillië");
                 brazillie.VoegKlimatogramToe(new Klimatogram(VormMaanden(
                 new double[] { 21.6, 21.8, 22.0, 21.4, 20.2, 19.1, 19.1, 21.2, 22.5, 22.1, 21.7, 21.5 },
-                new int[] { 241, 215, 189, 124, 39, 9, 12, 13, 52, 172, 238, 249 }).ToList(), 50.8, 4.35
+                new int[] { 241, 215, 189, 124, 39, 9, 12, 13, 52, 172, 238, 249 }).ToList(), -14.23500, -51.92528
             ) { BeginJaar = 1961, EindJaar = 1990, Locatie = "Brasilia" });
 
                 Land australie = new Land("Australië");
                 australie.VoegKlimatogramToe(new Klimatogram(VormMaanden(
                 new double[] { 24.2, 24.6, 22.7, 19.2, 16.0, 13.9, 13.0, 13.2, 14.5, 16.3, 19.1, 21.8 },
-                new int[] { 9, 14, 16, 47, 103, 168, 156, 111, 71, 46, 23, 9 }).ToList(), 50.8, 4.35
+                new int[] { 9, 14, 16, 47, 103, 168, 156, 111, 71, 46, 23, 9 }).ToList(), -31.95351, 115.85705
             ) { BeginJaar = 1961, EindJaar = 1990, Locatie = "Perth" });
 
                 Land thailand = new Land("Thailand");
                 thailand.VoegKlimatogramToe(new Klimatogram(VormMaanden(
                 new double[] { 25.9, 27.4, 28.7, 29.7, 29.2, 28.7, 28.3, 28.1, 27.8, 27.6, 26.9, 25.6 },
-                new int[] { 9, 30, 29, 65, 220, 149, 155, 197, 344, 242, 48, 10 }).ToList(), 50.8, 4.35
+                new int[] { 9, 30, 29, 65, 220, 149, 155, 197, 344, 242, 48, 10 }).ToList(), 13.75633, 100.56666666
             ) { BeginJaar = 1961, EindJaar = 1990, Locatie = "Bangkok" });
                 Land witRusland = new Land("Wit-Rusland");
                 witRusland.VoegKlimatogramToe(new Klimatogram(VormMaanden(
                 new double[] { -6.9, -5.8, -1.4, 6.0, 12.9, 16.1, 17.3, 16.5, 11.7, 6.3, 0.8, -3.8 },
-                new int[] { 40, 34, 42, 42, 62, 83, 88, 72, 60, 49, 52, 53 }).ToList(), 50.8, 4.35
+                new int[] { 40, 34, 42, 42, 62, 83, 88, 72, 60, 49, 52, 53 }).ToList(), 53.90454, 27.56152
             ) { BeginJaar = 1961, EindJaar = 1990, Locatie = "Minsk" });
 
                 Land rusland = new Land("Rusland");
                 rusland.VoegKlimatogramToe(new Klimatogram(VormMaanden(
                 new double[] { -41.0, -36.0, -22.0, -6.1, 6.7, 15.4, 18.7, 14.9, 5.7, -8.5, -29, -39 },
-                new int[] { 9, 7, 6, 10, 18, 37, 39, 37, 29, 20, 16, 12 }).ToList(), 50.8, 4.35
+                new int[] { 9, 7, 6, 10, 18, 37, 39, 37, 29, 20, 16, 12 }).ToList(), 62.03333, 129.73333
             ) { BeginJaar = 1961, EindJaar = 1990, Locatie = "Jakutsk" });
                 Land vs = new Land("Usa");
                 vs.VoegKlimatogramToe(new Klimatogram(VormMaanden(
                 new double[] { -26.0, -27.7, -26.0, -18.8, -6.9, 1.3, 3.9, 2.2, -0.7, -10.1, -18.9, -23.7 },
-                new int[] { 4, 4, 5, 5, 5, 7, 25, 23, 14, 11, 6, 5 }).ToList(), 50.8, 4.35
+                new int[] { 4, 4, 5, 5, 5, 7, 25, 23, 14, 11, 6, 5 }).ToList(), 71.29056, -156.78861
             ) { BeginJaar = 1961, EindJaar = 1990, Locatie = "Barrow, Alaska" });
 
                 vs.VoegKlimatogramToe(new Klimatogram(VormMaanden(
                 new double[]  { -2.3, 1.2, 5.4, 9.8, 14.9, 20.6, 25.5, 24.2, 18.4, 11.8, 4.9, -1.3 },
-                new int[] { 28, 31, 49, 54, 46, 24, 21, 22, 33, 37, 33, 36 }).ToList(), 50.8, 4.35
+                new int[] { 28, 31, 49, 54, 46, 24, 21, 22, 33, 37, 33, 36 }).ToList(), 40.783333, -111.89105
             ) { BeginJaar = 1951, EindJaar = 1990, Locatie = "Salt Lake City" });
 
                 australie.VoegKlimatogramToe(new Klimatogram(VormMaanden(
                 new double[]  { 28.7, 27.8, 24.9, 20.2, 15.6, 12.4, 11.6, 14.2, 18.2, 22.8, 25.7, 27.8 },
-                new int[] { 42, 3, 52, 17, 18, 14, 16, 12, 11, 19, 27, 36 }).ToList(), 50.8, 4.35
+                new int[] { 42, 3, 52, 17, 18, 14, 16, 12, 11, 19, 27, 36 }).ToList(), -23.70021, 133.883333
             ) { BeginJaar = 1961, EindJaar = 1990, Locatie = "Alice Springs" });
 
                 europa.VoegLandToe(griekenland);

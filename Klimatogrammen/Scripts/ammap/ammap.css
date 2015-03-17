@@ -1,0 +1,110 @@
+.ammapAlert {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    font-family: verdana,helvetica,arial,sans-serif;
+    font-size: 12px;
+    color: #CC0000;
+}
+
+.ammapDescriptionWindow {
+    font-size: 11px;
+    font-family: verdana,helvetica,arial,sans-serif;
+    background-color: #FFFFFF;
+    border-style: solid;
+    border-color: #DADADA;
+    border-width: 1px;
+    color: #000000;
+    padding: 8px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.ammapDescriptionTitle {
+    font-size: 12px;
+    font-weight: bold;
+    font-family: verdana,helvetica,arial,sans-serif;
+    padding-bottom: 5px;
+}
+
+.ammapDescriptionWindowCloseButton {
+}
+
+.ammapObjectList ul {
+    padding-left: 20px;
+    list-style: square outside;
+    color: #999999;
+    font-family: verdana,helvetica,arial,sans-serif;
+    font-size: 12px;
+}
+
+    .ammapObjectList ul ul {
+        padding-left: 14px;
+    }
+
+.ammapObjectList a {
+    color: #000000;
+}
+
+.ammapObjectList a {
+    color: #000000;
+    text-decoration: none;
+    display: block;
+    padding: 2px;
+}
+
+    .ammapObjectList a:hover {
+        color: #CC0000;
+        text-decoration: none;
+        background: #FFFFFF;
+        cursor: pointer;
+        display: block;
+    }
+
+.ammapDescriptionText {
+    overflow: auto;
+}
+
+
+.amChartsPlotArea {
+}
+
+
+.map-marker {
+    /* adjusting for the marker dimensions 
+    so that it is centered on coordinates */
+    margin-left: -4px;
+    margin-top: -4px;
+}
+
+    .map-marker.map-clickable {
+        cursor: pointer;
+    }
+.pulse {
+		width: 10px;
+		height: 10px;
+		border: 5px solid #f7f14c;
+		-webkit-border-radius: 30px;
+		-moz-border-radius: 30px;
+		border-radius: 30px;
+		background-color: #716f42;
+		z-index: 10;
+		position: absolute;
+	}
+.map-marker .dot {
+		border: 10px solid #fff601;
+		background: transparent;
+		-webkit-border-radius: 60px;
+		-moz-border-radius: 60px;
+		border-radius: 60px;
+		height: 50px;
+		width: 50px;
+	
+		position: absolute;
+		top: -25px;
+		left: -25px;
+		z-index: 1;
+		opacity: 0;
+
+}

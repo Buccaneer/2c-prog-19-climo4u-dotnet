@@ -25,7 +25,7 @@ namespace Klimatogrammen.Models.Domein
         }
         public virtual string Locatie { get; set; }
 
-        public Klimatogram(ICollection<Maand> maanden, double? longitute = null, double? latitude = null)
+        public Klimatogram(ICollection<Maand> maanden, double? latitude = null, double? longitute = null)
         {
             maanden.ForEach(m => m.Klimatogram = this);
             Maanden = maanden;
@@ -68,7 +68,8 @@ namespace Klimatogrammen.Models.Domein
                 Land = Land.Naam,
                 Locatie,
                 TotaalGemiddeldeTemperatuur = GeefGemiddeldeTemperatuur(),
-                TotaalNeerslag = GeefTotaleNeerslag()
+                TotaalNeerslag = GeefTotaleNeerslag(),
+                Coordinaten = new {Longitute, Latitude}
             };
             return klim;
         }

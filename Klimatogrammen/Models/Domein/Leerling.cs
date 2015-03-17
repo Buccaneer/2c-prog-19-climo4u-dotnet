@@ -7,7 +7,8 @@ namespace Klimatogrammen.Models.Domein
 {
 
     public class Leerling {
-        private ICollection<Klimatogram> _klimatogrammen = null;
+        private ICollection<Klimatogram> _klimatogrammen ;
+        private ICollection<Klimatogram> _foutieveKlimatogrammen ;
         #region Properties
         /// <summary>
         /// Dit is een property die het gekozen klimatogram van de leerling bijhoudt
@@ -47,7 +48,7 @@ namespace Klimatogrammen.Models.Domein
             if (_klimatogrammen != null)
                 return _klimatogrammen;
 
-            const int maximumLoop = 5; // Maximum tien keer de databank belasten, daarna stop. (tegen oneindige lus.)
+            const int maximumLoop = 10; // Maximum tien keer de databank belasten, daarna stop. (tegen oneindige lus.)
             int poging = 0;
             var klimatogrammen = new List<Klimatogram>();
             var vegTypes = new List<string>();
@@ -70,11 +71,29 @@ namespace Klimatogrammen.Models.Domein
                         vegTypes.Add(resultaat);
                         klimatogrammen.Add(klimatogram);
                     }
-                    if (klimatogrammen.Count == 6)
-                        return klimatogrammen;
+                    if (klimatogrammen.Count == 6) {
+                        _foutieveKlimatogrammen = klimatogrammen;
+                        return _klimatogrammen = klimatogrammen;
+                    }
                 }
             }
-            return _klimatogrammen =  klimatogrammen;
+            _foutieveKlimatogrammen = klimatogrammen;
+            return  _klimatogrammen =  klimatogrammen;
+        }
+
+        public ICollection<Klimatogram> FoutieveKlimatogrammenDerdeJaar {
+            get { return _foutieveKlimatogrammen; }
+        }
+
+        public void ValideerLocaties(string[] locaties, string[] klimatogrammen) {
+            var klims  = new List<Klimatogram>();
+            for (int i = 0; i < locaties.Length; ++i) {
+                int locatie = int.Parse(locaties[i]);
+                Klimatogram klimatogram = _klimatogrammen.First(k => k.Locatie.Equals(klimatogrammen[i]));
+                if (_foutieveKlimatogrammen.ElementAt(locatie) != klimatogram)
+                    klims.Add(klimatogram);
+            }
+            _foutieveKlimatogrammen = klims;
         }
     }
 }

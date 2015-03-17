@@ -1,0 +1,43 @@
+﻿@{
+    ViewBag.Title = "Oefening derde graad oplossen.";
+}
+
+<h2>Index</h2>
+<div class="row">
+    <div id="chartdiv" style="height: 700px" class="col-xs-7 col-sm-7 col-md-7 col-lg-7">
+
+    </div>
+    @{
+        string locatie = Url.Action("GeefKlimatogrammen");
+        if (ViewBag.IsPost != null) {
+            locatie = Url.Action("GeefFoutieveKlimatogrammen");
+        }
+    }
+    <div id="klimatogrammen" data-url="@locatie" class="panel-group col-xs-5 col-sm-5 col-md-5 col-lg-5">
+
+    </div>
+    <div id="infomess" class="well col-xs-5 col-sm-5 col-md-5 col-lg-5">
+
+    </div>
+</div>
+<div class="row" id="submit" data-action="@Url.Action("Index")" ><a class="btn btn-primary">Indienen</a></div>
+
+
+
+@section scripts {
+
+    <script type="text/javascript" src="~/Scripts/ammap/ammap.js"></script>
+    <script type="text/javascript" src="~/Scripts/ammap/maps/js/worldLow.js"></script>
+    <script type="text/javascript" src="~/Scripts/ammap/themes/light.js"></script>
+<script src="~/Scripts/highcharts.js"></script>
+    <script src="~/Scripts/Custom/map.js">
+   
+
+
+
+    </script>
+}
+
+@section css {
+    <link rel="stylesheet" href="~/Scripts/ammap/ammap.css" />
+}
