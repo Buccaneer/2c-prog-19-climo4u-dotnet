@@ -16,7 +16,9 @@
             type: "map",
             "theme": "light",
             pathToImages: "http://www.amcharts.com/lib/3/images/",
-
+            dragMap: false,
+            mouseWheelZoomEnabled: false,
+            zoomOnDoubleClick: false,
             imagesSettings: {
                 rollOverColor: "blue",
                 rollOverScale: 3,
@@ -61,14 +63,22 @@
             }
         }
 
+        var currentId = 0;
         // this function creates and returns a new marker element
         function createCustomMarker(image) {
             // create holder
             var holder = document.createElement('div');
+            var tit = cleanup(image.title).toString();
+
+
+
+            holder.setAttribute('titlefind', tit.toString());
             holder.onclick = function () {
                 huidigeSelectie = image.title;
                 $('#klimatogrammen').fadeOut(500, function() {
                     toonOpties();
+                  
+                    $(holder).find('.pulse').css('border-color', 'blue');
                 });
             };
             holder.className = 'map-marker';
@@ -122,11 +132,17 @@
             var item2Apreciate = resultaatSet[huidigeSelectie];
             $('.panel').addClass('panel-default');
             $('.panel').removeClass('panel-success');
+            $('.panel-collapse.in').collapse('hide');
+            $('.pulse').css('border-color', '#f7f14c');
+            for (key in resultaatSet) {
+                $('div[titlefind=' + cleanup(key).toString() + ']').find('.pulse').css('border-color', 'green');
+            }
             if (item2Apreciate !== undefined) {
-              
+               
 
                 $('#item' + item2Apreciate).removeClass('panel-default');
                 $('#item' + item2Apreciate).addClass("panel-success");
+                $('#collapse' + item2Apreciate).collapse('show');
             }
             $button = $('#submit');
             $button.hide();
@@ -302,4 +318,39 @@ function toonKlimatogram(klimatogram, container, number) {
 
 
     });
+}
+
+function geefMaand(maand) {
+    switch (maand) {
+        case 'Jan':
+            return 'Januari';
+        case 'Feb':
+            return 'Februari';
+        case 'Maa':
+            return 'Maart';
+        case 'Apr':
+            return 'April';
+        case 'Mei':
+            return 'Mei';
+        case 'Jun':
+            return 'Juni';
+        case 'Jul':
+            return 'Juli';
+        case 'Aug':
+            return 'Augustus';
+        case 'Sep':
+            return 'September';
+        case 'Okt':
+            return 'Oktober';
+        case 'Nov':
+            return 'November';
+        case 'Dec':
+            return 'December';
+        default:
+            return maand;
+    }
+}
+
+  function cleanup(val) {
+    return val.toLowerCase().replace(/[^a-zA-Z0-9]+/g, "");
 }

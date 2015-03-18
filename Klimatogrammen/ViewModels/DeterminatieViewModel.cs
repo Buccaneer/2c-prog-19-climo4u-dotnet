@@ -29,6 +29,7 @@ namespace Klimatogrammen.ViewModels
     {
         public SelectList Antwoorden { get; set; }
         public string GebruikersAntwoord { get; set; }
+
         public bool? Correct { get; set; }
         public string Foto { get; set; }
 

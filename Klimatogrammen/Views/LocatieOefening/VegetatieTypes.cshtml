@@ -7,18 +7,21 @@
 <h2>VegetatieTypes</h2>
 <div id="data" data-url="@Url.Action("GeefKlimatogrammen")">
 
-
-    <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" aria-expanded="true" aria-controls="collapseExample">Verberg/Toon determinatietabel</a>
+    @if (Model.AllesJuist == null || Model.AllesJuist == false) {
+        <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" aria-expanded="true" aria-controls="collapseExample">Verberg/Toon determinatietabel</a>
+    }
 </div>
-<div class="collapse in" id="collapseExample">
-    <div class="determinatietabel" data-url="@Url.Action("GetJSON","Determinatie")" read-only>
+@if (Model.AllesJuist == null || Model.AllesJuist == false) {
+    <div class="collapse in" id="collapseExample">
+        <div class="determinatietabel" data-url="@Url.Action("GetJSON", "Determinatie")" read-only>
 
 
+        </div>
     </div>
-</div>
+}
 
 
-@using (Html.BeginForm()) {
+@using (Html.BeginForm("VerbeterVegetatieVragen", "LocatieOefening")) {
     @Html.AntiForgeryToken()
     int count = 0;
     <div class="form-horizontal">
@@ -27,18 +30,51 @@
 
         @foreach (var v in Model.Vragen) {
             <div class="form-group">
-                <div id="klim_@count"></div>
-                @Html.Label("Vegetatietype", htmlAttributes: new { @class = "control-label" })
-                <div>
-                    @Html.DropDownListFor(model => model.Antwoorden.Antwoord[count], v.Antwoorden, htmlAttributes: new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.Antwoorden.Antwoord[count], "", new { @class = "text-danger" })
 
+              
+                <div>
+                    @if (Model.AllesJuist == null || Model.AllesJuist == false) {
+                        <div id="klim_@count"></div>
+                          @Html.Label("Vegetatietype", htmlAttributes: new { @class = "control-label" })
+                        @Html.DropDownListFor(model => model.Antwoorden.Antwoord[count], v.Antwoorden, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Antwoorden.Antwoord[count], "", new { @class = "text-danger" })
+                        if (v.Correct != null) {
+                            if (v.Correct == false) {
+                                @Html.Label("Dit is niet correct, probeer opnieuw!", new { @class = "text-danger" })
+                            } else if (v.Correct == true) {
+                                <br />
+                                @Html.Label("Dit is juist, goed zo!", new { @class = "text-success" })
+                            }
+                        }
+                    } else {
+                        <h3>@Model.Antwoorden.Antwoord[count]</h3>
+                        <div class="row">
+                            <div class="col-md-7 col-lg-7">
+                                <div id="klim_@count"></div>
+                            </div>
+                            <div class="col-md-5 col-lg-5">
+                                @if (v.Foto == "") {
+                                    <img src="http://upload.wikimedia.org/wikipedia/commons/c/c9/-Insert_image_here-.svg" class="img-responsive" />
+                                } else {
+                                    <img src="@v.Foto" class="img-responsive" />
+                                }
+                            </div>
+                        </div>
+                    }
                 </div>
 
             </div>
-            ++count;
+                    ++count;
         }
-        <input type="submit" value="Valideer" class="btn btn-primary" />
+
+        <div class="form-group">
+            @if (Model.AllesJuist == null || Model.AllesJuist == false) {
+                <input type="submit" value="Valideer" class="btn btn-primary" />
+
+
+            }
+            @Html.ActionLink("Stoppen", "Index", "Home", null, new { @class = "btn btn-primary" })
+        </div>
     </div>
 }
 <div>

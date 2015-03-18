@@ -86,12 +86,10 @@ function DeterminatieTabel(item, data, postUrl,postName) {
                     self.boom.clear();
                     var n = cellView.model.innernode;
                     n.vulMetKleur(kleuren.geselecteerdKleur, null);
-
                     if (n.data.vegetatieType !== undefined) {
                         var h = $(form).find("input[type=text]");
                         $(h).val(n.data.id);
                         $(form).submit();
-
                     }
                 }
             }

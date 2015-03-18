@@ -31,6 +31,26 @@ namespace Klimatogrammen.Controllers
             return View("VegetatieTypes", new OefeningLocatieVegTypesIndexViewModel(leerling));
         }
 
+        [HttpPost]
+        public ActionResult VerbeterVegetatieVragen(Leerling leerling, [Bind(Prefix = "Antwoorden")] AntwoordViewModel antwoorden) {
+            var vm = new OefeningLocatieVegTypesIndexViewModel(leerling);
+            int index = 0;
+            int juist = 0;
+            var klimatogrammen = leerling.GeefKlimatogrammenDerdeGraad().ToList();
+            foreach (var vraag in vm.Vragen) {
+                var klimatogram = klimatogrammen[index];
+                var antwoord = antwoorden.Antwoord[index];
+                var res = leerling.Graad.DeterminatieTabel.Determineer(klimatogram);
+                vraag.Correct = res.VegetatieType.Naam.Equals(antwoord);
+                if (vraag.Correct.Value)
+                    juist++;
+                index++;
+            }
+                vm.AllesJuist = juist == antwoorden.Antwoord.Length;
+            vm.Antwoorden = antwoorden;
+            return View("VegetatieTypes", vm);
+        }
+
         public JsonResult GeefFoutieveKlimatogrammen(Leerling leerling) {
 
             var lijst = leerling.FoutieveKlimatogrammenDerdeJaar.Select(k => k.MaakJsonObject()).ToList();
