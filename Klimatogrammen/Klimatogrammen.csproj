@@ -187,6 +187,20 @@
     <Compile Include="ViewModels\VragenIndexViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\000.jpg" />
+    <Content Include="Content\001.jpg" />
+    <Content Include="Content\002.jpg" />
+    <Content Include="Content\003.jpg" />
+    <Content Include="Content\004.jpg" />
+    <Content Include="Content\005.jpg" />
+    <Content Include="Content\006.jpg" />
+    <Content Include="Content\007.jpg" />
+    <Content Include="Content\008.jpg" />
+    <Content Include="Content\009.jpg" />
+    <Content Include="Content\010.jpg" />
+    <Content Include="Content\011.jpg" />
+    <Content Include="Content\012.jpg" />
+    <Content Include="Content\013.jpg" />
     <Content Include="Content\ajax-loader.gif" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
