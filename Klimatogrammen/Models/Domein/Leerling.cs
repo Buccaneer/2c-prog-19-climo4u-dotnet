@@ -86,6 +86,8 @@ namespace Klimatogrammen.Models.Domein
         }
 
         public void ValideerLocaties(string[] locaties, string[] klimatogrammen) {
+            if (_foutieveKlimatogrammen.Count == 0)
+                return;
             var klims  = new List<Klimatogram>();
             for (int i = 0; i < locaties.Length; ++i) {
                 int locatie = int.Parse(locaties[i]);

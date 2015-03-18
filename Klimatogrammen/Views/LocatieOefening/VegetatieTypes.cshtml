@@ -5,8 +5,19 @@
 }
 
 <h2>VegetatieTypes</h2>
+<div id="data" data-url="@Url.Action("GeefKlimatogrammen")">
 
-<div id="data" data-url="@Url.Action("GeefKlimatogrammen")"></div>
+
+    <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" aria-expanded="true" aria-controls="collapseExample">Verberg/Toon determinatietabel</a>
+</div>
+<div class="collapse in" id="collapseExample">
+    <div class="determinatietabel" data-url="@Url.Action("GetJSON","Determinatie")" read-only>
+
+
+    </div>
+</div>
+
+
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
     int count = 0;
@@ -36,4 +47,7 @@
 @section scripts {
     <script src="~/Scripts/highcharts.js"></script>
     <script src="~/Scripts/Custom/vegTypes.js"></script>
-    }
+
+    <script src="~/Scripts/joint.js"></script>
+    <script src="~/Scripts/Custom/determinatieTabel.js"></script>
+}

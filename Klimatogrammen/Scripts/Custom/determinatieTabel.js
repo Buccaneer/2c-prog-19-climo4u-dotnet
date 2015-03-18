@@ -16,6 +16,8 @@ $(function () {
         var postUrl = $(item).attr("data-post-url");
         var postName = $(item).attr("data-post-name");
         var antwoord = $(item).attr("data-antwoord");
+        var readonly = $(item).attr("read-only") !== undefined;
+        var hidden = $(item).attr('hidden') !== undefined;
         var gebruikerAntwoord = $(item).attr("data-gebruikerantwoord");
         $(item).removeAttr("data-antwoord");
         $(item).removeAttr("data-gebruikerantwoord");
@@ -24,6 +26,10 @@ $(function () {
             $(item).html("");
             var determinatieTabel = new DeterminatieTabel(item, data,postUrl,postName);
             determinatieTabel.teken();
+           
+            if (readonly)
+                $(item).css('pointer-events', 'none');
+            else
             if (antwoord != 0 && gebruikerAntwoord != 0) {
                 determinatieTabel.valideer(gebruikerAntwoord, antwoord);
                 if (antwoord == gebruikerAntwoord) {
@@ -38,6 +44,8 @@ $(function () {
                     });
                 }
             }
+            if (hidden)
+                $(item).hide();
         });
     });
 });

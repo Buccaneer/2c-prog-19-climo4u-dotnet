@@ -118,6 +118,11 @@ $(function() {
             toonKlimatogram(val, 'klim_' + i, i);
         });
     });
+    
+    $('#showDeterm').click(function() {
+        $('#determTab').show();
+        $(this).remove();
+    });
 });
 
 function geefMaand(maand) {
