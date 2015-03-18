@@ -13,7 +13,7 @@
 </div>
 @if (Model.AllesJuist == null || Model.AllesJuist == false) {
     <div class="collapse in" id="collapseExample">
-        <div class="determinatietabel" data-url="@Url.Action("GetJSON", "Determinatie")" read-only>
+        <div class="determinatietabel" data-url="@Url.Action("GetJSON", "Determinatie")" read-only >
 
 
         </div>
@@ -86,4 +86,9 @@
 
     <script src="~/Scripts/joint.js"></script>
     <script src="~/Scripts/Custom/determinatieTabel.js"></script>
+}
+
+
+@section css {
+    <link rel="stylesheet" href="~/Content/joint.css" />
 }
