@@ -54,8 +54,7 @@ namespace Klimatogrammen
 
             for (int i = 0; i < Vragen.Count; i++)
             {
-                Vragen.ElementAt(i).ValideerVraag(antwoord[i], klimatogram);
-                if (Vragen.ElementAt(i).Resultaat == Resultaat.Juist)
+                if (Vragen.ElementAt(i).ValideerVraag(antwoord[i], klimatogram) == Resultaat.Juist)
                 {
                     antwoorden[i] = antwoord[i];
                 }

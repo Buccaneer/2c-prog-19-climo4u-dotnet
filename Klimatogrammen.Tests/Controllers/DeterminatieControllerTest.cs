@@ -28,7 +28,7 @@ namespace Klimatogrammen.Tests.Controllers
         }
 
         [TestMethod]
-        public void IndienGeenKlimatogramRedirectNaarKlimatogram()
+        public void IndienIndexGeenKlimatogramRedirectNaarKlimatogramController()
         {
             RedirectToRouteResult result =
                 _determinatieController.Index(new Leerling { Graad = _graadMock.Object }) as RedirectToRouteResult;
@@ -37,7 +37,7 @@ namespace Klimatogrammen.Tests.Controllers
         }
 
         [TestMethod]
-        public void DeterminatieIsNietNull()
+        public void IndexDeterminatieControllerIsNietNull()
         {
             ViewResult result =
                 _determinatieController.Index(new Leerling { Graad = _graadMock.Object, Klimatogram = _mockKlimatogram.Object }) as ViewResult;
@@ -45,7 +45,7 @@ namespace Klimatogrammen.Tests.Controllers
         }
 
         [TestMethod]
-        public void DeterminatieWordtWeergegeven()
+        public void IndexDeterminatieControllerWordtWeergegeven()
         {
             ViewResult result =
                 _determinatieController.Index(new Leerling { Graad = _graadMock.Object, Klimatogram = _mockKlimatogram.Object }) as ViewResult;
@@ -162,7 +162,7 @@ namespace Klimatogrammen.Tests.Controllers
             //Assert.IsNotNull(result);
             Assert.AreEqual("Index", result2.RouteValues["action"]);
             //Home gaat nog veranderen naar determinatie
-            Assert.AreEqual("Home", result2.RouteValues["controller"]);
+            Assert.AreEqual("LocatieOefening", result2.RouteValues["controller"]);
         }
 
         [TestMethod]

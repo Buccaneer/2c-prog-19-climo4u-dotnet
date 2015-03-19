@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace Klimatogrammen.Models.Domein {
     /// <summary>
@@ -17,10 +18,9 @@ namespace Klimatogrammen.Models.Domein {
             return NeeKnoop.Determineer(klimatogram);
         }
 
-        public override void MaakLijstMetAlleVegetatieTypes(List<VegetatieType> lijst)
+        public override List<VegetatieType> MaakLijstMetAlleVegetatieTypes()
         {
-            JaKnoop.MaakLijstMetAlleVegetatieTypes(lijst);
-            NeeKnoop.MaakLijstMetAlleVegetatieTypes(lijst);
+            return JaKnoop.MaakLijstMetAlleVegetatieTypes().Concat(NeeKnoop.MaakLijstMetAlleVegetatieTypes()).ToList();
         }
 
         public override void Laad() {

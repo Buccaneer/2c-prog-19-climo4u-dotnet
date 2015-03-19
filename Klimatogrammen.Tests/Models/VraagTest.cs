@@ -33,17 +33,15 @@ namespace Klimatogrammen.Tests.Models {
         [TestMethod]
         public void VraagValiderenBijJuistAntwoord() {
             var verwacht = Resultaat.Juist;
-            _vraag.ValideerVraag("Item2", _mockKlimatogram.Object);
-
-            Assert.AreEqual(verwacht, _vraag.Resultaat);
+            
+            Assert.AreEqual(verwacht, _vraag.ValideerVraag("Item2", _mockKlimatogram.Object));
         }
 
         [TestMethod]
         public void VraagValiderenBijFoutAntwoord() {
             var verwacht = Resultaat.Fout;
-            _vraag.ValideerVraag("Item3", _mockKlimatogram.Object);
 
-            Assert.AreEqual(verwacht, _vraag.Resultaat);
+            Assert.AreEqual(verwacht, _vraag.ValideerVraag("Item3", _mockKlimatogram.Object));
         }
 
         [TestMethod]

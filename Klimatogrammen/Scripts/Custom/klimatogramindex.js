@@ -50,7 +50,9 @@ function makeGraph(klimatogram) {
         yAxis: [
             {
                 labels: {
-                    format: '{value}'
+                    formatter: function () {
+                        return this.value.toString().contains('-') ? ' ' : this.value;
+                    }
                 },
                 title: {
                     text: 'Neerslag in mm'

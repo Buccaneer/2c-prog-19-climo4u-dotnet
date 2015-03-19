@@ -28,6 +28,8 @@
             },
 
             zoomControl: {
+                panControlEnabled: false,
+                zoomControlEnabled: false,
                 buttonFillColor: "#15A892"
             },
 
@@ -42,6 +44,7 @@
         });
 
         map.addListener("positionChanged", updateCustomMarkers);
+        map.validateData();
         var resultaatSet = Array();
         var huidigeSelectie = null;
         function updateCustomMarkers(event) {
@@ -249,7 +252,9 @@ function toonKlimatogram(klimatogram, container, number) {
         yAxis: [
             {
                 labels: {
-                    format: '{value}'
+                    formatter: function () {
+                        return this.value.toString().contains('-') ? ' ' : this.value;
+                    }
                 },
                 title: {
                     text: 'Neerslag in mm'

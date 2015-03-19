@@ -17,21 +17,55 @@ namespace Klimatogrammen.Controllers
             if (route != null)
                 return route;
             VragenIndexViewModel vraagVM = new VragenIndexViewModel(leerling.GeefVragen(), leerling.Klimatogram);
+            vraagVM.AllesJuist = false;
             return View(vraagVM);
         }
 
         [HttpPost]
         public ActionResult Index(Leerling leerling, [Bind(Prefix = "Antwoorden")] AntwoordViewModel antwoorden)
         {
+            if (ModelState.IsValid)
+            {
+                try
+                {
             ActionResult route = RedirectIndienNodig(leerling);
             if (route != null)
                 return route;
 
-            string[] antwden= leerling.ValideerVragen(antwoorden.Antwoord);
+            string[] antwden = leerling.ValideerVragen(antwoorden.Antwoord);
             
             AntwoordViewModel antw = new AntwoordViewModel(antwden);
-            VragenIndexViewModel vraagVM = new VragenIndexViewModel(leerling.GeefVragen(), leerling.Klimatogram){Antwoorden=antw};
+            VragenIndexViewModel vraagVM = new VragenIndexViewModel(leerling.GeefVragen(), leerling.Klimatogram) { Antwoorden = antwoorden };
+            int index = 0;
+            vraagVM.AllesJuist =
+                leerling.Graad.Vragen.Where(v =>
+                {
+                    var res = v.ValideerVraag(antwoorden.Antwoord[index], leerling.Klimatogram);
+                    var vr = vraagVM.Vragen.ElementAt(index++);
+                    switch (res)
+                    {
+                        case Resultaat.Juist:
+                            vr.Resultaat = true;
+                            break;
+                        case Resultaat.Fout:
+                            vr.Resultaat = false;
+                            break;
+                        default:
+                            vr.Resultaat = null;
+                            break;
+                    }
+                    return res != Resultaat.Juist;
+
+                }).Count() == 0;
             return View(vraagVM);
+        }
+                catch (Exception exception)
+                {
+                    ModelState.AddModelError("", exception.Message);
+                }
+            }
+            return View();
+
         }
 
         public ActionResult GetJSON(Leerling leerling)
@@ -49,14 +83,13 @@ namespace Klimatogrammen.Controllers
             }
             if (leerling.Graad.Nummer == 3)
             {
-                //TODO: controller voor kaartje bestaat nog niet dus nu naar home
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index", "LocatieOefening");
             }
             if (leerling.Graad.Nummer == 2 && leerling.Klimatogram != null)
             {
                 return RedirectToAction("Index", "Determinatie");
             }
-            if (leerling.Klimatogram == null || (leerling.Graad.Nummer == 2 && leerling.Klimatogram == null) )
+            if (leerling.Klimatogram == null || (leerling.Graad.Nummer == 2 && leerling.Klimatogram == null))
             {
                 return RedirectToAction("Index", "Klimatogram");
             }

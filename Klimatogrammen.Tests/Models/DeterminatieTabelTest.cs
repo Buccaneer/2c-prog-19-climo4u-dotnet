@@ -32,7 +32,7 @@ namespace Klimatogrammen.Tests.Models
         public void DeterminatieGeeftAlsResultaatJuist()
         {
             ResultaatBlad result = _determinatieTabel.Determineer(_klimatogramMock.Object);
-            Resultaat resultaat = _determinatieTabel.ValideerGebruikerResultaat(result);
+            Resultaat resultaat = _determinatieTabel.ValideerGebruikerResultaat(result, _klimatogramMock.Object);
             Assert.AreEqual(resultaat, Resultaat.Juist);
         }
 

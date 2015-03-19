@@ -15,9 +15,11 @@ namespace Klimatogrammen.Models.Domein {
             return this;
         }
 
-        public override void MaakLijstMetAlleVegetatieTypes(List<VegetatieType> lijst)
+        public override List<VegetatieType> MaakLijstMetAlleVegetatieTypes()
         {
+            var lijst = new List<VegetatieType>();
             lijst.Add(VegetatieType);
+            return lijst;
         }
 
         public override void Laad() {

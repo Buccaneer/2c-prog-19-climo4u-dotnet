@@ -92,12 +92,14 @@
     <Compile Include="Controllers\KlimatogramControllerTest.cs" />
     <Compile Include="Controllers\OefeningVraagControllerTest.cs" />
     <Compile Include="Controllers\DeterminatieControllerTest.cs" />
+    <Compile Include="Controllers\LocatieOefeningControllerTest.cs" />
     <Compile Include="Mock\ContinentFactory.cs" />
     <Compile Include="Mock\DeterminatieTabelMock.cs" />
     <Compile Include="Mock\GraadMockFactory.cs" />
     <Compile Include="Mock\GraadRepositoryMock.cs" />
     <Compile Include="Mock\GroteDeterminatieTabelMock.cs" />
     <Compile Include="Mock\KlimatogramMockFactory.cs" />
+    <Compile Include="Mock\LeerlingMock.cs" />
     <Compile Include="Mock\MaandMockFactory.cs" />
     <Compile Include="Mock\ParameterMockFactory.cs" />
     <Compile Include="Mock\SessionRepositoryMock.cs" />
