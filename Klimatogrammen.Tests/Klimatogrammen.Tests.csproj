@@ -92,6 +92,7 @@
     <Compile Include="Controllers\KlimatogramControllerTest.cs" />
     <Compile Include="Controllers\OefeningVraagControllerTest.cs" />
     <Compile Include="Controllers\DeterminatieControllerTest.cs" />
+    <Compile Include="Controllers\LocatieOefeningControllerTest.cs" />
     <Compile Include="Mock\ContinentFactory.cs" />
     <Compile Include="Mock\DeterminatieTabelMock.cs" />
     <Compile Include="Mock\GraadMockFactory.cs" />

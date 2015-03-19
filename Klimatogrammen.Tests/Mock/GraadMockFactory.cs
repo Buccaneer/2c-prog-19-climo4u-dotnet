@@ -92,16 +92,7 @@ namespace Klimatogrammen.Tests.Mock
             mock.Setup(g => g.Nummer).Returns(graad);
             mock.Setup(g => g.Continenten).Returns(new ContinentFactory().MaakContinenten(graad));
             mock.Setup(l => l.DeterminatieTabel).Returns(new GroteDeterminatieTabelMock().MaakDeterminatieTabel);
-            //Werelddeel c = new Werelddeel("Europa");
-            //Land belgie = new Land("België");
-
-
-            //int[] gemiddeldeNeerUkkel = { 12, 12, 13, 13, 14, 14, 15, 15, 16, 16, 17, 17 };
-            //double[] gemiddeldeTempUkkel = { 5.1, 2.2, 10.5, 12.7, 18, 20.4, 21.2, 25.2, 30.1, 19, 10, 2.2 };
-            //belgie.VoegKlimatogramToe(new Klimatogram(VormMaanden(gemiddeldeTempUkkel, gemiddeldeNeerUkkel).ToList(), 50.3, 4.5) { Locatie = "Ukkel", BeginJaar = 1961, EindJaar = 2009 });
-            //c.VoegLandToe(belgie);
-
-            //mock.Setup(g => g.Werelddelen).Returns(new Werelddeel[] { c });
+            
             return mock;
         }
 

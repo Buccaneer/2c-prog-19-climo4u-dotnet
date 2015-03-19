@@ -23,15 +23,30 @@ namespace Klimatogrammen.Controllers
         [HttpPost]
         public ActionResult Index(Leerling leerling, [Bind(Prefix = "Antwoorden")] AntwoordViewModel antwoorden)
         {
-            ActionResult route = RedirectIndienNodig(leerling);
-            if (route != null)
-                return route;
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    ActionResult route = RedirectIndienNodig(leerling);
+                    if (route != null)
+                        return route;
 
-            string[] antwden= leerling.ValideerVragen(antwoorden.Antwoord);
-            
-            AntwoordViewModel antw = new AntwoordViewModel(antwden);
-            VragenIndexViewModel vraagVM = new VragenIndexViewModel(leerling.GeefVragen(), leerling.Klimatogram){Antwoorden=antw};
-            return View(vraagVM);
+                    string[] antwden = leerling.ValideerVragen(antwoorden.Antwoord);
+
+                    AntwoordViewModel antw = new AntwoordViewModel(antwden);
+                    VragenIndexViewModel vraagVM = new VragenIndexViewModel(leerling.GeefVragen(), leerling.Klimatogram)
+                    {
+                        Antwoorden = antw
+                    };
+                    return View(vraagVM);
+                }
+                catch (Exception exception)
+                {
+                    ModelState.AddModelError("", exception.Message);
+                }
+            }
+            return View();
+
         }
 
         public ActionResult GetJSON(Leerling leerling)
@@ -49,14 +64,13 @@ namespace Klimatogrammen.Controllers
             }
             if (leerling.Graad.Nummer == 3)
             {
-                //TODO: controller voor kaartje bestaat nog niet dus nu naar home
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index", "LocatieOefening");
             }
             if (leerling.Graad.Nummer == 2 && leerling.Klimatogram != null)
             {
                 return RedirectToAction("Index", "Determinatie");
             }
-            if (leerling.Klimatogram == null || (leerling.Graad.Nummer == 2 && leerling.Klimatogram == null) )
+            if (leerling.Klimatogram == null || (leerling.Graad.Nummer == 2 && leerling.Klimatogram == null))
             {
                 return RedirectToAction("Index", "Klimatogram");
             }
