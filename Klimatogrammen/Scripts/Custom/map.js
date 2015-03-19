@@ -28,6 +28,8 @@
             },
 
             zoomControl: {
+                panControlEnabled: false,
+                zoomControlEnabled: false,
                 buttonFillColor: "#15A892"
             },
 
@@ -42,6 +44,7 @@
         });
 
         map.addListener("positionChanged", updateCustomMarkers);
+        map.validateData();
         var resultaatSet = Array();
         var huidigeSelectie = null;
         function updateCustomMarkers(event) {
