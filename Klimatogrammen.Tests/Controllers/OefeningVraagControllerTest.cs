@@ -30,7 +30,7 @@ namespace Klimatogrammen.Tests.Controllers
         }
 
         [TestMethod]
-        public void IndienGeenKlimatogramRedirectNaarKlimatogram() {
+        public void GeenKlimatogramRedirectNaarKlimatogramController() {
             RedirectToRouteResult result =
                 _vraagController.Index(new Leerling {Graad = _graadMock.Object}) as RedirectToRouteResult;
             Assert.AreEqual("Index", result.RouteValues["action"]);
@@ -96,27 +96,26 @@ namespace Klimatogrammen.Tests.Controllers
         }
 
         [TestMethod]
-        public void LeerlingNullRedirectNaarHome()
+       public void GeenLeerlingRedirectNaarHomeController()
         {
-            //    VraagRepository vRep = VraagRepository.CreerVragenVoorKlimatogram(_mockKlimatogram);
-            RedirectToRouteResult result = _vraagController.Index(null) as RedirectToRouteResult;
-            //Assert.IsNotNull(result);
+            RedirectToRouteResult result =
+                _vraagController.Index(null) as RedirectToRouteResult;
             Assert.AreEqual("Index", result.RouteValues["action"]);
             Assert.AreEqual("Home", result.RouteValues["controller"]);
         }
 
         [TestMethod]
-        public void GraadNullRedirectNaarHomeSelectie()
+        public void GeenGraadRedirectNaarHomeController()
         {
-            //    VraagRepository vRep = VraagRepository.CreerVragenVoorKlimatogram(_mockKlimatogram);
-            RedirectToRouteResult result = _vraagController.Index(new Leerling { Graad = null, Klimatogram = _mockKlimatogram.Object }) as RedirectToRouteResult;
-            //Assert.IsNotNull(result);
+            RedirectToRouteResult result =
+                _vraagController.Index(new Leerling { Graad = null, Klimatogram = _mockKlimatogram.Object }) as RedirectToRouteResult;
             Assert.AreEqual("Index", result.RouteValues["action"]);
             Assert.AreEqual("Home", result.RouteValues["controller"]);
         }
+        
 
         [TestMethod]
-        public void GeenVragenRedirectNaarDeterminatieSelectie() {
+        public void GeenVragenRedirectNaarDeterminatieSelectieVoorGraadTwee() {
             _graadMock = _graadMockFactory.MaakTweedeGraadTweedeJaarAan();
             RedirectToRouteResult result = _vraagController.Index(new Leerling() { Graad = _graadMock.Object, Klimatogram = _mockKlimatogram.Object}) as RedirectToRouteResult;
             Assert.AreEqual("Index", result.RouteValues["action"]);
@@ -127,6 +126,16 @@ namespace Klimatogrammen.Tests.Controllers
             Assert.AreEqual("Index", result2.RouteValues["action"]);
             Assert.AreEqual("LocatieOefening", result2.RouteValues["controller"]);
         }
+
+        [TestMethod]
+        public void GeenVragenRedirectNaarDeterminatieSelectieVoorGraadDrie()
+        {
+            _graadMock = _graadMockFactory.MaakDerdeGraadAan();
+            RedirectToRouteResult result2 = _vraagController.Index(new Leerling() { Graad = _graadMock.Object, Klimatogram = _mockKlimatogram.Object }) as RedirectToRouteResult;
+            Assert.AreEqual("Index", result2.RouteValues["action"]);
+            Assert.AreEqual("LocatieOefening", result2.RouteValues["controller"]);
+        }
+
 
         [TestMethod]
         [ExpectedException(typeof(NullReferenceException))]

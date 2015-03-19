@@ -42,7 +42,7 @@ namespace Klimatogrammen.Tests.Controllers
         }
 
         [TestMethod]
-        public void IndexHttpPostRedirectNaarAndereView()
+        public void HttpPostIndexRedirectNaarAndereView()
         {
             _graadMock = _graadMockFactory.MaakTweedeGraadEersteJaarAan();
             Leerling leerling = new Leerling{ Graad = _graadMock.Object};
@@ -61,27 +61,5 @@ namespace Klimatogrammen.Tests.Controllers
             _homeController.Index(leerlingIVM);
             Assert.IsNotNull(_sessionRepository["leerling"]);
         }
-
-        //[TestMethod]
-        //[ExpectedException(typeof (ArgumentException))]
-        //public void IndexGeeftViewTerugBijGraadTweeJaarNul() //overbodige test?
-        //{
-        //    _graadMock = _graadMockFactory.MaakTweedeGraadEersteJaarAan();
-        //    _graadMock.Setup(m => m.Jaar).Returns(0);
-        //    Leerling leerling = new Leerling { Graad = _graadMock.Object };
-        //    LeerlingIndexViewModel leerlingIVM = new LeerlingIndexViewModel(leerling);
-        //    _homeController.Index(leerlingIVM);
-        //}
-
-        //[TestMethod]
-        //[ExpectedException(typeof (ArgumentException))]
-        //public void IndexGeeftViewTerugBijGraadEenMetJaarEen() //overbodige test?
-        //{
-        //    _graadMock = _graadMockFactory.MaakEersteGraadAan();
-        //    _graadMock.Setup(m => m.Jaar).Returns(1);
-        //    Leerling leerling = new Leerling { Graad = _graadMock.Object };
-        //    LeerlingIndexViewModel leerlingIVM = new LeerlingIndexViewModel(leerling);
-        //    _homeController.Index(leerlingIVM);
-        //}
     }
 }
