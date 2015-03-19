@@ -1,5 +1,24 @@
-﻿function toonKlimatogram(klimatogram, container, number) {
-    $("#" + container).css({ "width": "100%", "height": "400px" });
+﻿window.AllesJuist = false;
+
+function zetAllesJuist(val) {
+    console.log(val);
+    if (val == "True") {
+        window.AllesJuist = true;
+    }
+}
+
+
+function toonKlimatogram(klimatogram, container, number) {
+    if (AllesJuist) {
+        if(number == 0)
+            $("#" + container).css({ "width": $(".col-md-7"), "height": "400px" });
+        else {
+            $("#" + container).css({ "width": $("#klim_0").width(), "height": "400px" });
+        }
+        $(".carousel-indicators").css({"bottom":"-30px"});
+    } else {
+        $("#" + container).css({ "width": $(".carousel-inner").width(), "height": "400px" });
+    }
 
     var temperaturen = klimatogram.GemiddeldeTemperatuur;
     var neerslagen = klimatogram.GemiddeldeNeerslag;
@@ -35,7 +54,7 @@
             text: 'Klimatologische gemiddelden ' + klimatogram.BeginJaar + " - " + klimatogram.EindJaar
         },
         xAxis: {
-            categories: ['Jan<br>' + temperaturen[0] + '°C<br>' + neerslagen[0] + 'mmN', 'Feb<br>' + temperaturen[1] + '°C<br>' + neerslagen[1] + 'mmN', 'Maa<br>' + temperaturen[2] + '°C<br>' + neerslagen[2] + 'mmN', 'Apr<br>' + temperaturen[3] + '°C<br>' + neerslagen[3] + 'mmN', 'Mei<br>' + temperaturen[4] + '°C<br>' + neerslagen[4] + 'mmN', 'Jun<br>' + temperaturen[5] + '°C<br>' + neerslagen[5] + 'mmN', 'Jul<br>' + temperaturen[6] + '°C<br>' + neerslagen[6] + 'mmN', 'Aug<br>' + temperaturen[7] + '°C<br>' + neerslagen[7] + 'mmN', 'Sep<br>' + temperaturen[8] + '°C<br>' + neerslagen[8] + 'mmN', 'Okt<br>' + temperaturen[9] + '°C<br>' + neerslagen[9] + 'mmN', 'Nov<br>' + temperaturen[10] + '°C<br>' + neerslagen[10] + 'mmN', 'Dec<br>' + temperaturen[11] + '°C<br>' + neerslagen[11] + 'mmN']
+            categories: ['Jan', 'Feb', 'Maa', 'Apr', 'Mei', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dec']
         },
         yAxis: [
             {
@@ -108,9 +127,11 @@
                 type: 'spline'
             }
         ]
-
-
     });
+
+    var html = '<br/><p><b> Totale neerslag: </b>' + klimatogram.TotaalNeerslag + ' millimeter</p>';
+    html += '<p><b> Gemiddelde temperatuur: </b>' + klimatogram.TotaalGemiddeldeTemperatuur + '°C</p>';
+    $("#legend_" + number).html(html);
 }
 
 $(function() {
@@ -119,11 +140,6 @@ $(function() {
         $.each(klimatogrammen, function(i, val) {
             toonKlimatogram(val, 'klim_' + i, i);
         });
-    });
-    
-    $('#showDeterm').click(function() {
-        $('#determTab').show();
-        $(this).remove();
     });
 });
 

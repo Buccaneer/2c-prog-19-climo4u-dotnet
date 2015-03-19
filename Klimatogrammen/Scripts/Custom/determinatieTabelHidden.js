@@ -3,14 +3,19 @@
 */
 var kleuren = {
     'standaardKnoopKleur': '#7cb5ec', // #33a6e8
-    'standaardLijnKleur' : 'black',
+    'standaardLijnKleur': 'black',
     'geselecteerdKleur': '#317eac',
     'foutKleur': '#b94a48', //#b83d3a
     'juistKleur': '#468847',
-    'tekstKleur' : 'black'
+    'tekstKleur': 'black'
 };
 
 $(function () {
+
+    $('#showTabel').click(function () {
+        $(".determinatietabel").css("display", "inline");
+    });
+
     $(".determinatietabel").each(function (index, item) {
         var url = $(item).attr("data-url");
         var postUrl = $(item).attr("data-post-url");
@@ -23,31 +28,33 @@ $(function () {
         $(item).html("<img src='/Content/ajax-loader.gif' class='center-block' />");
         $.getJSON(url, {}, function (data) {
             $(item).html("");
-            var determinatieTabel = new DeterminatieTabel(item, data,postUrl,postName);
+            var determinatieTabel = new DeterminatieTabel(item, data, postUrl, postName);
             determinatieTabel.teken();
-           
+
             if (readonly)
                 $(item).css('pointer-events', 'none');
             else
-            if (antwoord != 0 && gebruikerAntwoord != 0) {
-                determinatieTabel.valideer(gebruikerAntwoord, antwoord);
-                if (antwoord == gebruikerAntwoord) {
-                    determinatieTabel.paper.off("cell:pointerclick");
-                    $(item).css('pointer-events', 'none');
-                    var container = $('body');
-                    var scrollTo = $('h4').first();
+                if (antwoord != 0 && gebruikerAntwoord != 0) {
+                    determinatieTabel.valideer(gebruikerAntwoord, antwoord);
+                    if (antwoord == gebruikerAntwoord) {
+                        determinatieTabel.paper.off("cell:pointerclick");
+                        $(item).css('pointer-events', 'none');
+                        var container = $('body');
+                        var scrollTo = $('h4').first();
 
 
-                    container.animate({
-                        scrollTop: scrollTo.offset().top - container.offset().top + container.scrollTop()
-                    });
+                        container.animate({
+                            scrollTop: scrollTo.offset().top - container.offset().top + container.scrollTop()
+                        });
+                    }
                 }
-            }
+
+            $(item).css("display", "none");
         });
     });
 });
 
-function DeterminatieTabel(item, data, postUrl,postName) {
+function DeterminatieTabel(item, data, postUrl, postName) {
     this.container = item;
     this.rawData = data;
     this.postname = postName;
@@ -76,7 +83,7 @@ function DeterminatieTabel(item, data, postUrl,postName) {
         var self = this;
         this.paper.off('cell:highlight');
         this.paper.off('cell:mouseover');
-  
+
         this.paper.on('cell:pointerclick',
             function (cellView) {
                 if (cellView.model.innernode !== undefined) {
@@ -96,7 +103,7 @@ function DeterminatieTabel(item, data, postUrl,postName) {
         this.graph.addCells(items);
     };
 
-    this.valideer = function(g, s) {
+    this.valideer = function (g, s) {
         var items = this.boom.geefItems();
         var gebruiker = null;
         var systeem = null;
@@ -150,7 +157,7 @@ function Node(data, ja, nee) {
         if (data.LinkerParameter !== undefined) {
             return parameterToString(data.LinkerParameter) + " " + operatorToString(data.Operator) + " " + parameterToString(data.RechterParameter);
         }
-       
+
         return data.klimaatType;
     };
     this.rect = new joint.shapes.basic.Rect({
@@ -158,7 +165,7 @@ function Node(data, ja, nee) {
         size: { width: 200, height: 40 },
         attrs: { rect: { fill: kleuren.standaardKnoopKleur, stroke: kleuren.standaardLijnKleur, 'stroke-width': 1 }, text: { text: this.toString(), fill: kleuren.tekstKleur } },
     });
-    this.clear = function() {
+    this.clear = function () {
         this.rect.attr({ rect: { fill: kleuren.standaardKnoopKleur } });
         if (this.linkJa !== undefined) {
             this.linkJa.attr({
@@ -175,7 +182,7 @@ function Node(data, ja, nee) {
             this.nee.clear();
         }
     }
-    this.valideer = function(kleur, kind) {
+    this.valideer = function (kleur, kind) {
         var link = null;
         if (kind !== null) {
             if (kind === this.ja) {
@@ -190,7 +197,7 @@ function Node(data, ja, nee) {
             this.rect.attr({
                 rect: { fill: kleur }
             });
-        } else if(this.parent !== null && this.parent !== undefined) {
+        } else if (this.parent !== null && this.parent !== undefined) {
             this.parent.valideer(kleur, this);
         }
     }
@@ -280,7 +287,7 @@ function Node(data, ja, nee) {
 function maakBoom(data) {
     if (data === null || data === undefined)
         return null;
-    var d = data.Vergelijking !== undefined ? data.Vergelijking : { id: data.DeterminatieKnoopId,klimaatType: data.KlimaatType, vegetatieType: data.VegetatieType };
+    var d = data.Vergelijking !== undefined ? data.Vergelijking : { id: data.DeterminatieKnoopId, klimaatType: data.KlimaatType, vegetatieType: data.VegetatieType };
     var jaKnoop = maakBoom(data.JaKnoop);
     var neeKnoop = maakBoom(data.NeeKnoop);
     return new Node(d, jaKnoop, neeKnoop);

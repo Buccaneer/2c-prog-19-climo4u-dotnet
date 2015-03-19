@@ -247,7 +247,7 @@ function toonKlimatogram(klimatogram, container, number) {
             text: 'Klimatologische gemiddelden ' + klimatogram.BeginJaar + " - " + klimatogram.EindJaar
         },
         xAxis: {
-            categories: ['Jan<br>'+temperaturen[0] + '°C<br>'+neerslagen[0]+'mmN' , 'Feb<br>'+temperaturen[1] + '°C<br>'+neerslagen[1]+'mmN', 'Maa<br>'+temperaturen[2] + '°C<br>'+neerslagen[2]+'mmN', 'Apr<br>'+temperaturen[3] + '°C<br>'+neerslagen[3]+'mmN', 'Mei<br>'+temperaturen[4] + '°C<br>'+neerslagen[4]+'mmN', 'Jun<br>'+temperaturen[5] + '°C<br>'+neerslagen[5]+'mmN', 'Jul<br>'+temperaturen[6] + '°C<br>'+neerslagen[6]+'mmN', 'Aug<br>'+temperaturen[7] + '°C<br>'+neerslagen[7]+'mmN', 'Sep<br>'+temperaturen[8] + '°C<br>'+neerslagen[8]+'mmN', 'Okt<br>'+temperaturen[9] + '°C<br>'+neerslagen[9]+'mmN', 'Nov<br>'+temperaturen[10] + '°C<br>'+neerslagen[10]+'mmN', 'Dec<br>'+temperaturen[11] + '°C<br>'+neerslagen[11]+'mmN']
+            categories: ['Jan', 'Feb', 'Maa', 'Apr', 'Mei', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dec']
         },
         yAxis: [
             {
