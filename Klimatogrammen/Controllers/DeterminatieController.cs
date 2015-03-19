@@ -31,32 +31,31 @@ namespace Klimatogrammen.Controllers
                     if (route != null)
                         return route;
 
-                    DeterminatieTabel tabel = leerling.Graad.DeterminatieTabel;
-                    determinatieVM.Antwoord = tabel.Determineer(leerling.Klimatogram).DeterminatieKnoopId;
-                    determinatieVM.Correct = determinatieVM.GebruikersAntwoord.Equals(determinatieVM.Antwoord);
-                    if (determinatieVM.Correct)
-                    {
-                        if (leerling.Graad.Nummer == 1)
-                        {
-                            determinatieVM.PartialViewName = "_Graad1";
-                            determinatieVM.AntwoordVM = new VegetatieAntwoordViewModel(tabel.VegetatieType.Naam,
-                                tabel.VegetatieType.Foto);
-                        }
-                        else
-                        {
-                            determinatieVM.VraagVM = new VegetatieVraagViewModel(leerling, tabel.VegetatieType.Foto);
-                            determinatieVM.PartialViewName = leerling.Graad.Jaar == 1 ? "_Graad2jaar1" : "_Graad2jaar2";
-                        }
-                    }
+            DeterminatieTabel tabel = leerling.Graad.DeterminatieTabel;
+            determinatieVM.Antwoord = tabel.Determineer(leerling.Klimatogram).DeterminatieKnoopId;
+            determinatieVM.Correct = determinatieVM.GebruikersAntwoord.Equals(determinatieVM.Antwoord);
+            if (determinatieVM.Correct)
+            {
+                if (leerling.Graad.Nummer == 1)
+                {
+                    determinatieVM.PartialViewName = "_Graad1";
+                    determinatieVM.AntwoordVM = new VegetatieAntwoordViewModel(tabel.GeefVegetatieType(leerling.Klimatogram).Naam, tabel.GeefVegetatieType(leerling.Klimatogram).Foto);
+                }
+                else
+                {
+                    determinatieVM.VraagVM = new VegetatieVraagViewModel(leerling, tabel.GeefVegetatieType(leerling.Klimatogram).Foto);
+                    determinatieVM.PartialViewName = leerling.Graad.Jaar == 1 ? "_Graad2jaar1" : "_Graad2jaar2";
+                }
+            }
                 }
                 catch (Exception exception)
                 {
                     ModelState.AddModelError("", exception.Message);
                 }
 
-                return View(determinatieVM);
+            return View(determinatieVM);
 
-            }
+        }
             return View(determinatieVM);
 
         }
@@ -72,26 +71,25 @@ namespace Klimatogrammen.Controllers
                     if (route != null)
                         return route;
 
-                    DeterminatieTabel tabel = leerling.Graad.DeterminatieTabel;
+            DeterminatieTabel tabel = leerling.Graad.DeterminatieTabel;
 
-                    var determinatieVM = new DeterminatieIndexViewModel();
-                    determinatieVM.VraagVM = new VegetatieVraagViewModel(leerling, tabel.VegetatieType.Foto);
-                    determinatieVM.VraagVM.GebruikersAntwoord = vraagVM.GebruikersAntwoord;
-                    determinatieVM.Antwoord = tabel.Determineer(leerling.Klimatogram).DeterminatieKnoopId;
-                    determinatieVM.Correct = true;
-                    determinatieVM.GebruikersAntwoord = determinatieVM.Antwoord;
-                    if (determinatieVM.VraagVM.GebruikersAntwoord != null &&
-                        determinatieVM.VraagVM.GebruikersAntwoord.Equals(tabel.VegetatieType.Naam))
-                    {
-                        determinatieVM.VraagVM.Correct = true;
-                    }
+            var determinatieVM = new DeterminatieIndexViewModel();
+            determinatieVM.VraagVM = new VegetatieVraagViewModel(leerling, tabel.GeefVegetatieType(leerling.Klimatogram).Foto);
+            determinatieVM.VraagVM.GebruikersAntwoord = vraagVM.GebruikersAntwoord;
+            determinatieVM.Antwoord = tabel.Determineer(leerling.Klimatogram).DeterminatieKnoopId;
+            determinatieVM.Correct = true;
+            determinatieVM.GebruikersAntwoord = determinatieVM.Antwoord;
+            if (determinatieVM.VraagVM.GebruikersAntwoord != null && determinatieVM.VraagVM.GebruikersAntwoord.Equals(tabel.GeefVegetatieType(leerling.Klimatogram).Naam))
+            {
+                determinatieVM.VraagVM.Correct = true;
+            }
                     else
                     {
-                        determinatieVM.VraagVM.Correct = false;
-                    }
-                    determinatieVM.PartialViewName = leerling.Graad.Jaar == 1 ? "_Graad2jaar1" : "_Graad2jaar2";
-                    return View("Index", determinatieVM);
-                }
+                determinatieVM.VraagVM.Correct = false;
+            }
+                determinatieVM.PartialViewName = leerling.Graad.Jaar == 1 ? "_Graad2jaar1" : "_Graad2jaar2";
+            return View("Index", determinatieVM);
+        }
                 catch (Exception exception)
                 {
                     ModelState.AddModelError("", exception.Message);

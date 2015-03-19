@@ -17,6 +17,7 @@ namespace Klimatogrammen.Controllers
             if (route != null)
                 return route;
             VragenIndexViewModel vraagVM = new VragenIndexViewModel(leerling.GeefVragen(), leerling.Klimatogram);
+            vraagVM.AllesJuist = false;
             return View(vraagVM);
         }
 
@@ -27,19 +28,37 @@ namespace Klimatogrammen.Controllers
             {
                 try
                 {
-                    ActionResult route = RedirectIndienNodig(leerling);
-                    if (route != null)
-                        return route;
+            ActionResult route = RedirectIndienNodig(leerling);
+            if (route != null)
+                return route;
 
-                    string[] antwden = leerling.ValideerVragen(antwoorden.Antwoord);
-
-                    AntwoordViewModel antw = new AntwoordViewModel(antwden);
-                    VragenIndexViewModel vraagVM = new VragenIndexViewModel(leerling.GeefVragen(), leerling.Klimatogram)
+            string[] antwden = leerling.ValideerVragen(antwoorden.Antwoord);
+            
+            AntwoordViewModel antw = new AntwoordViewModel(antwden);
+            VragenIndexViewModel vraagVM = new VragenIndexViewModel(leerling.GeefVragen(), leerling.Klimatogram) { Antwoorden = antw };
+            int index = 0;
+            vraagVM.AllesJuist =
+                leerling.Graad.Vragen.All(v =>
+                {
+                    var res = v.ValideerVraag(antwoorden.Antwoord[index], leerling.Klimatogram);
+                    var vr = vraagVM.Vragen.ElementAt(index++);
+                    switch (res)
                     {
-                        Antwoorden = antw
-                    };
-                    return View(vraagVM);
-                }
+                        case Resultaat.Juist:
+                            vr.Resultaat = true;
+                            break;
+                        case Resultaat.Fout:
+                            vr.Resultaat = false;
+                            break;
+                        default:
+                            vr.Resultaat = null;
+                            break;
+                    }
+                    return res == Resultaat.Juist;
+
+                });
+            return View(vraagVM);
+        }
                 catch (Exception exception)
                 {
                     ModelState.AddModelError("", exception.Message);

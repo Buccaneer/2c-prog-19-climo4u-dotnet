@@ -9,7 +9,6 @@ namespace Klimatogrammen.Models.DAL.Mapper {
     public class VraagMapper : EntityTypeConfiguration<Vraag> {
         public VraagMapper() {
             ToTable("vragen");
-            Ignore(v => v.Resultaat);
         }
     }
 }

@@ -8,7 +8,7 @@ namespace Klimatogrammen.Models.Domein {
     /// Een facade met alle logica en eigenschappen voor een determinatietabel voor te stellen.
     /// </summary>
     public class DeterminatieTabel {
-        private ResultaatBlad _juisteDeterminatie;
+        private Dictionary<Klimatogram, ResultaatBlad> _determinaties;
     
         public int DeterminatieTabelId { get; set; }
 
@@ -19,12 +19,18 @@ namespace Klimatogrammen.Models.Domein {
         /// </summary>
         /// <param name="klimatogram">Het klimatogram dat gedetermineerd moet worden.</param>
         /// <returns>ResultaatBlad met het vegetatie- en klimaattype in.</returns>
-        public ResultaatBlad Determineer(Klimatogram klimatogram) {
-            return _juisteDeterminatie =  BeginKnoop.Determineer(klimatogram) as ResultaatBlad;
+        public ResultaatBlad Determineer(Klimatogram klimatogram)
+        {
+            if (!_determinaties.ContainsKey(klimatogram))
+            {
+                _determinaties.Add(klimatogram, BeginKnoop.Determineer(klimatogram) as ResultaatBlad);
+            }
+            return _determinaties[klimatogram];
         }
 
-        public Resultaat ValideerGebruikerResultaat(ResultaatBlad gebruikersKnoop) {
-            return _juisteDeterminatie == gebruikersKnoop ? Resultaat.Juist : Resultaat.Fout;
+        public Resultaat ValideerGebruikerResultaat(ResultaatBlad gebruikersKnoop, Klimatogram klimatogram)
+        {
+            return Determineer(klimatogram).Equals(gebruikersKnoop) ? Resultaat.Juist : Resultaat.Fout;
         }
 
         public object MaakJsonObject()
@@ -36,21 +42,22 @@ namespace Klimatogrammen.Models.Domein {
         {
             get
             {
-              var vtypes = new List<VegetatieType>();
-                BeginKnoop.MaakLijstMetAlleVegetatieTypes(vtypes);
-                return vtypes;
+                return BeginKnoop.MaakLijstMetAlleVegetatieTypes();
             }
         }
 
-        public VegetatieType VegetatieType 
+        public VegetatieType GeefVegetatieType (Klimatogram klimatogram)
         {
-            get { return _juisteDeterminatie.VegetatieType; }
+            return Determineer(klimatogram).VegetatieType;
         }
 
         public DeterminatieTabel(DeterminatieKnoop beginKnoop) {
             BeginKnoop = beginKnoop;
         }
 
-        public DeterminatieTabel() { }
+        public DeterminatieTabel()
+        {
+            _determinaties = new Dictionary<Klimatogram, ResultaatBlad>();
+        }
     }
 }
