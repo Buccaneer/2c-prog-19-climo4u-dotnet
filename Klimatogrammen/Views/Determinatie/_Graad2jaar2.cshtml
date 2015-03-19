@@ -1,7 +1,7 @@
 ﻿@model Klimatogrammen.ViewModels.VegetatieVraagViewModel
 
 
-@using (Html.BeginForm("VerbeterVraagGraad2", "Determinatie")) {
+@using (Html.BeginForm("VerbeterVraagGraad2", "Determinatie", FormMethod.Post, htmlAttributes:new{@class="form-inline"})) {
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
@@ -12,49 +12,45 @@
             @if (Model.Correct.HasValue) {
                 if (Model.Foto == "") {
                     <img src="http://upload.wikimedia.org/wikipedia/commons/c/c9/-Insert_image_here-.svg" class="img-responsive" />
-                 }
-                 else {
-                     <img id="hint" style="display:none" src="@Model.Foto" class="img-responsive" />
-                 }
+                    <p></p>
+                }
+                else {
+                    <img id="hint" style="display:none" src="@Model.Foto" class="img-responsive" />
+                    <p></p>
+                }
             }
         </div>
-        <div class="form-group">
-
-            <div class="col-md-10">
+        <div class="form-group" style="width: 300px">
+            <div class="col-md-12" style="width:400px">
                 @if (Model.Correct != true) {
-                    @Html.DropDownListFor(model => model.GebruikersAntwoord, Model.Antwoorden, "-- Selecteer --", htmlAttributes: new { @class = "form-control" })
+                    @Html.DropDownListFor(model => model.GebruikersAntwoord, Model.Antwoorden, "-- Selecteer --", htmlAttributes: new { @class = "form-control col-md-offset-1",style="width:400px"})
                 } else {
-                    @Html.Label(Model.GebruikersAntwoord, new { })
-                    ;
+                    @Html.Label(Model.GebruikersAntwoord, new { @class="col-md-offset-1"})
                 }
                 @if (Model.Correct != null) {
                     if (Model.Correct == false) {
-                        @Html.Label("Dit is niet correct, probeer opnieuw!", new { @class = "text-danger" })
+                        <span class="glyphicon glyphicon-remove" style="font-size:35px;color:#b94a48;vertical-align: -35%;"></span>
                     } else if (Model.Correct == true) {
-                        <br />
-                        @Html.Label("Dit is juist, goed zo!", new { @class = "text-success" })
+                        <span class="glyphicon glyphicon-ok" style="font-size:2em;color:#468847;vertical-align:-35%;"></span>
                     }
                 }
-
             </div>
-
         </div>
-
-
-        <div class="form-group">
-            @if (Model.Correct.HasValue && Model.Correct == false) {
-                <a class="btn btn-primary" id="btnHint">Toon hint</a>
+        <p></p>
+        <div class="col-md-12">
+            <div class="form-group">
+                @if (Model.Correct.HasValue && Model.Correct == false) {
+                    <a class="btn btn-primary" id="btnHint">Toon hint</a>
             }
-            @if (Model.Correct == null || Model.Correct == false) {
-                <input type="submit" value="Valideer" class="btn btn-primary" />
+                @if (Model.Correct == null || Model.Correct == false) {
+                    <input type="submit" value="Valideer" class="btn btn-primary" />
             }
-            @Html.ActionLink("Stoppen", "Index", "Home", null, new { @class = "btn btn-primary" })
-
+                @Html.ActionLink("Stoppen", "Index", "Home", null, new { @class = "btn btn-primary" })
+            </div>
         </div>
     </div>
 }
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
-
 }

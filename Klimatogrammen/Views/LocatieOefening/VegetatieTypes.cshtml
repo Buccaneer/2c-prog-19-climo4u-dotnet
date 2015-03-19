@@ -1,10 +1,13 @@
-﻿@model Klimatogrammen.ViewModels.OefeningLocatieVegTypesIndexViewModel
+﻿@using System.Linq
+@model Klimatogrammen.ViewModels.OefeningLocatieVegTypesIndexViewModel
 
 @{
     ViewBag.Title = "Vegetatietypes";
 }
 
-<h2>Vegetatietypes</h2>
+<h2>Vegetatietypes determineren</h2>
+<h4>Duid voor elke klimatogram het juiste vegetatietype aan</h4>
+<hr />
 <div id="data" data-url="@Url.Action("GeefKlimatogrammen")">
 
     @if (Model.AllesJuist == null || Model.AllesJuist == false)
@@ -20,15 +23,16 @@
 
         </div>
     </div>
+    <hr/>
 }
 
 
-@using (Html.BeginForm("VerbeterVegetatieVragen", "LocatieOefening"))
+@using (Html.BeginForm("VerbeterVegetatieVragen", "LocatieOefening",FormMethod.Post, htmlAttributes:new{@class="form-inline"}))
 {
     @Html.AntiForgeryToken()
     int count = 0;
     <div class="form-horizontal">
-        <hr />
+        
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
         <div id="carousel" class="carousel slide" data-interval="false" data-ride="carousel">
@@ -90,17 +94,18 @@
                         <div id="klim_@count"></div>
                         <div id="legend_@count"></div>
                         @Html.Label("Vegetatietype", htmlAttributes: new { @class = "control-label" })
+                        <br/>
                         @Html.DropDownListFor(model => model.Antwoorden.Antwoord[count], v.Antwoorden, htmlAttributes: new { @class = "form-control" })
                         @Html.ValidationMessageFor(model => model.Antwoorden.Antwoord[count], "", new { @class = "text-danger" })
                         if (v.Correct != null)
                         {
                             if (v.Correct == false)
                             {
-                                @Html.Label("Dit is niet correct, probeer opnieuw!", new { @class = "text-danger" })
+                                <span class="glyphicon glyphicon-remove" style="font-size:35px;color:#b94a48;vertical-align: -35%;"></span>
                             }
                             else if (v.Correct == true)
                             {
-                                @Html.Label("Dit is juist, goed zo!", new { @class = "text-success" })
+                                <span class="glyphicon glyphicon-ok" style="font-size:2em;color:#468847;vertical-align:-35%;"></span>
                             }
                         }
                     }

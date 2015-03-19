@@ -2,13 +2,14 @@
 
 <div>
     <h4>@Model.Antwoord</h4>
-	<hr />
+    <hr />
     @if (Model.Foto == "") {
-       <img src="http://upload.wikimedia.org/wikipedia/commons/c/c9/-Insert_image_here-.svg" class="img-responsive" />
+        <img src="http://upload.wikimedia.org/wikipedia/commons/c/c9/-Insert_image_here-.svg" class="img-responsive" />
     } else {
         <img src="@Model.Foto" class="img-responsive" />
     }
 </div>
+<p></p>
 <p>
  @Html.ActionLink("Stoppen", "Index", "Home", null, new { @class = "btn btn-primary" })
 

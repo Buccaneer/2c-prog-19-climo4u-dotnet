@@ -17,6 +17,8 @@ function makeGraph(klimatogram) {
     var max;
     var maxNeerslag = Math.max.apply(Math, neerslagen);
     var maxTemperatuur = Math.max.apply(Math, temperaturen);
+
+    
     if (maxTemperatuur > maxNeerslag) {
         max = maxTemperatuur * 2;
     } else {
@@ -24,8 +26,25 @@ function makeGraph(klimatogram) {
     }
 
     var min = (Math.min.apply(Math, temperaturen) * 2);
-    if (min > 0)
+    if (min >= 0) {
         min = 0;
+    }
+
+    max =max + ( (max % 10) > 0 ? 10 : 0);
+    max += (max / 10) % 2 != 0 ? 10 : 0;
+
+
+    
+     if (min >= 0) {
+        if (min % 10 != 0) {
+            min += 10 - (min % 10);
+        }
+    } else {
+        if (min % 10 != 0) {
+            min -= 10 + (min % 10);
+        }
+    }
+        var tickInterval = max > 100 ? 20 : 10;
 
     max += 10;
     var chart = new Highcharts.Chart({
@@ -62,7 +81,7 @@ function makeGraph(klimatogram) {
                 endOnTick: false,
                 minPadding: 0,
                 maxPadding: 0,
-                tickInterval: 10
+                tickInterval: tickInterval
             }, {
                 labels: {
                     format: '{value}'
@@ -76,7 +95,7 @@ function makeGraph(klimatogram) {
                 endOnTick: false,
                 minPadding: 0,
                 maxPadding: 0,
-                tickInterval: 5
+                tickInterval: tickInterval / 2
             }
         ],
         tooltip: {
@@ -118,8 +137,6 @@ function makeGraph(klimatogram) {
                 type: 'spline'
             }
         ]
-
-
     });
 
     var html = '<br/><p><b> Totale neerslag: </b>' + klimatogram.TotaalNeerslag + ' millimeter</p>';

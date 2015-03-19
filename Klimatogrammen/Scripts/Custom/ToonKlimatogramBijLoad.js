@@ -8,6 +8,8 @@
     var max;
     var maxNeerslag = Math.max.apply(Math, neerslagen);
     var maxTemperatuur = Math.max.apply(Math, temperaturen);
+
+    
     if (maxTemperatuur > maxNeerslag) {
         max = maxTemperatuur * 2;
     } else {
@@ -15,8 +17,25 @@
     }
 
     var min = (Math.min.apply(Math, temperaturen) * 2);
-    if (min > 0)
+    if (min >= 0) {
         min = 0;
+    }
+
+    max =max + ( (max % 10) > 0 ? 10 : 0);
+    max += (max / 10) % 2 != 0 ? 10 : 0;
+
+
+    
+     if (min >= 0) {
+        if (min % 10 != 0) {
+            min += 10 - (min % 10);
+        }
+    } else {
+        if (min % 10 != 0) {
+            min -= 10 + (min % 10);
+        }
+    }
+        var tickInterval = max > 100 ? 20 : 10;
 
     max += 10;
     var chart = new Highcharts.Chart({
@@ -36,10 +55,10 @@
             text: 'Klimatologische gemiddelden ' + klimatogram.BeginJaar + " - " + klimatogram.EindJaar
         },
         xAxis: {
-            categories: ['Jan<br>'+temperaturen[0] + '°C<br>'+neerslagen[0]+'mmN' , 'Feb<br>'+temperaturen[1] + '°C<br>'+neerslagen[1]+'mmN', 'Maa<br>'+temperaturen[2] + '°C<br>'+neerslagen[2]+'mmN', 'Apr<br>'+temperaturen[3] + '°C<br>'+neerslagen[3]+'mmN', 'Mei<br>'+temperaturen[4] + '°C<br>'+neerslagen[4]+'mmN', 'Jun<br>'+temperaturen[5] + '°C<br>'+neerslagen[5]+'mmN', 'Jul<br>'+temperaturen[6] + '°C<br>'+neerslagen[6]+'mmN', 'Aug<br>'+temperaturen[7] + '°C<br>'+neerslagen[7]+'mmN', 'Sep<br>'+temperaturen[8] + '°C<br>'+neerslagen[8]+'mmN', 'Okt<br>'+temperaturen[9] + '°C<br>'+neerslagen[9]+'mmN', 'Nov<br>'+temperaturen[10] + '°C<br>'+neerslagen[10]+'mmN', 'Dec<br>'+temperaturen[11] + '°C<br>'+neerslagen[11]+'mmN']
+             categories: ['Jan<br>'+temperaturen[0] + '°C<br>'+neerslagen[0]+'mmN' , 'Feb<br>'+temperaturen[1] + '°C<br>'+neerslagen[1]+'mmN', 'Maa<br>'+temperaturen[2] + '°C<br>'+neerslagen[2]+'mmN', 'Apr<br>'+temperaturen[3] + '°C<br>'+neerslagen[3]+'mmN', 'Mei<br>'+temperaturen[4] + '°C<br>'+neerslagen[4]+'mmN', 'Jun<br>'+temperaturen[5] + '°C<br>'+neerslagen[5]+'mmN', 'Jul<br>'+temperaturen[6] + '°C<br>'+neerslagen[6]+'mmN', 'Aug<br>'+temperaturen[7] + '°C<br>'+neerslagen[7]+'mmN', 'Sep<br>'+temperaturen[8] + '°C<br>'+neerslagen[8]+'mmN', 'Okt<br>'+temperaturen[9] + '°C<br>'+neerslagen[9]+'mmN', 'Nov<br>'+temperaturen[10] + '°C<br>'+neerslagen[10]+'mmN', 'Dec<br>'+temperaturen[11] + '°C<br>'+neerslagen[11]+'mmN']
         },
         yAxis: [
-            {
+           {
                 labels: {
                     formatter: function () {
                         return this.value < 0 ? ' ' : this.value;
@@ -53,7 +72,7 @@
                 endOnTick: false,
                 minPadding: 0,
                 maxPadding: 0,
-                tickInterval: 10
+                tickInterval: tickInterval
             }, {
                 labels: {
                     format: '{value}'
@@ -67,7 +86,7 @@
                 endOnTick: false,
                 minPadding: 0,
                 maxPadding: 0,
-                tickInterval: 5
+                tickInterval: tickInterval / 2
             }
         ],
         tooltip: {
@@ -109,8 +128,6 @@
                 type: 'spline'
             }
         ]
-
-
     });
 
     var html = '<br/><p><b> Totale neerslag: </b>' + klimatogram.TotaalNeerslag + ' millimeter</p>';

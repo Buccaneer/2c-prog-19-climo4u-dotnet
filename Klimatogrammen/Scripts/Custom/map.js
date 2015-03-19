@@ -60,7 +60,7 @@
                 if ('undefined' == typeof image.externalElement)
                     image.externalElement = createCustomMarker(image);
 
-                // reposition the element accoridng to coordinates
+                // reposition the element according to coordinates
                 image.externalElement.style.top = map.latitudeToY(image.latitude) + 'px';
                 image.externalElement.style.left = map.longitudeToX(image.longitude) + 'px';
             }
@@ -213,12 +213,14 @@ function toonInfoMessage(messageText) {
 function toonKlimatogram(klimatogram, container, number) {
     $("#" + container).css({ "width": "100%", "height": "400px" });
 
-    var temperaturen = klimatogram.GemiddeldeTemperatuur;
+ var temperaturen = klimatogram.GemiddeldeTemperatuur;
     var neerslagen = klimatogram.GemiddeldeNeerslag;
 
     var max;
     var maxNeerslag = Math.max.apply(Math, neerslagen);
     var maxTemperatuur = Math.max.apply(Math, temperaturen);
+
+    
     if (maxTemperatuur > maxNeerslag) {
         max = maxTemperatuur * 2;
     } else {
@@ -226,8 +228,25 @@ function toonKlimatogram(klimatogram, container, number) {
     }
 
     var min = (Math.min.apply(Math, temperaturen) * 2);
-    if (min > 0)
+    if (min >= 0) {
         min = 0;
+    }
+
+    max =max + ( (max % 10) > 0 ? 10 : 0);
+    max += (max / 10) % 2 != 0 ? 10 : 0;
+
+
+    
+     if (min >= 0) {
+        if (min % 10 != 0) {
+            min += 10 - (min % 10);
+        }
+    } else {
+        if (min % 10 != 0) {
+            min -= 10 + (min % 10);
+        }
+    }
+        var tickInterval = max > 100 ? 20 : 10;
 
     max += 10;
     var chart = new Highcharts.Chart({
@@ -242,7 +261,7 @@ function toonKlimatogram(klimatogram, container, number) {
         },
         title: {
             text: "Klimatogram " + number
-},
+        },
         subtitle: {
             text: 'Klimatologische gemiddelden ' + klimatogram.BeginJaar + " - " + klimatogram.EindJaar
         },
@@ -250,7 +269,7 @@ function toonKlimatogram(klimatogram, container, number) {
             categories: ['Jan', 'Feb', 'Maa', 'Apr', 'Mei', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dec']
         },
         yAxis: [
-            {
+           {
                 labels: {
                     formatter: function () {
                         return this.value < 0 ? ' ' : this.value;
@@ -264,7 +283,7 @@ function toonKlimatogram(klimatogram, container, number) {
                 endOnTick: false,
                 minPadding: 0,
                 maxPadding: 0,
-                tickInterval: 10
+                tickInterval: tickInterval
             }, {
                 labels: {
                     format: '{value}'
@@ -278,7 +297,7 @@ function toonKlimatogram(klimatogram, container, number) {
                 endOnTick: false,
                 minPadding: 0,
                 maxPadding: 0,
-                tickInterval: 5
+                tickInterval: tickInterval / 2
             }
         ],
         tooltip: {

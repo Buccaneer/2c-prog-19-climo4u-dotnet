@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using System
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -37,7 +38,10 @@
             <div class="alert alert-warning">@TempData["Error"]</div>
         }
         @RenderBody()
-        <hr />
+        <div class="row">
+            <div class="col-md-12"><hr /></div>
+        </div>
+        
         <footer>
             <p>&copy; @DateTime.Now.Year - Projecten II: Programmeren</p>
         </footer>
