@@ -12,34 +12,48 @@
 <div id="container"></div>
 <div id="legend"></div>
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Index","OefeningVragen", FormMethod.Post, htmlAttributes:new{@class="form-inline"}))
 {
     @Html.AntiForgeryToken()
     int count = 0;
+    int aantal = Model.Vragen.Count/2;
     <div class="form-horizontal">
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-        @foreach (var v in Model.Vragen){
-            <div class="form-group">
+        <div class="col-md-6">
+            @foreach (var v in Model.Vragen)
+            {
+                if (count-1 == aantal)
+                {
+                    @:</div>
+                    @:<div class="col-md-6">
+                }
                
-                @Html.Label(v.VraagTekst, htmlAttributes: new {@class = "control-label"})
-                <div >
-                    @Html.DropDownListFor(model => model.Antwoorden.Antwoord[count], v.Antwoorden, htmlAttributes: new {@class = "form-control"})
-                    @Html.ValidationMessageFor(model => model.Antwoorden.Antwoord[count], "", new {@class = "text-danger"})
-                    @if (v.Resultaat == false)
-                    {
-                        @Html.Label("Dit is niet correct, probeer opnieuw!", new {@class = "text-danger"})
-                    }else if (v.Resultaat == true)
-                    {
-                        @Html.Label("Dit is juist, goed zo!", new {@class="text-success"})
-                    }
-                </div>
-            </div>
+                <div class="form-group">
+               
+                    @Html.Label(v.VraagTekst, htmlAttributes: new {@class = "control-label"})
+                    <div class="col-md-12">
+                        @Html.DropDownListFor(model => model.Antwoorden.Antwoord[count], v.Antwoorden, htmlAttributes: new {@class = "form-control",@style="width:280px"})
+                        @Html.ValidationMessageFor(model => model.Antwoorden.Antwoord[count], "", new {@class = "text-danger"})
+                        @if (v.Resultaat == false)
+                        {
+                            <span class="glyphicon glyphicon-remove" style="font-size:35px;color:#b94a48;vertical-align: -35%;"></span>
 
-            count++;
-        }
-        <div class="form-group">
+                        }
+                        else if (v.Resultaat == true)
+                        {
+                            <span class="glyphicon glyphicon-ok" style="font-size:2em;color:#468847;vertical-align:-35%;"></span>
+                        }
+                    </div>
+                </div>
+
+                count++;
+            }
+        </div>
+        <div class="row"></div>
+        <br/>
+        <div class="form-group col-md-12">
             <div>
                 @if (!Model.AllesJuist)
                     {
@@ -54,8 +68,6 @@
 
         </div>
     </div>
-
-
 }
 
 @section Scripts {

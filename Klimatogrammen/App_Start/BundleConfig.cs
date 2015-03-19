@@ -28,7 +28,7 @@ namespace Klimatogrammen
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/site.css", "~/Content/cerulean.css", "~/Content/legende.css"));
+                      "~/Content/site.css", "~/Content/cerulean.css", "~/Content/legende.css", "~/Content/carousel.css"));
         }
     }
 }
