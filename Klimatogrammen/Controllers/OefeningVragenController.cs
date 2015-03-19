@@ -35,10 +35,10 @@ namespace Klimatogrammen.Controllers
             string[] antwden = leerling.ValideerVragen(antwoorden.Antwoord);
             
             AntwoordViewModel antw = new AntwoordViewModel(antwden);
-            VragenIndexViewModel vraagVM = new VragenIndexViewModel(leerling.GeefVragen(), leerling.Klimatogram) { Antwoorden = antw };
+            VragenIndexViewModel vraagVM = new VragenIndexViewModel(leerling.GeefVragen(), leerling.Klimatogram) { Antwoorden = antwoorden };
             int index = 0;
             vraagVM.AllesJuist =
-                leerling.Graad.Vragen.All(v =>
+                leerling.Graad.Vragen.Where(v =>
                 {
                     var res = v.ValideerVraag(antwoorden.Antwoord[index], leerling.Klimatogram);
                     var vr = vraagVM.Vragen.ElementAt(index++);
@@ -54,9 +54,9 @@ namespace Klimatogrammen.Controllers
                             vr.Resultaat = null;
                             break;
                     }
-                    return res == Resultaat.Juist;
+                    return res != Resultaat.Juist;
 
-                });
+                }).Count() == 0;
             return View(vraagVM);
         }
                 catch (Exception exception)
