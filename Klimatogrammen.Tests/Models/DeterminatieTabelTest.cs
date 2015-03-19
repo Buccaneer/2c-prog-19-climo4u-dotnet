@@ -37,40 +37,6 @@ namespace Klimatogrammen.Tests.Models
         }
 
 
-        //[TestMethod]
-        //public void DeterminatieGebruikerIsFoutief()
-        //{
-        //    _determinatieTabel.Determineer(_klimatogramMock.Object);
-        //    Resultaat verwacht = Resultaat.Fout;
-        //    while (!_determinatieTabel.HeeftLeerlingEindeBereikt())
-        //        _determinatieTabel.NeemNeeKnoop();
-
-        //    Assert.AreEqual(verwacht, _determinatieTabel.ValideerGebruiker());
-        //}
-
-        //[TestMethod]
-        //public void DeterminatieGebruikerIsJuist()
-        //{
-        //    _determinatieTabel.Determineer(_klimatogramMock.Object);
-        //    Resultaat verwacht = Resultaat.Juist;
-        //    _determinatieTabel.NeemNeeKnoop();
-        //    _determinatieTabel.NeemNeeKnoop();
-        //    _determinatieTabel.NeemJaKnoop();
-        //    _determinatieTabel.NeemNeeKnoop();
-
-        //    Assert.AreEqual(verwacht, _determinatieTabel.ValideerGebruiker());
-        //}
-
-        //[TestMethod]
-        //public void FoutieveDeterminatieGebruikerWistZijnPad()
-        //{
-        //    _determinatieTabel.Determineer(_klimatogramMock.Object);
-        //    var huidige = _determinatieTabel.GeefDeterminatieGebruiker();
-        //    _determinatieTabel.NeemJaKnoop();
-        //    _determinatieTabel.ValideerGebruiker();
-        //    var nu = _determinatieTabel.GeefDeterminatieGebruiker();
-
-        //    Assert.AreEqual(huidige,nu);
-        //}
+       
     }
 }

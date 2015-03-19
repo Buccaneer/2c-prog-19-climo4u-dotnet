@@ -28,7 +28,7 @@ namespace Klimatogrammen.Tests.Controllers
         }
 
         [TestMethod]
-        public void IndienIndexGeenKlimatogramRedirectNaarKlimatogramController()
+        public void GeenKlimatogramRedirectNaarKlimatogramController()
         {
             RedirectToRouteResult result =
                 _determinatieController.Index(new Leerling { Graad = _graadMock.Object }) as RedirectToRouteResult;
@@ -66,7 +66,7 @@ namespace Klimatogrammen.Tests.Controllers
         }
 
         [TestMethod]
-        public void VegetatieTypeGraad1GeeftPartialViewNameTerug()
+        public void VegetatieTypeGraadEenGeeftPartialViewNameTerug()
         {
             DeterminatieIndexViewModel determinatieVM = new DeterminatieIndexViewModel();
             Leerling leerling = new Leerling { Graad = _graadMock.Object, Klimatogram = _mockKlimatogram.Object };
@@ -80,7 +80,7 @@ namespace Klimatogrammen.Tests.Controllers
         }
 
         [TestMethod]
-        public void VegetatieTypeGraad2Jaar1GeeftPartialViewNameTerug()
+        public void VegetatieTypeGraadTweeJaarEenGeeftPartialViewNameTerug()
         {
             DeterminatieIndexViewModel determinatieVM = new DeterminatieIndexViewModel();
             _graadMock = _graadMockFactory.MaakTweedeGraadEersteJaarAan();
@@ -94,7 +94,7 @@ namespace Klimatogrammen.Tests.Controllers
             Assert.AreEqual("_Graad2jaar1", determinatieVM.PartialViewName);
         }
         [TestMethod]
-        public void VegetatieTypeGraad2Jaar2GeeftPartialViewNameTerug()
+        public void VegetatieTypeGraadTweeJaarTweeGeeftPartialViewNameTerug()
         {
             DeterminatieIndexViewModel determinatieVM = new DeterminatieIndexViewModel();
             _graadMock = _graadMockFactory.MaakTweedeGraadTweedeJaarAan();
@@ -107,7 +107,7 @@ namespace Klimatogrammen.Tests.Controllers
         }
 
         [TestMethod]
-        public void VerbeterGraadVraag2GeeftViewTerug()
+        public void VerbeterGraadVraagTweeGeeftViewTerug()
         {   VegetatieVraagViewModel VraagVM = new VegetatieVraagViewModel();
             Leerling leerling = new Leerling { Graad = _graadMock.Object, Klimatogram = _mockKlimatogram.Object };
             ViewResult vr =
@@ -118,7 +118,7 @@ namespace Klimatogrammen.Tests.Controllers
         }
 
         [TestMethod]
-        public void VerbeterGraadVraag2GeeftWaarden()
+        public void VerbeterGraadVraagTweeGeeftWaardenTerug()
         {
             VegetatieVraagViewModel VraagVM = new VegetatieVraagViewModel();
             Leerling leerling = new Leerling { Graad = _graadMock.Object, Klimatogram = _mockKlimatogram.Object };
@@ -135,21 +135,19 @@ namespace Klimatogrammen.Tests.Controllers
 
 
         [TestMethod]
-        public void LeerlingNullRedirectNaarHome()
+        public void GeenLeerlingRedirectNaarHomeController()
         {
-            //    VraagRepository vRep = VraagRepository.CreerVragenVoorKlimatogram(_mockKlimatogram);
-            RedirectToRouteResult result = _determinatieController.Index(null) as RedirectToRouteResult;
-            //Assert.IsNotNull(result);
+            RedirectToRouteResult result =
+                _determinatieController.Index(null) as RedirectToRouteResult;
             Assert.AreEqual("Index", result.RouteValues["action"]);
             Assert.AreEqual("Home", result.RouteValues["controller"]);
         }
 
         [TestMethod]
-        public void GraadNullRedirectNaarHomeSelectie()
+        public void GeenGraadRedirectNaarHomeController()
         {
-            //    VraagRepository vRep = VraagRepository.CreerVragenVoorKlimatogram(_mockKlimatogram);
-            RedirectToRouteResult result = _determinatieController.Index(new Leerling { Graad = null, Klimatogram = _mockKlimatogram.Object }) as RedirectToRouteResult;
-            //Assert.IsNotNull(result);
+            RedirectToRouteResult result =
+                _determinatieController.Index(new Leerling { Graad = null, Klimatogram = _mockKlimatogram.Object }) as RedirectToRouteResult;
             Assert.AreEqual("Index", result.RouteValues["action"]);
             Assert.AreEqual("Home", result.RouteValues["controller"]);
         }

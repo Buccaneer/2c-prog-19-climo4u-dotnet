@@ -33,7 +33,7 @@ namespace Klimatogrammen.Tests.Controllers
         /// </summary>
 
         [TestMethod]
-        public void IndienGeenLeerlingInSessieRedirectNaarGraad()
+        public void GeenLeerlingRedirectNaarHomeController()
         {
             RedirectToRouteResult result = _klimatogramController.Index(null) as RedirectToRouteResult;
             Assert.AreEqual("Index", result.RouteValues["action"]);
