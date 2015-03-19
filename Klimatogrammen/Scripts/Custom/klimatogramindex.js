@@ -51,7 +51,7 @@ function makeGraph(klimatogram) {
             {
                 labels: {
                     formatter: function () {
-                        return this.value.toString().contains('-') ? ' ' : this.value;
+                        return this.value < 0 ? ' ' : this.value;
                     }
                 },
                 title: {
