@@ -20,7 +20,7 @@ namespace Klimatogrammen.ViewModels
 
         public VragenIndexViewModel(IEnumerable<Vraag> vragen, Klimatogram klimatogram)
         {
-            AllesJuist= vragen.All(v=>v.Resultaat == Resultaat.Juist);
+            //AllesJuist = vragen.All(v => v.Resultaat == Resultaat.Juist);
             Vragen = new Collection<VraagViewModel>();
             foreach (var vraag in vragen)
             {
@@ -41,18 +41,7 @@ namespace Klimatogrammen.ViewModels
         {
             VraagTekst = vraag.VraagTekst;
             Antwoorden = new SelectList(vraag.Parameter.GeefMogelijkeAntwoorden(klimatogram));
-            switch (vraag.Resultaat)
-            {
-                case Models.Domein.Resultaat.Fout:
-                    Resultaat = false;
-                    break;
-                case Models.Domein.Resultaat.Juist:
-                    Resultaat = true;
-                    break;
-                default:
-                    Resultaat = null;
-                    break;
-            }
+
         }
 
         public VraagViewModel()

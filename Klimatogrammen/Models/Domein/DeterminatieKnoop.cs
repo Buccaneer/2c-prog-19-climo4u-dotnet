@@ -15,7 +15,7 @@ namespace Klimatogrammen.Models.Domein {
         /// <returns>Volgende knoop of leaf punt in de determinatietabel.</returns>
         public abstract DeterminatieKnoop Determineer(Klimatogram klimatogram);
 
-        public abstract void MaakLijstMetAlleVegetatieTypes(List<VegetatieType> lijst);
+        public abstract List<VegetatieType> MaakLijstMetAlleVegetatieTypes();
 
         public abstract void Laad();
     }

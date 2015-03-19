@@ -31,11 +31,11 @@ namespace Klimatogrammen.Controllers
                 if (leerling.Graad.Nummer == 1)
                 {
                     determinatieVM.PartialViewName = "_Graad1";
-                    determinatieVM.AntwoordVM = new VegetatieAntwoordViewModel(tabel.VegetatieType.Naam,tabel.VegetatieType.Foto);
+                    determinatieVM.AntwoordVM = new VegetatieAntwoordViewModel(tabel.GeefVegetatieType(leerling.Klimatogram).Naam, tabel.GeefVegetatieType(leerling.Klimatogram).Foto);
                 }
                 else
                 {
-                    determinatieVM.VraagVM = new VegetatieVraagViewModel(leerling, tabel.VegetatieType.Foto);
+                    determinatieVM.VraagVM = new VegetatieVraagViewModel(leerling, tabel.GeefVegetatieType(leerling.Klimatogram).Foto);
                     determinatieVM.PartialViewName = leerling.Graad.Jaar == 1 ? "_Graad2jaar1" : "_Graad2jaar2";
                 }
             }
@@ -48,12 +48,12 @@ namespace Klimatogrammen.Controllers
             DeterminatieTabel tabel = leerling.Graad.DeterminatieTabel;
 
             var determinatieVM = new DeterminatieIndexViewModel();
-            determinatieVM.VraagVM = new VegetatieVraagViewModel(leerling, tabel.VegetatieType.Foto);
+            determinatieVM.VraagVM = new VegetatieVraagViewModel(leerling, tabel.GeefVegetatieType(leerling.Klimatogram).Foto);
             determinatieVM.VraagVM.GebruikersAntwoord = vraagVM.GebruikersAntwoord;
             determinatieVM.Antwoord = tabel.Determineer(leerling.Klimatogram).DeterminatieKnoopId;
             determinatieVM.Correct = true;
             determinatieVM.GebruikersAntwoord = determinatieVM.Antwoord;
-            if (determinatieVM.VraagVM.GebruikersAntwoord != null &&  determinatieVM.VraagVM.GebruikersAntwoord.Equals(tabel.VegetatieType.Naam))
+            if (determinatieVM.VraagVM.GebruikersAntwoord != null && determinatieVM.VraagVM.GebruikersAntwoord.Equals(tabel.GeefVegetatieType(leerling.Klimatogram).Naam))
             {
                 determinatieVM.VraagVM.Correct = true;
             }

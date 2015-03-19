@@ -3,7 +3,7 @@
   <Class Name="Klimatogrammen.Models.Domein.Leerling">
     <Position X="5" Y="5.5" Width="3.25" />
     <TypeIdentifier>
-      <HashCode>AAAAAAgAAAAAABACAAAAAAUEgAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAgAAAAAABACAAAAAAUEgggAAAAAAQAAAAAAAAA=</HashCode>
       <FileName>Models\Domein\Leerling.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -47,11 +47,10 @@
   <Class Name="Klimatogrammen.Models.Domein.Vraag">
     <Position X="12.75" Y="8.25" Width="3" />
     <TypeIdentifier>
-      <HashCode>AAAAAEAAAAAABAAAAAAAAAAAAAAQAAAAAACAABAAAAA=</HashCode>
+      <HashCode>AAAAAEAAAAAABAAAAAAAAAAAAAAQAAAAAACAAAAAAAA=</HashCode>
       <FileName>Models\Domein\Vraag.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
-      <Property Name="Resultaat" />
       <Property Name="Parameter" />
     </ShowAsAssociation>
   </Class>

@@ -5,27 +5,26 @@
 
         public int VraagId { get; set; }
 
-        public Resultaat Resultaat { get; set; }
-
         public Parameter Parameter { get; set; }
+
+        public string GebruikersAntwoord { get; set; }
 
         public string VraagTekst { get; set; }
 
-        public void ValideerVraag(string antwoord, Klimatogram klimatogram) {
+        public Resultaat ValideerVraag(string antwoord, Klimatogram klimatogram) {
             string juisteAntwoord = Parameter.BerekenWaarde(klimatogram).ToString();
             if (juisteAntwoord.Contains("|")) {
-                Resultaat = juisteAntwoord.Contains(antwoord)
-               ? Resultaat = Resultaat.Juist
-               : Resultaat = Resultaat.Fout;
+                return juisteAntwoord.Contains(antwoord)
+               ? Resultaat.Juist
+               : Resultaat.Fout;
             } else
-            Resultaat = juisteAntwoord.Equals(antwoord)
-                ? Resultaat = Resultaat.Juist
-                : Resultaat = Resultaat.Fout;
+            return juisteAntwoord.Equals(antwoord)
+                ? Resultaat.Juist
+                : Resultaat.Fout;
         }
 
         public Vraag()
         {
-            Resultaat = Resultaat.Onbepaald;
         }
     }
 }
