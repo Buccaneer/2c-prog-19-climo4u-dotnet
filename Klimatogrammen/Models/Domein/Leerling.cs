@@ -95,14 +95,14 @@ namespace Klimatogrammen.Models.Domein
 
         public void ValideerLocaties(string[] locaties, string[] klimatogrammen)
         {
-            if (_foutieveKlimatogrammen.Count == 0)
+            if (FoutieveKlimatogrammenDerdeJaar.Count == 0)
                 return;
             var klims = new List<Klimatogram>();
             for (int i = 0; i < locaties.Length; ++i)
             {
                 int locatie = int.Parse(locaties[i]);
                 Klimatogram klimatogram = _klimatogrammen.First(k => k.Locatie.Equals(klimatogrammen[i]));
-                if (_foutieveKlimatogrammen.ElementAt(locatie) != klimatogram)
+                if (FoutieveKlimatogrammenDerdeJaar.ElementAt(locatie) != klimatogram)
                     klims.Add(klimatogram);
             }
             _foutieveKlimatogrammen = klims;

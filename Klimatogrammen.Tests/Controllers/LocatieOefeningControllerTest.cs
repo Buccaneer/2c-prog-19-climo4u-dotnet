@@ -125,7 +125,7 @@ namespace Klimatogrammen.Tests.Controllers
             _leerling = _leerlingMock.maakFouteLeerling();
             Leerling leerling = _leerling.Object;
 
-            ViewResult result = _locatieOefeningController.Index(leerling, new[] { "0" }, new[] { "blabla" }) as ViewResult;
+            ViewResult result = _locatieOefeningController.Index(leerling, new[] { "blabla" }, new[] { "0" }) as ViewResult;
 
             Assert.IsNotNull(result);
         }
@@ -135,7 +135,7 @@ namespace Klimatogrammen.Tests.Controllers
         {
             Leerling leerling = _leerling.Object;
 
-            ViewResult result = _locatieOefeningController.Index(leerling, new[] { "0" }, new[] { "Mock Klimatogram" }) as ViewResult;
+            ViewResult result = _locatieOefeningController.Index(leerling, new[] { "Mock Klimatogram" },new[] { "0" }) as ViewResult;
 
             OefeningLocatieVegTypesIndexViewModel vm = result.Model as OefeningLocatieVegTypesIndexViewModel;
 
