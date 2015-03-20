@@ -22,9 +22,10 @@
 
     </div>
 </div>
-<div class="row" id="submit" data-action="@Url.Action("Index")" ><a class="btn btn-primary">Indienen</a></div>
-
-
+<div class="row"  >
+    <a id="submit" data-action="@Url.Action("Index")" class=" btn btn-primary">Indienen</a>
+    @Html.ActionLink("Stoppen", "Index", "Home", null, new { @class = "btn btn-primary" })
+</div>
 
 @section scripts {
 

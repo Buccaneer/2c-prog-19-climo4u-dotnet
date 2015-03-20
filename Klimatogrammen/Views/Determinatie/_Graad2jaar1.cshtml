@@ -24,7 +24,9 @@
                     @Html.DropDownListFor(model => model.GebruikersAntwoord, Model.Antwoorden,"-- Selecteer --", htmlAttributes: new {@class = "form-control",@style="width:280px"})
                 }
                 else {
-                    @Html.Label(Model.GebruikersAntwoord, new {})
+                    <label class="text-success">Proficiat, u heeft de oefeningen voltooid! U kunt terugkeren naar de startpagina door op de knop hieronder te drukken.</label>
+                    <br/>
+                    @Html.Label(Model.GebruikersAntwoord)
                 }
                 @if (Model.Correct != null) {
                     if (Model.Correct == false)
@@ -45,7 +47,14 @@
                 @if (Model.Correct == null || Model.Correct == false) {
                     <input type="submit" value="Valideer" class="btn btn-primary" />
             }
-                @Html.ActionLink("Stoppen", "Index", "Home", null, new { @class = "btn btn-primary" })
+                @if (Model.Correct == null || Model.Correct == false)
+            {
+                    @Html.ActionLink("Stoppen", "Index", "Home", null, new { @class = "btn btn-primary" })
+            }
+            else
+            {
+                    @Html.ActionLink("Oefening afronden", "Index", "Home", null, new { @class = "btn btn-primary" })
+            }
             </div>
         </div>
     </div>

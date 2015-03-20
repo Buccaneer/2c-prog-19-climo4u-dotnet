@@ -20,10 +20,15 @@
                 }
             }
         </div>
-        <div class="form-group" style="width: 300px">
+        <div class="form-group">
+            @if (Model.Correct == true)
+            {
+    <label class="text-success" style="margin-left:30.828px;padding:15px;">Proficiat, u heeft de oefeningen voltooid! U kunt terugkeren naar de startpagina door op de knop hieronder te drukken.</label>
+                <br />
+            }
             <div class="col-md-12" style="width:400px">
                 @if (Model.Correct != true) {
-                    @Html.DropDownListFor(model => model.GebruikersAntwoord, Model.Antwoorden, "-- Selecteer --", htmlAttributes: new { @class = "form-control col-md-offset-1",style="width:400px"})
+                    @Html.DropDownListFor(model => model.GebruikersAntwoord, Model.Antwoorden, "-- Selecteer --", htmlAttributes: new { @class = "form-control col-md-offset-1",style="width:280px"})
                 } else {
                     @Html.Label(Model.GebruikersAntwoord, new { @class="col-md-offset-1"})
                 }
@@ -45,7 +50,14 @@
                 @if (Model.Correct == null || Model.Correct == false) {
                     <input type="submit" value="Valideer" class="btn btn-primary" />
             }
+            @if (Model.Correct == null || Model.Correct == false)
+            {
                 @Html.ActionLink("Stoppen", "Index", "Home", null, new { @class = "btn btn-primary" })
+            }
+            else
+            {
+                @Html.ActionLink("Oefening afronden", "Index", "Home", null, new { @class = "btn btn-primary" })
+            }
             </div>
         </div>
     </div>
