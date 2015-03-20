@@ -24,11 +24,11 @@ namespace Klimatogrammen
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js",
-                      "~/Scripts/respond.js"));
+                      "~/Scripts/respond.js", "~/Content/animate.js", "~/Content/custom.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/site.css", "~/Content/cerulean.css", "~/Content/legende.css", "~/Content/carousel.css"));
+                      "~/Content/site.css", "~/Content/style.css","~/Content/carousel.css", "~/Content/legende.css","~/Content/animate.css", "~/Content/custom-fonts.css", "~/Content/flexslider.css", "~/Content/font-awesomeness.css"));
         }
     }
 }

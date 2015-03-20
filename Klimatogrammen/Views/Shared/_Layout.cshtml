@@ -21,11 +21,6 @@
                 </button>
                 @Html.ActionLink("Klimatogrammen", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                </ul>
-            </div>
         </div>
     </div>
     <div class="container body-content">
@@ -41,14 +36,20 @@
         <div class="row">
             <div class="col-md-12"><hr /></div>
         </div>
-        
-        <footer>
-            <p>&copy; @DateTime.Now.Year - Projecten II: Programmeren</p>
-        </footer>
+
+
     </div>
 
-    
+
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+    <div class="navbar navbar-fixed-bottom">
+        <footer>
+            <div class="container">
+                <span style="    color: #333;"><strong>&copy; @DateTime.Now.Year - Projecten II: Programmeren</strong></span>
+            </div>
+            
+        </footer>
+    </div>
 </body>
 </html>
