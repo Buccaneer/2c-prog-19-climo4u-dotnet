@@ -11,6 +11,8 @@
 </div>
 <p></p>
 <p>
- @Html.ActionLink("Stoppen", "Index", "Home", null, new { @class = "btn btn-primary" })
+    <label class="text-success">Proficiat, u heeft de oefeningen voltooid! U kunt terugkeren naar de startpagina door op de knop hieronder te drukken.</label>
+    <br />
+    @Html.ActionLink("Oefening afronden", "Index", "Home", null, new { @class = "btn btn-primary" })
 
 </p>

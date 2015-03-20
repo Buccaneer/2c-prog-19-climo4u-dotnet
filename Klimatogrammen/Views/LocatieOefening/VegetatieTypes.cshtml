@@ -147,8 +147,14 @@
             @if (Model.AllesJuist == null || Model.AllesJuist == false)
             {
                 <input type="submit" value="Valideer" class="btn btn-primary" />
+                @Html.ActionLink("Stoppen", "Index", "Home", null, new { @class = "btn btn-primary" })
             }
-            @Html.ActionLink("Stoppen", "Index", "Home", null, new { @class = "btn btn-primary" })
+            else
+            {
+                <label class="text-success">Proficiat, u heeft de oefeningen voltooid! U kunt terugkeren naar de startpagina door op de knop hieronder te drukken.</label>
+                <br />
+                @Html.ActionLink("Oefening afronden", "Index", "Home", null, new { @class = "btn btn-primary" })
+            }
         </div>
     </div>
 }
