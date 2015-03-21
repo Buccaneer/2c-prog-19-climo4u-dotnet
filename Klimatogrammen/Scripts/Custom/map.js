@@ -1,5 +1,11 @@
 ﻿$(function () {
     $items = $("#klimatogrammen");
+    $items.attr({
+        "class": "panel-group",
+        "id": "klimatogrammen",
+        "role": "tablist",
+        "aria-multiselectable": "true"
+        });
     url = $items.attr("data-url");
     $.getJSON(url, {}, function (data) {
 
@@ -106,18 +112,22 @@
             return holder;
         }
 
-        var first = true;
         $.each(data, function(i,val) {
-            var div = $("<div class='panel panel-default' id='item" + i +  "'>" +
-                "<div class='panel-heading' role='tab' id='heading" + i + "'>" +
-                "<h4 class='panel-title'><a " + (!first ? "class='collapsed'" : '') + " data-toggle='collapse' data-parent='#klimatogrammen' href='#collapse" + i + "' aria-expanded='" + (first ? "true" : "false") + "' controls='collapse" + i + "'>" +
-                "Klimatogram " + (i + 1) + "</a></h4></div>" +
-                "<div id='collapse" + i + "' class='panel-collapse" + (first ?" collapse in" : '') +  "' role='tabpanel' aria-labelledby='heading" +i + "'>" +
-                "<div class='class='container panel-body'><div id='klim" + i + "'></div></div></div>" +
+            var div = $(
+                "<div class='panel panel-default' id='item" + i + "'>" +
+                    "<div class='panel-heading' role='tab' id='heading" + i + "'>" +
+                        "<h4 class='panel-title'>" +
+                            "<a " + " class='nr" + i + "' data-toggle='collapse' data-parent='#klimatogrammen' href='#collapse" + i
+                            + "' aria-expanded='" + "true" + "' aria-controls='collapse" + i + "'>" + "Klimatogram " + (i + 1) + "</a>" +
+                        "</h4>" +
+                    "</div>" +
+                    "<div id='collapse" + i + "' class='panel-collapse collapse in nr" + i +  "' role='tabpanel' aria-labelledby='heading" +i + "'>" +
+                        "<div class='class='container panel-body'>" +
+                            "<div id='klim" + i + "'></div>" +
+                        "</div>" +
+                    "</div>" +
                  "</div>");
-            first = false;
             $items.append(div);
-
             toonKlimatogram(val, 'klim' + i, i + 1);
             var button = $("<div><button class='btn'>Kies</button></div>");
             $(button).click(function() {
@@ -125,10 +135,20 @@
                 toonOpties();
             });
             $("#klim" + i).parent().append(button);
-            if (!first)
-                $("#collapse" + i).addClass("collapse");
-
         });
+
+        $('.panel-heading a').on('click', function (e) {
+            var nr = $(this)[0].classList[0];
+            console.log(nr);
+            $.each($(this).parents('.panel-group').children('.panel').children('.panel-collapse'), function (i, val) {
+                if ($(val).hasClass('in') && !$(val).hasClass(nr)) {
+                    console.log("MAAK COLLAPSED");
+                    $(val).removeClass('in');
+                    $(val).addClass('collapse');
+                }
+            });
+        });
+
         toonInfoMessage("Klik op een locatie en kies een klimatogram.");
 
         function toonOpties() {
@@ -211,7 +231,7 @@ function toonInfoMessage(messageText) {
 
 
 function toonKlimatogram(klimatogram, container, number) {
-    $("#" + container).css({ "width": "100%", "height": "400px" });
+    $("#" + container).css({ "width": "480px", "height": "400px" });
 
  var temperaturen = klimatogram.GemiddeldeTemperatuur;
     var neerslagen = klimatogram.GemiddeldeNeerslag;
