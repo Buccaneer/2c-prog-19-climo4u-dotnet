@@ -95,7 +95,7 @@ namespace Klimatogrammen.Models.Domein
 
         public void ValideerLocaties(string[] locaties, string[] klimatogrammen)
         {
-            if (FoutieveKlimatogrammenDerdeJaar.Count == 0)
+            if (FoutieveKlimatogrammenDerdeJaar.Count == 0 || locaties.Length != FoutieveKlimatogrammenDerdeJaar.Count)
                 return;
             var klims = new List<Klimatogram>();
             for (int i = 0; i < locaties.Length; ++i)
