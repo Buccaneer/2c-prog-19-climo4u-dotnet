@@ -6,6 +6,9 @@ using System.Web;
 using Klimatogrammen.Models.Domein;
 
 namespace Klimatogrammen.Models.DAL {
+    /// <summary>
+    /// De GraadRepository geeft een graad door, afhankelijk van de graad en het jaar dat de methode 'GeefGraad' meekrijgt
+    /// </summary>
     public class GraadRepository : IGraadRepository{
         private KlimatogrammenContext _context;
         private DbSet<Graad> _graden;
