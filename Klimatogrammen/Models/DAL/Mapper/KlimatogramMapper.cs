@@ -7,6 +7,9 @@ using Klimatogrammen.Models.Domein;
 
 namespace Klimatogrammen.Models.DAL.Mapper {
     public class KlimatogramMapper : EntityTypeConfiguration<Klimatogram> {
+        /// <summary>
+        /// Mapper die de klimatogramtabel opmaakt en de relaties en primaire sleutels instelt
+        /// </summary>
         public KlimatogramMapper() {
             ToTable("klimatogrammen");
             HasKey(k => k.Locatie);

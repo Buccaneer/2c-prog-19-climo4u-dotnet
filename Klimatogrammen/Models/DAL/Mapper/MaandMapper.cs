@@ -6,10 +6,11 @@ using System.Web;
 
 namespace Klimatogrammen.Models.DAL.Mapper {
     public class MaandMapper : EntityTypeConfiguration<Maand> {
-
+        /// <summary>
+        /// Mapper die de maandtabel opmaakt en de relaties en primaire sleutels instelt
+        /// </summary>
         public MaandMapper() {
             ToTable("maanden");
-            
             Property(m => m.Naam).HasMaxLength(15).IsRequired();
         }
     }

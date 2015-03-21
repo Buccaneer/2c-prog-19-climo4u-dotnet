@@ -9,6 +9,9 @@ using System.Web.Mvc;
 using Klimatogrammen.Models.Domein;
 
 namespace Klimatogrammen.Models.DAL {
+    /// <summary>
+    /// Deze klimatogrammenContext geeft stelt de naam van de database in en geeft wat instellingen door met de OnModelCreating methode
+    /// </summary>
     public class KlimatogrammenContext : DbContext {
 
         public KlimatogrammenContext()

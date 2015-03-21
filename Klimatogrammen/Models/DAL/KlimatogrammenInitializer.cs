@@ -11,6 +11,9 @@ using Klimatogrammen.Models.Domein;
 
 namespace Klimatogrammen.Models.DAL
 {
+    /// <summary>
+    /// De klimatogrammeninitializer geeft een methode om de maanden te instantiëren, een kleine/grote determinatietabel op te maken en de seed om alles in de databank te stoppen.
+    /// </summary>
     public class KlimatogrammenInitializer : System.Data.Entity.DropCreateDatabaseAlways<KlimatogrammenContext>
     {
         private IEnumerable<Maand> VormMaanden(double[] temperaturen, int[] neerslagen)
