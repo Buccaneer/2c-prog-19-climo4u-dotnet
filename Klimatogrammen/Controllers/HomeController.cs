@@ -13,13 +13,7 @@ namespace Klimatogrammen.Controllers
         // GET: Home
         public ActionResult Index()
         {
-            Leerling leerling = HttpContext.Session["leerling"] as Leerling;
-            if (leerling != null && leerling.Graad != null && leerling.Graad.Vragen != null)
-         
-            
             HttpContext.Session.RemoveAll();
-           
-            
             return View();
         }
 
