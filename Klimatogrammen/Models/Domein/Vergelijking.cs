@@ -2,7 +2,7 @@
 
 namespace Klimatogrammen.Models.Domein {
     /// <summary>
-    /// Stelt een vergelijking voor tussen twee parameters. Een vergelijking in de vorm van A vergelijkingsoperator B.
+    /// Stelt een vergelijking voor tussen twee parameters, in de vorm van A vergelijkingsoperator B.
     /// </summary>
     public class Vergelijking {
         public int VergelijkingId { get; set; }

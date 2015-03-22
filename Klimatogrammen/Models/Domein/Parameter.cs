@@ -3,6 +3,9 @@ using System.Collections.Generic;
 
 namespace Klimatogrammen.Models.Domein
 {
+    /// <summary>
+    /// Parameter is een abstracte klasse die door ConstanteParameter en Parameters worden geïmplementeerd
+    /// </summary>
     public abstract class Parameter
     {
         /// <summary>

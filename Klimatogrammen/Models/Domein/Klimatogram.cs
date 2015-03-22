@@ -6,6 +6,11 @@ using WebGrease.Css.Extensions;
 
 namespace Klimatogrammen.Models.Domein
 {
+    /// <summary>
+    /// Klimatogram is een klasse die verscheidene zaken bijhoudt, zoals het beginjaar, eindjaar, het land en locatie, de longitude en latitude en een ICollection van maanden
+    /// De neerslag en temperatuur kan via de maanden worden opgevraagd.
+    /// Deze klasse bevat een methode om een klimatogramobject aan te maken, zodat dit geschikt is voor Json.
+    /// </summary>
     public class Klimatogram
     {
         private ICollection<Maand> _maanden; 

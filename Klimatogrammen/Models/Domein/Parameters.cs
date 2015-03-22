@@ -9,8 +9,12 @@ using WebGrease.Css.Extensions;
 
 namespace Klimatogrammen
 {
+    /// <summary>
+    /// Parameters bevat verschillende klassen die van Parameter overerven en elk hun specifieke waarden toekennen
+    /// </summary>
     public class ParameterWarmsteMaand : Parameter
     {
+
         public override IComparable BerekenWaarde(Klimatogram klimatogram)
         {
             Maand max =  klimatogram.Maanden.First(m => m.Temperatuur.Equals(klimatogram.Maanden.Max(t => t.Temperatuur)));

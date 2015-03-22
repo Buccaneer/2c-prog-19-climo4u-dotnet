@@ -10,6 +10,9 @@ using Klimatogrammen.Models.Domein;
 
 namespace Klimatogrammen
 {
+    /// <summary>
+    /// Maand is een klasse waar de neerslag en temperatuur wordt opgeslagen.
+    /// </summary>
     public class Maand
     {
         public virtual int MaandId { get; set; }

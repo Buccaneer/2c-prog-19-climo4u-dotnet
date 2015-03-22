@@ -4,6 +4,10 @@ using System.Linq;
 using System.Text.RegularExpressions;
 
 namespace Klimatogrammen.Models.Domein {
+    /// <summary>
+    /// Land is een klasse waar er een ICollection van klimatogrammen opgeslagen wordt. Hier kan ook gekeken worden of een land een klimatogram heeft
+    /// en kan er toevoegen, opvragen en verwijderen
+    /// </summary>
     public class Land {
 
         private string _naam;

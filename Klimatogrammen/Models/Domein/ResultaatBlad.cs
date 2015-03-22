@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Klimatogrammen.Models.Domein {
     /// <summary>
-    /// Stelt een resultaat van een determinatie voor. Heeft een Vegetatietype en een klimaattype.
+    /// Resultaatblad erft van DeterminaieKnoop en stelt een resultaat van een determinatie voor. Heeft een Vegetatietype en een klimaattype.
     /// </summary>
     public class ResultaatBlad : DeterminatieKnoop {
 
@@ -23,7 +23,7 @@ namespace Klimatogrammen.Models.Domein {
         }
 
         public override void Laad() {
-            // Alle virtual members eens aanroepen hier geen.
+            // Alle virtual members eens aanroepen, hier geen.
         }
 
         public ResultaatBlad() { }

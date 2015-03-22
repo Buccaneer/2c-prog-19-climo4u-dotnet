@@ -3,7 +3,8 @@ using System.Linq;
 
 namespace Klimatogrammen.Models.Domein {
     /// <summary>
-    /// Een knoop waar een beslissing moet worden genomen volgens een vergelijking en waar een Ja of Nee tak uit voor
+    /// Een knoop die overerft van determinatieknoop en waar een beslissing moet worden genomen volgens een vergelijking en waar een Ja of Nee tak uit voort komt
+    /// Hier wordt een vergelijking, jaknoop en neeknoop ingesteld
     /// </summary>
     public class BeslissingsKnoop : DeterminatieKnoop {
         public virtual Vergelijking Vergelijking { get; set; }

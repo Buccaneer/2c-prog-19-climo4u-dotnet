@@ -1,5 +1,8 @@
 ﻿namespace Klimatogrammen.Models.Domein
 {
+    /// <summary>
+    /// Vraag is een klasse dat het gebruikersantwoord bijhoudt en een vraag kan valideren
+    /// </summary>
     public class Vraag
     {
 

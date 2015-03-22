@@ -4,6 +4,9 @@ using System.Linq;
 using System.Text.RegularExpressions;
 
 namespace Klimatogrammen.Models.Domein {
+    /// <summary>
+    /// Continent is een klasse waar een lijst van landen wordt bijgehouden en waar landen toegevoegd, opgevraagd of verwijdered kunnen worden
+    /// <summary>
     public class Continent {
 
         private ICollection<Land> _landen;

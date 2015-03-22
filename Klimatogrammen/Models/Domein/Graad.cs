@@ -10,6 +10,9 @@ using Klimatogrammen.Models.Domein;
 
 namespace Klimatogrammen
 {
+    /// <summary>
+    /// Graad is een klasse waar het jaar wordt bijgehouden, de determinatietabel en een ICollection van continenten en vragen wordt bijgehouden
+    /// </summary>
     public class Graad
     {
         private int _nummer;

@@ -6,17 +6,6 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Klimatogrammen.Tests.Models
 {
-    /// <summary>
-    /// OPMERKING : TESTKLASSE IS EIGENLIJK NIET NODIG WANT DE CONTINENTEN KOMEN UIT DE DATABASE
-    /// Deze testklasse bevat testen voor de klasse Werelddeel
-    /// Volgende zaken worden getest:
-    ///         * Correcte naam
-    ///         * Naam null
-    ///         * Naam met rare tekens
-    ///         * Geen naam
-    ///         * Opgevulde lijst van landen
-    ///         * Lijst van landen is null
-    /// </summary>
     [TestClass]
     public class ContinentTest
     {

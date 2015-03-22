@@ -1,5 +1,8 @@
 ﻿namespace Klimatogrammen.Models.Domein
 {
+    /// <summary>
+    /// VegetatieType is een klasse die alles bijhoudt van het vegetatietype.
+    /// </summary>
     public class VegetatieType
     {
         public int VegetatieTypeId { get; set; }

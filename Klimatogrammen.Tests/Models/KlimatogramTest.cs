@@ -9,14 +9,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Klimatogrammen.Tests.Models
 {
-    /// <summary>
-    /// Deze testklasse bevat testen voor de klasse Klimatogram
-    /// Volgende zaken worden getest:
-    ///         * Klimatogram geeft de gemiddelde temperaturen terug
-    ///         * Klimatogram geeft de neerslagen terug
-    ///         * Klimatogram geeft de totale neerslag per jaar terug
-    ///         * Klimatogram geeft de gemiddelde temperatuur over het jaar terug
-    /// </summary>
+
     [TestClass]
     public class KlimatogramTest
     {

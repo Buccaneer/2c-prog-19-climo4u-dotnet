@@ -7,8 +7,13 @@ using System.ComponentModel;
 using Klimatogrammen.Models.Domein;
 
 namespace Klimatogrammen
+    
 {
+    /// <summary>
+    /// ConstanteParameter is een klasse die overerft van parameterknoop en waar de waarden van constante parameters worden ingesteld en berekend
+    /// </summary>
     public class ConstanteParameter: Parameter
+
     {
         public double Waarde { get; set; }
 

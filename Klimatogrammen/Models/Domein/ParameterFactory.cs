@@ -2,6 +2,9 @@
 
 namespace Klimatogrammen.Models.Domein
 {
+    /// <summary>
+    /// ParameterFactory maakt alle parameters aan en wijst ze toe aan een array. Er worden ook constante parameters aangemaakt.
+    /// </summary>
     public class ParameterFactory
     {
         private Parameter[] _parameters = new Parameter[10];

@@ -5,6 +5,10 @@ using System.Linq;
 
 namespace Klimatogrammen.Models.Domein
 {
+    /// <summary>
+    /// Leerling is een klasse waar er een ICollection van klimatogrammen en foutieveklimatogrammen. Dit dient om voor de derde graad 6 klimatogrammen op te vragen
+    /// en te bekijken of de gelinkte klimatogrammen juist zijn of niet.
+    /// </summary>
 
     public class Leerling
     {
