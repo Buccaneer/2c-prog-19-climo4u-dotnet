@@ -22,22 +22,16 @@
             <div class="col-md-12">
                 @if (Model.Correct != true) {
                     @Html.DropDownListFor(model => model.GebruikersAntwoord, Model.Antwoorden,"-- Selecteer --", htmlAttributes: new {@class = "form-control",@style="width:280px"})
-                }
-                else {
-                    <label class="text-success">Proficiat, u heeft de oefeningen voltooid! U kunt terugkeren naar de startpagina door op de knop hieronder te drukken.</label>
-                    <br/>
-                    @Html.Label(Model.GebruikersAntwoord)
-                }
-                @if (Model.Correct != null) {
-                    if (Model.Correct == false)
-                    {
+                    if(Model.Correct == false){
                         <span class="glyphicon glyphicon-remove" style="font-size:35px;color:#b94a48;vertical-align: -35%;"></span>
-                    }else if (Model.Correct == true)
-                    {
-                        <span class="glyphicon glyphicon-ok" style="font-size:2em;color:#468847;vertical-align:-35%;"></span>
                     }
                 }
-
+                else {
+                    @Html.Label(Model.GebruikersAntwoord)
+                    <span class="glyphicon glyphicon-ok" style="font-size:2em;color:#468847;vertical-align:-35%;"></span>
+                    <br />
+                    <label class="text-success">Proficiat, u heeft de oefeningen voltooid! U kunt terugkeren naar de startpagina door op de knop hieronder te drukken.</label>
+                }
             </div>
 
         </div>

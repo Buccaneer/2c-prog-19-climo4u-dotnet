@@ -23,7 +23,7 @@
             @foreach (var vraag in Model.Vragen)
             {
                 <div class="col-md-6">
-                    <strong>@vraag.VraagTekst: </strong>@Model.Antwoorden[count]
+                    <strong>@vraag.VraagTekst: </strong>@Model.Antwoorden[count].Replace("|"," en ")
                 </div>
                 count++;
             }
