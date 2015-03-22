@@ -43,8 +43,8 @@ namespace Klimatogrammen.Models.DAL
             vergelijking2.Operator = Operator.KleinerDan;
 
             //Resultaatknoop voor ja en nee Tw < 0°C
-            DeterminatieKnoop resultaatKnoopJa = new ResultaatBlad(new VegetatieType("IJswoestijn", "../../Content/000.jpg"), "Koud zonder dooiseizoen");
-            DeterminatieKnoop resultaatKnoopNee = new ResultaatBlad(new VegetatieType("Toendra", "../../Content/001.jpg"), "Koud met dooiseizoen");
+            DeterminatieKnoop resultaatKnoopJa = new ResultaatBlad(new VegetatieType("IJswoestijn", "../../Content/004.png"), "Koud zonder dooiseizoen");
+            DeterminatieKnoop resultaatKnoopNee = new ResultaatBlad(new VegetatieType("Toendra", "../../Content/001.png"), "Koud met dooiseizoen");
 
             //Ja knoop instellen van de ja tak van de eerste vergelijking
             DeterminatieKnoop jaKnoop = new BeslissingsKnoop(vergelijking2, resultaatKnoopJa, resultaatKnoopNee);
@@ -56,7 +56,7 @@ namespace Klimatogrammen.Models.DAL
             vergelijking3.Operator = Operator.KleinerDan;
 
             //Resultaatknoop aanmaken van vergelijking 3
-            DeterminatieKnoop resultaatKnoopJa2 = new ResultaatBlad(new VegetatieType("Taiga", "../../Content/002.jpg"), "Koud gematigd");
+            DeterminatieKnoop resultaatKnoopJa2 = new ResultaatBlad(new VegetatieType("Taiga", "../../Content/002.png"), "Koud gematigd");
 
             //Nee knoop aanmaken van vergelijking 3
             Vergelijking vergelijking4 = new Vergelijking();
@@ -65,7 +65,7 @@ namespace Klimatogrammen.Models.DAL
             vergelijking4.Operator = Operator.KleinerDan;
 
             //Resultaat knoop nee aanmaken van vergelijking 4
-            DeterminatieKnoop resultaatKnoopNee2 = new ResultaatBlad(new VegetatieType("Tropisch savanne", "../../Content/012.jpg"), "Warm");
+            DeterminatieKnoop resultaatKnoopNee2 = new ResultaatBlad(new VegetatieType("Tropisch savanne", "../../Content/012.png"), "Warm");
 
             //Vergelijking aanmaken van ja knoop 2
             Vergelijking vergelijking5 = new Vergelijking();
@@ -74,7 +74,7 @@ namespace Klimatogrammen.Models.DAL
             vergelijking5.Operator = Operator.GroterDan;
 
             //Resultaat knoop nee aanmaken van vergelijking 5
-            DeterminatieKnoop resultaatKnoopNee4 = new ResultaatBlad(new VegetatieType("Steppe", "../../Content/005.jpg"), "Gematigd en droog");
+            DeterminatieKnoop resultaatKnoopNee4 = new ResultaatBlad(new VegetatieType("Steppe", "../../Content/005.png"), "Gematigd en droog");
 
             //Vergelijking aanmaken van ja knoop 3
             Vergelijking vergelijking6 = new Vergelijking();
@@ -83,7 +83,7 @@ namespace Klimatogrammen.Models.DAL
             vergelijking6.Operator = Operator.KleinerDan;
 
             //Resultaat knoop aanmaken van vergelijking 6
-            DeterminatieKnoop resultaatKnoopJa3 = new ResultaatBlad(new VegetatieType("Taiga", "../../Content/002.jpg"), "Koel gematigd met strenge winter");
+            DeterminatieKnoop resultaatKnoopJa3 = new ResultaatBlad(new VegetatieType("Taiga", "../../Content/002.png"), "Koel gematigd met strenge winter");
 
             //Vergelijking aanmaken van nee knoop 3
             Vergelijking vergelijking7 = new Vergelijking();
@@ -92,7 +92,7 @@ namespace Klimatogrammen.Models.DAL
             vergelijking7.Operator = Operator.KleinerDan;
 
             //Resultaat knoop aanmaken van vergelijking 7
-            DeterminatieKnoop resultaatKnoopJa4 = new ResultaatBlad(new VegetatieType("Loofbos", "../../Content/007.jpg"), "Koel gematigd met zachte winter");
+            DeterminatieKnoop resultaatKnoopJa4 = new ResultaatBlad(new VegetatieType("Loofbos", "../../Content/007.png"), "Koel gematigd met zachte winter");
             DeterminatieKnoop resultaatKnoopNee3 = new ResultaatBlad(new VegetatieType("Hardbladige-vegetatie van de subtropen", "../../Content/010.jpg"), "Warm gematigd met natte winter");
 
             //Nee knoop aanmaken van vergelijking 6
@@ -120,21 +120,21 @@ namespace Klimatogrammen.Models.DAL
         {
             DeterminatieTabel dt = new DeterminatieTabel();
 
-            ResultaatBlad jajaResultaatKnoop = new ResultaatBlad(new VegetatieType("IJswoestijn", "../../Content/000.jpg"), "Koud klimaat zonder dooiseizoen");
-            ResultaatBlad janeeResultaatKnoop = new ResultaatBlad(new VegetatieType("Toendra", "../../Content/001.jpg"), "Koud klimaat met dooiseizoen");
-            ResultaatBlad neejaResultaatKnoop = new ResultaatBlad(new VegetatieType("Taiga", "../../Content/002.jpg"), "Koudgematigd klimaat met strenge winter");
+            ResultaatBlad jajaResultaatKnoop = new ResultaatBlad(new VegetatieType("IJswoestijn", "../../Content/004.png"), "Koud klimaat zonder dooiseizoen");
+            ResultaatBlad janeeResultaatKnoop = new ResultaatBlad(new VegetatieType("Toendra", "../../Content/001.png"), "Koud klimaat met dooiseizoen");
+            ResultaatBlad neejaResultaatKnoop = new ResultaatBlad(new VegetatieType("Taiga", "../../Content/002.png"), "Koudgematigd klimaat met strenge winter");
             ResultaatBlad neeneejajaResultaatKnoop = new ResultaatBlad(new VegetatieType("Woestijn van de middelbreedten", "../../Content/003.jpg"), "Gematigd altijd droog klimaat");
-            ResultaatBlad neeneejaneeResultaatKnoop = new ResultaatBlad(new VegetatieType("Woestijn van de tropen", "../../Content/004.jpg"), "Warm altijd droog klimaat");
-            ResultaatBlad neeneeneejajaResultaatKnoop = new ResultaatBlad(new VegetatieType("Steppe", "../../Content/005.jpg"), "Gematigd, droog klimaat");
-            ResultaatBlad neeneeneejaneejaResultaatKnoop = new ResultaatBlad(new VegetatieType("Taiga", "../../Content/002.jpg"), "Koudgematigd klimaat met strenge winter");
+            ResultaatBlad neeneejaneeResultaatKnoop = new ResultaatBlad(new VegetatieType("Woestijn van de tropen", "../../Content/004.png"), "Warm altijd droog klimaat");
+            ResultaatBlad neeneeneejajaResultaatKnoop = new ResultaatBlad(new VegetatieType("Steppe", "../../Content/005.png"), "Gematigd, droog klimaat");
+            ResultaatBlad neeneeneejaneejaResultaatKnoop = new ResultaatBlad(new VegetatieType("Taiga", "../../Content/002.png"), "Koudgematigd klimaat met strenge winter");
             ResultaatBlad neeneeneejaneeneejajaResultaatKnoop = new ResultaatBlad(new VegetatieType("Gemengd-woud", "../../Content/006.jpg"), "Koelgematigd klimaat met koude winter");
-            ResultaatBlad neeneeneejaneeneejaneejaResultaatKnoop = new ResultaatBlad(new VegetatieType("Loofbos", "../../Content/007.jpg"), "Koelgematigd klimaat met zachte winter");
+            ResultaatBlad neeneeneejaneeneejaneejaResultaatKnoop = new ResultaatBlad(new VegetatieType("Loofbos", "../../Content/007.png"), "Koelgematigd klimaat met zachte winter");
             ResultaatBlad neeneeneejaneeneejaneeneeResultaatKnoop = new ResultaatBlad(new VegetatieType("Subtropisch regenwoud", "../../Content/008.jpg"), "Warmgematigd altijd nat klimaat");
             ResultaatBlad neeneeneejaneeneeneejajaResultaatKnoop = new ResultaatBlad(new VegetatieType("Hardbladige-vegetatie van de centrale middelbreedten", "../../Content/009.jpg"), "Koelgematigd klimaat met natte winter");
             ResultaatBlad neeneeneejaneeneeneejaneeResultaatKnoop = new ResultaatBlad(new VegetatieType("Hardbladige-vegetatie van de subtropen", "../../Content/010.jpg"), "Warmgematigd klimaat met natte winter");
             ResultaatBlad neeneeneejaneeneeneeneeResultaatKnoop = new ResultaatBlad(new VegetatieType("Subtropisch savanne", "../../Content/011.jpg"), "Warmgematigd klimaat met natte zomer");
-            ResultaatBlad neeneeneeneeneeResultaatKnoop = new ResultaatBlad(new VegetatieType("Tropisch savanne", "../../Content/012.jpg"), "Warm klimaat met nat seizoen");
-            ResultaatBlad neeneeneeneejaResultaatKnoop = new ResultaatBlad(new VegetatieType("Tropisch regenwoud", "../../Content/013.jpg"), "Warm altijd nat klimaat");
+            ResultaatBlad neeneeneeneeneeResultaatKnoop = new ResultaatBlad(new VegetatieType("Tropisch savanne", "../../Content/012.png"), "Warm klimaat met nat seizoen");
+            ResultaatBlad neeneeneeneejaResultaatKnoop = new ResultaatBlad(new VegetatieType("Tropisch regenwoud", "../../Content/013.png"), "Warm altijd nat klimaat");
 
 
             BeslissingsKnoop jaBeslissingsKnoop = new BeslissingsKnoop(new Vergelijking(_parameterFactory.MaakParameter("Tw"), Operator.KleinerDanOfGelijkAan, _parameterFactory.MaakConstanteParameter(0)), jajaResultaatKnoop, janeeResultaatKnoop);

@@ -188,19 +188,13 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\000.jpg" />
-    <Content Include="Content\001.jpg" />
-    <Content Include="Content\002.jpg" />
     <Content Include="Content\003.jpg" />
-    <Content Include="Content\004.jpg" />
-    <Content Include="Content\005.jpg" />
     <Content Include="Content\006.jpg" />
-    <Content Include="Content\007.jpg" />
     <Content Include="Content\008.jpg" />
     <Content Include="Content\009.jpg" />
     <Content Include="Content\010.jpg" />
     <Content Include="Content\011.jpg" />
     <Content Include="Content\012.jpg" />
-    <Content Include="Content\013.jpg" />
     <Content Include="Content\ajax-loader.gif" />
     <Content Include="Content\animate.css" />
     <Content Include="Content\bootstrap.css" />
@@ -218,7 +212,14 @@
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\joint.css" />
     <Content Include="Content\legende.css" />
+    <Content Include="Content\012.png" />
+    <Content Include="Content\005.png" />
     <Content Include="Content\style.css" />
+    <Content Include="Content\013.png" />
+    <Content Include="Content\001.png" />
+    <Content Include="Content\002.png" />
+    <Content Include="Content\004.png" />
+    <Content Include="Content\007.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
