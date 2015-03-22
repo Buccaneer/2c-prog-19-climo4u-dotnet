@@ -20,7 +20,7 @@ namespace Klimatogrammen.ViewModels
 
         public VragenIndexViewModel(IEnumerable<Vraag> vragen, Klimatogram klimatogram)
         {
-            //AllesJuist = vragen.All(v => v.Resultaat == Resultaat.Juist);
+            
             Vragen = new Collection<VraagViewModel>();
             foreach (var vraag in vragen)
             {

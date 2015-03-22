@@ -24,16 +24,7 @@ namespace Klimatogrammen.Tests.Mock
             DeterminatieTabel determinatieTabel = new DeterminatieTabelMock().MaakDeterminatieTabelEersteGraad();
             determinatieTabel.Determineer(new KlimatogramMockFactory().MaakKlimatogramMock().Object);
             mock.Setup(l => l.DeterminatieTabel).Returns(determinatieTabel);
-            //Werelddeel c = new Werelddeel("Europa");
-            //Land belgie = new Land("België");
 
-
-            //int[] gemiddeldeNeerUkkel = { 12, 12, 13, 13, 14, 14, 15, 15, 16, 16, 17, 17 };
-            //double[] gemiddeldeTempUkkel = { 5.1, 2.2, 10.5, 12.7, 18, 20.4, 21.2, 25.2, 30.1, 19, 10, 2.2 };
-            //belgie.VoegKlimatogramToe(new Klimatogram(VormMaanden(gemiddeldeTempUkkel, gemiddeldeNeerUkkel).ToList(), 50.3, 4.5) { Locatie = "Ukkel", BeginJaar = 1961, EindJaar = 2009 });
-            //c.VoegLandToe(belgie);
-
-            //mock.Setup(g => g.Werelddelen).Returns(new Werelddeel[] { c });
             return mock;
         }
 
@@ -48,24 +39,7 @@ namespace Klimatogrammen.Tests.Mock
             DeterminatieTabel determinatieTabel = new GroteDeterminatieTabelMock().MaakDeterminatieTabel();
             determinatieTabel.Determineer(new KlimatogramMockFactory().MaakKlimatogramMock().Object);
             mock.Setup(l => l.DeterminatieTabel).Returns(determinatieTabel);
-        //    Werelddeel c = new Werelddeel("Europa");
-        //    Land belgie = new Land("België");
 
-
-        //    int[] gemiddeldeNeerUkkel = { 12, 12, 13, 13, 14, 14, 15, 15, 16, 16, 17, 17 };
-        //    double[] gemiddeldeTempUkkel = { 5.1, 2.2, 10.5, 12.7, 18, 20.4, 21.2, 25.2, 30.1, 19, 10, 2.2 };
-        //    belgie.VoegKlimatogramToe(new Klimatogram(VormMaanden(gemiddeldeTempUkkel, gemiddeldeNeerUkkel).ToList(), 1.5, 1.5) { Locatie = "Ukkel", BeginJaar = 1961, EindJaar = 2009 });
-        //    c.VoegLandToe(belgie);
-
-        //    Land kameroen = new Land("Kameroen");
-        //    kameroen.VoegKlimatogramToe(new Klimatogram(VormMaanden(
-        //    new double[] { 23.7, 25.3, 25.0, 24.6, 24.1, 23.4, 22.6, 23.0, 23.1, 23.3, 23.7, 23.7 },
-        //    new int[] { 17, 51, 140, 180, 220, 162, 70, 102, 254, 296, 111, 25 }).ToList(), 40.5, -6.3
-        //) { BeginJaar = 1961, EindJaar = 1990, Locatie = "Yaounde" });
-
-        //    Werelddeel afrika = new Werelddeel("afrika");
-        //    afrika.Landen.Add(kameroen);
-        //    mock.Setup(g => g.Werelddelen).Returns(new Werelddeel[] { c, afrika });
             return mock;
         }
 

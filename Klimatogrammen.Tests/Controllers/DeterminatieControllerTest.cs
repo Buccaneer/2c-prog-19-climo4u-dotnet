@@ -157,9 +157,9 @@ namespace Klimatogrammen.Tests.Controllers
         {
             _graadMock = _graadMockFactory.MaakDerdeGraadAan();
             RedirectToRouteResult result2 = _determinatieController.Index(new Leerling() { Graad = _graadMock.Object, Klimatogram = _mockKlimatogram.Object }) as RedirectToRouteResult;
-            //Assert.IsNotNull(result);
+            
             Assert.AreEqual("Index", result2.RouteValues["action"]);
-            //Home gaat nog veranderen naar determinatie
+            
             Assert.AreEqual("LocatieOefening", result2.RouteValues["controller"]);
         }
 
@@ -167,10 +167,7 @@ namespace Klimatogrammen.Tests.Controllers
         [ExpectedException(typeof(NullReferenceException))]
         public void GetJsonGooitFoutmeldingBijAanroepenZonderleerling()
         {
-            // getJson() --> regels GetJson() plaats fail in commentaar.
-            //Assert.Fail("getJson() is geen geldige naam :p gelieve GetJson() te gebruiken.");
-
-         
+       
             JsonResult result = _determinatieController.GetJSON(null) as JsonResult;
 
         }
