@@ -308,7 +308,7 @@ namespace Klimatogrammen
         }
         public override ICollection<string> GeefMogelijkeAntwoorden(Klimatogram klimatogram)
         {
-            throw new NotSupportedException(); //wordt niet gebruikt bij de vragen
+            throw new NotSupportedException(); 
         }
     }
 
@@ -328,7 +328,7 @@ namespace Klimatogrammen
 
         public override ICollection<string> GeefMogelijkeAntwoorden(Klimatogram klimatogram)
         {
-            throw new NotSupportedException();
+            throw new NotSupportedException(); //wordt niet gebruikt bij de vragen
         }
     }
 }

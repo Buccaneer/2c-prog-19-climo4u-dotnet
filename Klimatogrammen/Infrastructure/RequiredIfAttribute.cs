@@ -70,15 +70,12 @@ namespace Klimatogrammen.Infrastructure
 
         private string BuildDependentPropertyId(ModelMetadata metadata, ViewContext viewContext)
         {
-            // build the ID of the property
+            
             string depProp = viewContext.ViewData.TemplateInfo.GetFullHtmlFieldId(this.DependentProperty);
-            // unfortunately this will have the name of the current field appended to the beginning,
-            // because the TemplateInfo's context has had this fieldname appended to it. Instead, we
-            // want to get the context as though it was one level higher (i.e. outside the current property,
-            // which is the containing object (our Person), and hence the same level as the dependent property.
+       
             var thisField = metadata.PropertyName + "_";
             if (depProp.StartsWith(thisField))
-                // strip it off again
+            
                 depProp = depProp.Substring(thisField.Length);
             return depProp;
         }
