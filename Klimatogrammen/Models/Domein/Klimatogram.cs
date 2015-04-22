@@ -64,10 +64,12 @@ namespace Klimatogrammen.Models.Domein
 
         public object MaakJsonObject()
         {
+            var g = Maanden.ToList();
+            g.Sort();
             object klim = new
             {
-                GemiddeldeTemperatuur = Maanden.Select(maand => maand.Temperatuur).ToList(),
-                GemiddeldeNeerslag = Maanden.Select(maand => maand.Neerslag).ToList(),
+                GemiddeldeTemperatuur = g.Select(maand => maand.Temperatuur).ToList(), //Maanden.Select(maand => maand.Temperatuur).ToList(),
+                GemiddeldeNeerslag = g.Select(maand => maand.Neerslag).ToList(), //Maanden.Select(maand => maand.Neerslag).ToList(),
                 BeginJaar,
                 EindJaar,
                 Land = Land.Naam,
