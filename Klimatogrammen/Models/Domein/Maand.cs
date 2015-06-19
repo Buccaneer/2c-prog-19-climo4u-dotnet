@@ -43,10 +43,10 @@ namespace Klimatogrammen
 
         public int CompareTo(Maand other)
         {
-            return geefWaarde(Naam) < geefWaarde(other.Naam) ? -1 : 1;
+            return GeefWaarde(Naam) < GeefWaarde(other.Naam) ? -1 : 1;
         }
 
-        private int geefWaarde(String maand)
+        private int GeefWaarde(String maand)
         {
             int waarde = -1;
             switch (maand)
