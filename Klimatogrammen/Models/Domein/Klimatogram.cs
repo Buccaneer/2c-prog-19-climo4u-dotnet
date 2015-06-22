@@ -13,25 +13,23 @@ namespace Klimatogrammen.Models.Domein
     /// </summary>
     public class Klimatogram
     {
-        private List<Maand> _maanden; 
+        private ICollection<Maand> _maanden; 
         public virtual int BeginJaar { get; set; }
         public virtual int EindJaar { get; set; }
         public virtual Land Land { get; internal set; }
         public virtual double? Longitute { get; set; }
         public virtual double? Latitude { get; set; }
+
         public virtual ICollection<Maand> Maanden
         {
-            get
-            {
-                return _maanden;
-            }
+            get { return _maanden; } 
             set
             {
-                value.ForEach(m => m.Klimatogram = this);
-                _maanden = value.ToList();
-                _maanden.Sort();
+                value.ForEach(m=>m.Klimatogram=this);
+                _maanden = value;
             }
         }
+
         public virtual string Locatie { get; set; }
 
         public Klimatogram(ICollection<Maand> maanden, double? latitude = null, double? longitute = null)

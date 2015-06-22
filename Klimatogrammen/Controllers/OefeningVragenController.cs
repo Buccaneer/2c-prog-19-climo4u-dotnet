@@ -16,7 +16,11 @@ namespace Klimatogrammen.Controllers
             ActionResult route = RedirectIndienNodig(leerling);
             if (route != null)
                 return route;
-            VragenIndexViewModel vraagVM = new VragenIndexViewModel(leerling.GeefVragen(), leerling.Klimatogram);
+            Klimatogram klimatogram = leerling.Klimatogram;
+            List<Maand> maanden = klimatogram.Maanden.ToList();
+            maanden.Sort();
+            klimatogram.Maanden = maanden;
+            VragenIndexViewModel vraagVM = new VragenIndexViewModel(leerling.GeefVragen(), klimatogram);
             vraagVM.AllesJuist = false;
             return View(vraagVM);
         }

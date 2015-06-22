@@ -19,7 +19,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Klimatogrammen", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Climo4U", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
         </div>
     </div>
@@ -43,13 +43,11 @@
 
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
-    <div class="navbar navbar-fixed-bottom">
         <footer>
             <div class="container">
-                <span style="    color: #333;"><strong>&copy; @DateTime.Now.Year - Projecten II: Programmeren</strong></span>
+                <span style="    color: #333;"><strong>&copy; @DateTime.Now.Year - Projecten II: Programmeren door Annemie De Groote, Jasper De Vrient, Pieter-Jan Vandenberghe en Jan Van Braeckel</strong></span>
             </div>
             
         </footer>
-    </div>
 </body>
 </html>
