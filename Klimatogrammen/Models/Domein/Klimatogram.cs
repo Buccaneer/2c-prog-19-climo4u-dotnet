@@ -13,32 +13,20 @@ namespace Klimatogrammen.Models.Domein
     /// </summary>
     public class Klimatogram
     {
-        private List<Maand> _maanden; 
         public virtual int BeginJaar { get; set; }
         public virtual int EindJaar { get; set; }
         public virtual Land Land { get; internal set; }
-        public virtual double? Longitute { get; set; }
+        public virtual double? Longitude { get; set; }
         public virtual double? Latitude { get; set; }
-        public virtual ICollection<Maand> Maanden
-        {
-            get
-            {
-                return _maanden;
-            }
-            set
-            {
-                value.ForEach(m => m.Klimatogram = this);
-                _maanden = value.ToList();
-                _maanden.Sort();
-            }
-        }
+        public virtual List<Maand> Maanden { get; set; }
         public virtual string Locatie { get; set; }
 
-        public Klimatogram(ICollection<Maand> maanden, double? latitude = null, double? longitute = null)
+        public Klimatogram(ICollection<Maand> maanden, double? latitude = null, double? longitude = null)
         {
-            maanden.ForEach(m => m.Klimatogram = this);
-            Maanden = maanden;
-            Longitute = longitute;
+            List<Maand> m = maanden.ToList();
+            m.Sort();
+            Maanden = m;
+            Longitude = longitude;
             Latitude = latitude;
         }
 
@@ -68,19 +56,17 @@ namespace Klimatogrammen.Models.Domein
 
         public object MaakJsonObject()
         {
-            var g = Maanden.ToList();
-            g.Sort();
             object klim = new
             {
-                GemiddeldeTemperatuur = g.Select(maand => maand.Temperatuur).ToList(), //Maanden.Select(maand => maand.Temperatuur).ToList(),
-                GemiddeldeNeerslag = g.Select(maand => maand.Neerslag).ToList(), //Maanden.Select(maand => maand.Neerslag).ToList(),
+                GemiddeldeTemperatuur = Maanden.Select(maand => maand.Temperatuur).ToList(),
+                GemiddeldeNeerslag = Maanden.Select(maand => maand.Neerslag).ToList(),
                 BeginJaar,
                 EindJaar,
                 Land = Land.Naam,
                 Locatie,
                 TotaalGemiddeldeTemperatuur = GeefGemiddeldeTemperatuur(),
                 TotaalNeerslag = GeefTotaleNeerslag(),
-                Coordinaten = new {Longitute, Latitude}
+                Coordinaten = new {Longitute = Longitude, Latitude}
             };
             return klim;
         }
